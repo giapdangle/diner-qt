@@ -22,33 +22,18 @@ int main(int argc, char *argv[])
     // Create the viewer helper
     QmlApplicationViewer viewer;
 
-//    // For Maemo 5 and Symbian use screen resolution but for desktop use different size
-//#if defined(Q_WS_MAEMO_5) || defined(Q_OS_SYMBIAN)
-//    // Get screen dimensions
-//    QDesktopWidget *desktop = QApplication::desktop();
-//    const QRect screenRect = desktop->screenGeometry();
-//#else
-//    // On desktop we use nHD
-//    QPoint topLeft(100,100);
-//    QSize size(360, 640);
-//    QRect screenRect(topLeft, size);
-//#endif
+    // Set the screen size to QML context
+    QDeclarativeContext* context = viewer.rootContext();
 
-
-//    // Set the screen size to QML context
-//    QDeclarativeContext* context = viewer.rootContext();
-//    context->setContextProperty("screenWidth", screenRect.width());
-//    context->setContextProperty("screenHeight", screenRect.height());
-
-//#if defined(Q_WS_MAEMO_5) || defined(Q_OS_SYMBIAN)
-//    // Create an orientation sensor and add it to QML context
-//    QOrientationSensor sensor;
-//    // We use our own filter to be able to signal with QVariant the orientation because Sensors QML-plugin is not yet a part of 1.1
-//    OrientationFilter filter;
-//    sensor.addFilter(&filter);
-//    sensor.start();
-//    context->setContextProperty("filter", &filter);
-//#endif
+#if defined(Q_WS_MAEMO_5) || defined(Q_OS_SYMBIAN)
+    // Create an orientation sensor and add it to QML context
+    QOrientationSensor sensor;
+    // We use our own filter to be able to signal with QVariant the orientation because Sensors QML-plugin is not yet a part of 1.1
+    OrientationFilter filter;
+    sensor.addFilter(&filter);
+    sensor.start();
+    context->setContextProperty("filter", &filter);
+#endif
 
     // set viewer parameters
 //#ifdef Q_WS_MAEMO_5

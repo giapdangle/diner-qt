@@ -19,25 +19,32 @@ Rectangle {
     function orientationChanged(orientation) {
         if (orientation === 0) {
             Util.log("Orientation UNKNOWN");
-            mainWindow.rotation = 0;
+            //mainWindow.rotation = 0;
+            appState.inLandscape = false;
         } else if (orientation === 1) {
             Util.log("Orientation TOP POINTING UP");
-            mainWindow.rotation = 0;
+            //mainWindow.rotation = 0;
+            appState.inLandscape = false;
         } else if (orientation === 2) {
             Util.log("Orientation TOP POINTING DOWN");
-            mainWindow.rotation = 180;
+            //mainWindow.rotation = 180;
+            appState.inLandscape = false;
         } else if (orientation === 3) {
             Util.log("Orientation LEFT POINTING UP");
-            mainWindow.rotation = 270;
+            //mainWindow.rotation = 270;
+            appState.inLandscape = true;
         } else if (orientation === 4) {
             Util.log("Orientation RIGHT POINTING UP");
-            mainWindow.rotation = 90;
+            //mainWindow.rotation = 90;
+            appState.inLandscape = true;
         } else if (orientation === 5) {
             Util.log("Orientation FACE POINTING UP");
-            mainWindow.rotation = 0;
+            //mainWindow.rotation = 0;
+            appState.inLandscape = false;
         } else if (orientation === 6) {
             Util.log("Orientation FACE POINTING DOWN");
-            mainWindow.rotation = 0;
+            //mainWindow.rotation = 0;
+            appState.inLandscape = false;
         }
     }
 
@@ -160,6 +167,13 @@ Rectangle {
         }
     }
     states: [
+        State {
+            when: appState.inLandscape
+            name: "landscape"
+
+            // Animate the view switch with viewSwitcher
+            StateChangeScript { script: Util.log("LANDSCAPEEN"); }
+        },
         State {
             when: appState.currentViewName === "infoView";
             name: "showingInfoView"
