@@ -111,6 +111,11 @@ Rectangle {
             keepLoaded: true
         }
         ViewLoader {
+            id: menuListView
+            viewSource: "MenuListView.qml"
+            keepLoaded: true
+        }
+        ViewLoader {
             id: mapView
             viewSource: "MapView.qml"
             keepLoaded: true
@@ -172,7 +177,7 @@ Rectangle {
             PropertyChanges { target: naviBar; show: false }
             PropertyChanges { target: titleBar; showingBackButton: true }
             PropertyChanges { target: appState; cameFromView: "menuGridView" }
-            StateChangeScript { script: viewSwitcher.switchView(menuGridView,0, "instant"); }
+            StateChangeScript { script: viewSwitcher.switchView(menuListView,0, "instant"); }
         },
         State {
             when: appState.currentViewName === "mapView";

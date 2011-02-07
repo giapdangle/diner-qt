@@ -45,7 +45,7 @@ Item {
         }
         Button {
             buttonName: "menuButton"
-            target: "menuListView"
+            target: "menuGridView"
             width: buttonWidth
             height: buttonHeight
             text: qsTr("Menu");

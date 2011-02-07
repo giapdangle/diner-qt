@@ -3,6 +3,9 @@ import QtQuick 1.0
 Item {
     id: container
 
+    signal clicked(string itemId)
+
+    property string itemId: "NOT SET"
     property int margins: 10
     property string fontName: "Helvetica"
     property int fontSize: 10
@@ -31,6 +34,10 @@ Item {
             color: container.fontColor
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
+        }
+        MouseArea {
+            anchors.fill:  parent
+            onClicked: container.clicked(container.itemId);
         }
     }
 }

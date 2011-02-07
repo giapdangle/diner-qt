@@ -3,6 +3,8 @@ import "Util.js" as Util
 
 Item {
     id: container
+    signal menuItemClicked(string itemId);
+
     property int spacing: 20
     property string fontName: "Helvetica"
     property int fontSize: 16
@@ -46,6 +48,10 @@ Item {
             fontName: container.fontName
             fontSize: container.fontSize
             fontColor: container.fontColor
+            onClicked: {
+                container.menuItemClicked(itemId);
+                appState.currentViewName = "menuListView";
+            }
         }
     }
 }
