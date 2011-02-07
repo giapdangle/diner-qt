@@ -5,7 +5,7 @@ Item {
 
     property int margins: 10
     property string fontName: "Helvetica"
-    property int fontSize: 18
+    property int fontSize: 10
     property color fontColor: "black"
 
     width: 120

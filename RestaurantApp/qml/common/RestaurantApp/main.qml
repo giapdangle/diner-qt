@@ -41,9 +41,14 @@ Rectangle {
         }
     }
 
+    // Properties.
+    AppStateVars {
+        id: appState
+    }
+
     // screen width and height are set from C++ main
-    width: screenWidth
-    height: screenHeight
+    width: 360
+    height: 640
     color: "darkslategrey"
 
     Visual {
@@ -70,6 +75,7 @@ Rectangle {
 
         onBackButtonClicked: {
             Util.log("Back-button clicked. Came from view: " + viewName);
+            appState.currentViewName = viewName;
         }
         onExitButtonClicked: {
             Util.exitApp("Exit-button clicked");
@@ -100,7 +106,7 @@ Rectangle {
             keepLoaded: true
         }
         ViewLoader {
-            id: menuView
+            id: menuGridView
             viewSource: "MenuGridView.qml"
             keepLoaded: true
         }
@@ -119,9 +125,8 @@ Rectangle {
     TabBar {
         id: naviBar
         anchors {
-            left: parent.left
-            right: parent.right
-            bottom: parent.bottom
+            left: mainWindow.left
+            right: mainWindow.right
             leftMargin: 10
             rightMargin: 10
         }
@@ -130,19 +135,56 @@ Rectangle {
         fontSize: visual.tabBarButtonFontSize
         fontColor: visual.tabBarButtonFontColor
 
+        state: show ? "visible" : "hidden"
+
+        states: [
+            State {
+                name: "visible"
+                AnchorChanges { target: naviBar; anchors.bottom: mainWindow.bottom; anchors.top: undefined }
+            },
+            State {
+                name: "hidden"
+                AnchorChanges { target: naviBar; anchors.bottom: undefined; anchors.top: mainWindow.bottom }
+            }
+        ]
+
+        transitions: Transition { AnchorAnimation { duration: 400;  easing.type: Easing.InOutQuad } }
         onTabButtonClicked: {
             Util.log("Tab-bar button clicked: " + buttonName);
-            if (buttonName === "infoButton") {
-                viewSwitcher.switchView(infoView, 0, "instant");
-            } else if (buttonName === "menuButton") {
-                viewSwitcher.switchView(menuView, 0, "instant");
-            } else if (buttonName === "mapButton") {
-                viewSwitcher.switchView(mapView, 0, "instant");
-            } else if (buttonName === "bookingButton") {
-                viewSwitcher.switchView(bookingView, 0, "instant");
-            }
+            appState.currentViewName = targetView
         }
     }
+    states: [
+        State {
+            when: appState.currentViewName === "infoView";
+            name: "showingInfoView"
+            // Animate the view switch with viewSwitcher
+            StateChangeScript { script: viewSwitcher.switchView(infoView,0, "instant"); }
+        },
+        State {
+            when: appState.currentViewName === "menuGridView";
+            name: "showingMenuGridView"
+            StateChangeScript { script: viewSwitcher.switchView(menuGridView,0, "instant"); }
+        },
+        State {
+            when: appState.currentViewName === "menuListView";
+            name: "showingMenuListView"
+            PropertyChanges { target: naviBar; show: false }
+            PropertyChanges { target: titleBar; showingBackButton: true }
+            PropertyChanges { target: appState; cameFromView: "menuGridView" }
+            StateChangeScript { script: viewSwitcher.switchView(menuGridView,0, "instant"); }
+        },
+        State {
+            when: appState.currentViewName === "mapView";
+            name: "showingMapView"
+            StateChangeScript { script: viewSwitcher.switchView(mapView,0, "instant"); }
+        },
+        State {
+            when: appState.currentViewName === "bookingView";
+            name: "showingBookingView"
+            StateChangeScript { script: viewSwitcher.switchView(bookingView,0, "instant"); }
+        }
+    ]
 }
 
 

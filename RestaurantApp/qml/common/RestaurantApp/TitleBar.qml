@@ -95,7 +95,7 @@ Rectangle {
         bgImagePressed: "gfx/back_button_pressed.png";
 
         onClicked: {
-            container.backButtonClicked(appState.currentViewName)
+            container.backButtonClicked(appState.cameFromView)
         }
     }
 }

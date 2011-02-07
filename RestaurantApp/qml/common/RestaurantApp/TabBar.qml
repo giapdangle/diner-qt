@@ -3,7 +3,7 @@ import QtQuick 1.0
 Item {
     id: container
 
-    signal tabButtonClicked(string buttonName);
+    signal tabButtonClicked(string targetView, string buttonName);
 
     // To adjust the navibar:
     // Adjust the gap you want between buttons, it will be applied as margin as well
@@ -13,6 +13,7 @@ Item {
     property int buttonCount: 4
     property int buttonWidth: ((container.width - ( (buttonCount-1)*container.gap)) / buttonCount);
     property int buttonHeight: container.height - 2*gap
+    property bool show: true
 
     property string fontName: "Helvetica"
     property int fontSize: 14
@@ -31,6 +32,7 @@ Item {
 
         Button {
             buttonName: "infoButton"
+            target: "infoView"
             width: buttonWidth
             height: buttonHeight
             text: qsTr("Info");
@@ -39,10 +41,11 @@ Item {
             fontSize: container.fontSize
             fontColor: container.fontColor
 
-            onClicked: container.tabButtonClicked(button);
+            onClicked: container.tabButtonClicked(target, button);
         }
         Button {
             buttonName: "menuButton"
+            target: "menuListView"
             width: buttonWidth
             height: buttonHeight
             text: qsTr("Menu");
@@ -51,10 +54,11 @@ Item {
             fontSize: container.fontSize
             fontColor: container.fontColor
 
-            onClicked: container.tabButtonClicked(button);
+            onClicked: container.tabButtonClicked(target, button);
         }
         Button {
             buttonName: "mapButton"
+            target: "mapView"
             width: buttonWidth
             height: buttonHeight
             text: qsTr("Map");
@@ -63,10 +67,11 @@ Item {
             fontSize: container.fontSize
             fontColor: container.fontColor
 
-            onClicked: container.tabButtonClicked(button);
+            onClicked: container.tabButtonClicked(target, button);
         }
         Button {
             buttonName: "bookingButton"
+            target: "bookingView"
             width: buttonWidth
             height: buttonHeight
             text: qsTr("Book");
@@ -75,7 +80,7 @@ Item {
             fontSize: container.fontSize
             fontColor: container.fontColor
 
-            onClicked: container.tabButtonClicked(button);
+            onClicked: container.tabButtonClicked(target, button);
         }
     }
 

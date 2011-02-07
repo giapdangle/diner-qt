@@ -4,6 +4,7 @@ Item {
     id: container
 
     property string buttonName: "NOT SET"
+    property string target: "NOT SET"
     property string text: "NOT SET"
 
     property string fontName: "Helvetica"
@@ -16,7 +17,7 @@ Item {
     property string bgImagePressed: 'gfx/button_pressed.png';
     property string bgImageActive: 'gfx/button_active.png';
 
-    signal clicked(string button)
+    signal clicked(string target, string button)
 
     width: 140
     height: 60
@@ -50,7 +51,7 @@ Item {
     MouseArea {
         id: mouseArea
         anchors.fill: parent
-        onClicked: container.clicked(buttonName);
+        onClicked: container.clicked(container.target, container.buttonName);
     }
 
     states: [
