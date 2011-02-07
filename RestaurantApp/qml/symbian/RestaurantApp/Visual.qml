@@ -11,7 +11,7 @@ Item {
 
     // Tab bar
     property int tabBarHeight: 120
-    property int tabBarButtonFont: defaultFontFamily
+    property string tabBarButtonFont: defaultFontFamily
     property int tabBarButtonFontSize: 8
     property color tabBarButtonFontColor: "red"
 }

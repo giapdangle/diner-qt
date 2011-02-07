@@ -1,12 +1,15 @@
-<xml version="1.0" encoding="utf-8"?>
 <restaurant>
 	<info>
 		<address>
 			<street>Kauppakatu 3 A 2</street>
 			<city>Tampere</city>
 			<country>Finland</country>
+			<coordinates>
+				<latitude></latitude>
+				<longitude></longitude>
+			</coordinates>
 		</address>
-		<telephone></telephone>
+		<telephone>123435546</telephone>
 		<url>http://www.diner.fi/</url>
 	</info>
 	<menu>
@@ -14,8 +17,8 @@
 			<dish name="The King of Prawns">
 				Deep-fried king prawns and Sweet Chili sauce.
 			</dish>
-			<dish name="Super Hot Jalapeño Pops">
-				Deep-fried jalapeños filled with cheese. Served with garlic mayonnaise and out SuperHot Chilisauce.
+			<dish name="Super Hot Jalapeno Pops">
+				Deep-fried jalapenos filled with cheese. Served with garlic mayonnaise and out SuperHot Chilisauce.
 			</dish>
 			<dish name="Muchos Nachos">
 				Tortillaa chips, melted cheddar cheese, salsa sauce, jalapeño slices, sour cream & guacamole.
