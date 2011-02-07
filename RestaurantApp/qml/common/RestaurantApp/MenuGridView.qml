@@ -5,7 +5,7 @@ Item {
     id: container
     property int spacing: 20
     property string fontName: "Helvetica"
-    property int fontSize: 24
+    property int fontSize: 16
     property color fontColor: "black"
 
     // Default values, change when using
@@ -14,6 +14,8 @@ Item {
 
     Component.onCompleted: {
         Util.log("MenuGridView loaded");
+        menuModel.reload();
+        Util.log("Count: " + menuModel.count);
     }
 
 

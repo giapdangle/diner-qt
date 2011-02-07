@@ -13,7 +13,7 @@
 		<url>http://www.diner.fi/</url>
 	</info>
 	<menu>
-		<category name="Sides & starters">
+		<category name="Sides and starters">
 			<dish name="The King of Prawns">
 				Deep-fried king prawns and Sweet Chili sauce.
 			</dish>
@@ -21,7 +21,7 @@
 				Deep-fried jalapenos filled with cheese. Served with garlic mayonnaise and out SuperHot Chilisauce.
 			</dish>
 			<dish name="Muchos Nachos">
-				Tortillaa chips, melted cheddar cheese, salsa sauce, jalapeño slices, sour cream & guacamole.
+				Tortillaa chips, melted cheddar cheese, salsa sauce, jalapeno slices, sour cream &amp; guacamole.
 			</dish>
 			<dish name="Just Fries">
 				Salted fries with bbq sauce.
@@ -35,13 +35,13 @@
 		</category>
 		<category name="Something Green">
 			<dish name="THE Ceasar Salad">
-				 A mixed green salad with Caesar dressing, Parmesan cheese, croutons and arugula with a choice of chicken breast, marinated shrimps, bacon or chevré.
+				 A mixed green salad with Caesar dressing, Parmesan cheese, croutons and arugula with a choice of chicken breast, marinated shrimps, bacon or chevre.
 			</dish>
 			<dish name="All Vegs">
-				A mixed green salad with cherry tomato, cucumber, fresh pineapple, orange, marinated red onion, watermelon, arugula &  deep-fried spring rolls. Served with ranch dressing, toasted bread and Sweet Chili sauce.
+				A mixed green salad with cherry tomato, cucumber, fresh pineapple, orange, marinated red onion, watermelon, arugula &amp;  deep-fried spring rolls. Served with ranch dressing, toasted bread and Sweet Chili sauce.
 			</dish>
 			<dish name="Fruity Fish Salad">
-				A mixed green salad with salmon fillet, cherry tomato, cucumber, fresh pineapple, orange, marinated red onion, watermelon, lime & arugula.  Oil & herb dressing and toasted bread.
+				A mixed green salad with salmon fillet, cherry tomato, cucumber, fresh pineapple, orange, marinated red onion, watermelon, lime &amp; arugula.  Oil &amp; herb dressing and toasted bread.
 			</dish>
 		</category>
 		<category name="Fishy Game">
@@ -57,13 +57,13 @@
 				A 250g sirloin steak, fries, seasonal veggies and BBQ mayo.
 			</dish>
 			<dish name="Surf 'n Turf">
-				A 180g sirloin steak, deep-fried king prawns, bell pepper, asparagus, red onion, whiskey- and Béarnaise sauce, Criss Cuts and garnished with arugula.
+				A 180g sirloin steak, deep-fried king prawns, bell pepper, asparagus, red onion, whiskey- and Bearnaise sauce, Criss Cuts and garnished with arugula.
 			</dish>
 			<dish name="Silence of the Lambs">
 				Lamb Loin Chops with minty mushed peas, country fries and creamy mustard sauce.
 			</dish>
 			<dish name="Latino Chick">
-				Chicken breast with Latino sauce and salad of cherry tomatos, cucumber, marinated red onion & arugula. Fresh pineapple, garlic mayonnaise and Criss Cuts.
+				Chicken breast with Latino sauce and salad of cherry tomatos, cucumber, marinated red onion &amp; arugula. Fresh pineapple, garlic mayonnaise and Criss Cuts.
 			</dish>
 		</category>
 		<category name="Sweety Stuff">
@@ -77,7 +77,7 @@
 				A giant milk shake with a choice of banana-chocolate, chocolate, strawberry-vanilla or mint-chocolate. Made with real fruits and choc.
 			</dish>
 			<dish name="Super Cheesecake">
-				 A home made cheesecake served with heaps of whipped cream and Goji-berry & strawberry sauces.
+				 A home made cheesecake served with heaps of whipped cream and Goji-berry &amp; strawberry sauces.
 			</dish>
 		</category>
 	</menu>
