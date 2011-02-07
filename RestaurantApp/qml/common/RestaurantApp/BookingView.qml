@@ -2,8 +2,9 @@ import QtQuick 1.0
 import "Util.js" as Util
 
 Rectangle {
-    width: screenWidth
-    height: screenHeight
+    // Default values, change when using
+    width: 360
+    height: 640
     color: "turquoise"
 
     Component.onCompleted: {
