@@ -1,0 +1,81 @@
+<xml version="1.0" encoding="utf-8"?>
+<restaurant>
+	<info>
+		<address>
+			<street>Kauppakatu 3 A 2</street>
+			<city>Tampere</city>
+			<country>Finland</country>
+		</address>
+		<telephone></telephone>
+		<url>http://www.diner.fi/</url>
+	</info>
+	<menu>
+		<category name="Sides & starters">
+			<dish name="The King of Prawns">
+				Deep-fried king prawns and Sweet Chili sauce.
+			</dish>
+			<dish name="Super Hot Jalapeño Pops">
+				Deep-fried jalapeños filled with cheese. Served with garlic mayonnaise and out SuperHot Chilisauce.
+			</dish>
+			<dish name="Muchos Nachos">
+				Tortillaa chips, melted cheddar cheese, salsa sauce, jalapeño slices, sour cream & guacamole.
+			</dish>
+			<dish name="Just Fries">
+				Salted fries with bbq sauce.
+			</dish>
+			<dish name="Blue Cheese 'n Fries">
+				Seasoned Criss Cuts with blue cheese sauce.
+			</dish>
+			<dish name="Sweet Fries">
+				Sweet potato fries with our special mustard sauce.
+			</dish>
+		</category>
+		<category name="Something Green">
+			<dish name="THE Ceasar Salad">
+				 A mixed green salad with Caesar dressing, Parmesan cheese, croutons and arugula with a choice of chicken breast, marinated shrimps, bacon or chevré.
+			</dish>
+			<dish name="All Vegs">
+				A mixed green salad with cherry tomato, cucumber, fresh pineapple, orange, marinated red onion, watermelon, arugula &  deep-fried spring rolls. Served with ranch dressing, toasted bread and Sweet Chili sauce.
+			</dish>
+			<dish name="Fruity Fish Salad">
+				A mixed green salad with salmon fillet, cherry tomato, cucumber, fresh pineapple, orange, marinated red onion, watermelon, lime & arugula.  Oil & herb dressing and toasted bread.
+			</dish>
+		</category>
+		<category name="Fishy Game">
+			<dish name="Fish of the day">
+				 Whatever fish comes up, served with seasonal vegetables and Tartar sauce.
+			</dish>
+			<dish name="Tons of Tuna">
+				A huge steak of fresh tuna, baked sweet potato and lime mayo.
+			</dish>
+		</category>
+		<category name="Meat Lovers Paradise">
+			<dish name="Giant BBQ Steak">
+				A 250g sirloin steak, fries, seasonal veggies and BBQ mayo.
+			</dish>
+			<dish name="Surf 'n Turf">
+				A 180g sirloin steak, deep-fried king prawns, bell pepper, asparagus, red onion, whiskey- and Béarnaise sauce, Criss Cuts and garnished with arugula.
+			</dish>
+			<dish name="Silence of the Lambs">
+				Lamb Loin Chops with minty mushed peas, country fries and creamy mustard sauce.
+			</dish>
+			<dish name="Latino Chick">
+				Chicken breast with Latino sauce and salad of cherry tomatos, cucumber, marinated red onion & arugula. Fresh pineapple, garlic mayonnaise and Criss Cuts.
+			</dish>
+		</category>
+		<category name="Sweety Stuff">
+			<dish name="Master Muffin">
+				Chocolate muffin with white-chock chips, served with vanilla whipped cream.
+			</dish>
+			<dish name="The Big Apple">
+				Apple pie with pecan nuts and raisins, served with vanilla ice cream and chocolate sauce.
+			</dish>
+			<dish name="Shake it, shake it">
+				A giant milk shake with a choice of banana-chocolate, chocolate, strawberry-vanilla or mint-chocolate. Made with real fruits and choc.
+			</dish>
+			<dish name="Super Cheesecake">
+				 A home made cheesecake served with heaps of whipped cream and Goji-berry & strawberry sauces.
+			</dish>
+		</category>
+	</menu>
+</restaurant>
