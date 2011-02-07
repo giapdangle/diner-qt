@@ -63,6 +63,7 @@ Rectangle {
         height: 80
         fontName: visual.defaultFontFamily
         fontSize: visual.titleFontSize
+        fontColor: visual.titleFontColor
         text: qsTr("FutuDiner")
         //iconSource: ""  // TODO: set icon when gfx available
         showingBackButton: false
