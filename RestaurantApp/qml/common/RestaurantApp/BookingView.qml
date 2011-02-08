@@ -113,7 +113,7 @@ Rectangle {
             */
         DateReel {
             anchors.horizontalCenter: parent.horizontalCenter
-            clip: true
+            //clip: true
         }
         Text {
             anchors.horizontalCenter: parent.horizontalCenter
@@ -125,7 +125,7 @@ Rectangle {
         TimeReel {
             anchors.horizontalCenter: parent.horizontalCenter
             id: timeReel
-            clip: true
+          //  clip: true
 
         }
         Button {
