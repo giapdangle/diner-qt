@@ -11,7 +11,7 @@ Rectangle {
 
     width: 300
     height: 300
-    radius: 10
+    clip: true
     border {
         color: "black"
         width: 2
@@ -25,7 +25,6 @@ Rectangle {
 
         Util.log(url);
         return url;
-        //http://m.ovi.me/?c=61.500974,23.767204&z=17&w=360&h=360;
     }
 
     function getOviMapsTileUrlPOIs() {
