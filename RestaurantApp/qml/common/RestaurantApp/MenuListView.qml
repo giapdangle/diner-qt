@@ -9,7 +9,7 @@ Item {
     property color fontColor: "black"
 
     property int listItemheight: 80
-    property string selectedCategoryId: "category2"
+    property string selectedCategoryId: appState.selectedMenuCategeoryId
 
     width: 360
     height: 640

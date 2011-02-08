@@ -5,7 +5,6 @@ Item {
 
     signal clicked(string itemId)
 
-    property string itemId: "NOT SET"
     property int margins: 10
     property string fontName: "Helvetica"
     property int fontSize: 10
@@ -37,7 +36,7 @@ Item {
         }
         MouseArea {
             anchors.fill:  parent
-            onClicked: container.clicked(container.itemId);
+            onClicked: container.clicked(itemId);
         }
     }
 }

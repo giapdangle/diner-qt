@@ -5,4 +5,5 @@ XmlListModel {
     query: "/restaurant/menu/category"
 
     XmlRole { name: "title"; query: "@name/string()" }
+    XmlRole { name: "itemId"; query: "@id/string()" }
 }

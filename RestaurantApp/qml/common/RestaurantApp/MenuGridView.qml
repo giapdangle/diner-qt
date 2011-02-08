@@ -50,6 +50,7 @@ Item {
             fontColor: container.fontColor
             onClicked: {
                 container.menuItemClicked(itemId);
+                appState.selectedMenuCategeoryId = itemId;
                 appState.currentViewName = "menuListView";
             }
         }
