@@ -175,7 +175,6 @@ Rectangle {
         State {
             when: appState.inLandscape
             name: "landscape"
-
             // Animate the view switch with viewSwitcher
             StateChangeScript { script: Util.log("LANDSCAPEEN"); }
         },
