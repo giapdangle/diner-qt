@@ -5,13 +5,14 @@ Item {
 
     signal clicked(string itemId)
 
+    property string itemId: "NOT SET"
     property int margins: 10
     property string fontName: "Helvetica"
     property int fontSize: 10
     property color fontColor: "black"
 
-    width: 120
-    height: 120
+    width: 360
+    height: 60
 
     Rectangle {
         anchors{
@@ -19,7 +20,7 @@ Item {
             margins: container.margins
         }
 
-        radius: 10
+        radius: 5
         color: "steelblue"
         clip: true
         Text {
@@ -36,7 +37,7 @@ Item {
         }
         MouseArea {
             anchors.fill:  parent
-            onClicked: container.clicked(itemId);
+            onClicked: container.clicked(container.itemId);
         }
     }
 }
