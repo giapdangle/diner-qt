@@ -10,4 +10,8 @@ Rectangle {
     Component.onCompleted: {
         Util.log("InfoView loaded");
     }
+    Text {
+        anchors.centerIn: parent
+        text: "here i am"
+    }
 }

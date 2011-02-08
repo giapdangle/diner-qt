@@ -14,6 +14,7 @@ Item {
     property int buttonWidth: ((container.width - ( (buttonCount-1)*container.gap)) / buttonCount);
     property int buttonHeight: container.height - 2*gap
     property bool show: true
+    property string selectedButton: "infoButton"
 
     property string fontName: "Helvetica"
     property int fontSize: 14
@@ -35,13 +36,14 @@ Item {
             target: "infoView"
             width: buttonWidth
             height: buttonHeight
-            text: qsTr("Info");
+            text: qsTr("Info");            
+            active: container.selectedButton === buttonName
 
             fontName: container.fontName
             fontSize: container.fontSize
             fontColor: container.fontColor
 
-            onClicked: container.tabButtonClicked(target, button);
+            onClicked: { container.selectedButton = buttonName; container.tabButtonClicked(target, buttonName) }
         }
         Button {
             buttonName: "menuButton"
@@ -49,12 +51,13 @@ Item {
             width: buttonWidth
             height: buttonHeight
             text: qsTr("Menu");
+            active: container.selectedButton === buttonName
 
             fontName: container.fontName
             fontSize: container.fontSize
             fontColor: container.fontColor
 
-            onClicked: container.tabButtonClicked(target, button);
+            onClicked: { container.selectedButton = buttonName; container.tabButtonClicked(target, buttonName) }
         }
         Button {
             buttonName: "mapButton"
@@ -62,12 +65,13 @@ Item {
             width: buttonWidth
             height: buttonHeight
             text: qsTr("Map");
+            active: container.selectedButton === buttonName
 
             fontName: container.fontName
             fontSize: container.fontSize
             fontColor: container.fontColor
 
-            onClicked: container.tabButtonClicked(target, button);
+            onClicked: { container.selectedButton = buttonName; container.tabButtonClicked(target, buttonName) }
         }
         Button {
             buttonName: "bookingButton"
@@ -75,12 +79,13 @@ Item {
             width: buttonWidth
             height: buttonHeight
             text: qsTr("Book");
+            active: container.selectedButton === buttonName
 
             fontName: container.fontName
             fontSize: container.fontSize
             fontColor: container.fontColor
 
-            onClicked: container.tabButtonClicked(target, button);
+            onClicked: { container.selectedButton = buttonName; container.tabButtonClicked(target, buttonName) }
         }
     }
 

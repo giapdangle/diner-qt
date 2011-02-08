@@ -11,11 +11,16 @@ Rectangle {
     property int margin: 8
 
     property string iconSource: "gfx/placeholder_icon.png"
-    property string text: "TITLE"
-    property string fontName: "Helvetica"
-    property int fontSize: 24
-    property color fontColor: "black"
-    property bool fontBold: false
+    property string title: "TITLE"
+    property string caption: "CAPTION"
+    property string titleFontName: "Helvetica"
+    property int titleFontSize: 24
+    property color titleFontColor: "black"
+    property bool titleFontBold: false
+    property string captionFontName: "Helvetica"
+    property int captionFontSize: 24
+    property color captionFontColor: "black"
+    property bool captionFontBold: false
 
     // Default values, change when using
     width: 360
@@ -41,25 +46,52 @@ Rectangle {
         clip: true
         anchors {
             top: titleIcon.top
-            bottom: titleIcon.bottom
+            //bottom: titleIcon.bottom
             left: titleIcon.right
             right: exitButton.left
             leftMargin: container.margin
             rightMargin: container.margin
         }
-        color: container.fontColor
+        color: container.titleFontColor
 
         font {
-            bold: container.fontBold
-            family: container.fontName
-            pointSize: container.fontSize
+            bold: container.titleFontBold
+            family: container.titleFontName
+            pointSize: container.titleFontSize
         }
 
-        text: container.text
+        text: container.title
         elide: Text.ElideLeft
         textFormat: Text.RichText
         wrapMode: Text.Wrap
-        verticalAlignment: Text.AlignVCenter
+        //verticalAlignment: Text.AlignVCenter
+        horizontalAlignment: Text.AlignHCenter
+    }
+
+    Text {
+        id: captionText
+        clip: true
+        anchors {
+            top: titleText.bottom
+            //bottom: titleIcon.bottom
+            left: titleIcon.right
+            right: exitButton.left
+            leftMargin: container.margin
+            rightMargin: container.margin
+        }
+        color: container.captionFontColor
+
+        font {
+            bold: container.captionFontBold
+            family: container.captionFontName
+            pointSize: container.captionFontSize
+        }
+
+        text: container.caption
+        elide: Text.ElideLeft
+        textFormat: Text.RichText
+        wrapMode: Text.Wrap
+        //verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
     }
 

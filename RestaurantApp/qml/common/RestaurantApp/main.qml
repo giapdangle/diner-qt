@@ -51,6 +51,7 @@ Rectangle {
     // Properties.
     AppStateVars {
         id: appState
+        currentCaption: "Information"
     }
 
     // screen width and height are set from C++ main
@@ -73,10 +74,14 @@ Rectangle {
             right: mainWindow.right
         }
         height: 80
-        fontName: visual.defaultFontFamily
-        fontSize: visual.titleFontSize
-        fontColor: visual.titleFontColor
-        text: qsTr("FutuDiner")
+        titleFontName: visual.defaultFontFamily
+        titleFontSize: visual.titleFontSize
+        titleFontColor: visual.titleFontColor
+        captionFontName: visual.defaultFontFamily
+        captionFontSize: visual.titleFontSize-6
+        captionFontColor: visual.titleFontColor
+        title: qsTr("Diner")
+        caption: appState.currentCaption
         //iconSource: ""  // TODO: set icon when gfx available
         showingBackButton: false
 
@@ -178,11 +183,14 @@ Rectangle {
             when: appState.currentViewName === "infoView";
             name: "showingInfoView"
             // Animate the view switch with viewSwitcher
+            PropertyChanges { target: appState; currentCaption: "Information" }
             StateChangeScript { script: viewSwitcher.switchView(infoView,0, "instant"); }
+
         },
         State {
             when: appState.currentViewName === "menuGridView";
             name: "showingMenuGridView"
+            PropertyChanges { target: appState; currentCaption: "À la Carte" }
             StateChangeScript { script: viewSwitcher.switchView(menuGridView,0, "instant"); }
         },
         State {
@@ -196,11 +204,13 @@ Rectangle {
         State {
             when: appState.currentViewName === "mapView";
             name: "showingMapView"
+            PropertyChanges { target: appState; currentCaption: "Location on Map" }
             StateChangeScript { script: viewSwitcher.switchView(mapView,0, "instant"); }
         },
         State {
             when: appState.currentViewName === "bookingView";
             name: "showingBookingView"
+            PropertyChanges { target: appState; currentCaption: "Table Reservations" }
             StateChangeScript { script: viewSwitcher.switchView(bookingView,0, "instant"); }
         }
     ]
