@@ -221,4 +221,9 @@ Item {
         ListElement { number: "30"}
         ListElement { number: "31"}
     }
+
+    function date() {
+        return "" + months.get(month.index).name + " " + days.get(day.index).number
+
+    }
 }

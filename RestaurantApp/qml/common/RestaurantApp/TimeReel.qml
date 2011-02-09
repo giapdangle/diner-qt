@@ -57,4 +57,8 @@ Item {
         ListElement { hours: "9"; minutes: "30"; daytime: "pm" }
         ListElement { hours: "10"; minutes: "00"; daytime: "pm" }
     }
+
+    function time() {
+        return times.get(time.index).hours + ":" + times.get(time.index).minutes + " " + times.get(time.index).daytime
+    }
 }

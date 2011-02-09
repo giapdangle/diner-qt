@@ -140,6 +140,7 @@ Rectangle {
             id: bookingView
             viewSource: "BookingView.qml"
             keepLoaded: true
+
         }
     }
 

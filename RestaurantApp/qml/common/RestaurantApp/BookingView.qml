@@ -30,7 +30,7 @@ Rectangle {
         }
         TextEntry {
             id: nameEntry
-            width:parent.width
+            width: parent.width
             fontName: container.fontName
             fontColor: container.fontColor
             fontSize: container.fontSize
@@ -63,7 +63,7 @@ Rectangle {
                 color: container.fontColor
                 text: qsTr("Table for")
             }
-            NumberReel { id: numberReel; }
+            NumberReel { id: numberReel }
             Text {
                 anchors.verticalCenter: parent.verticalCenter
                 font.family: container.fontName
@@ -73,6 +73,7 @@ Rectangle {
             }
         }
         DateReel {
+            id: dateReel
             anchors.horizontalCenter: parent.horizontalCenter
         }
         Text {
@@ -93,11 +94,13 @@ Rectangle {
         }
     } //Column
 
-
     ModalDialog {
         id: dialog
-        text: "Table for 20 people February 20, 8:15 pm"
+        text: "Tables for "+numberReel.number() +" people, " + dateReel.date() + ", " + timeReel.time()
         anchors.fill:  parent
+        onAccepted: {
+            reservationsModel.addReservation(nameEntry.text, phoneEntry.text, numberReel.number(), dateReel.date() +", "+ timeReel.time())
+        }
     }
 
 }
