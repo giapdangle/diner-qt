@@ -22,21 +22,24 @@ Item {
         radius: 10
         color: "steelblue"
         clip: true
-        Text {
-            anchors.fill: parent
-            text: title
-            wrapMode: Text.WordWrap
-            font {
-                family: container.fontName
-                pointSize: container.fontSize
+        Column {
+            Text {
+                id: label
+                anchors.fill: parent
+                text: title
+                wrapMode: Text.WordWrap
+                font {
+                    family: container.fontName
+                    pointSize: container.fontSize
+                }
+                color: container.fontColor
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignHCenter
             }
-            color: container.fontColor
-            verticalAlignment: Text.AlignVCenter
-            horizontalAlignment: Text.AlignHCenter
-        }
-        MouseArea {
-            anchors.fill:  parent
-            onClicked: container.clicked(itemId);
+            MouseArea {
+                anchors.fill:  parent
+                onClicked: container.clicked(itemId);
+            }
         }
     }
 }
