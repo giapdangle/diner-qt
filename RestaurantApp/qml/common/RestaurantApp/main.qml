@@ -54,6 +54,10 @@ Rectangle {
         currentCaption: "Information"
     }
 
+    ReservationsModel {
+        id: reservationsModel
+    }
+
     // screen width and height are set from C++ main
     width: 360
     height: 640
