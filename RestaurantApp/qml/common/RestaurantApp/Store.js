@@ -24,9 +24,10 @@ function modelToJSON(model,writer) {
         // (not including attributes).
         for(var prop in obj) {
             if(!prop.match("^attributes")) {
-                json += "\""+prop+"\": \"" + obj[prop] +"\",";
+                json += "\""+prop+"\": \"" + obj[prop] + "\",";
             }
         }
+
         // Loop through entry attributes
         if(obj.attributes) {
             json += "\"attributes\":["
@@ -37,10 +38,17 @@ function modelToJSON(model,writer) {
                 // so JSON.stringify is used
                 json += JSON.stringify(attr)
             }
-            json += "]}"
+            json += "]"
+        } else {
+            // Remove last comma
+            json = json.slice(0, -1)
         }
+
+        json += "}"
         writer(i,json)
-        //confirm validity: var parsed = JSON.parse(json)
+        log("parsing: "+json)
+        //confirm validity:
+        var parsed = JSON.parse(json)
     }
 }
 

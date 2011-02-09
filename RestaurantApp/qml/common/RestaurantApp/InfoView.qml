@@ -46,7 +46,7 @@ Rectangle {
                     right: cancelButton.left
                     rightMargin: container.margins
                 }
-                text: "You have reservation for "+people+((people == 1) ? " person" : " people")+" on "+(new Date(dateTime))
+                text: "You have reservation for "+people+((people == 1) ? " person" : " people")+" on "+dateTime
                 wrapMode: Text.WordWrap
                 color: container.fontColor
                 font {
@@ -68,7 +68,7 @@ Rectangle {
                 fontSize: container.fontSize
                 fontColor: container.fontColor
 
-                //onClicked: cancelReservation()
+                onClicked: reservationsModel.remove(index)
             }
         }
     }
