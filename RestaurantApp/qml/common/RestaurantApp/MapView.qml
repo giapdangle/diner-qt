@@ -8,6 +8,7 @@ Item {
     property string fontName: "Helvetica"
     property int fontSize: 13
     property color fontColor: "black"
+    property color fontColorLink: "blue"
     property double margins: 8
 
     property double latitude: 61.50097409814573
@@ -51,7 +52,7 @@ Item {
         spacing: container.margins
         anchors {
             fill:  parent
-            margins: 10
+            margins: container.margins
         }
         OviMapTile {
             width: parent.width
@@ -65,8 +66,8 @@ Item {
         Rectangle {
             id: addressBox
             property bool zoomedIn: false
-            height: info.height+2*container.margins
-            width: info.width+2*container.margins
+            height: info.height+4*container.margins
+            width: info.width+4*container.margins
             color: "gold"
             x: -width/4
             y: -height/4
@@ -75,7 +76,7 @@ Item {
             Column {
                 id: info
                 anchors.centerIn: parent
-                spacing: 8
+                spacing: container.margins
                 Column {
                     id: address
                     spacing: 4
@@ -131,9 +132,9 @@ Item {
                         anchors {
                             bottom: call.bottom
                             left: call_icon.right
-                            rightMargin: container.margins
+                            leftMargin: container.margins
                         }
-                        color: container.fontColor
+                        color: container.fontColorLink
                         font {
                             family: container.fontName
                             pointSize: 2*container.fontSize
@@ -148,7 +149,7 @@ Item {
                     id: www
 
                     height: www_icon.height
-                    width: www_icon.width+telephone.width
+                    width: www_icon.width+url.width
 
                     Image {
                         id: www_icon
@@ -165,9 +166,9 @@ Item {
                         anchors {
                             bottom: www.bottom
                             left: www_icon.right
-                            rightMargin: container.margins
+                            leftMargin: container.margins
                         }
-                        color: container.fontColor
+                        color: container.fontColorLink
                         font {
                             family: container.fontName
                             pointSize: 2*container.fontSize
@@ -179,6 +180,18 @@ Item {
                     }
                 }
             }
+
+            Image {
+                id: zoom_icon
+                source: addressBox.zoomedIn ? "gfx/zoom_out.png" : "gfx/zoom_in.png"
+                smooth: true
+                anchors {
+                    top: addressBox.top
+                    right: addressBox.right
+                    margins: container.margins
+                }
+            }
+
 
             MouseArea {
                 x: address.x; y: address.y; width: addressBox.width; height: address.height
