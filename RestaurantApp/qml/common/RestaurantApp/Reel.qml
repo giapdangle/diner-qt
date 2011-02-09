@@ -70,7 +70,7 @@ Rectangle {
         onMovementStarted: {reel.moving = true; clippingTimer.stop(); reel.clip = false}
         onMovementEnded: {            
             if(reel.autoClose) {
-                clippingTimer.interval = 2000;
+                clippingTimer.interval = 500;
                 clippingTimer.restart();
             }
             reel.index = path.currentIndex;
@@ -79,7 +79,7 @@ Rectangle {
 
         Timer {
             id: clippingTimer
-            interval: 3000; repeat: false
+            repeat: false
             triggeredOnStart: false; onTriggered: reel.clip = true
         }        
     }
