@@ -99,7 +99,7 @@ Rectangle {
         text: "Tables for "+numberReel.number() +" people, " + dateReel.date() + ", " + timeReel.time()
         anchors.fill:  parent
         onAccepted: {
-            reservationsModel.addReservation(nameEntry.text, phoneEntry.text, numberReel.number(), dateReel.date() +" "+ timeReel.time())
+            reservationsModel.addReservation(nameEntry.text, phoneEntry.text, numberReel.number(), dateReel.date() +", "+ timeReel.time())
         }
     }
 
