@@ -41,7 +41,7 @@ Rectangle {
             font.family: container.fontName
             font.pointSize: container.fontSize
             color: container.fontColor
-            text: "Phone number"
+            text: qsTr("Phone number")
         }
         TextEntry {
             id:phoneEntry
@@ -53,6 +53,7 @@ Rectangle {
         }
 
         Row {
+            spacing: 10
             anchors.margins: container.margins
             anchors.horizontalCenter: parent.horizontalCenter
             Text {
@@ -60,77 +61,34 @@ Rectangle {
                 font.family: container.fontName
                 font.pointSize: container.fontSize
                 color: container.fontColor
-                text: "Table for"
+                text: qsTr("Table for")
             }
-            TextEntry {
-                id:peopleEntry
-                anchors.verticalCenter: parent.verticalCenter
-                width:50
-                fontName: container.fontName
-                fontColor: container.fontColor
-                fontSize: container.fontSize
-                text:"20"
-            }
+            NumberReel { id: numberReel; }
             Text {
                 anchors.verticalCenter: parent.verticalCenter
                 font.family: container.fontName
                 font.pointSize: container.fontSize
                 color: container.fontColor
-                text: "people"
+                text: qsTr("people")
             }
         }
-        /*
-        Row {
-            anchors.horizontalCenter: parent.horizontalCenter
-            Column {
-                Text {
-                    font.family: container.fontName
-                    font.pointSize: container.fontSize
-                    color: container.fontColor
-                    text: "Year"
-                }
-                Text { text: "2011" }
-            }
-            Column {
-                Text {
-                    font.family: container.fontName
-                    font.pointSize: container.fontSize
-                    color: container.fontColor
-                    text: "Month"
-                }
-                Text { text: "2" }
-            }
-            Column {
-                Text {
-                    font.family: container.fontName
-                    font.pointSize: container.fontSize
-                    color: container.fontColor
-                    text: "Day"
-                }
-                Text { text: "20" }
-            }
-        }
-            */
         DateReel {
             anchors.horizontalCenter: parent.horizontalCenter
-            //clip: true
         }
         Text {
             anchors.horizontalCenter: parent.horizontalCenter
             font.family: container.fontName
             font.pointSize: container.fontSize
             color: container.fontColor
-            text: "Available times"
+            text: qsTr("Available times")
         }
         TimeReel {
             anchors.horizontalCenter: parent.horizontalCenter
             id: timeReel
-          //  clip: true
-
         }
         Button {
             width: parent.width
-            text: "Make reservation"
+            text: qsTr("Make reservation")
         }
     } //Column
 }
