@@ -11,6 +11,7 @@ Rectangle {
     property int margin: 8
 
     property string iconSource: "gfx/placeholder_icon.png"
+    property alias iconWidth: titleIcon.width
     property string title: "TITLE"
     property string caption: "CAPTION"
     property string titleFontName: "Helvetica"

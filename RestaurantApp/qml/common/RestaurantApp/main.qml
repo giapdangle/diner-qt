@@ -78,6 +78,7 @@ Rectangle {
             right: mainWindow.right
         }
         height: 80
+        iconWidth: 0
         titleFontName: visual.defaultFontFamily
         titleFontSize: visual.titleFontSize
         titleFontColor: visual.titleFontColor
@@ -86,7 +87,7 @@ Rectangle {
         captionFontColor: visual.titleFontColor
         title: qsTr("Diner")
         caption: appState.currentCaption
-        //iconSource: ""  // TODO: set icon when gfx available
+
         showingBackButton: false
 
         onBackButtonClicked: {

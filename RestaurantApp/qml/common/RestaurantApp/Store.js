@@ -45,10 +45,8 @@ function modelToJSON(model,writer) {
         }
 
         json += "}"
-        writer(i,json)
-        log("parsing: "+json)
-        //confirm validity:
-        var parsed = JSON.parse(json)
+        writer(i,json)        
+        //confirm validity: var parsed = JSON.parse(json)
     }
 }
 
