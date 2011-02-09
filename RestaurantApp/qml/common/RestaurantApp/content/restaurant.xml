@@ -20,69 +20,69 @@
     </info>
     <menu>
         <category id="category1" name="Sides and starters" icon="placeholder_icon.png">
-            <dish name="The King of Prawns">
+            <dish name="The King of Prawns" icon="placeholder_icon_small.png">
                 Deep-fried king prawns and Sweet Chili sauce.
             </dish>
-            <dish name="Super Hot Jalapeno Pops">
+            <dish name="Super Hot Jalapeno Pops" icon="placeholder_icon_small.png">
                 Deep-fried jalapenos filled with cheese. Served with garlic mayonnaise and out SuperHot Chilisauce.
             </dish>
-            <dish name="Muchos Nachos">
+            <dish name="Muchos Nachos" icon="placeholder_icon_small.png">
                 Tortillaa chips, melted cheddar cheese, salsa sauce, jalapeno slices, sour cream &amp; guacamole.
             </dish>
-            <dish name="Just Fries">
+            <dish name="Just Fries" icon="placeholder_icon_small.png">
                 Salted fries with bbq sauce.
             </dish>
-            <dish name="Blue Cheese 'n Fries">
+            <dish name="Blue Cheese 'n Fries" icon="placeholder_icon_small.png">
                 Seasoned Criss Cuts with blue cheese sauce.
             </dish>
-            <dish name="Sweet Fries">
+            <dish name="Sweet Fries" icon="placeholder_icon_small.png">
                 Sweet potato fries with our special mustard sauce.
             </dish>
         </category>
         <category id="category2" name="Something Green" icon="placeholder_icon.png">
-            <dish name="THE Ceasar Salad">
+            <dish name="THE Ceasar Salad" icon="placeholder_icon_small.png">
                  A mixed green salad with Caesar dressing, Parmesan cheese, croutons and arugula with a choice of chicken breast, marinated shrimps, bacon or chevre.
             </dish>
-            <dish name="All Vegs">
+            <dish name="All Vegs" icon="placeholder_icon_small.png">
                 A mixed green salad with cherry tomato, cucumber, fresh pineapple, orange, marinated red onion, watermelon, arugula &amp;  deep-fried spring rolls. Served with ranch dressing, toasted bread and Sweet Chili sauce.
             </dish>
-            <dish name="Fruity Fish Salad">
+            <dish name="Fruity Fish Salad" icon="placeholder_icon_small.png">
                 A mixed green salad with salmon fillet, cherry tomato, cucumber, fresh pineapple, orange, marinated red onion, watermelon, lime &amp; arugula.  Oil &amp; herb dressing and toasted bread.
             </dish>
         </category>
         <category id="category3" name="Fishy Game" icon="placeholder_icon.png">
-            <dish name="Fish of the day">
+            <dish name="Fish of the day" icon="placeholder_icon_small.png">
                  Whatever fish comes up, served with seasonal vegetables and Tartar sauce.
             </dish>
-            <dish name="Tons of Tuna">
+            <dish name="Tons of Tuna" icon="placeholder_icon_small.png">
                 A huge steak of fresh tuna, baked sweet potato and lime mayo.
             </dish>
         </category>
         <category id="category4" name="Meat Lovers Paradise" icon="placeholder_icon.png">
-            <dish name="Giant BBQ Steak">
+            <dish name="Giant BBQ Steak" icon="placeholder_icon_small.png">
                 A 250g sirloin steak, fries, seasonal veggies and BBQ mayo.
             </dish>
-            <dish name="Surf 'n Turf">
+            <dish name="Surf 'n Turf" icon="placeholder_icon_small.png">
                 A 180g sirloin steak, deep-fried king prawns, bell pepper, asparagus, red onion, whiskey- and Bearnaise sauce, Criss Cuts and garnished with arugula.
             </dish>
-            <dish name="Silence of the Lambs">
+            <dish name="Silence of the Lambs" icon="placeholder_icon_small.png">
                 Lamb Loin Chops with minty mushed peas, country fries and creamy mustard sauce.
             </dish>
-            <dish name="Latino Chick">
+            <dish name="Latino Chick" icon="placeholder_icon_small.png">
                 Chicken breast with Latino sauce and salad of cherry tomatos, cucumber, marinated red onion &amp; arugula. Fresh pineapple, garlic mayonnaise and Criss Cuts.
             </dish>
         </category>
         <category id="category5" name="Sweety Stuff" icon="placeholder_icon.png">
-            <dish name="Master Muffin">
+            <dish name="Master Muffin" icon="placeholder_icon_small.png">
                 Chocolate muffin with white-chock chips, served with vanilla whipped cream.
             </dish>
-            <dish name="The Big Apple">
+            <dish name="The Big Apple" icon="placeholder_icon_small.png">
                 Apple pie with pecan nuts and raisins, served with vanilla ice cream and chocolate sauce.
             </dish>
-            <dish name="Shake it, shake it">
+            <dish name="Shake it, shake it" icon="placeholder_icon_small.png">
                 A giant milk shake with a choice of banana-chocolate, chocolate, strawberry-vanilla or mint-chocolate. Made with real fruits and choc.
             </dish>
-            <dish name="Super Cheesecake">
+            <dish name="Super Cheesecake" icon="placeholder_icon_small.png">
                  A home made cheesecake served with heaps of whipped cream and Goji-berry &amp; strawberry sauces.
             </dish>
         </category>

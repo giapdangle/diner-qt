@@ -5,6 +5,7 @@ Item {
 
     signal clicked(string itemId)
 
+    property int spacing: 10
     property string itemId: "NOT SET"
     property int margins: 10
     property string fontName: "Helvetica"
@@ -23,17 +24,32 @@ Item {
         radius: 5
         color: "steelblue"
         clip: true
-        Text {
-            anchors.fill: parent
-            text: title
-            wrapMode: Text.WordWrap
-            font {
-                family: container.fontName
-                pointSize: container.fontSize
+        Row {
+            x: 0; y: 0
+            width:  parent.width
+            height: parent.height
+            spacing: container.spacing
+
+            Image {
+                id: icon
+                source: "content/" + iconSource
+                height: parent.height
+                width: height
             }
-            color: container.fontColor
-            verticalAlignment: Text.AlignVCenter
-            horizontalAlignment: Text.AlignHCenter
+
+            Text {
+                width: parent.width - icon.width
+                height: parent.height
+                text: title
+                wrapMode: Text.WordWrap
+                font {
+                    family: container.fontName
+                    pointSize: container.fontSize
+                }
+                color: container.fontColor
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignLeft
+            }
         }
         MouseArea {
             anchors.fill:  parent
