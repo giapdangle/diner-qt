@@ -15,6 +15,7 @@ XmlListModel {
     XmlRole { name: "telephone"; query: "telephone/string()" }
     XmlRole { name: "url"; query: "url/string()" }
     XmlRole { name: "description"; query: "description/string()" }
+    XmlRole { name: "minZoomLevel"; query: "minZoomLevel[@value]/string()" }
 
     onStatusChanged: {
         if(status == XmlListModel.Ready) {

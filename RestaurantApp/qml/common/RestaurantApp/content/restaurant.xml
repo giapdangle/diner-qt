@@ -12,6 +12,8 @@
                 <longitude>-73.98525953292847</longitude>
             </coordinates>
         </address>
+        <minZoomLevel value="11"/>
+        <maxZoomLevel value="17"/>
         <telephone>+358 40 7554433</telephone>
         <url>http://www.diner.fi/</url>
         <description>

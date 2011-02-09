@@ -17,8 +17,10 @@ Rectangle {
         width: 2
     }
 
-    function getOviMapsTileUrl() {
-        var url = "http://m.ovi.me/?c="+latitude+","+longitude+"&z="+zoomFactor+ "&w="+container.width+"&h="+container.height+"&u=5h";
+
+    // You can use this function as the mapImage source-property to get a real map tile from Ovi Maps Tile Rendering API
+    function getOviMapsTileUrl(lat, lng, zoom, w, h) {
+        var url = "http://m.ovi.me/?c="+lat+","+lng+"&z="+zoom+ "&w="+w+"&h="+h; //+"&u=5h";
         if (container.mapMode === "hybrid") {
             url = url + "&t=1";
         }
@@ -27,10 +29,8 @@ Rectangle {
         return url;
     }
 
-    function getOviMapsTileUrlPOIs() {
-        var url = "http://m.ovi.me/?z="+zoomFactor+ "&w="+container.width+"&h="+container.height+"&poi=61.510234,23.777203,61.610234,23.677203";
-        Util.log(url);
-        return url;
+    function getLocalMapTile(zoom) {
+        return "content/map/" + zoom + ".jpg";
     }
 
     // Map tile fills the whole item
@@ -40,8 +40,9 @@ Rectangle {
             fill: parent
             margins: 2
         }
-        source: getOviMapsTileUrl();
-        //source: getOviMapsTileUrlPOIs();
+        // Uncomment this line to get real map tile over the network
+        //source: getOviMapsTileUrl(container.latitude, container.longitude, container.zoomFactor, container.width, container.height);
+        source: getLocalMapTile(container.zoomFactor);
     }
 
     // Draw zoom buttons on top

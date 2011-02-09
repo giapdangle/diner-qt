@@ -5,7 +5,7 @@ Item {
 
     signal clicked(string itemId)
 
-    property int spacing: 10
+    property int spacing: 0
     property string itemId: "NOT SET"
     property int margins: 10
     property string fontName: "Helvetica"

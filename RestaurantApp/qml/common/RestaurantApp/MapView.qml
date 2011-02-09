@@ -14,6 +14,8 @@ Item {
     property string country: ""
     property string telephone: ""
     property string description: ""
+    property string minZoomLevel: ""
+    property string maxZoomLevel: ""
     // Default values, change when using
     width: 360
     height: 640
@@ -29,11 +31,14 @@ Item {
                 Util.log("Model ready");
                 container.latitude = infoModel.get(0).latitude;
                 container.longitude = infoModel.get(0).longitude;
-                container.street = infoModel.get(0).street
-                container.city = infoModel.get(0).city
+                container.street = infoModel.get(0).street;
+                container.city = infoModel.get(0).city;
                 container.country = infoModel.get(0).country;
-                container.telephone = infoModel.get(0).telephone
-                container.description = infoModel.get(0).description
+                container.telephone = infoModel.get(0).telephone;
+                container.description = infoModel.get(0).description;
+                container.minZoomLevel = infoModel.get(0).minZoomLevel;
+                //container.maxZoomLevel = infoModel.get(0).maxZoomLevel;
+                Util.log("MIN: " + container.minZoomLevel);
             }
         }
     }
