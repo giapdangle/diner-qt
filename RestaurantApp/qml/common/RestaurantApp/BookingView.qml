@@ -30,7 +30,7 @@ Rectangle {
         }
         TextEntry {
             id: nameEntry
-            width:parent.width
+            width: parent.width
             fontName: container.fontName
             fontColor: container.fontColor
             fontSize: container.fontSize
@@ -94,11 +94,13 @@ Rectangle {
         }
     } //Column
 
-
     ModalDialog {
         id: dialog
-        text: "Tables for "+numberReel.selectedNumber() +" people, " + dateReel.selectedDate() + ", " + timeReel.getSelectedTime()
+        text: "Tables for "+numberReel.number() +" people, " + dateReel.date() + ", " + timeReel.time()
         anchors.fill:  parent
+        onAccepted: {
+            reservationsModel.addReservation(nameEntry.text, phoneEntry.text, numberReel.number(), dateReel.date() +" "+ timeReel.time())
+        }
     }
 
 }

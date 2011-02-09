@@ -222,7 +222,7 @@ Item {
         ListElement { number: "31"}
     }
 
-    function selectedDate() {
+    function date() {
         return "" + months.get(month.index).name + " " + days.get(day.index).number
 
     }

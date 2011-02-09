@@ -59,7 +59,7 @@ Item {
         ListElement { number: "10" }
     }
 
-    function selectedNumber() {
+    function number() {
         return listModel.get(reel.index).number
     }
 }
