@@ -19,7 +19,7 @@
         </description>
     </info>
     <menu>
-        <category id="category1" name="Sides and starters">
+        <category id="category1" name="Sides and starters" icon="placeholder_icon.png">
             <dish name="The King of Prawns">
                 Deep-fried king prawns and Sweet Chili sauce.
             </dish>
@@ -39,7 +39,7 @@
                 Sweet potato fries with our special mustard sauce.
             </dish>
         </category>
-        <category id="category2" name="Something Green">
+        <category id="category2" name="Something Green" icon="placeholder_icon.png">
             <dish name="THE Ceasar Salad">
                  A mixed green salad with Caesar dressing, Parmesan cheese, croutons and arugula with a choice of chicken breast, marinated shrimps, bacon or chevre.
             </dish>
@@ -50,7 +50,7 @@
                 A mixed green salad with salmon fillet, cherry tomato, cucumber, fresh pineapple, orange, marinated red onion, watermelon, lime &amp; arugula.  Oil &amp; herb dressing and toasted bread.
             </dish>
         </category>
-        <category id="category3" name="Fishy Game">
+        <category id="category3" name="Fishy Game" icon="placeholder_icon.png">
             <dish name="Fish of the day">
                  Whatever fish comes up, served with seasonal vegetables and Tartar sauce.
             </dish>
@@ -58,7 +58,7 @@
                 A huge steak of fresh tuna, baked sweet potato and lime mayo.
             </dish>
         </category>
-        <category id="category4" name="Meat Lovers Paradise">
+        <category id="category4" name="Meat Lovers Paradise" icon="placeholder_icon.png">
             <dish name="Giant BBQ Steak">
                 A 250g sirloin steak, fries, seasonal veggies and BBQ mayo.
             </dish>
@@ -72,7 +72,7 @@
                 Chicken breast with Latino sauce and salad of cherry tomatos, cucumber, marinated red onion &amp; arugula. Fresh pineapple, garlic mayonnaise and Criss Cuts.
             </dish>
         </category>
-        <category id="category5" name="Sweety Stuff">
+        <category id="category5" name="Sweety Stuff" icon="placeholder_icon.png">
             <dish name="Master Muffin">
                 Chocolate muffin with white-chock chips, served with vanilla whipped cream.
             </dish>

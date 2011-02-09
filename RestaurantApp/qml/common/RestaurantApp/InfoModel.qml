@@ -2,7 +2,7 @@ import QtQuick 1.0
 import "Util.js" as Util
 
 XmlListModel {
-    source: "restaurant.xml"
+    source: "content/restaurant.xml"
     query: "/restaurant/info"
 
     XmlRole { name: "name"; query: "name/string()" }
