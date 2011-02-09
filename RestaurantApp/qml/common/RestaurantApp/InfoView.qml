@@ -8,6 +8,7 @@ Rectangle {
     property color fontColor: "black"
     property double margins: 8
     property int reservationHeight: 40
+    property int scrollBarWidth: 8
     // Default values, change when using
     width: 360
     height: 640
@@ -199,6 +200,15 @@ Rectangle {
                 }
             }
         }        
+    }
+
+    // ScrollBar indicator. Take the bottommost search field height into account.
+    ScrollBar {
+        id: scrollBar
+        scrollArea: flicker
+        height: flicker.height
+        width: container.scrollBarWidth
+        anchors.right: container.right
     }
 
     ModalDialog {
