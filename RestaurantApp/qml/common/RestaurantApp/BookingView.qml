@@ -89,6 +89,15 @@ Rectangle {
         Button {
             width: parent.width
             text: qsTr("Make reservation")
+            onClicked: dialog.show()
         }
     } //Column
+
+
+    ModalDialog {
+        id: dialog
+        text: "Table for 20 people February 20, 8:15 pm"
+        anchors.fill:  parent
+    }
+
 }
