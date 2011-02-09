@@ -2,7 +2,7 @@ import Qt 4.7
 
 Item {
     id: container
-    width: 140
+    width: 60
     height: 60
     property string fontName: 'Helvetica'
     property int fontSize: 22
@@ -21,7 +21,7 @@ Item {
             gradient: container.gradient
             Text {
                 anchors.centerIn: parent
-                text: hours + ":" + minutes + " " + daytime
+                text: number
                 color: container.color
                 font.pixelSize: container.fontSize
                 font.family: container.fontName
@@ -34,7 +34,7 @@ Item {
         width: container.width
         height: container.height
         itemsShown: 6
-        model: times
+        model: numbers
         delegate: timeDelegate
         Rectangle {
             anchors.fill: parent
@@ -46,15 +46,16 @@ Item {
 
 
     ListModel {
-        id: times
-        ListElement { hours: "6"; minutes: "00"; daytime: "pm" }
-        ListElement { hours: "6"; minutes: "30"; daytime: "pm" }
-        ListElement { hours: "7"; minutes: "00"; daytime: "pm" }
-        ListElement { hours: "7"; minutes: "30"; daytime: "pm" }
-        ListElement { hours: "8"; minutes: "00"; daytime: "pm" }
-        ListElement { hours: "8"; minutes: "30"; daytime: "pm" }
-        ListElement { hours: "9"; minutes: "00"; daytime: "pm" }
-        ListElement { hours: "9"; minutes: "30"; daytime: "pm" }
-        ListElement { hours: "10"; minutes: "00"; daytime: "pm" }
+        id: numbers
+        ListElement { number: "1" }
+        ListElement { number: "2" }
+        ListElement { number: "3" }
+        ListElement { number: "4" }
+        ListElement { number: "5" }
+        ListElement { number: "6" }
+        ListElement { number: "7" }
+        ListElement { number: "8" }
+        ListElement { number: "9" }
+        ListElement { number: "10" }
     }
 }
