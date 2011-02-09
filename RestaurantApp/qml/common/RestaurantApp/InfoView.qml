@@ -51,13 +51,16 @@ Rectangle {
                 color: container.fontColor
                 font {
                     family: container.fontName
-                    pixelSize: container.fontSize
+                    pointSize: container.fontSize
                 }
             }
             Button {
                 id: cancelButton
-                anchors.top: parent.top
-                anchors.right: parent.right
+                anchors {
+                    top: parent.top
+                    right: parent.right
+                    rightMargin: container.margins
+                }
                 width: 60
                 height: reservationHeight
                 text: qsTr("Cancel");
@@ -69,127 +72,132 @@ Rectangle {
             }
         }
     }
+    Flickable {
+        id: flicker
+        anchors {
+            top: container.top
+            left: container.left
+            right: container.right
+            margins: container.margins
+        }
 
-    Column {
-        anchors.fill: container
-        anchors.margins: container.margins
-        spacing: container.margins
-        Item {
-            height: logo.height
-            width: parent.width
-            Image {
-                id: logo
-                fillMode: "PreserveAspectFit"
-                smooth: true
-                height: container.height*0.3
-                width: height
-
-            }
-
-            Flow {
-                id: address
-                anchors {
-                    left: logo.right
-                    bottom: call.top
-                    margins: container.margins
-                }
-                width:  container.width*0.3
-                spacing: 4
-                Text {
-                    id: street
-                    color: container.fontColor
-                    font {
-                        family: container.fontName
-                        pixelSize: container.fontSize
-                    }
-                }
-                Text {
-                    id: city
-                    color: container.fontColor
-                    font {
-                        family: container.fontName
-                        pixelSize: container.fontSize
-                    }
-                }
-                Text {
-                    id: country
-                    color: container.fontColor
-                    font {
-                        family: container.fontName
-                        pixelSize: container.fontSize
-                    }
-                }
-            }
+        height: container.height
+        contentWidth: width
+        contentHeight: column.height
+        Column {
+            id: column
+            width: parent.contentWidth
+            spacing: container.margins
             Item {
-                id: call
-                anchors {
-                    left: logo.right
-                    bottom: logo.bottom
-                    margins: container.margins
-                }
-
-                height: call_icon.height
-                width: call_icon.width+telephone.width
-
+                height: logo.height
+                width: parent.width
                 Image {
-                    id: call_icon
-                    source: "gfx/placeholder_icon.png"
+                    id: logo
                     fillMode: "PreserveAspectFit"
                     smooth: true
-                    height: container.height*0.1
+                    height: container.height*0.3
                     width: height
                 }
-                Text {
-                    id: telephone
+
+                Flow {
+                    id: address
                     anchors {
-                        bottom: call.bottom
-                        left: call_icon.right
+                        left: logo.right
+                        bottom: call.top
                         margins: container.margins
                     }
-                    color: container.fontColor
-                    font {
-                        family: container.fontName
-                        pixelSize: container.fontSize
+                    width:  container.width*0.3
+                    spacing: 4
+                    Text {
+                        id: street
+                        color: container.fontColor
+                        font {
+                            family: container.fontName
+                            pointSize: container.fontSize
+                        }
+                    }
+                    Text {
+                        id: city
+                        color: container.fontColor
+                        font {
+                            family: container.fontName
+                            pointSize: container.fontSize
+                        }
+                    }
+                    Text {
+                        id: country
+                        color: container.fontColor
+                        font {
+                            family: container.fontName
+                            pointSize: container.fontSize
+                        }
                     }
                 }
-                MouseArea {
-                    anchors.fill: call
-                    onClicked: { console.log("call"); Qt.openUrlExternally("tel:"+telephone) }
+                Item {
+                    id: call
+                    anchors {
+                        left: logo.right
+                        bottom: logo.bottom
+                        margins: container.margins
+                    }
+
+                    height: call_icon.height
+                    width: call_icon.width+telephone.width
+
+                    Image {
+                        id: call_icon
+                        source: "gfx/placeholder_icon.png"
+                        fillMode: "PreserveAspectFit"
+                        smooth: true
+                        height: container.height*0.1
+                        width: height
+                    }
+                    Text {
+                        id: telephone
+                        anchors {
+                            bottom: call.bottom
+                            left: call_icon.right
+                            margins: container.margins
+                        }
+                        color: container.fontColor
+                        font {
+                            family: container.fontName
+                            pointSize: container.fontSize
+                        }
+                    }
+                    MouseArea {
+                        anchors.fill: call
+                        onClicked: { console.log("call"); Qt.openUrlExternally("tel:"+telephone) }
+                    }
                 }
             }
-        }
 
-        ListView {
-            id: reservations            
-            width: container.width
-            height: count*(reservationHeight+spacing)
-            model: reservationsModel
-            delegate: reservationDelegate
-            interactive: false
-            focus: true
-            spacing: container.margins
-        }
-
-        Rectangle {
-            height: 1
-            anchors {
-                left: parent.left
-                right: parent.right
+            ListView {
+                id: reservations
+                width: parent.width
+                height: count*(reservationHeight+spacing)
+                model: reservationsModel
+                delegate: reservationDelegate
+                interactive: false
+                focus: true
+                spacing: container.margins
             }
-            color: fontColor
-        }
 
-        Text {
-            id: description
-            wrapMode: Text.WordWrap
-            anchors {
-                left: parent.left
-                right: parent.right
+            Rectangle {
+                height: 1
+                width: flicker.width
+                color: fontColor
             }
-            color: container.fontColor
-            font {
-                family: container.fontName
-                pixelSize: 0
+
+            Text {
+                id: description
+                wrapMode: Text.WordWrap
+                width: flicker.width
+                color: container.fontColor
+                font {
+                    family: container.fontName
+                    pointSize: container.fontSize
+                }
             }
         }
     }
