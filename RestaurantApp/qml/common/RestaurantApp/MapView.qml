@@ -127,6 +127,7 @@ Item {
                     Text {
                         id: telephone
                         text: container.telephone
+                        smooth: true
                         anchors {
                             bottom: call.bottom
                             left: call_icon.right
@@ -158,8 +159,9 @@ Item {
                         width: height
                     }
                     Text {
-                        id: url
+                        id: url                        
                         text: container.url
+                        smooth: true
                         anchors {
                             bottom: www.bottom
                             left: www_icon.right

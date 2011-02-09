@@ -67,8 +67,7 @@ Rectangle {
                 fontName: container.fontName
                 fontSize: container.fontSize
                 fontColor: container.fontColor
-
-                onClicked: reservationsModel.remove(index)
+                onClicked: { dialog.index = index; dialog.dateTime = dateTime; dialog.show() }
             }
         }
     }
@@ -199,6 +198,17 @@ Rectangle {
                     pointSize: container.fontSize
                 }
             }
+        }        
+    }
+
+    ModalDialog {
+        id: dialog
+        text: "Are you sure you want to cancel your reservation on "+dateTime+"?"
+        property string dateTime: ""
+        property int index: 0
+        anchors.fill:  parent
+        onAccepted: {
+            reservationsModel.remove(index)
         }
     }
 }
