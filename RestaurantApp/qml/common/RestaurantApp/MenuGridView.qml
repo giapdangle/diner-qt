@@ -5,10 +5,12 @@ Item {
     id: container
     signal menuItemClicked(string itemId);
 
-    property int spacing: 20
     property string fontName: "Helvetica"
     property int fontSize: 16
     property color fontColor: "black"
+
+    property int scrollBarWidth: 8
+    property int spacing: 20
 
     // Default values, change when using
     width: 360
@@ -25,6 +27,8 @@ Item {
         id: menuModel
     }
 
+    ScrollBar { scrollArea: grid; width: container.scrollBarWidth; anchors.top: grid.top; anchors.right: grid.right; anchors.bottom: grid.bottom }
+
     GridView {
         id: grid
         contentItem.clip: true
@@ -33,7 +37,7 @@ Item {
             fill: parent
         }
         cellWidth: container.width / 2
-        cellHeight: cellWidth
+        cellHeight: cellWidth/2
         model: menuModel
         delegate: menuDelegate
         focus: true

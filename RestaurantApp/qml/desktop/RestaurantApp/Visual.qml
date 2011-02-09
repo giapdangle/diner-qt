@@ -4,6 +4,8 @@ import QtQuick 1.0
 Item {
     property string defaultFontFamily: "Tahoma"  // Defaults to correct ones in device
 
+    property int scrollBarWidth: 8
+
     // Title bar
     property color titleColor: "#44aa33"
     property int titleFontSize: 24

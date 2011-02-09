@@ -8,6 +8,7 @@ Item {
     property int fontSize: 12
     property color fontColor: "black"
 
+    property int scrollBarWidth: 8
     property int listItemheight: 80
     property string selectedCategoryId: appState.selectedMenuCategeoryId
 
@@ -24,6 +25,8 @@ Item {
         // Get dishes only from under the selected category
         query: "/restaurant/menu/category[@id='"+container.selectedCategoryId+"']/dish"
     }
+
+    ScrollBar { scrollArea: listView; width: container.scrollBarWidth; anchors.top: listView.top; anchors.right: listView.right; anchors.bottom: listView.bottom }
 
     ListView {
         id: listView
