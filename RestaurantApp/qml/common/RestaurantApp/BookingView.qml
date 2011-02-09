@@ -63,7 +63,7 @@ Rectangle {
                 color: container.fontColor
                 text: qsTr("Table for")
             }
-            NumberReel { id: numberReel; }
+            NumberReel { id: numberReel }
             Text {
                 anchors.verticalCenter: parent.verticalCenter
                 font.family: container.fontName
@@ -73,6 +73,7 @@ Rectangle {
             }
         }
         DateReel {
+            id: dateReel
             anchors.horizontalCenter: parent.horizontalCenter
         }
         Text {
@@ -96,7 +97,7 @@ Rectangle {
 
     ModalDialog {
         id: dialog
-        text: "Table for 20 people February 20, 8:15 pm"
+        text: "Tables for "+numberReel.selectedNumber() +" people, " + dateReel.selectedDate() + ", " + timeReel.getSelectedTime()
         anchors.fill:  parent
     }
 

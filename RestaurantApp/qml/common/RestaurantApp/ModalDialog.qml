@@ -47,7 +47,7 @@ Item {
         Column {
             id: column
             width: parent.width
-            anchors.centerIn: parent.horizontalCenter
+            //anchors.centerIn: parent.horizontalCenter
             spacing: 10
 
             // Given text, centered within the dialog.

@@ -13,8 +13,9 @@ Item {
         GradientStop { position: 1.0; color: "#dddddd" }
     }
 
+
     Component {
-        id: timeDelegate
+        id: listDelegate
         Rectangle {
             width: container.width
             height: container.height
@@ -30,12 +31,12 @@ Item {
     }
 
     Reel {
-        id: time
+        id: reel
         width: container.width
         height: container.height
         itemsShown: 6
-        model: numbers
-        delegate: timeDelegate
+        model: listModel
+        delegate: listDelegate
         Rectangle {
             anchors.fill: parent
             border.width: 1
@@ -44,9 +45,8 @@ Item {
         }
     }
 
-
     ListModel {
-        id: numbers
+        id: listModel
         ListElement { number: "1" }
         ListElement { number: "2" }
         ListElement { number: "3" }
@@ -57,5 +57,9 @@ Item {
         ListElement { number: "8" }
         ListElement { number: "9" }
         ListElement { number: "10" }
+    }
+
+    function selectedNumber() {
+        return listModel.get(reel.index).number
     }
 }
