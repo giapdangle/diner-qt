@@ -6,11 +6,11 @@ Item {
     signal menuItemClicked(string itemId);
 
     property string fontName: "Helvetica"
-    property int fontSize: 16
+    property int fontSize: 12
     property color fontColor: "black"
 
     property int scrollBarWidth: 8
-    property int spacing: 20
+    property int spacing: 10
 
     // Default values, change when using
     width: 360
@@ -37,7 +37,7 @@ Item {
             fill: parent
         }
         cellWidth: container.width / 2
-        cellHeight: cellWidth/2
+        cellHeight: cellWidth
         model: menuModel
         delegate: menuDelegate
         focus: true
