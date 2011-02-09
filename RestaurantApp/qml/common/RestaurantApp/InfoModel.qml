@@ -19,7 +19,6 @@ XmlListModel {
     onStatusChanged: {
         if(status == XmlListModel.Ready) {
             Util.log("InfoViewModel Status: ready")
-            Util.log("InfoViewModel Count: "+count)
         } else if(status == XmlListModel.Error) {
             Util.log("InfoViewModel Status: error")
         } else if(status == XmlListModel.Loading) {

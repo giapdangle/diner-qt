@@ -2,17 +2,17 @@
 <restaurant>
     <info>
         <name>Diner</name>
-        <logo>gfx/diner_logo.png</logo>
+        <logo>gfx/placeholder_icon.png</logo>
         <address>
-            <street>Kauppakatu 3 A 2</street>
-            <city>Tampere</city>
-            <country>Finland</country>
+            <street>1567 Broadway</street>
+            <city>New York</city>
+            <country>United States</country>
             <coordinates>
-                <latitude>61.50097409814573</latitude>
-                <longitude>23.76720428466797</longitude>
+                <latitude>40.75930175423635</latitude>
+                <longitude>-73.98525953292847</longitude>
             </coordinates>
         </address>
-        <telephone>123435546</telephone>
+        <telephone>2129189999</telephone>
         <url>http://www.diner.fi/</url>
         <description>
              It takes guts to open a restaurant in Times Square that lacks a theme or strives to be classier than a carnival. Granted, Diner offers an audacious voyeur's paradise in its soaring staircase that rises alongside a suspended abstract sculpture of a fork. Mayson Bacon Jr. has succeeded finding a perfect balance between class and bacon. And to repeat what I'm saying: It takes guts to open a restaurant in Times Square that lacks a theme or strives to be classier than a carnival. Granted, Diner offers an audacious voyeur's paradise in its soaring staircase that rises alongside a suspended abstract sculpture of a fork. I'm on a horse.

@@ -36,7 +36,7 @@ QML_IMPORT_PATH =
 #DEFINES += ORIENTATIONLOCK
 
 # Needs to be defined for Symbian
-#DEFINES += NETWORKACCESS
+DEFINES += NETWORKACCESS
 
 # Define QMLJSDEBUGGER to allow debugging of QML in debug builds
 # (This might significantly increase build time)
