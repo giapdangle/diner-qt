@@ -4,6 +4,8 @@ import "Util.js" as Util
 Rectangle {
     id: container
 
+    property int minZoomLevel: 11
+    property int maxZoomLevel: 17
     property int zoomFactor: 14
     property double latitude: 61.50097409814573
     property double longitude: 23.76720428466797
@@ -30,6 +32,13 @@ Rectangle {
     }
 
     function getLocalMapTile(zoom) {
+        if (zoom < minZoomLevel) {
+            return "content/map/" + minZoomLevel + ".jpg";
+        }
+        if (zoom > maxZoomLevel) {
+            return "content/map/" + maxZoomLevel + ".jpg";
+        }
+
         return "content/map/" + zoom + ".jpg";
     }
 
@@ -51,6 +60,7 @@ Rectangle {
         width: 50
         height: 50
         radius: 5
+        visible: container.zoomFactor < container.maxZoomLevel
         border {
             color: "black"
             width: 1
@@ -76,8 +86,9 @@ Rectangle {
         MouseArea {
             id: zoomPlusMouseArea
             anchors.fill: parent
+            enabled: container.zoomFactor < container.maxZoomLevel
             onClicked:  {
-                if (container.zoomFactor < 17) {
+                if (container.zoomFactor < container.maxZoomLevel) {
                     container.zoomFactor++;
                 }
             }
@@ -89,6 +100,7 @@ Rectangle {
         height: 50
         radius: 5
         clip: true
+        visible: container.zoomFactor > container.minZoomLevel
         border {
             color: "black"
             width: 1
@@ -111,48 +123,10 @@ Rectangle {
         MouseArea {
             id: zoomMinusMouseArea
             anchors.fill: parent
+            enabled: container.zoomFactor > container.minZoomLevel
             onClicked:  {
-                if (container.zoomFactor > 0) {
+                if (container.zoomFactor > container.minZoomLevel) {
                     container.zoomFactor--;
-                }
-            }
-        }
-    }
-
-    Rectangle {
-        width: 120
-        height: 50
-        radius: 5
-        border {
-            color: "black"
-            width: 1
-        }
-
-        color: hybridMouseArea.containsMouse ? "orange" : "lightgray";
-        anchors {
-            top: mapImage.top
-            right: zoomPlusRect.left
-            topMargin: 10
-            rightMargin: 10
-        }
-
-        Text {
-            anchors.centerIn: parent
-            font {
-                family: "Helvetica"
-                pointSize: 14
-            }
-            text: container.hybrid ? qsTr("Map") : qsTr("Hybrid")
-        }
-
-        MouseArea {
-            id: hybridMouseArea
-            anchors.fill: parent
-            onClicked:  {
-                if (container.mapMode === "normal") {
-                    container.mapMode = "hybrid"
-                } else {
-                    container.mapMode = "normal"
                 }
             }
         }

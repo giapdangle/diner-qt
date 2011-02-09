@@ -167,7 +167,7 @@ Rectangle {
                     }
                     MouseArea {
                         anchors.fill: call
-                        onClicked: { console.log("call"); Qt.openUrlExternally("tel:"+telephone) }
+                        onClicked: { Util.log("Invoking a call "+telephone.text); Qt.openUrlExternally("tel:"+telephone.text) }
                     }
                 }
             }
