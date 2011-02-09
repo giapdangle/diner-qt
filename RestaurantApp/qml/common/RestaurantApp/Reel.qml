@@ -45,6 +45,8 @@ Rectangle {
         clip: true
         anchors.centerIn: parent
         model: parent.model
+        delegate: reel.delegate
+/*
         delegate: Loader {
             id: item
             sourceComponent: reel.delegate
@@ -55,6 +57,7 @@ Rectangle {
                             reel.index = path.currentIndex;}
             }
         }
+*/
         preferredHighlightBegin: 0.5
         preferredHighlightEnd: 0.5
         highlightRangeMode: PathView.StrictlyEnforceRange

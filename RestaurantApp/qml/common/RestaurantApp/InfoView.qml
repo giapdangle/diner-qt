@@ -31,10 +31,6 @@ Rectangle {
         }
     }
 
-    ReservationsModel {
-        id: reservationsModel
-    }
-
     Component {
         id: reservationDelegate
 
@@ -164,11 +160,12 @@ Rectangle {
         }
 
         ListView {
-            id: reservations
+            id: reservations            
             width: container.width
             height: count*(reservationHeight+spacing)
             model: reservationsModel
             delegate: reservationDelegate
+            interactive: false
             focus: true
             spacing: container.margins
         }
