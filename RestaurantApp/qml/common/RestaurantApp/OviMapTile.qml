@@ -10,6 +10,8 @@ Rectangle {
     property double latitude: 61.50097409814573
     property double longitude: 23.76720428466797
     property string mapMode: "normal"
+    property int margins: 8
+    property int zoomButtonSize: 32
 
     width: 300
     height: 300
@@ -57,30 +59,32 @@ Rectangle {
     // Draw zoom buttons on top
     Rectangle {
         id: zoomPlusRect
-        width: 50
-        height: 50
-        radius: 5
+        width: container.zoomButtonSize
+        height: container.zoomButtonSize
+        radius: width/2
         visible: container.zoomFactor < container.maxZoomLevel
         border {
             color: "black"
             width: 1
         }
 
-        color: zoomPlusMouseArea.containsMouse ? "orange" : "lightgray";
+        color: zoomPlusMouseArea.containsMouse ? "lightgrey" : "white";
         anchors {
             top: mapImage.top
-            right: mapImage.right
-            topMargin: 10
-            rightMargin: 10
+            left: mapImage.left
+            topMargin: container.margins
+            leftMargin: container.margins
         }
 
         Text {
-            anchors.centerIn: parent
+            anchors.fill: parent
             font {
                 family: "Helvetica"
                 pointSize: 24
             }
             text: "+"
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
         }
 
         MouseArea {
@@ -96,29 +100,31 @@ Rectangle {
     }
 
     Rectangle {
-        width: 50
-        height: 50
-        radius: 5
+        width: container.zoomButtonSize
+        height: container.zoomButtonSize
+        radius: width/2
         clip: true
         visible: container.zoomFactor > container.minZoomLevel
         border {
             color: "black"
             width: 1
         }
-        color: zoomMinusMouseArea.containsMouse ? "orange" : "lightgray";
+        color: zoomMinusMouseArea.containsMouse ? "lightgrey" : "white";
         anchors {
-            bottom: mapImage.bottom
-            right: mapImage.right
-            bottomMargin: 10
-            rightMargin: 10
+            top: zoomPlusRect.bottom
+            left: mapImage.left
+            topMargin: container.margins
+            leftMargin: container.margins
         }
         Text {
-            anchors.centerIn: parent
+            anchors.fill: parent
             font {
                 family: "Helvetica"
                 pointSize: 24
             }
             text: "-"
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
         }
         MouseArea {
             id: zoomMinusMouseArea
