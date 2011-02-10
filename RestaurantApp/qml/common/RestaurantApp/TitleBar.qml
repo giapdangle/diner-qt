@@ -11,7 +11,7 @@ Rectangle {
     property int margin: 8
 
     property string iconSource: "gfx/placeholder_icon.png"
-    property alias titleIcon: titleIcon
+    property alias icon: titleIcon
     property string title: "TITLE"
     property string caption: "CAPTION"
     property string titleFontName: "Helvetica"
@@ -27,6 +27,16 @@ Rectangle {
     width: 360
     height: 80
     color: "lightgray"
+
+    Rectangle {
+        anchors {
+            top: captionText.top
+            bottom: captionText.bottom
+            left: container.left
+            right: container.right
+        }
+        color: "#fffaee"
+    }
 
     Image {
         id: titleIcon
@@ -67,16 +77,6 @@ Rectangle {
         wrapMode: Text.Wrap
         //verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
-    }
-
-    Rectangle {
-        anchors {
-            top: captionText.top
-            bottom: captionText.bottom
-            left: container.left
-            right: container.right
-        }
-        color: "#fffaee"
     }
 
     Text {
