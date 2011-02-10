@@ -78,7 +78,7 @@ Rectangle {
             right: mainWindow.right
         }
         height: 80
-        iconWidth: 0
+        titleIcon.visible: false
         titleFontName: visual.defaultFontFamily
         titleFontSize: visual.titleFontSize
         titleFontColor: visual.titleFontColor

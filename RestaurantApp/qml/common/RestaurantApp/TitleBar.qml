@@ -11,7 +11,7 @@ Rectangle {
     property int margin: 8
 
     property string iconSource: "gfx/placeholder_icon.png"
-    property alias iconWidth: titleIcon.width
+    property alias titleIcon: titleIcon
     property string title: "TITLE"
     property string caption: "CAPTION"
     property string titleFontName: "Helvetica"
@@ -69,6 +69,16 @@ Rectangle {
         horizontalAlignment: Text.AlignHCenter
     }
 
+    Rectangle {
+        anchors {
+            top: captionText.top
+            bottom: captionText.bottom
+            left: container.left
+            right: container.right
+        }
+        color: "#fffaee"
+    }
+
     Text {
         id: captionText
         clip: true
@@ -87,14 +97,13 @@ Rectangle {
             family: container.captionFontName
             pointSize: container.captionFontSize
         }
-
         text: container.caption
         elide: Text.ElideLeft
         textFormat: Text.RichText
         wrapMode: Text.Wrap
         //verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
-    }
+    }    
 
     TitleBarButton {
         id: exitButton
