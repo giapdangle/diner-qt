@@ -79,15 +79,16 @@ Rectangle {
         }        
         height: mainWindow.height*0.12
         icon.visible: false
-        titleFontName: visual.titleFontFamily
+        title: ""
+        titleImageSoucre: visual.titleImageSource
         titleFontSize: visual.titleFontSize
         titleFontColor: visual.titleFontColor
+        titleFontBold: true
         titleBackgroundColor: visual.titleBackgroundColor
         captionFontName: visual.captionFontFamily
         captionFontSize: visual.captionFontSize-6
         captionFontColor: visual.captionFontColor
         captionBackgoundColor: visual.captionBackgroundColor
-        title: qsTr("Diner")
         caption: appState.currentCaption
 
         showingBackButton: false

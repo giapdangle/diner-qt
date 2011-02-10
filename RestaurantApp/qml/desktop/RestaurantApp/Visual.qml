@@ -12,11 +12,11 @@ Item {
     property int scrollBarWidth: 8
     property string callIconSource: "gfx/call_icon.png"
     property string wwwIconSource: "gfx/www_icon.png"
+    property string titleImageSource: "gfx/title.png"
 
 
     // Title bar
-    property string titleFontFamily: defaultFontFamily
-    property int titleFontSize: defaultFontSize
+    property int titleFontSize: 48
     property color titleFontColor: "#ffffff"
     property color titleBackgroundColor: "#7c0505"
 

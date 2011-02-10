@@ -8,12 +8,13 @@ Rectangle {
     signal backButtonClicked(string viewName)
 
     property bool showingBackButton: false
-    property int margin: 8
+    property int margins: 8
 
     property string iconSource: "gfx/placeholder_icon.png"
     property alias icon: titleIcon
     property string title: "TITLE"
     property string caption: "CAPTION"
+    property string titleImageSoucre: ""
     property string titleFontName: "Helvetica"
     property int titleFontSize: 24
     property color titleFontColor: "black"
@@ -45,24 +46,41 @@ Rectangle {
         source: parent.iconSource
         fillMode: "PreserveAspectFit"
         smooth: true
-        height: container.height-2*margin
+        height: container.height-2*margins
         anchors {
             left: parent.left
             verticalCenter: parent.verticalCenter
-            margins: container.margin
+            margins: container.margins
         }
+    }
+
+    Image {
+        id: titleImage
+        source: container.titleImageSoucre
+        fillMode: "PreserveAspectFit"
+        smooth: true
+        anchors {
+            top: container.top
+            left: titleIcon.right
+            right: exitButton.left
+            bottom: captionText.top
+            margins: container.margins
+        }
+        height: container.height / 2
+        //anchors.centerIn: titleText
     }
 
     Text {
         id: titleText
         smooth: true
-        clip: true
         anchors {
-            top: titleIcon.top
+            top: container.top
             left: titleIcon.right
             right: exitButton.left
-            leftMargin: container.margin
-            rightMargin: container.margin
+            bottom: captionText.top
+            topMargin: container.margins
+            leftMargin: container.margins
+            rightMargin: container.margins
         }
         height: container.height / 2
         color: container.titleFontColor
@@ -77,6 +95,7 @@ Rectangle {
         elide: Text.ElideLeft
         textFormat: Text.RichText
         horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
     }
 
     Text {
@@ -86,8 +105,8 @@ Rectangle {
             bottom: container.bottom
             left: parent.left
             right: parent.right
-            leftMargin: container.margin
-            rightMargin: container.margin
+            leftMargin: container.margins
+            rightMargin: container.margins
         }
         color: container.captionFontColor
 
