@@ -61,7 +61,7 @@ Rectangle {
     // screen width and height are set from C++ main
     width: 360
     height: 640
-    color: "darkslategrey"
+    color: visual.defaultBackgroundColor
 
     Visual {
         id: visual
@@ -76,15 +76,17 @@ Rectangle {
             top: mainWindow.top
             left: mainWindow.left
             right: mainWindow.right
-        }
-        height: 80
+        }        
+        height: mainWindow.height*0.12
         icon.visible: false
-        titleFontName: visual.defaultFontFamily
+        titleFontName: visual.titleFontFamily
         titleFontSize: visual.titleFontSize
         titleFontColor: visual.titleFontColor
-        captionFontName: visual.defaultFontFamily
-        captionFontSize: visual.titleFontSize-6
-        captionFontColor: visual.titleFontColor
+        titleBackgroundColor: visual.titleBackgroundColor
+        captionFontName: visual.captionFontFamily
+        captionFontSize: visual.captionFontSize-6
+        captionFontColor: visual.captionFontColor
+        captionBackgoundColor: visual.captionBackgroundColor
         title: qsTr("Diner")
         caption: appState.currentCaption
 
@@ -150,10 +152,8 @@ Rectangle {
         anchors {
             left: mainWindow.left
             right: mainWindow.right
-            leftMargin: 10
-            rightMargin: 10
         }
-        height: visual.tabBarHeight;
+        height: mainWindow.height*0.12
         fontName: visual.tabBarButtonFont
         fontSize: visual.tabBarButtonFontSize
         fontColor: visual.tabBarButtonFontColor

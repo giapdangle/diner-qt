@@ -12,21 +12,23 @@ Rectangle {
 
     property string iconSource: "gfx/placeholder_icon.png"
     property alias icon: titleIcon
-    property string title: "TITLDFFFFFFFFFFFFFFE"
+    property string title: "TITLE"
     property string caption: "CAPTION"
     property string titleFontName: "Helvetica"
     property int titleFontSize: 24
     property color titleFontColor: "black"
+    property color titleBackgroundColor: "lightgrey"
     property bool titleFontBold: false
     property string captionFontName: "Helvetica"
     property int captionFontSize: 24
     property color captionFontColor: "black"
     property bool captionFontBold: false
+    property color captionBackgoundColor: "white"
 
     // Default values, change when using
     width: 360
     height: 80
-    color: "lightgray"
+    color: titleBackgroundColor
 
     Rectangle {
         anchors {
@@ -35,7 +37,7 @@ Rectangle {
             left: container.left
             right: container.right
         }
-        color: "#fffaee"
+        color: captionBackgoundColor
     }
 
     Image {
@@ -81,7 +83,7 @@ Rectangle {
         id: captionText
         clip: true
         anchors {
-            top: titleText.bottom
+            bottom: container.bottom
             left: parent.left
             right: parent.right
             leftMargin: container.margin + titleIcon.width

@@ -1,12 +1,11 @@
 import QtQuick 1.0
 import "Util.js" as Util
 
-Rectangle {
+Item {
     id:container
     // Default values, change when using
     width: 360
-    height: 640
-    color: "turquoise"
+    height: 640    
 
     property string fontName: "Helvetica"
     property int fontSize: 14
