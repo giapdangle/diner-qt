@@ -25,6 +25,11 @@ Rectangle {
     property color captionFontColor: "black"
     property bool captionFontBold: false
     property color captionBackgoundColor: "white"
+    property string exitButtonSource: "gfx/exit_button.png"
+    property string exitButtonPressedSource: "gfx/exit_button_pressed.png"
+    property string backButtonSource: "gfx/back_button.png"
+    property string backButtonPressedSource: "gfx/back_button_pressed.png"
+
 
     // Default values, change when using
     width: 360
@@ -121,7 +126,7 @@ Rectangle {
         horizontalAlignment: Text.AlignHCenter
     }    
 
-    TitleBarButton {
+    ImageButton {
         id: exitButton
         visible: !showingBackButton        
         width: container.height
@@ -131,15 +136,15 @@ Rectangle {
         anchors.right: container.right
         anchors.margins: 0
         //x: parent.width - width - y
-        bgImage: "gfx/exit_button.png"
-        bgImagePressed: "gfx/exit_button_pressed.png";
+        bgImage: container.exitButtonSource
+        bgImagePressed: container.exitButtonPressedSource
 
         onClicked: {
             container.exitButtonClicked()
         }
     }
 
-    TitleBarButton {
+    ImageButton {
         visible: showingBackButton
         y: 10
         anchors.top: container.top
@@ -149,8 +154,8 @@ Rectangle {
         height: container.height
         scale: 0.8
         //x: parent.width - width - y
-        bgImage: "gfx/back_button.png"
-        bgImagePressed: "gfx/back_button_pressed.png";
+        bgImage: container.backButtonSource
+        bgImagePressed: container.backButtonPressedSource
 
         onClicked: {
             container.backButtonClicked(appState.cameFromView)

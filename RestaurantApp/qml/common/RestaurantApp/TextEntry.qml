@@ -12,7 +12,7 @@ Item {
 
     property bool active: false
 
-    property string bgImage: 'gfx/button.png';
+    property string bgImage: 'gfx/text_field.png';
     property string bgImagePressed: 'gfx/button_pressed.png';
     property string bgImageActive: 'gfx/button_active.png';
 

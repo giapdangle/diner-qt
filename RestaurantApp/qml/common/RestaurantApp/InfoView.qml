@@ -91,7 +91,7 @@ Item {
                 height: logo.height
                 width: parent.width
                 Image {
-                    id: logo
+                    id: logo                    
                     fillMode: "PreserveAspectFit"
                     smooth: true
                     height: container.height*0.3

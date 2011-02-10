@@ -11,7 +11,7 @@ Rectangle {
     property double longitude: 23.76720428466797
     property string mapMode: "normal"
     property int margins: 8
-    property int zoomButtonSize: 32
+    property int zoomButtonSize: 48
 
     width: 300
     height: 300
@@ -56,11 +56,53 @@ Rectangle {
         source: getLocalMapTile(container.zoomFactor);
     }
 
+    ImageButton {
+        id: zoomPlus
+        width: container.zoomButtonSize
+        height: container.zoomButtonSize
+        opacity: 0.8
+        enabled: container.zoomFactor < container.maxZoomLevel
+        visible: enabled
+        bgImage: "content/plus_button.png"
+        bgImagePressed: "content/plus_button_pressed.png"
+        anchors {
+            top: mapImage.top
+            left: mapImage.left
+            topMargin: container.margins
+            leftMargin: container.margins
+        }
+        onClicked:  {
+            if (container.zoomFactor < container.maxZoomLevel) {
+                container.zoomFactor++;
+            }
+        }
+    }
+
+    ImageButton {
+        width: container.zoomButtonSize
+        height: container.zoomButtonSize
+        opacity: 0.8
+        enabled: container.zoomFactor > container.minZoomLevel
+        visible: enabled
+        bgImage: "content/minus_button.png"
+        bgImagePressed: "content/minus_button_pressed.png"
+        anchors {
+            top: zoomPlus.bottom
+            left: mapImage.left
+            topMargin: container.margins
+            leftMargin: container.margins
+        }
+        onClicked: container.zoomFactor--
+
+    }
+
+/*
     // Draw zoom buttons on top
     Rectangle {
         id: zoomPlusRect
         width: container.zoomButtonSize
         height: container.zoomButtonSize
+        opacity: 0.8
         radius: width/2
         visible: container.zoomFactor < container.maxZoomLevel
         border {
@@ -102,6 +144,7 @@ Rectangle {
     Rectangle {
         width: container.zoomButtonSize
         height: container.zoomButtonSize
+        opacity: 0.8
         radius: width/2
         clip: true
         visible: container.zoomFactor > container.minZoomLevel
@@ -137,4 +180,5 @@ Rectangle {
             }
         }
     }
+    */
 }

@@ -8,13 +8,23 @@ Item {
     property int fontSize: 22
     property int margin: 10
     property color color: "#444444"
+    /*
     property Gradient gradient: Gradient {
         GradientStop { position: 0.3; color: "#eeeeee" }
         GradientStop { position: 1.0; color: "#dddddd" }
-    }
+    }*/
 
     Component {
         id: timeDelegate
+        Button {
+            width: container.width
+            height: container.height
+            text: hours + ":" + minutes + " " + daytime
+            fontColor: container.color
+            fontName: container.fontName
+            fontSize: container.fontSize
+        }
+        /*
         Rectangle {
             width: container.width
             height: container.height
@@ -26,7 +36,7 @@ Item {
                 font.pixelSize: container.fontSize
                 font.family: container.fontName
             }
-        }
+        }*/
     }
 
     Reel {
@@ -36,12 +46,13 @@ Item {
         itemsShown: 6
         model: times
         delegate: timeDelegate
+        /*
         Rectangle {
             anchors.fill: parent
             border.width: 1
             border.color: container.color
             color: "transparent"
-        }
+        }*/
     }
 
 

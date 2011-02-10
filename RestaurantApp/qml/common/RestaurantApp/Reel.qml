@@ -13,7 +13,15 @@ Rectangle {
     height: 100
     color: "transparent"
     clip: true
-    onIndexChanged: path.currentIndex = reel.index/*; selectIndex()
+    // Bring to front if not clipped
+    onClipChanged: clip ? shiftZ(reel, -500) : shiftZ(reel, 500)
+
+    function shiftZ(obj, delta) { // Set z recursively to parent
+        if(typeof obj.z != 'undefined') obj.z += delta
+        if(obj.parent) shiftZ(obj.parent, delta)
+    }
+
+    onIndexChanged: path.currentIndex = reel.index/*; selectIndex()                                                        
 
     //TODO: figure out a way to access the enabled property on pathView instance
     function selectIndex() {
@@ -45,7 +53,7 @@ Rectangle {
         clip: true
         anchors.centerIn: parent
         model: parent.model
-        delegate: reel.delegate
+        delegate: reel.delegate        
 /*
         delegate: Loader {
             id: item

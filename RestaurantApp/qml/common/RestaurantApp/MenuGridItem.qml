@@ -29,6 +29,7 @@ Item {
             Image {
                 id: icon
                 source: "content/" + iconSource
+                smooth: true
                 width: parent.width
                 height: parent.height - container.textHeight
             }

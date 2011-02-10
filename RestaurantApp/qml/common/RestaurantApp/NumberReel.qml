@@ -2,20 +2,31 @@ import Qt 4.7
 
 Item {
     id: container
-    width: 60
+    width: 81
     height: 60
     property string fontName: 'Helvetica'
     property int fontSize: 22
     property int margin: 10
     property color color: "#444444"
+
+    /*
     property Gradient gradient: Gradient {
         GradientStop { position: 0.3; color: "#eeeeee" }
         GradientStop { position: 1.0; color: "#dddddd" }
-    }
+    }*/
 
 
     Component {
         id: listDelegate
+        Button {
+            width: container.width
+            height: container.height
+            text: number
+            fontColor: container.color
+            fontName: container.fontName
+            fontSize: container.fontSize
+        }
+        /*
         Rectangle {
             width: container.width
             height: container.height
@@ -27,7 +38,7 @@ Item {
                 font.pixelSize: container.fontSize
                 font.family: container.fontName
             }
-        }
+        }*/
     }
 
     Reel {
@@ -37,12 +48,13 @@ Item {
         itemsShown: 6
         model: listModel
         delegate: listDelegate
+        /*
         Rectangle {
             anchors.fill: parent
             border.width: 1
             border.color: container.color
             color: "transparent"
-        }
+        }*/
     }
 
     ListModel {

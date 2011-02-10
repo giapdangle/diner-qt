@@ -6,7 +6,8 @@ Item {
 
     property int scrollBarWidth: 8
     property string fontName: "Helvetica"
-    property int fontSize: 13
+    property int fontSize: 12
+    property int infoFontSize: 22 // Zoomed size
     property color fontColor: "black"
     property color fontColorLink: "blue"
     property double margins: 8
@@ -68,10 +69,16 @@ Item {
             property bool zoomedIn: false
             height: info.height+4*container.margins
             width: info.width+4*container.margins
-            color: "gold"
-            x: -width/4
-            y: -height/4
-            scale: 0.5
+            color: "transparent"
+            radius: 20
+
+            transform: Scale {
+                id: addressScale;
+                origin.x: 0; origin.y: 0
+                xScale: 0.5; yScale: 0.5
+                Behavior on xScale { NumberAnimation { duration: 200 } }
+                Behavior on yScale { NumberAnimation { duration: 200 } }
+            }
 
             Column {
                 id: info
@@ -86,7 +93,7 @@ Item {
                         color: container.fontColor
                         font {
                             family: container.fontName
-                            pointSize: 2*container.fontSize
+                            pointSize: container.infoFontSize
                         }
                         smooth: true
                     }
@@ -96,7 +103,7 @@ Item {
                         color: container.fontColor
                         font {
                             family: container.fontName
-                            pointSize: 2*container.fontSize
+                            pointSize: container.infoFontSize
                         }
                         smooth: true
                     }
@@ -106,7 +113,7 @@ Item {
                         color: container.fontColor
                         font {
                             family: container.fontName
-                            pointSize: 2*container.fontSize
+                            pointSize: container.infoFontSize
                         }
                         smooth: true
                     }
@@ -137,7 +144,7 @@ Item {
                         color: container.fontColorLink
                         font {
                             family: container.fontName
-                            pointSize: 2*container.fontSize
+                            pointSize: container.infoFontSize
                         }
                     }
                     MouseArea {
@@ -171,7 +178,7 @@ Item {
                         color: container.fontColorLink
                         font {
                             family: container.fontName
-                            pointSize: 2*container.fontSize
+                            pointSize: container.infoFontSize
                         }
                     }
                     MouseArea {
@@ -198,13 +205,15 @@ Item {
                 onClicked: addressBox.zoomedIn = !addressBox.zoomedIn
             }
 
-            Behavior on scale { NumberAnimation { duration: 200 } }            
-            transitions: Transition { AnchorAnimation { duration: 100 } }
+            Behavior on color { ColorAnimation { duration: 200 } }
+            transitions: Transition { AnchorAnimation { duration: 200 } }
 
             states: State {
                 name: "zoomedIn"; when: addressBox.zoomedIn
-                PropertyChanges { target: addressBox; scale: 1.0;}
-                AnchorChanges { target: addressBox; anchors.horizontalCenter: column.horizontalCenter; anchors.verticalCenter: column.verticalCenter }
+                PropertyChanges { target: addressBox; color: "white"}
+                PropertyChanges { target: addressScale; xScale: 1.0; yScale: 1.0 }
+                AnchorChanges { target: addressBox; anchors.horizontalCenter: column.horizontalCenter;
+                                anchors.verticalCenter: column.verticalCenter; }
             }
         }
     }

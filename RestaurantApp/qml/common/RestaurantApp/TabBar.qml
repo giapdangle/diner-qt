@@ -23,6 +23,16 @@ Item {
     property color fontColor: "black"
     property color backgroundBarColor: "white"
 
+    property string infoButtonSource: "content/info_button.png"
+    property string menuButtonSource: "content/menu_button.png"
+    property string mapButtonSource: "content/map_button.png"
+    property string bookingButtonSource: "content/booking_button.png"
+
+    property string infoButtonPressedSource: "content/info_button_pressed.png"
+    property string menuButtonPressedSource: "content/menu_button_pressed.png"
+    property string mapButtonPressedSource: "content/map_button_pressed.png"
+    property string bookingButtonPressedSource: "content/booking_button_pressed.png"
+
     // Default values, change when using
     width: 360
     height: 100
@@ -47,60 +57,44 @@ Item {
         }
         spacing: container.gap
 
-        Button {
+        ImageButton {
             buttonName: "infoButton"
             target: "infoView"
             width: buttonWidth
             height: buttonHeight
-            text: qsTr("Info");            
             active: container.selectedButton === buttonName
-
-            fontName: container.fontName
-            fontSize: container.fontSize
-            fontColor: container.fontColor
-
+            bgImage: infoButtonSource
+            bgImagePressed: infoButtonPressedSource
             onClicked: { container.selectedButton = buttonName; container.tabButtonClicked(target, buttonName) }
         }
-        Button {
+        ImageButton {
             buttonName: "menuButton"
             target: "menuGridView"
             width: buttonWidth
             height: buttonHeight
-            text: qsTr("Menu");
             active: container.selectedButton === buttonName
-
-            fontName: container.fontName
-            fontSize: container.fontSize
-            fontColor: container.fontColor
-
+            bgImage: menuButtonSource
+            bgImagePressed: menuButtonPressedSource
             onClicked: { container.selectedButton = buttonName; container.tabButtonClicked(target, buttonName) }
         }
-        Button {
+        ImageButton {
             buttonName: "mapButton"
             target: "mapView"
             width: buttonWidth
             height: buttonHeight
-            text: qsTr("Map");
             active: container.selectedButton === buttonName
-
-            fontName: container.fontName
-            fontSize: container.fontSize
-            fontColor: container.fontColor
-
+            bgImage: mapButtonSource
+            bgImagePressed: mapButtonPressedSource
             onClicked: { container.selectedButton = buttonName; container.tabButtonClicked(target, buttonName) }
         }
-        Button {
+        ImageButton {
             buttonName: "bookingButton"
             target: "bookingView"
             width: buttonWidth
             height: buttonHeight
-            text: qsTr("Book");
             active: container.selectedButton === buttonName
-
-            fontName: container.fontName
-            fontSize: container.fontSize
-            fontColor: container.fontColor
-
+            bgImage: bookingButtonSource
+            bgImagePressed: bookingButtonPressedSource
             onClicked: { container.selectedButton = buttonName; container.tabButtonClicked(target, buttonName) }
         }
     }

@@ -89,8 +89,11 @@ Rectangle {
         captionFontSize: visual.captionFontSize-6
         captionFontColor: visual.captionFontColor
         captionBackgoundColor: visual.captionBackgroundColor
-        caption: appState.currentCaption
-
+        caption: appState.currentCaption        
+        exitButtonSource: visual.exitButtonSource
+        exitButtonPressedSource: visual.exitButtonPressedSource
+        backButtonSource: visual.backButtonSource
+        backButtonPressedSource: visual.backButtonPressedSource
         showingBackButton: false
 
         onBackButtonClicked: {
