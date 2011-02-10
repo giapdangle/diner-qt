@@ -12,7 +12,7 @@ Rectangle {
 
     property string iconSource: "gfx/placeholder_icon.png"
     property alias icon: titleIcon
-    property string title: "TITLDFFFFFFFFFFFFFFE"
+    property string title: "TITLE"
     property string caption: "CAPTION"
     property string titleFontName: "Helvetica"
     property int titleFontSize: 24
@@ -57,10 +57,10 @@ Rectangle {
         clip: true
         anchors {
             top: titleIcon.top
-            left: parent.left
-            right: parent.right
-            leftMargin: container.margin + titleIcon.width
-            rightMargin: container.margin + exitButton.width
+            left: titleIcon.right
+            right: exitButton.left
+            leftMargin: container.margin
+            rightMargin: container.margin
         }
         height: container.height / 2
         color: container.titleFontColor
@@ -84,8 +84,8 @@ Rectangle {
             top: titleText.bottom
             left: parent.left
             right: parent.right
-            leftMargin: container.margin + titleIcon.width
-            rightMargin: container.margin + exitButton.width
+            leftMargin: container.margin
+            rightMargin: container.margin
         }
         color: container.captionFontColor
 
@@ -97,7 +97,6 @@ Rectangle {
         text: container.caption
         elide: Text.ElideLeft
         textFormat: Text.RichText
-        wrapMode: Text.Wrap
         horizontalAlignment: Text.AlignHCenter
     }    
 
