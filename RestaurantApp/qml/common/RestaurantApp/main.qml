@@ -206,6 +206,7 @@ Rectangle {
             when: appState.currentViewName === "menuListView";
             name: "showingMenuListView"
             PropertyChanges { target: naviBar; show: false }
+            PropertyChanges { target: mainWindow; color: visual.menuListViewBackgroundColor }
             PropertyChanges { target: titleBar; showingBackButton: true }
             PropertyChanges { target: appState; cameFromView: "menuGridView" }
             StateChangeScript { script: viewSwitcher.switchView(menuListView,0, "instant"); }

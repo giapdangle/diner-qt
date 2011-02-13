@@ -149,8 +149,9 @@ Item {
             }
             TimeReel {
                 id: timeReel
-                width: parent.width
+                width: parent.width*0.4
                 height: visual.defaultItemHeight
+                anchors.horizontalCenter: parent.horizontalCenter
                 fontName: container.fontName
                 fontColor: container.fontColorButton
                 fontSize: container.fontSize

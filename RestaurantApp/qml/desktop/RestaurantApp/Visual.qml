@@ -11,6 +11,7 @@ Item {
     property color defaultFontColorButton: "#ffffff"
     property color defaultBackgroundColor: "#d9d3b5"
     property double margins: 8
+    property int spacing: 8
     property int defaultItemHeight: 48
 
     property int scrollBarWidth: 8
@@ -86,6 +87,9 @@ Item {
 
     // Menu list view
     property color menuListViewBackgroundColor: "#f9f6f6"
+    property color menuListViewDishTitleFontColor: "#7c0505"
+    property color menuListViewDishFontColor: "#938282"
+    property int menutListViewTitleSize: 18
 
 
     // Map view

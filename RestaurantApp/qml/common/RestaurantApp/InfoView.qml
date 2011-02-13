@@ -197,11 +197,13 @@ Item {
                 preferredHighlightBegin: 0
                 preferredHighlightEnd: reservationHeight
                 highlightRangeMode: ListView.StrictlyEnforceRange
+                onMovementEnded: presenter.restart
             }
 
             Timer {
+                 id: presenter
                  interval: 5000; running: true; repeat: true
-                 onTriggered: if(!reservations.moving) reservations.incrementCurrentIndex()
+                 onTriggered: if(!reservations.moving && reservations.count > 2) reservations.incrementCurrentIndex()
              }
 
             Rectangle {

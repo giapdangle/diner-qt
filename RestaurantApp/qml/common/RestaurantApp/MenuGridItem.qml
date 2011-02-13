@@ -12,47 +12,40 @@ Item {
     property int textHeight: 20
 
     width: 120
-    height: width + textHeight
+    height: column.height
 
-    Item {
-        anchors{
-            fill: parent
-            margins: container.margins
+    Column {
+        id: column
+        x: 0; y: 0
+        width: parent.width
+
+        Image {
+            id: icon
+            source: iconSource
+            fillMode: Image.PreserveAspectFit
+            smooth: true
+            width: container.width*0.7
+            height: width
+            anchors.horizontalCenter: parent.horizontalCenter
         }
 
-        clip: true
-        Column {
-            x: 0; y: 0
+        Text {
+            id: label
             width: parent.width
-            height: parent.height
-
-            Image {
-                id: icon
-                source: iconSource
-                fillMode: Image.PreserveAspectFit
-                smooth: true
-                width: height
-                height: parent.height - container.textHeight
+            text: title
+            height: container.textHeight
+            wrapMode: Text.WordWrap
+            font {
+                family: container.fontName
+                pointSize: container.fontSize
             }
-
-            Text {
-                id: label
-                width: parent.width
-                text: title
-                height: container.textHeight
-                wrapMode: Text.WordWrap
-                font {
-                    family: container.fontName
-                    pointSize: container.fontSize
-                }
-                color: container.fontColor
-                verticalAlignment: Text.AlignVCenter
-                horizontalAlignment: Text.AlignHCenter
-            }
+            color: container.fontColor
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
         }
-        MouseArea {
-            anchors.fill: parent
-            onClicked: container.clicked(itemId, title, iconSource);
-        }
+    }
+    MouseArea {
+        anchors.fill: parent
+        onClicked: container.clicked(itemId, title, iconSource);
     }
 }

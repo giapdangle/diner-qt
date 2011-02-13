@@ -4,56 +4,61 @@ Item {
     id: container
 
     signal clicked(string itemId)
-
-    property int spacing: 0
     property string itemId: "NOT SET"
     property int margins: 8
+    property int spacing: 8
     property string fontName: "Helvetica"
-    property int fontSize: 8
-    property color fontColor: "black"
+    property int fontSize: 12
+    property color fontColorTitle: "black"
+    property color fontColor: "darkgrey"
 
     width: 360
-    height: 60
+    height: dishTitle.height+dishDescription.height
 
-    Rectangle {
-        anchors{
-            fill: parent
-            margins: container.margins
-        }
+    Column {
+        x: 0; y: 0
+        width:  parent.width
+        height: parent.height
+        spacing: container.spacing
 
-        radius: 5
-        color: "#f9f6f6"
-        clip: true
-        Row {
-            x: 0; y: 0
-            width:  parent.width
-            height: parent.height
-            spacing: container.spacing
-
-            Image {
-                id: icon
-                source: iconSource
-                height: parent.height
-                width: height
+        Text {
+            id: dishTitle
+            anchors {
+                left: parent.left
+                right: parent.right
+                leftMargin: container.margins
+                rightMargin: container.margins
             }
 
-            Text {
-                width: parent.width - icon.width
-                height: parent.height
-                text: title
-                wrapMode: Text.WordWrap
-                font {
-                    family: container.fontName
-                    pointSize: container.fontSize
-                }
-                color: container.fontColor
-                verticalAlignment: Text.AlignVCenter
-                horizontalAlignment: Text.AlignLeft
+            text: title
+            wrapMode: Text.WordWrap
+            font {
+                family: container.fontName
+                pointSize: container.fontSize
+                capitalization: Font.AllUppercase
             }
+            color: container.fontColorTitle
         }
-        MouseArea {
-            anchors.fill:  parent
-            onClicked: container.clicked(container.itemId);
+
+        Text {
+            id: dishDescription
+            anchors {
+                left: parent.left
+                right: parent.right
+                leftMargin: container.margins
+                rightMargin: container.margins
+            }
+            text: description
+            wrapMode: Text.WordWrap
+            font {
+                family: container.fontName
+                pointSize: container.fontSize
+            }
+            color: container.fontColor
         }
+    }
+    MouseArea {
+        anchors.fill:  parent
+        onClicked: container.clicked(container.itemId);
     }
 }

@@ -6,9 +6,12 @@ Item {
 
     property string fontName: visual.defaultFontFamily
     property int fontSize: visual.defaultFontSize
-    property color fontColor: visual.defaultFontColor
+    property int fontSizeTitle: visual.menutListViewTitleSize
+    property color fontColor: visual.menuListViewDishFontColor
+    property color fontColorTitle: visual.menuListViewDishTitleFontColor
     property color fontColorLink: visual.defaultFontColorLink
     property double margins: visual.margins
+    property int spacing: visual.spacing
 
     property int scrollBarWidth: visual.scrollBarWidth
     property int listItemheight: 80
@@ -28,6 +31,7 @@ Item {
         id: model
         // Get dishes only from under the selected category
         query: "/restaurant/menu/category[@id='"+container.selectedCategoryId+"']/dish"
+        XmlRole { name: "description"; query: "string()" }
     }
 
     ScrollBar { scrollArea: listView; width: container.scrollBarWidth; anchors.top: listView.top; anchors.right: listView.right; anchors.bottom: listView.bottom }
@@ -40,7 +44,8 @@ Item {
             leftMargin: -1
             rightMargin: -1
         }
-        height: parent.height*0.08
+        height: 80
+        color: visual.menuListViewBackgroundColor
         border.width: 1
         border.color: "#7c0505"
         anchors.top: parent.top
@@ -48,12 +53,11 @@ Item {
             id: icon
             source: container.selectedCategoryIconSource
             fillMode: Image.PreserveAspectFit
+            smooth: true
             anchors {
                 top: parent.top
                 bottom: parent.bottom
                 left: parent.left
-                topMargin: container.margins
-                bottomMargin: container.margins
                 leftMargin: container.width*0.1
             }
 
@@ -63,6 +67,11 @@ Item {
             anchors.left: icon.right
             anchors.margins: container.margins
             text: container.selectedCategoryTitle
+            color: container.fontColor
+            font {
+                family: container.fontName
+                pointSize: container.fontSizeTitle
+            }
             verticalAlignment: Text.AlignVCenter
         }
     }
@@ -75,21 +84,25 @@ Item {
             left: parent.left
             right: parent.right
             bottom: parent.bottom
+            topMargin: container.margins
         }
         model: model
         delegate: listDelegate
         focus: true
+        spacing: 4*container.spacing
     }
 
     Component {
         id: listDelegate
         MenuListItem {
             width: listView.width
-            height: container.listItemheight
+            //height: container.listItemheight
+            spacing: container.spacing
+            margins: container.margins
             fontName: container.fontName
             fontSize: container.fontSize
             fontColor: container.fontColor
-            margins: container.margins
+            fontColorTitle: container.fontColorTitle
             onClicked: {
                 Util.log("CLICK");
             }

@@ -40,7 +40,7 @@ Item {
             margins: container.margins
         }
         cellWidth: width*0.5
-        cellHeight: cellWidth
+        cellHeight: cellWidth*0.9
         model: menuModel
         delegate: menuDelegate
         focus: true
