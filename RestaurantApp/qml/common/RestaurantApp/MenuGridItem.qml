@@ -3,7 +3,7 @@ import QtQuick 1.0
 Item {
     id: container
 
-    signal clicked(string itemId)
+    signal clicked(string itemId, string title, string iconSource)
 
     property int margins: 10
     property string fontName: "Helvetica"
@@ -28,9 +28,10 @@ Item {
 
             Image {
                 id: icon
-                source: "content/" + iconSource
+                source: iconSource
+                fillMode: Image.PreserveAspectFit
                 smooth: true
-                width: parent.width
+                width: height
                 height: parent.height - container.textHeight
             }
 
@@ -48,10 +49,10 @@ Item {
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
             }
-            MouseArea {
-                anchors.fill:  parent
-                onClicked: container.clicked(itemId);
-            }
+        }
+        MouseArea {
+            anchors.fill: parent
+            onClicked: container.clicked(itemId, title, iconSource);
         }
     }
 }

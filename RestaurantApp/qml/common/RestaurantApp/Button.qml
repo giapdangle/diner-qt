@@ -13,9 +13,13 @@ Item {
 
     property bool active: false
 
-    property string bgImage: 'gfx/button.png';
-    property string bgImagePressed: 'gfx/button_pressed.png';
-    property string bgImageActive: 'gfx/button_active.png';
+    property string bgImage: 'gfx/button.png'
+    property string bgImagePressed: 'gfx/button_pressed.png'
+    property string bgImageActive: 'gfx/button_active.png'
+
+    property Component bg: defaultBackground
+    property Component bgPressed: defaultPressedBackground
+    property Component bgActive: defaultActiveBackground
 
     signal clicked(string target, string button)
 
@@ -23,12 +27,33 @@ Item {
     height: 60
     opacity: enabled ? 1.0 : 0.5    
 
-    BorderImage {
+    Loader {
         id: background
-        border { top: 11; bottom: 40; left: 38; right: 38; }
-        source: bgImage
-        width: parent.width
-        height: parent.height
+        sourceComponent: container.bg
+        anchors.fill: parent
+    }
+
+    Component {
+        id: defaultBackground
+        BorderImage {
+            border { top: 11; bottom: 40; left: 38; right: 38 }
+            source: bgImage
+        }
+    }
+    Component {
+        id: defaultPressedBackground
+        BorderImage {
+            border { left: 38; top: 37; right: 38; bottom: 15 }
+            source: bgImagePressed
+        }
+    }
+
+    Component {
+        id: defaultActiveBackground
+        BorderImage {
+            border { top: 11; bottom: 40; left: 38; right: 38; }
+            source: bgImageActive
+        }
     }
 
     Text {
@@ -56,11 +81,11 @@ Item {
     states: [
         State {
             name: 'pressed'; when: mouseArea.pressed
-            PropertyChanges { target: background; source: bgImagePressed; border { left: 38; top: 37; right: 38; bottom: 15 } }
+            PropertyChanges { target: background; sourceComponent: container.bgPressed }
         },
         State {
             name: 'active'; when: container.active
-            PropertyChanges { target: background; source: bgImageActive; }
+            PropertyChanges { target: background; sourceComponent: container.bgActive; }
         }
     ]
 }

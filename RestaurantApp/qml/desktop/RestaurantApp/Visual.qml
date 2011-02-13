@@ -4,15 +4,49 @@ import QtQuick 1.0
 Item {
     // General
     property string defaultFontFamily: "Tahoma"  // Defaults to correct ones in device
-    property int defaultFontSize: 24
-    property color defaultFontColor: "black"
+    property int defaultFontSize: 12
+    //property color defaultFontColor: "#6f6a5c"
+    property color defaultFontColor: "#767164"
     property color defaultFontColorLink: "#7c0505"
+    property color defaultFontColorButton: "#ffffff"
     property color defaultBackgroundColor: "#d9d3b5"
+    property double margins: 8
+    property int defaultItemHeight: 48
 
     property int scrollBarWidth: 8
-    property string callIconSource: "content/call_icon.png"
-    property string wwwIconSource: "content/www_icon.png"
+    property Component buttonComponent: Component {
+        BorderImage {
+            border { top: 8; bottom: 8; left: 8; right: 8 }
+            source: "content/button.png"
+        }
+    }
+    property Component buttonPressedComponent: Component {
+        BorderImage {
+            border { top: 8; bottom: 8; left: 8; right: 8 }
+            source: "content/button_pressed.png"
+        }
+    }
+    property Component textFieldComponent: Component {
+        BorderImage {
+            border { top: 8; bottom: 8; left: 8; right: 8 }
+            source: "content/text_field.png"
+        }
+    }
+    property Component textFieldActiveComponent: Component {
+        BorderImage {
+            border { top: 8; bottom: 8; left: 8; right: 8 }
+            source: "content/text_field_active.png"
+        }
+    }
+
+    property string callButtonSource: "content/call_button.png"
+    property string callButtonPressedSource: "content/call_button_pressed.png"
+    property string wwwButtonSource: "content/www_button.png"
+    property string wwwButtonPressedSource: "content/www_button_pressed.png"
     property string titleImageSource: "content/title.png"
+    property string cancelButtonSource: "content/cancel_button.png"
+    property string cancelButtonPressedSource: "content/cancel_button.png"
+    property string bookingIconSource: "content/booking_icon.png"
 
 
     // Title bar
@@ -51,9 +85,13 @@ Item {
 
 
     // Menu list view
+    property color menuListViewBackgroundColor: "#f9f6f6"
 
 
     // Map view
+    property string zoomiInSource: "content/zoom_in.png"
+    property string zoomiOutSource: "content/zoom_out.png"
+
 
 
     // Booking view

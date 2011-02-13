@@ -16,6 +16,10 @@ QtObject {
     // Populate this whenever you select a feed item
     property string selectedFeedItemTitle: ""
     // Selected id when clicked on menu category from the grid
-    property string selectedMenuCategeoryId: ""
+    property string selectedMenuCategoryId: ""
+    // Selected name when clicked on menu category from the grid
+    property string selectedMenuCategoryTitle: ""
+    // Selected icon when clicked on menu category from the grid
+    property string selectedMenuCategoryIconSource: ""
 }
 

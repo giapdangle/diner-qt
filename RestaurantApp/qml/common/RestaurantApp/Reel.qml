@@ -53,7 +53,7 @@ Rectangle {
         clip: true
         anchors.centerIn: parent
         model: parent.model
-        delegate: reel.delegate        
+        delegate: reel.delegate
 /*
         delegate: Loader {
             id: item
@@ -73,7 +73,7 @@ Rectangle {
 
         path: Path {
             startX: path.x+path.width/2; startY: 1-reel.height/2
-            PathLine {x: path.x+path.width/2; y: path.height+reel.height/2}
+            PathLine {x: path.x+path.width/2; y: path.height+reel.height/2-1}
         }
         onMovementStarted: {reel.moving = true; clippingTimer.stop(); reel.clip = false}
         onMovementEnded: {            

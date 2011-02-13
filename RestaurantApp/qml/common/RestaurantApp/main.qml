@@ -52,6 +52,7 @@ Rectangle {
     AppStateVars {
         id: appState
         currentCaption: "Information"
+        //fontSize: visual.defaultFontSize
     }
 
     ReservationsModel {
@@ -131,23 +132,22 @@ Rectangle {
         ViewLoader {
             id: menuGridView
             viewSource: "MenuGridView.qml"
-            keepLoaded: true
+            keepLoaded: true            
         }
         ViewLoader {
             id: menuListView
             viewSource: "MenuListView.qml"
-            keepLoaded: true
+            keepLoaded: true            
         }
         ViewLoader {
             id: mapView
             viewSource: "MapView.qml"
-            keepLoaded: true
+            keepLoaded: true            
         }
         ViewLoader {
             id: bookingView
             viewSource: "BookingView.qml"
-            keepLoaded: true
-
+            keepLoaded: true            
         }
     }
 

@@ -2,21 +2,21 @@ import Qt 4.7
 
 Item {
     id: container
-    width: reels.width
-    height:  reels.height
+    width: 240
+    height:  60
     property bool pastDates: true
     property string minDate: "1900-01-01" //TODO: set use min and max dates (use: Qt.formatDate())
     property string maxDate: "2199-31-12"
-    property int yearWidth: 101
-    property int yearHeight: 60
-    property int monthWidth: 81
-    property int monthHeight: 60
-    property int dayWidth: 81
-    property int dayHeight: 60
+    property int yearWidth: (width-2*margins)*0.4
+    property int yearHeight: height
+    property int monthWidth: (width-2*margins)*0.3
+    property int monthHeight: height
+    property int dayWidth: (width-2*margins)*0.3
+    property int dayHeight: height
     property string fontName: 'Helvetica'
     property int fontSize: 22
-    property int margins: 8
-    property color color: "#666666"
+    property color fontColor: "#666666"
+    property int margins: 8    
     /*
     property Gradient gradient: Gradient {
         GradientStop { position: 0.3; color: "#eeeeee" }
@@ -29,9 +29,11 @@ Item {
             width: container.yearWidth
             height: container.yearHeight
             text: number
-            fontColor: container.color
+            fontColor: container.fontColor
             fontName: container.fontName
             fontSize: container.fontSize
+            bg: visual.buttonComponent
+            bgPressed: visual.buttonPressedComponent
         }
 
         /*
@@ -58,9 +60,11 @@ Item {
             width: container.monthWidth
             height: container.monthHeight
             text: number
-            fontColor: container.color
+            fontColor: container.fontColor
             fontName: container.fontName
             fontSize: container.fontSize
+            bg: visual.buttonComponent
+            bgPressed: visual.buttonPressedComponent
         }
         /*
         Rectangle {
@@ -86,9 +90,11 @@ Item {
             width: container.dayWidth
             height: container.dayHeight
             text: number
-            fontColor: container.color
+            fontColor: container.fontColor
             fontName: container.fontName
             fontSize: container.fontSize
+            bg: visual.buttonComponent
+            bgPressed: visual.buttonPressedComponent
             enabled: !(index+1 < days.start || index+1 > days.end)
         }
 
@@ -114,7 +120,7 @@ Item {
     }
     Row {
         id: reels
-        spacing: 8
+        spacing: container.margins
 
         Reel {
             id: year

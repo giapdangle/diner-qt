@@ -11,7 +11,12 @@ Item {
     // Text to be shown within the modal dialog.
     property string text: ""
 
-    property int fontPointSize: 14
+    property string fontName: "Helvetica"
+    property int fontSize: 14
+    property color fontColor: "white"
+    property color fontColorButton: "black"
+    property Component buttonBackground
+    property Component buttonBackgroundPressed
 
     // Signals that are emitted from Ok/Cancel -buttons.
     signal accepted
@@ -39,7 +44,7 @@ Item {
         id: dialog
 
         opacity: 0
-        anchors.left:  parent.left
+        anchors.left: parent.left
         width: parent.width
         height: column.height
         anchors.verticalCenter: parent.verticalCenter
@@ -55,10 +60,13 @@ Item {
                 id: dlgText
                 width: parent.width
                 text: modalDialog.text
-                color: "white"
-                horizontalAlignment: Text.AlignHCenter
-                font.pointSize: fontPointSize
+                color: modalDialog.fontColor
+                font {
+                    family: modalDialog.fontName
+                    pointSize: modalDialog.fontSize
+                }
                 wrapMode: Text.WordWrap
+                horizontalAlignment: Text.AlignHCenter
             }
 
             // Under the text field there's two clickable buttons.
@@ -71,8 +79,12 @@ Item {
 
                 Button {
                     id: okButton
-
-                    text: "Ok"
+                    text: "OK"
+                    fontColor: modalDialog.fontColorButton
+                    fontName: modalDialog.fontName
+                    fontSize: modalDialog.fontSize
+                    bg: modalDialog.buttonBackground
+                    bgPressed: modalDialog.buttonBackgroundPressed
                     // On click emit "accepted" signal via the main level dialog Item
                     // and hide the dialog.
                     onClicked: {
@@ -85,6 +97,12 @@ Item {
                 Button {
                     id: cancelButton
                     text: "Cancel"
+                    fontColor: modalDialog.fontColorButton
+                    fontName: modalDialog.fontName
+                    fontSize: modalDialog.fontSize
+                    bg: modalDialog.buttonBackground
+                    bgPressed: modalDialog.buttonBackgroundPressed
+
                     // On click emit "cancelled" signal via the main level dialog Item
                     // and hide the dialog.
                     onClicked: {

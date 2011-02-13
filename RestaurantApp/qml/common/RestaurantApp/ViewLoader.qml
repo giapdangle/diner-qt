@@ -12,12 +12,12 @@ Loader {
 
     function activationComplete() {
         Util.log("activationComplete");
-        if (item.activationComplete != undefined) item.activationComplete();
+        if (typeof item.activationComplete != 'undefined') item.activationComplete();
     }
 
     function deactivationComplete() {
         Util.log("deactivationComplete");
-        if (item.deactivationComplete != undefined) item.deactivationComplete();
+        if (typeof item.deactivationComplete != 'undefined') item.deactivationComplete();
         if (!keepLoaded)
             source = "";
     }

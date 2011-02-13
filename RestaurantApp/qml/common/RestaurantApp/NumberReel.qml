@@ -6,8 +6,8 @@ Item {
     height: 60
     property string fontName: 'Helvetica'
     property int fontSize: 22
-    property int margin: 10
-    property color color: "#444444"
+    property color fontColor: "#444444"
+    property int margin: 8
 
     /*
     property Gradient gradient: Gradient {
@@ -22,9 +22,11 @@ Item {
             width: container.width
             height: container.height
             text: number
-            fontColor: container.color
+            fontColor: container.fontColor
             fontName: container.fontName
             fontSize: container.fontSize
+            bg: visual.buttonComponent
+            bgPressed: visual.buttonPressedComponent
         }
         /*
         Rectangle {

@@ -3,12 +3,14 @@ import "Util.js" as Util
 
 Item {
     id: container
-    property string fontName: "Helvetica"
-    property int fontSize: 12
-    property color fontColor: "black"
-    property double margins: 8
-    property int reservationHeight: 40
-    property int scrollBarWidth: 8
+    property string fontName: visual.defaultFontFamily
+    property int fontSize: visual.defaultFontSize
+    property color fontColor: visual.defaultFontColor
+    property color fontColorLink: visual.defaultFontColorLink
+    property color fontColorButton: visual.defaultFontColorButton
+    property double margins: visual.margins
+    property int reservationHeight: 48
+    property int scrollBarWidth: visual.scrollBarWidth    
     // Default values, change when using
     width: 360
     height: 640
@@ -35,38 +37,50 @@ Item {
         id: reservationDelegate
 
         Item {
-            height: reservationHeight
-            width: container.width
+            height: 60
+            width: container.width-container.margins
+
+            Image {
+                id: reservation_icon
+                height: 42
+                width: 44
+                source: visual.bookingIconSource
+                fillMode: Image.PreserveAspectFit
+                smooth: true
+                anchors {
+                    top: parent.top
+                    left: parent.left
+                }
+            }
 
             Text {
                 id: reservation
                 anchors {
                     top: parent.top
-                    left: parent.left
+                    left: reservation_icon.right
                     right: cancelButton.left
                     rightMargin: container.margins
+                    leftMargin: container.margins
                 }
                 text: "You have reservation for "+people+((people == 1) ? " person" : " people")+" on "+dateTime
                 wrapMode: Text.WordWrap
                 color: container.fontColor
                 font {
                     family: container.fontName
-                    pointSize: container.fontSize
+                    pointSize: container.fontSize-2
                 }
             }
-            Button {
+            ImageButton {
                 id: cancelButton
                 anchors {
                     top: parent.top
                     right: parent.right
                     rightMargin: container.margins
                 }
-                width: 60
-                height: reservationHeight
-                text: qsTr("Cancel");
-                fontName: container.fontName
-                fontSize: container.fontSize
-                fontColor: container.fontColor
+                height: 40
+                width: 76
+                bgImage: visual.cancelButtonSource
+                bgImagePressed: visual.cancelButtonPressedSource
                 onClicked: { dialog.index = index; dialog.dateTime = dateTime; dialog.show() }
             }
         }
@@ -142,14 +156,13 @@ Item {
 
                     height: call_icon.height
                     width: call_icon.width+telephone.width
-
-                    Image {
+                    ImageButton {
                         id: call_icon
-                        source: "gfx/placeholder_icon.png"
-                        fillMode: "PreserveAspectFit"
-                        smooth: true
+                        bgImage: visual.callButtonSource
+                        bgImagePressed: visual.callButtonPressedSource
                         height: container.height*0.1
                         width: height
+                        onClicked: { Util.log("Invoking a call "+telephone.text); Qt.openUrlExternally("tel:"+telephone.text) }
                     }
                     Text {
                         id: telephone
@@ -158,29 +171,38 @@ Item {
                             left: call_icon.right
                             margins: container.margins
                         }
-                        color: container.fontColor
+                        color: container.fontColorLink
                         font {
                             family: container.fontName
                             pointSize: container.fontSize
                         }
-                    }
-                    MouseArea {
-                        anchors.fill: call
-                        onClicked: { Util.log("Invoking a call "+telephone.text); Qt.openUrlExternally("tel:"+telephone.text) }
-                    }
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: { Util.log("Invoking a call "+telephone.text); Qt.openUrlExternally("tel:"+telephone.text) }
+                        }
+                    }                    
                 }
             }
 
             ListView {
                 id: reservations
-                width: parent.width
-                height: count*(reservationHeight+spacing)
+                width: parent.width                
+                height: (count < 2 ? count : 2)*(reservationHeight+spacing)
                 model: reservationsModel
                 delegate: reservationDelegate
-                interactive: false
-                focus: true
+                //interactive: false
+                clip: true
                 spacing: container.margins
+                keyNavigationWraps: true
+                preferredHighlightBegin: 0
+                preferredHighlightEnd: reservationHeight
+                highlightRangeMode: ListView.StrictlyEnforceRange
             }
+
+            Timer {
+                 interval: 5000; running: true; repeat: true
+                 onTriggered: if(!reservations.moving) reservations.incrementCurrentIndex()
+             }
 
             Rectangle {
                 height: 1
@@ -216,6 +238,12 @@ Item {
         property string dateTime: ""
         property int index: 0
         anchors.fill:  parent
+        fontName: container.fontName
+        fontColor: container.fontColorButton
+        fontColorButton: container.fontColorButton
+        fontSize: container.fontSize
+        buttonBackground: visual.buttonComponent
+        buttonBackgroundPressed: visual.buttonPressedComponent
         onAccepted: {
             reservationsModel.remove(index)
         }

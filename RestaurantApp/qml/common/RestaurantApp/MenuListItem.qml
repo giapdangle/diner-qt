@@ -7,9 +7,9 @@ Item {
 
     property int spacing: 0
     property string itemId: "NOT SET"
-    property int margins: 10
+    property int margins: 8
     property string fontName: "Helvetica"
-    property int fontSize: 10
+    property int fontSize: 8
     property color fontColor: "black"
 
     width: 360
@@ -22,7 +22,7 @@ Item {
         }
 
         radius: 5
-        color: "steelblue"
+        color: "#f9f6f6"
         clip: true
         Row {
             x: 0; y: 0
@@ -32,7 +32,7 @@ Item {
 
             Image {
                 id: icon
-                source: "content/" + iconSource
+                source: iconSource
                 height: parent.height
                 width: height
             }

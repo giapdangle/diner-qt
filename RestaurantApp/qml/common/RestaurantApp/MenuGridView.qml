@@ -5,12 +5,14 @@ Item {
     id: container
     signal menuItemClicked(string itemId);
 
-    property string fontName: "Helvetica"
-    property int fontSize: 12
-    property color fontColor: "black"
+    property string fontName: visual.defaultFontFamily
+    property int fontSize: visual.defaultFontSize
+    property color fontColor: visual.defaultFontColor
+    property color fontColorLink: visual.defaultFontColorLink
+    property double margins: visual.margins
 
-    property int scrollBarWidth: 8
-    property int spacing: 10
+    property int scrollBarWidth: visual.scrollBarWidth
+    property int spacing: visual.margins
 
     // Default values, change when using
     width: 360
@@ -35,8 +37,9 @@ Item {
         cacheBuffer: 8
         anchors {
             fill: parent
+            margins: container.margins
         }
-        cellWidth: container.width / 2
+        cellWidth: width*0.5
         cellHeight: cellWidth
         model: menuModel
         delegate: menuDelegate
@@ -48,13 +51,15 @@ Item {
         MenuGridItem {
             width: grid.cellWidth
             height: grid.cellHeight
-            margins: container.spacing
+            margins: container.margins
             fontName: container.fontName
             fontSize: container.fontSize
             fontColor: container.fontColor
             onClicked: {
-                container.menuItemClicked(itemId);
-                appState.selectedMenuCategeoryId = itemId;
+                container.menuItemClicked(itemId);                
+                appState.selectedMenuCategoryId = itemId;
+                appState.selectedMenuCategoryTitle = title;
+                appState.selectedMenuCategoryIconSource = iconSource;
                 appState.currentViewName = "menuListView";
             }
         }

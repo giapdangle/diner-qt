@@ -5,12 +5,12 @@ Item {
     id: container
 
     property int scrollBarWidth: 8
-    property string fontName: "Helvetica"
-    property int fontSize: 12
-    property int infoFontSize: 22 // Zoomed size
-    property color fontColor: "black"
-    property color fontColorLink: "blue"
-    property double margins: 8
+    property string fontName: visual.defaultFontFamily
+    property int fontSize: visual.defaultFontSize
+    property int infoFontSize: visual.defaultFontSize*2-4 // Zoomed size
+    property color fontColor: visual.defaultFontColor
+    property color fontColorLink: visual.defaultFontColorLink
+    property double margins: visual.margins
 
     property double latitude: 61.50097409814573
     property double longitude: 23.76720428466797
@@ -75,7 +75,7 @@ Item {
             transform: Scale {
                 id: addressScale;
                 origin.x: 0; origin.y: 0
-                xScale: 0.5; yScale: 0.5
+                xScale: 0.7; yScale: 0.7
                 Behavior on xScale { NumberAnimation { duration: 200 } }
                 Behavior on yScale { NumberAnimation { duration: 200 } }
             }
@@ -117,7 +117,7 @@ Item {
                         }
                         smooth: true
                     }
-                }
+                }/*
                 Item {
                     id: call
 
@@ -151,46 +151,79 @@ Item {
                         anchors.fill: call
                         onClicked: { Util.log("Invoking a call "+telephone.text); Qt.openUrlExternally("tel:"+telephone.text) }
                     }
-                }
+                }*/
                 Item {
-                    id: www
-
-                    height: www_icon.height
-                    width: www_icon.width+url.width
-
-                    Image {
-                        id: www_icon
-                        source: "gfx/placeholder_icon.png"
-                        fillMode: "PreserveAspectFit"
-                        smooth: true
+                    id: call
+                    height: call_button.height
+                    width: call_button.width+telephone.width
+                    ImageButton {
+                        id: call_button
+                        bgImage: visual.callButtonSource
+                        bgImagePressed: visual.callButtonPressedSource
                         height: container.height*0.1
                         width: height
+                        onClicked: { Util.log("Invoking a call "+telephone.text); Qt.openUrlExternally("tel:"+telephone.text) }
                     }
                     Text {
-                        id: url                        
-                        text: container.url
+                        id: telephone
+                        text: container.telephone
+                        color: container.fontColorLink
                         smooth: true
                         anchors {
-                            bottom: www.bottom
-                            left: www_icon.right
+                            bottom: call.bottom
+                            left: call_button.right
                             leftMargin: container.margins
                         }
-                        color: container.fontColorLink
                         font {
                             family: container.fontName
                             pointSize: container.infoFontSize
                         }
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: { Util.log("Invoking a call "+telephone.text); Qt.openUrlExternally("tel:"+telephone.text) }
+                        }
                     }
-                    MouseArea {
-                        anchors.fill: www
+                }
+
+                Item {
+                    id: www
+
+                    height: www_button.height
+                    width: www_button.width+url.width
+
+                    ImageButton {
+                        id: www_button
+                        bgImage: visual.wwwButtonSource
+                        bgImagePressed: visual.wwwButtonPressedSource
+                        height: container.height*0.1
+                        width: height
                         onClicked: { Util.log("Launched url "+url.text); Qt.openUrlExternally(url.text) }
+                    }
+                    Text {
+                        id: url                        
+                        text: container.url
+                        color: container.fontColorLink
+                        smooth: true
+                        anchors {
+                            bottom: www.bottom
+                            left: www_button.right
+                            leftMargin: container.margins
+                        }
+                        font {
+                            family: container.fontName
+                            pointSize: container.infoFontSize
+                        }
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: { Util.log("Launched url "+url.text); Qt.openUrlExternally(url.text) }
+                        }
                     }
                 }
             }
 
             Image {
                 id: zoom_icon
-                source: addressBox.zoomedIn ? "gfx/zoom_out.png" : "gfx/zoom_in.png"
+                source: addressBox.zoomedIn ? visual.zoomiOutSource : visual.zoomiInSource
                 smooth: true
                 anchors {
                     top: addressBox.top
