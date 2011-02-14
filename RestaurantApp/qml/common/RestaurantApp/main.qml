@@ -199,7 +199,7 @@ Rectangle {
         State {
             when: appState.currentViewName === "menuGridView";
             name: "showingMenuGridView"
-            PropertyChanges { target: appState; currentCaption: "À la Carte" }
+            PropertyChanges { target: appState; currentCaption: "A la Carte" }
             StateChangeScript { script: viewSwitcher.switchView(menuGridView,0, "instant"); }
         },
         State {
