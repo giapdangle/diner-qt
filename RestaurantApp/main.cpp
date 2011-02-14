@@ -42,6 +42,7 @@ int main(int argc, char *argv[])
 //#ifdef Q_OS_SYMBIAN
 //    viewer.setOrientation(QmlApplicationViewer::ScreenOrientationLockPortrait);
 //#endif
+    viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
     viewer.setMainQmlFile(QLatin1String("qml/RestaurantApp/main.qml"));
     // For N900 set OpenGL rendering
 #ifdef Q_WS_MAEMO_5
