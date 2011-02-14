@@ -36,13 +36,16 @@ int main(int argc, char *argv[])
 #endif
 
     // set viewer parameters
-//#ifdef Q_WS_MAEMO_5
-//    viewer.setOrientation(QmlApplicationViewer::ScreenOrientationLockLandscape);
-//#endif
-//#ifdef Q_OS_SYMBIAN
-//    viewer.setOrientation(QmlApplicationViewer::ScreenOrientationLockPortrait);
-//#endif
-    viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
+#ifdef Q_WS_MAEMO_5
+   viewer.setOrientation(QmlApplicationViewer::ScreenOrientationLockLandscape);
+   context->setContextProperty("globalInLandscape", true);
+#endif
+#ifdef Q_OS_SYMBIAN
+    viewer.setOrientation(QmlApplicationViewer::ScreenOrientationLockPortrait);
+    context->setContextProperty("globalInLandscape", false);
+#endif
+//    viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
+
     viewer.setMainQmlFile(QLatin1String("qml/RestaurantApp/main.qml"));
     // For N900 set OpenGL rendering
 #ifdef Q_WS_MAEMO_5

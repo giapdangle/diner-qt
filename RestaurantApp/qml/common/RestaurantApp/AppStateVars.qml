@@ -4,7 +4,7 @@ QtObject {
     property bool loading: false
     property bool showBackButton: false;
     property bool fromLeft: false
-    property bool inLandscape: false
+    property bool inLandscape: globalInLandscape
     property string currentViewName: ""
     property string cameFromView: ""
     // Contains the title string

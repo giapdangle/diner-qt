@@ -7,44 +7,28 @@ Rectangle {
     // Connect the the orientation sensor signal to our handler function
     Connections {
         target: filter // this is available only on device, on desktop you get warnings
-        onOrientationChanged: orientationChanged(orientation)
+        onOrientationChanged: { orientationChanged(orientation) }
     }
 
     Component.onCompleted: {
-        Util.log("main.qml loaded");
+        Util.log("main.qml loaded, width: " + width + " height: " + height)
         viewSwitcher.switchView(infoView, 0, true);
     }
 
     // Handle orientation changes
     function orientationChanged(orientation) {
-        if (orientation === 0) {
-            Util.log("Orientation UNKNOWN");
-            //mainWindow.rotation = 0;
-            appState.inLandscape = false;
-        } else if (orientation === 1) {
+        if (orientation === 1) {
             Util.log("Orientation TOP POINTING UP");
-            //mainWindow.rotation = 0;
-            appState.inLandscape = false;
+            //appState.inLandscape = true
         } else if (orientation === 2) {
             Util.log("Orientation TOP POINTING DOWN");
-            //mainWindow.rotation = 180;
-            appState.inLandscape = false;
+            //appState.inLandscape = true
         } else if (orientation === 3) {
             Util.log("Orientation LEFT POINTING UP");
-            //mainWindow.rotation = 270;
-            appState.inLandscape = true;
+            //appState.inLandscape = false
         } else if (orientation === 4) {
             Util.log("Orientation RIGHT POINTING UP");
-            //mainWindow.rotation = 90;
-            appState.inLandscape = true;
-        } else if (orientation === 5) {
-            Util.log("Orientation FACE POINTING UP");
-            //mainWindow.rotation = 0;
-            appState.inLandscape = false;
-        } else if (orientation === 6) {
-            Util.log("Orientation FACE POINTING DOWN");
-            //mainWindow.rotation = 0;
-            appState.inLandscape = false;
+            //appState.inLandscape = false
         }
     }
 
@@ -113,8 +97,8 @@ Rectangle {
         anchors {
             top: titleBar.bottom
             left: mainWindow.left
-            right: mainWindow.right
-            bottom: naviBar.top
+            right: naviBar.wide ? mainWindow.right : naviBar.left
+            bottom: naviBar.wide ? naviBar.top : mainWindow.bottom
         }
 
         // View switcher component, handles the view switching and animation
@@ -151,13 +135,21 @@ Rectangle {
         }
     }
 
+
     TabBar {
         id: naviBar
+
+        wide: !appState.inLandscape
+
         anchors {
-            left: mainWindow.left
+            top: wide ? undefined: titleBar.bottom
+            bottom: mainWindow.bottom
+            left: wide ? mainWindow.left : undefined
             right: mainWindow.right
         }
-        height: mainWindow.height*0.12
+        width: wide ? undefined : mainWindow.width*0.12
+        height: wide ? mainWindow.height*0.12 : undefined
+
         fontName: visual.tabBarButtonFont
         fontSize: visual.tabBarButtonFontSize
         fontColor: visual.tabBarButtonFontColor
@@ -166,28 +158,25 @@ Rectangle {
 
         states: [
             State {
-                name: "visible"
-                AnchorChanges { target: naviBar; anchors.bottom: mainWindow.bottom; anchors.top: undefined }
-            },
-            State {
                 name: "hidden"
-                AnchorChanges { target: naviBar; anchors.bottom: undefined; anchors.top: mainWindow.bottom }
+                AnchorChanges {
+                    target: naviBar;
+                    anchors.right: wide ? mainWindow.right : undefined
+                    anchors.left:  wide ? mainWindow.left : mainWindow.right
+                    anchors.top:  wide ? mainWindow.bottom : titleBar.bottom
+                    anchors.bottom:  wide ? undefined : mainWindow.bottom
+                }
             }
         ]
 
-        transitions: Transition { AnchorAnimation { duration: 400;  easing.type: Easing.InOutQuad } }
+        transitions: Transition { AnchorAnimation { duration: 300;  easing.type: Easing.InOutQuad } }
         onTabButtonClicked: {
             Util.log("Tab-bar button clicked: " + buttonName);
             appState.currentViewName = targetView
         }
     }
+
     states: [
-        State {
-            when: appState.inLandscape
-            name: "landscape"
-            // Animate the view switch with viewSwitcher
-            StateChangeScript { script: Util.log("LANDSCAPEEN"); }
-        },
         State {
             when: appState.currentViewName === "infoView";
             name: "showingInfoView"
