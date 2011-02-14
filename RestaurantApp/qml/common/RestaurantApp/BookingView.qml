@@ -21,7 +21,7 @@ Item {
     Column {
         anchors.fill:  parent
         anchors.margins: container.margins
-        spacing: 1.5*container.margins
+        spacing: 1.3*container.margins
         Column {
             width: parent.width
             spacing: container.margins
