@@ -9,12 +9,17 @@ Item {
     // Adjust the gap you want between buttons, it will be applied as margin as well
     // Set the button count to how many Buttons you add
     // Width of the buttons is calculated automatically
-    property int gap: (container.width-buttonCount*buttonWidth)/(buttonCount+1)
+
+    property bool wide: false
+
+    property int gap: !wide ? (container.height-buttonCount*buttonHeight)/(buttonCount+1) : (container.width-buttonCount*buttonWidth)/(buttonCount+1)
+
     property int margins: 8
     property int buttonCount: 4
-    //property int buttonWidth: ((container.width - ( (buttonCount-1)*container.gap)) / buttonCount);
-    property int buttonHeight: container.height-2*margins
-    property int buttonWidth: container.height
+
+    property int buttonWidth: !wide ? container.width : container.height
+    property int buttonHeight: !wide ? container.width-2*margins : container.height-2*margins
+
     property bool show: true
     property string selectedButton: "infoButton"
 
@@ -38,20 +43,29 @@ Item {
     height: 100
 
     Rectangle {
-        height: container.height*0.4
+        width: !wide ? container.width*0.4 : undefined
+        height: wide ? container.width*0.4 : undefined
         anchors {
-            left: container.left
-            right: container.right
-            verticalCenter: container.verticalCenter
+            top: !wide ? container.top : undefined
+            bottom: !wide ? container.bottom : undefined
+            horizontalCenter: !wide ? container.horizontalCenter : undefined
+            left: !wide ? undefined :  container.left
+            right: !wide ?  undefined : container.right
+            verticalCenter: !wide ? undefined : container.verticalCenter
         }
         color: backgroundBarColor
     }
 
-    Row {
+
+    Grid {
+
+        rows: wide ? 1 : buttonCount
+        columns: wide ? buttonCount : 1
+
         anchors {
-            left: container.left
-            right: container.right
-            verticalCenter: container.verticalCenter
+            left: wide ? container.left : undefined
+            right: wide ? container.right : undefined
+            verticalCenter: !wide ? container.verticalCenter : undefined
             leftMargin: gap
             rightMargin: gap
         }
