@@ -48,6 +48,11 @@ Item {
         }
     }
 
+    Flickable {
+        anchors.fill: parent
+        contentWidth: parent.width
+        contentHeight: tile.height + addressBox.height
+
     Column {
         id: column
         spacing: container.margins
@@ -56,6 +61,7 @@ Item {
             margins: container.margins
         }
         OviMapTile {
+            id: tile
             width: parent.width
             height: width-100
             latitude: container.latitude
@@ -250,4 +256,6 @@ Item {
             }
         }
     }
+
+    } // Flickable
 }

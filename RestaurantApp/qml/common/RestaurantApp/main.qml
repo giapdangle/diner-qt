@@ -46,6 +46,8 @@ Rectangle {
     // screen width and height are set from C++ main
     width: 360
     height: 640
+    //width: 800
+    //height: 480
     color: visual.defaultBackgroundColor
 
     Visual {

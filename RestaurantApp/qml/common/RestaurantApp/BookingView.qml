@@ -12,7 +12,7 @@ Item {
     property color fontColor: visual.defaultFontColor
     property color fontColorLink: visual.defaultFontColorLink
     property color fontColorButton: visual.defaultFontColorButton
-    property int margins: 8
+    property int margins: 4
 
     Component.onCompleted: {
         Util.log("BookingView loaded");
