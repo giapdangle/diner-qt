@@ -59,9 +59,10 @@ Item {
         id: input
         text: parent.text
 
+        horizontalAlignment: TextInput.AlignHCenter
         anchors {
-            horizontalCenter: parent.horizontalCenter
-            verticalCenter: parent.verticalCenter
+            topMargin: (container.height/2 - fontSize)
+            fill: parent
         }
         font {
             family: container.fontName
