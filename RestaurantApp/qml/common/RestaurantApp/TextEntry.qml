@@ -59,25 +59,24 @@ Item {
         id: input
         text: parent.text
 
-        horizontalAlignment: TextInput.AlignHCenter
         anchors {
             topMargin: (container.height/2 - fontSize)
             fill: parent
+            margins: 8
         }
         font {
             family: container.fontName
             pointSize: container.fontSize
         }
+        horizontalAlignment: Text.AlignHCenter
         color: container.fontColor
         focus: parent.focus
+        cursorVisible: parent.focus
     }
 
 
-    states: [/*
-        State {
-            name: 'pressed'; when: input.focus
-            PropertyChanges { target: background; source: bgImagePressed; border { left: 38; top: 37; right: 38; bottom: 15 } }
-        },*/
+
+    states: [
         State {
             name: 'active'; when: input.focus
             PropertyChanges { target: background; sourceComponent: bgActive; }

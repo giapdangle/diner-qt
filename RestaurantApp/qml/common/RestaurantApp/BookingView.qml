@@ -41,7 +41,7 @@ Item {
                 fontSize: container.fontSize
                 bg: visual.textFieldComponent
                 bgActive: visual.textFieldActiveComponent
-                text: qsTr("Melanie Eats")
+                text: qsTr("")
                 focus: true
                 KeyNavigation.down: phoneEntry
             }
@@ -65,7 +65,7 @@ Item {
                 fontSize: container.fontSize
                 bg: visual.textFieldComponent
                 bgActive: visual.textFieldActiveComponent
-                text: qsTr("914-499-1900");
+                text: qsTr("");
                 KeyNavigation.up: nameEntry
             }
         }
