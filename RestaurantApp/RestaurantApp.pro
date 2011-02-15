@@ -36,7 +36,7 @@ DEPLOYMENTFOLDERS = common_qml platform_qml
 QML_IMPORT_PATH =
 
 # Avoid auto screen rotation
-DEFINES += ORIENTATIONLOCK
+#DEFINES += ORIENTATIONLOCK
 
 # Needs to be defined for Symbian
 DEFINES += NETWORKACCESS

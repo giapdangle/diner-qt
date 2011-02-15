@@ -19,16 +19,16 @@ Rectangle {
     function orientationChanged(orientation) {
         if (orientation === 1) {
             Util.log("Orientation TOP POINTING UP");
-            //appState.inLandscape = true
+            appState.inLandscape = true
         } else if (orientation === 2) {
             Util.log("Orientation TOP POINTING DOWN");
-            //appState.inLandscape = true
+            appState.inLandscape = true
         } else if (orientation === 3) {
             Util.log("Orientation LEFT POINTING UP");
-            //appState.inLandscape = false
+            appState.inLandscape = false
         } else if (orientation === 4) {
             Util.log("Orientation RIGHT POINTING UP");
-            //appState.inLandscape = false
+            appState.inLandscape = false
         }
     }
 
@@ -99,8 +99,8 @@ Rectangle {
         anchors {
             top: titleBar.bottom
             left: mainWindow.left
-            right: naviBar.wide ? mainWindow.right : naviBar.left
-            bottom: naviBar.wide ? naviBar.top : mainWindow.bottom
+            right: naviBarVertical.left
+            bottom: naviBarHorizontal.top
         }
 
         // View switcher component, handles the view switching and animation
@@ -138,19 +138,18 @@ Rectangle {
     }
 
 
+    // TabBar is vertical and is on the right side
     TabBar {
-        id: naviBar
-
-        wide: !appState.inLandscape
+        id: naviBarVertical
+        show: appState.inLandscape
+        wide: false
 
         anchors {
-            top: wide ? undefined: titleBar.bottom
+            top:  titleBar.bottom
             bottom: mainWindow.bottom
-            left: wide ? mainWindow.left : undefined
             right: mainWindow.right
         }
-        width: wide ? undefined : mainWindow.width*0.12
-        height: wide ? mainWindow.height*0.12 : undefined
+        width: mainWindow.width*0.12
 
         fontName: visual.tabBarButtonFont
         fontSize: visual.tabBarButtonFontSize
@@ -162,11 +161,46 @@ Rectangle {
             State {
                 name: "hidden"
                 AnchorChanges {
-                    target: naviBar;
-                    anchors.right: wide ? mainWindow.right : undefined
-                    anchors.left:  wide ? mainWindow.left : mainWindow.right
-                    anchors.top:  wide ? mainWindow.bottom : titleBar.bottom
-                    anchors.bottom:  wide ? undefined : mainWindow.bottom
+                    target: naviBarVertical
+                    anchors.right: undefined
+                    anchors.left: mainWindow.right
+                }
+            }
+        ]
+        transitions: Transition { AnchorAnimation { duration: 300;  easing.type: Easing.InOutQuad } }
+        onTabButtonClicked: {
+            Util.log("Tab-bar button clicked: " + buttonName);
+            appState.currentViewName = targetView
+        }
+    }
+
+    // TabBar is horizontal and is on the bottom
+    TabBar {
+        id: naviBarHorizontal
+        show: !appState.inLandscape
+        wide: true
+
+        anchors {
+            bottom: mainWindow.bottom
+            left: mainWindow.left
+            right: mainWindow.right
+        }
+        //height: mainWindow.height*0.12
+        height: mainWindow.height*0.12
+
+        fontName: visual.tabBarButtonFont
+        fontSize: visual.tabBarButtonFontSize
+        fontColor: visual.tabBarButtonFontColor
+
+        state: show ? "visible" : "hidden"
+
+        states: [
+            State {
+                name: "hidden"
+                AnchorChanges {
+                    target: naviBarHorizontal
+                    anchors.top: mainWindow.bottom
+                    anchors.bottom: undefined
                 }
             }
         ]
@@ -196,7 +230,8 @@ Rectangle {
         State {
             when: appState.currentViewName === "menuListView";
             name: "showingMenuListView"
-            PropertyChanges { target: naviBar; show: false }
+            PropertyChanges { target: naviBarVertical; show: false }
+            PropertyChanges { target: naviBarHorizontal; show: false }
             PropertyChanges { target: mainWindow; color: visual.menuListViewBackgroundColor }
             PropertyChanges { target: titleBar; showingBackButton: true }
             PropertyChanges { target: appState; cameFromView: "menuGridView" }
