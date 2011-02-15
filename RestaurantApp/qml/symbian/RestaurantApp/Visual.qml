@@ -4,7 +4,7 @@ import QtQuick 1.0
 Item {
     // General
     property string defaultFontFamily: "Helvetica"  // Defaults to correct ones in device
-    property int defaultFontSize: 8
+    property int defaultFontSize: 6
     //property color defaultFontColor: "#6f6a5c"
     property color defaultFontColor: "#767164"
     property color defaultFontColorLink: "#7c0505"
@@ -56,7 +56,7 @@ Item {
     property color titleBackgroundColor: "#7c0505"
 
     property string captionFontFamily: defaultFontFamily
-    property int captionFontSize: 18
+    property int captionFontSize: 8
     property color captionFontColor: "#5a57c5"
     property color captionBackgroundColor: "#ffffff"
 
@@ -95,7 +95,7 @@ Item {
     // Map view
     property string zoomiInSource: "content/zoom_in.png"
     property string zoomiOutSource: "content/zoom_out.png"
-    property int infoFontSize: 10
+    property int infoFontSize: 6
 
 
 

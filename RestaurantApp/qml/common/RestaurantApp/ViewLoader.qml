@@ -23,7 +23,7 @@ Loader {
     }
 
     function loadView() {
-        Util.log("loadView");
+        Util.log("loadView, status:"+status);
         if (status != Loader.Ready)
             source = viewSource;
     }

@@ -9,8 +9,6 @@ Rectangle {
         viewSwitcher.switchView(infoView, 0, true);
     }
 
-    BookingView {visible: false}
-
     // Orientation check
     onHeightChanged: {
         if(width > height) {
@@ -36,8 +34,8 @@ Rectangle {
     // screen width and height are set from C++ main
     width: 360
     height: 640
-    //width: 800
-    //height: 480
+    //width: appState.inLandscape ? 800 : 360
+    //height: appState.inLandscape ? 480 : 640
     color: visual.defaultBackgroundColor
 
     Visual {
@@ -54,7 +52,7 @@ Rectangle {
             left: mainWindow.left
             right: mainWindow.right
         }        
-        height: mainWindow.height*0.12
+        height: appState.inLandscape ? mainWindow.width * 0.12 : mainWindow.height*0.12
         icon.visible: false
         title: ""
         titleImageSoucre: visual.titleImageSource
@@ -63,7 +61,7 @@ Rectangle {
         titleFontBold: true
         titleBackgroundColor: visual.titleBackgroundColor
         captionFontName: visual.captionFontFamily
-        captionFontSize: visual.captionFontSize-6
+        captionFontSize: visual.captionFontSize
         captionFontColor: visual.captionFontColor
         captionBackgoundColor: visual.captionBackgroundColor
         caption: appState.currentCaption        
@@ -118,15 +116,16 @@ Rectangle {
         ViewLoader {
             id: mapView
             viewSource: "MapView.qml"
-            keepLoaded: true            
+            keepLoaded: true
         }
         ViewLoader {
             id: bookingView
-            viewSource: "BookingView.qml"
+            // In this view, switch layout according to orientation.
+            viewSource: appState.inLandscape ? "BookingViewLandscape.qml" : "BookingViewPortrait.qml"
             keepLoaded: true            
+            onViewSourceChanged: source = viewSource
         }
     }
-
 
     // TabBar is vertical and is on the right side
     TabBar {

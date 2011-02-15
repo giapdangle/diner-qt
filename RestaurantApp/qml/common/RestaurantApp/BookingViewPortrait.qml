@@ -15,7 +15,7 @@ Item {
     property int margins: 4
 
     Component.onCompleted: {
-        Util.log("BookingView loaded");
+        Util.log("BookingViewPortrait loaded");
     }
 
 
@@ -24,14 +24,12 @@ Item {
         anchors.margins: container.margins
         spacing: 1.3*container.margins
 
-        Grid {
+        Column {
             width: parent.width
-            rows: appState.inLandscape ? 1 : 2
-            columns: appState.inLandscape ? 2 : 1
             spacing: 1.3*container.margins
 
             Column {
-                width: appState.inLandscape ? parent.width/2 : parent.width
+                width: parent.width
                 spacing: container.margins
 
                 Text {
@@ -56,7 +54,7 @@ Item {
                 }
             }
             Column {
-                width: appState.inLandscape ? parent.width/2 : parent.width
+                width: parent.width
                 spacing: container.margins
                 Text {
                     width: parent.width
@@ -169,7 +167,7 @@ Item {
             }
         }
         Button {
-            width: appState.inLandscape ? parent.width*0.7 : parent.width
+            width: parent.width
             anchors.horizontalCenter: parent.horizontalCenter
             height: visual.defaultItemHeight
             fontName: container.fontName

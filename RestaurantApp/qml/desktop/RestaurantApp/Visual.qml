@@ -56,7 +56,7 @@ Item {
     property color titleBackgroundColor: "#7c0505"
 
     property string captionFontFamily: defaultFontFamily
-    property int captionFontSize: 20
+    property int captionFontSize: 16
     property color captionFontColor: "#5a57c5"
     property color captionBackgroundColor: "#ffffff"
 
