@@ -4,37 +4,19 @@ import "Util.js" as Util
 Rectangle {
     id: mainWindow
 
-    // Connect the the orientation sensor signal to our handler function
-    Connections {
-        target: filter // this is available only on device, on desktop you get warnings
-        onOrientationChanged: { orientationChanged(orientation) }
-    }
-
     Component.onCompleted: {
         Util.log("main.qml loaded, width: " + width + " height: " + height)
         viewSwitcher.switchView(infoView, 0, true);
     }
 
-    // Handle orientation changes
-    function orientationChanged(orientation) {
-        if (orientation === 1) {
-            Util.log("Orientation TOP POINTING UP");
+    // Orientation check
+    onHeightChanged: {
+        if(width > height) {
+            Util.log("Landscape")
             appState.inLandscape = true
-        } else if (orientation === 2) {
-            Util.log("Orientation TOP POINTING DOWN");
-            appState.inLandscape = true
-        } else if (orientation === 3) {
-            Util.log("Orientation LEFT POINTING UP");
+        } else {
+            Util.log("Portrait")
             appState.inLandscape = false
-        } else if (orientation === 4) {
-            Util.log("Orientation RIGHT POINTING UP");
-            appState.inLandscape = false
-        } else if (orientation === 5) {
-            Util.log("Orientation FACE UP");
-            //appState.inLandscape = true
-        } else if (orientation === 6) {
-            Util.log("Orientation FACE DOWN");
-            //appState.inLandscape = true
         }
     }
 
