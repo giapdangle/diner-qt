@@ -71,7 +71,7 @@ Item {
         ListElement { hours: "10"; minutes: "00"; daytime: "pm" }
     }
 
-    function time() {
+    function getTime() {
         return times.get(time.index).hours + ":" + times.get(time.index).minutes + " " + times.get(time.index).daytime
     }
 }

@@ -270,7 +270,7 @@ Item {
         ListElement { number: "31"}
     }
 
-    function date() {
+    function getDate() {
         return "" + months.get(month.index).name + " " + days.get(day.index).number
 
     }

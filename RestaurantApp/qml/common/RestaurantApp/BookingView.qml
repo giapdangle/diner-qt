@@ -171,7 +171,7 @@ Item {
 
     ModalDialog {
         id: dialog
-        text: "Table for " + numberReel.number() + " people, " + dateReel.date() + ", " + timeReel.time()
+        text: "Table for " + numberReel.getNumber() + " people, " + dateReel.getDate() + ", " + timeReel.getTime()
         anchors.fill:  parent
         fontName: container.fontName
         fontColor: container.fontColorButton
@@ -180,7 +180,7 @@ Item {
         buttonBackground: visual.buttonComponent
         buttonBackgroundPressed: visual.buttonPressedComponent
         onAccepted: {
-            reservationsModel.addReservation(nameEntry.text, phoneEntry.text, numberReel.number(), dateReel.date() +", "+ timeReel.time())
+            reservationsModel.addReservation(nameEntry.text, phoneEntry.text, numberReel.getNumber(), dateReel.getDate() +", "+ timeReel.getTime())
         }
     }
 

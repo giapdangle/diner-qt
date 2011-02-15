@@ -73,7 +73,7 @@ Item {
         ListElement { number: "10" }
     }
 
-    function number() {
+    function getNumber() {
         return listModel.get(reel.index).number
     }
 }
