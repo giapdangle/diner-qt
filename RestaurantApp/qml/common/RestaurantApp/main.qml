@@ -9,6 +9,8 @@ Rectangle {
         viewSwitcher.switchView(infoView, 0, true);
     }
 
+    BookingView {visible: false}
+
     // Orientation check
     onHeightChanged: {
         if(width > height) {

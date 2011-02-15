@@ -18,57 +18,69 @@ Item {
         Util.log("BookingView loaded");
     }
 
+
     Column {
         anchors.fill:  parent
         anchors.margins: container.margins
         spacing: 1.3*container.margins
-        Column {
+
+        Grid {
             width: parent.width
-            spacing: container.margins
-            Text {
-                width: parent.width
-                font.family: container.fontName
-                font.pointSize: container.fontSize
-                color: container.fontColor
-                text: qsTr("Name")
+            rows: appState.inLandscape ? 1 : 2
+            columns: appState.inLandscape ? 2 : 1
+            spacing: 1.3*container.margins
+
+            Column {
+                width: appState.inLandscape ? parent.width/2 : parent.width
+                spacing: container.margins
+
+                Text {
+                    width: parent.width
+                    font.family: container.fontName
+                    font.pointSize: container.fontSize
+                    color: container.fontColor
+                    text: qsTr("Name")
+                }
+                TextEntry {
+                    id: nameEntry
+                    width: parent.width
+                    height: visual.defaultItemHeight
+                    fontName: container.fontName
+                    fontColor: container.fontColor
+                    fontSize: container.fontSize
+                    bg: visual.textFieldComponent
+                    bgActive: visual.textFieldActiveComponent
+                    text: qsTr("")
+                    focus: true
+                    KeyNavigation.down: phoneEntry
+                }
             }
-            TextEntry {
-                id: nameEntry
-                width: parent.width
-                height: visual.defaultItemHeight
-                fontName: container.fontName
-                fontColor: container.fontColor
-                fontSize: container.fontSize
-                bg: visual.textFieldComponent
-                bgActive: visual.textFieldActiveComponent
-                text: qsTr("")
-                focus: true
-                KeyNavigation.down: phoneEntry
+            Column {
+                width: appState.inLandscape ? parent.width/2 : parent.width
+                spacing: container.margins
+                Text {
+                    width: parent.width
+                    font.family: container.fontName
+                    font.pointSize: container.fontSize
+                    color: container.fontColor
+                    text: qsTr("Phone number")
+                }
+                TextEntry {
+                    id: phoneEntry
+                    width: parent.width
+                    height: visual.defaultItemHeight
+                    fontName: container.fontName
+                    fontColor: container.fontColor
+                    fontSize: container.fontSize
+                    bg: visual.textFieldComponent
+                    bgActive: visual.textFieldActiveComponent
+                    text: qsTr("");
+                    KeyNavigation.up: nameEntry
+                }
             }
         }
-        Column {
-            width: parent.width
-            spacing: container.margins
-            Text {
-                width: parent.width
-                font.family: container.fontName
-                font.pointSize: container.fontSize
-                color: container.fontColor
-                text: qsTr("Phone number")
-            }
-            TextEntry {
-                id: phoneEntry
-                width: parent.width
-                height: visual.defaultItemHeight
-                fontName: container.fontName
-                fontColor: container.fontColor
-                fontSize: container.fontSize
-                bg: visual.textFieldComponent
-                bgActive: visual.textFieldActiveComponent
-                text: qsTr("");
-                KeyNavigation.up: nameEntry
-            }
-        }
+
+
         Row {
             spacing: 10
             anchors.margins: container.margins
@@ -157,7 +169,8 @@ Item {
             }
         }
         Button {
-            width: parent.width
+            width: appState.inLandscape ? parent.width*0.7 : parent.width
+            anchors.horizontalCenter: parent.horizontalCenter
             height: visual.defaultItemHeight
             fontName: container.fontName
             fontColor: container.fontColorButton
@@ -168,6 +181,7 @@ Item {
             bgPressed: visual.buttonPressedComponent
         }
     } //Column
+
 
     ModalDialog {
         id: dialog
