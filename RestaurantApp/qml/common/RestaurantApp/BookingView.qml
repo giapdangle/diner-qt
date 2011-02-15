@@ -30,7 +30,7 @@ Item {
                 font.family: container.fontName
                 font.pointSize: container.fontSize
                 color: container.fontColor
-                text: "Name"
+                text: qsTr("Name")
             }
             TextEntry {
                 id: nameEntry
@@ -41,9 +41,9 @@ Item {
                 fontSize: container.fontSize
                 bg: visual.textFieldComponent
                 bgActive: visual.textFieldActiveComponent
-                //bgImage: visual.textFieldSource
-                //bgImageActive: visual.textFieldSource
-                text:"Melanie Eats"
+                text: qsTr("Melanie Eats")
+                focus: true
+                KeyNavigation.down: phoneEntry
             }
         }
         Column {
@@ -57,17 +57,16 @@ Item {
                 text: qsTr("Phone number")
             }
             TextEntry {
-                id:phoneEntry
-                width:parent.width
+                id: phoneEntry
+                width: parent.width
                 height: visual.defaultItemHeight
                 fontName: container.fontName
                 fontColor: container.fontColor
                 fontSize: container.fontSize
                 bg: visual.textFieldComponent
                 bgActive: visual.textFieldActiveComponent
-                //bgImage: visual.textFieldSource
-                //bgImageActive: visual.textFieldSource
-                text:"914-499-1900"
+                text: qsTr("914-499-1900");
+                KeyNavigation.up: nameEntry
             }
         }
         Row {
@@ -167,14 +166,12 @@ Item {
             onClicked: dialog.show()
             bg: visual.buttonComponent
             bgPressed: visual.buttonPressedComponent
-            //bgImage: visual.buttonSource
-            //bgImagePressed: visual.buttonPressedSource
         }
     } //Column
 
     ModalDialog {
         id: dialog
-        text: "Tables for "+numberReel.number() +" people, " + dateReel.date() + ", " + timeReel.time()
+        text: "Table for " + numberReel.number() + " people, " + dateReel.date() + ", " + timeReel.time()
         anchors.fill:  parent
         fontName: container.fontName
         fontColor: container.fontColorButton

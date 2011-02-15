@@ -68,6 +68,7 @@ Item {
             pointSize: container.fontSize
         }
         color: container.fontColor
+        focus: parent.focus
     }
 
 
