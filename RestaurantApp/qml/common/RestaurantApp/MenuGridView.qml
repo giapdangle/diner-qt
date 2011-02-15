@@ -14,7 +14,7 @@ Item {
     property int scrollBarWidth: visual.scrollBarWidth
     property int spacing: visual.margins
 
-    // Default values, change when using
+        // Default values, change when using
     width: 360
     height: 640
 
@@ -39,7 +39,7 @@ Item {
             fill: parent
             margins: container.margins
         }
-        cellWidth: width*0.5
+        cellWidth: appState.inLandscape ? width*0.3 : width*0.5
         cellHeight: cellWidth*0.9
         model: menuModel
         delegate: menuDelegate
