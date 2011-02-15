@@ -15,6 +15,9 @@ symbian {
     platform_qml.source = qml/maemo/RestaurantApp
     platform_qml.target = qml
     QML_IMPORT_PATH = qml/maemo/RestaurantApp
+    # Add library search path to find experimental Qt builds too
+    QMAKE_LFLAGS += -Wl,-rpath,/opt/qt4-maemo5/lib
+
 } else:win32{
     # Windows
     platform_qml.source = qml/desktop/RestaurantApp
@@ -33,7 +36,7 @@ DEPLOYMENTFOLDERS = common_qml platform_qml
 QML_IMPORT_PATH =
 
 # Avoid auto screen rotation
-DEFINES += ORIENTATIONLOCK
+#DEFINES += ORIENTATIONLOCK
 
 # Needs to be defined for Symbian
 DEFINES += NETWORKACCESS

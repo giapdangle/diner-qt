@@ -9,6 +9,7 @@ Item {
     // Adjust the gap you want between buttons, it will be applied as margin as well
     // Set the button count to how many Buttons you add
     // Width of the buttons is calculated automatically
+    // Wide property defines whether the bar is layed out horizontally or vertically.
 
     property bool wide: false
 
@@ -44,7 +45,7 @@ Item {
 
     Rectangle {
         width: !wide ? container.width*0.4 : undefined
-        height: wide ? container.width*0.4 : undefined
+        height: wide ? container.height*0.4 : undefined
         anchors {
             top: !wide ? container.top : undefined
             bottom: !wide ? container.bottom : undefined
