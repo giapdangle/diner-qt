@@ -5,19 +5,16 @@ common_qml.target = qml
 # Platform specific files and configuration
 symbian {
     TARGET.UID3 = 0xE5A4B76F
-    HEADERS += orientationfilter.h
     platform_qml.source = qml/symbian/RestaurantApp
     platform_qml.target = qml
     QML_IMPORT_PATH = qml/symbian/RestaurantApp
 } else:maemo5 {
     QT += opengl
-    HEADERS += orientationfilter.h
     platform_qml.source = qml/maemo/RestaurantApp
     platform_qml.target = qml
     QML_IMPORT_PATH = qml/maemo/RestaurantApp
     # Add library search path to find experimental Qt builds too
     QMAKE_LFLAGS += -Wl,-rpath,/opt/qt4-maemo5/lib
-
 } else:win32{
     # Windows
     platform_qml.source = qml/desktop/RestaurantApp
