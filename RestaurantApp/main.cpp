@@ -7,13 +7,6 @@
 #include <QtOpenGL/QGLWidget>
 #endif
 
-#if defined(Q_WS_MAEMO_5) || defined(Q_OS_SYMBIAN)
-#include <QOrientationSensor>
-#include "orientationfilter.h"
-QTM_USE_NAMESPACE
-#endif
-
-
 int main(int argc, char *argv[])
 {
     // Create application
@@ -25,16 +18,6 @@ int main(int argc, char *argv[])
     // Set the screen size to QML context
     QDeclarativeContext* context = viewer.rootContext();
 
-#if defined(Q_WS_MAEMO_5) || defined(Q_OS_SYMBIAN)
-//    // Create an orientation sensor and add it to QML context
-//    QOrientationSensor sensor;
-//    // We use our own filter to be able to signal with QVariant the orientation because Sensors QML-plugin is not yet a part of 1.1
-//    OrientationFilter filter;
-//    sensor.addFilter(&filter);
-//    sensor.start();
-//    context->setContextProperty("filter", &filter);
-#endif
-
     // set viewer parameters
     viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
 
@@ -42,7 +25,6 @@ int main(int argc, char *argv[])
     // For N900 set OpenGL rendering
 #ifdef Q_WS_MAEMO_5
     QGLFormat fmt = QGLFormat::defaultFormat();
-//    fmt.setDirectRendering(true);
     fmt.setDoubleBuffer(true);
 
     QGLWidget *glWidget = new QGLWidget(fmt);
