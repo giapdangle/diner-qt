@@ -4,7 +4,7 @@ import "Util.js" as Util
 Item {
     id: container
 
-    property int scrollBarWidth: 8
+    property int scrollBarWidth: visual.scrollBarWidth
     property string fontName: visual.defaultFontFamily
     property int fontSize: visual.defaultFontSize
     property int infoFontSize: visual.infoFontSize
@@ -56,6 +56,7 @@ Item {
     }
 
     Flickable {
+        id: flick
         anchors.fill: parent
         contentWidth: parent.width
         contentHeight: tile.height + addressBox.height
@@ -228,4 +229,6 @@ Item {
             }
         }
     } // Flickable
+
+    ScrollBar { scrollArea: flick; width: container.scrollBarWidth; anchors.top: flick.top; anchors.right: flick.right; anchors.bottom:  flick.bottom }
 }
