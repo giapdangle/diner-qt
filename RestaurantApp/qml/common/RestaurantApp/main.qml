@@ -29,6 +29,12 @@ Rectangle {
         } else if (orientation === 4) {
             Util.log("Orientation RIGHT POINTING UP");
             appState.inLandscape = false
+        } else if (orientation === 5) {
+            Util.log("Orientation FACE UP");
+            appState.inLandscape = true
+        } else if (orientation === 6) {
+            Util.log("Orientation FACE DOWN");
+            //appState.inLandscape = true
         }
     }
 

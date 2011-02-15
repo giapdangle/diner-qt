@@ -4,7 +4,7 @@ import QtQuick 1.0
 Item {
     // General
     property string defaultFontFamily: "Tahoma"  // Defaults to correct ones in device
-    property int defaultFontSize: 12
+    property int defaultFontSize: 14
     //property color defaultFontColor: "#6f6a5c"
     property color defaultFontColor: "#767164"
     property color defaultFontColorLink: "#7c0505"
@@ -83,7 +83,7 @@ Item {
     // Info view
 
     // Menu grid view
-
+    property int menuGridViewFontSize: defaultFontSize+4
 
     // Menu list view
     property color menuListViewBackgroundColor: "#f9f6f6"
@@ -91,11 +91,10 @@ Item {
     property color menuListViewDishFontColor: "#938282"
     property int menutListViewTitleSize: 18
 
-
     // Map view
     property string zoomiInSource: "content/zoom_in.png"
     property string zoomiOutSource: "content/zoom_out.png"
-    property int infoFontSize: 12
+    property int infoFontSize: defaultFontSize
 
 
     // Booking view

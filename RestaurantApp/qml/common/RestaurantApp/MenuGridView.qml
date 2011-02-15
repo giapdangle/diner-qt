@@ -6,7 +6,7 @@ Item {
     signal menuItemClicked(string itemId);
 
     property string fontName: visual.defaultFontFamily
-    property int fontSize: visual.defaultFontSize
+    property int fontSize: visual.menuGridViewFontSize
     property color fontColor: visual.defaultFontColor
     property color fontColorLink: visual.defaultFontColorLink
     property double margins: visual.margins
