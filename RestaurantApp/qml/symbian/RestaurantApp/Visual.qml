@@ -95,6 +95,7 @@ Item {
     // Map view
     property string zoomiInSource: "content/zoom_in.png"
     property string zoomiOutSource: "content/zoom_out.png"
+    property int infoFontSize: 10
 
 
 
