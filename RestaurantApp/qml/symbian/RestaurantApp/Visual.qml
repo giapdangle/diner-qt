@@ -83,7 +83,7 @@ Item {
     // Info view
 
     // Menu grid view
-
+    property int menuGridViewFontSize: defaultFontSize
 
     // Menu list view
     property color menuListViewBackgroundColor: "#f9f6f6"

@@ -59,7 +59,7 @@ Item {
         id: flick
         anchors.fill: parent
         contentWidth: parent.width
-        contentHeight: tile.height + addressBox.height
+        contentHeight: parent.height * 1.5
 
         Column {
             id: column
@@ -70,7 +70,7 @@ Item {
             }
             OviMapTile {
                 id: tile
-                width: parent.width
+                width: appState.inLandscape ? parent.width/2 : parent.width
                 height: width-100
                 latitude: container.latitude
                 longitude: container.longitude
