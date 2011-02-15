@@ -31,7 +31,7 @@ Rectangle {
             appState.inLandscape = false
         } else if (orientation === 5) {
             Util.log("Orientation FACE UP");
-            appState.inLandscape = true
+            //appState.inLandscape = true
         } else if (orientation === 6) {
             Util.log("Orientation FACE DOWN");
             //appState.inLandscape = true
@@ -173,7 +173,7 @@ Rectangle {
                 }
             }
         ]
-        transitions: Transition { AnchorAnimation { duration: 300;  easing.type: Easing.InOutQuad } }
+        //transitions: Transition { AnchorAnimation { duration: 300;  easing.type: Easing.InOutQuad } }
         onTabButtonClicked: {
             Util.log("Tab-bar button clicked: " + buttonName);
             appState.currentViewName = targetView
@@ -211,7 +211,7 @@ Rectangle {
             }
         ]
 
-        transitions: Transition { AnchorAnimation { duration: 300;  easing.type: Easing.InOutQuad } }
+        //transitions: Transition { AnchorAnimation { duration: 300;  easing.type: Easing.InOutQuad } }
         onTabButtonClicked: {
             Util.log("Tab-bar button clicked: " + buttonName);
             appState.currentViewName = targetView
