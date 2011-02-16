@@ -96,6 +96,8 @@ Item {
                 fontName: container.fontName
                 fontColor: container.fontColorButton
                 fontSize: container.fontSize
+                itemBackground: visual.buttonComponent
+                itemBackgroundPressed: visual.buttonPressedComponent
             }
             Text {
                 anchors.verticalCenter: parent.verticalCenter
@@ -150,8 +152,8 @@ Item {
                     fontName: container.fontName
                     fontColor: container.fontColorButton
                     fontSize: container.fontSize
-                    //itemBackground: visual.buttonComponent
-                    //itemBackgroundPressed: visual.buttonPressedComponent
+                    itemBackground: visual.buttonComponent
+                    itemBackgroundPressed: visual.buttonPressedComponent
                 }
                 TimeReel {
                     id: timeReel
@@ -161,6 +163,8 @@ Item {
                     fontName: container.fontName
                     fontColor: container.fontColorButton
                     fontSize: container.fontSize
+                    itemBackground: visual.buttonComponent
+                    itemBackgroundPressed: visual.buttonPressedComponent
                 }
             }
 
