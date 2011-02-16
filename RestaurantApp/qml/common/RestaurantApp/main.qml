@@ -34,8 +34,6 @@ Rectangle {
     // screen width and height are set from C++ main
     width: 360
     height: 640
-    //width: appState.inLandscape ? 800 : 360
-    //height: appState.inLandscape ? 480 : 640
     color: visual.defaultBackgroundColor
 
     Visual {
@@ -144,6 +142,16 @@ Rectangle {
         fontSize: visual.tabBarButtonFontSize
         fontColor: visual.tabBarButtonFontColor
 
+        // Set graphics for tab bar buttons
+        button1Background: visual.infoButtonSource
+        button1BackgroundSelected: visual.infoButtonPressedSource
+        button2Background: visual.menuButtonSource
+        button2BackgroundSelected: visual.menuButtonPressedSource
+        button3Background: visual.mapButtonSource
+        button3BackgroundSelected: visual.mapButtonPressedSource
+        button4Background: visual.bookingButtonSource
+        button4BackgroundSelected: visual.bookingButtonPressedSource
+
         state: show ? "visible" : "hidden"
 
         states: [
@@ -180,6 +188,16 @@ Rectangle {
         fontName: visual.tabBarButtonFont
         fontSize: visual.tabBarButtonFontSize
         fontColor: visual.tabBarButtonFontColor
+
+        // Set graphics for tab bar buttons
+        button1Background: visual.infoButtonSource
+        button1BackgroundSelected: visual.infoButtonPressedSource
+        button2Background: visual.menuButtonSource
+        button2BackgroundSelected: visual.menuButtonPressedSource
+        button3Background: visual.mapButtonSource
+        button3BackgroundSelected: visual.mapButtonPressedSource
+        button4Background: visual.bookingButtonSource
+        button4BackgroundSelected: visual.bookingButtonPressedSource
 
         state: show ? "visible" : "hidden"
 

@@ -6,6 +6,9 @@ Item {
     property string buttonName: "NOT SET"
     property string target: "NOT SET"
     property string text: ""
+    property string fontName: "Helvetica"
+    property int fontSize: 14
+    property color fontColor: "black"
 
     property bool active: false
     property string bgImage: "gfx/placeholder_icon.png"
@@ -25,6 +28,18 @@ Item {
         fillMode: "PreserveAspectFit"
         anchors.fill: parent
         smooth: true
+    }
+
+    Text {
+        anchors {
+            centerIn: background
+            margins: 10
+        }
+        font {
+            family: container.fontName
+            pointSize: container.fontSize
+        }
+        text: container.text
     }
 
     MouseArea {

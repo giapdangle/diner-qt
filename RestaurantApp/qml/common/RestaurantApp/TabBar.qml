@@ -5,13 +5,7 @@ Item {
 
     signal tabButtonClicked(string targetView, string buttonName);
 
-    // To adjust the navibar:
-    // Adjust the gap you want between buttons, it will be applied as margin as well
-    // Set the button count to how many Buttons you add
-    // Width of the buttons is calculated automatically
-    // Wide property defines whether the bar is layed out horizontally or vertically.
-
-    property bool wide: false
+    property bool wide: true
 
     property int gap: !wide ? (container.height-buttonCount*buttonHeight)/(buttonCount+1) : (container.width-buttonCount*buttonWidth)/(buttonCount+1)
 
@@ -22,22 +16,28 @@ Item {
     property int buttonHeight: !wide ? container.width-2*margins : container.height-2*margins
 
     property bool show: true
-    property string selectedButton: "infoButton"
+    property string selectedButton: ""
 
     property string fontName: "Helvetica"
     property int fontSize: 14
     property color fontColor: "black"
     property color backgroundBarColor: "white"
 
-    property string infoButtonSource: "content/info_button.png"
-    property string menuButtonSource: "content/menu_button.png"
-    property string mapButtonSource: "content/map_button.png"
-    property string bookingButtonSource: "content/booking_button.png"
+    property string button1Background: "gfx/button.png"
+    property string button1BackgroundSelected: "gfx/button_pressed.png"
+    property alias button1Text: button1.text
 
-    property string infoButtonPressedSource: "content/info_button_pressed.png"
-    property string menuButtonPressedSource: "content/menu_button_pressed.png"
-    property string mapButtonPressedSource: "content/map_button_pressed.png"
-    property string bookingButtonPressedSource: "content/booking_button_pressed.png"
+    property string button2Background: "gfx/button.png"
+    property string button2BackgroundSelected: "gfx/button_pressed.png"
+    property alias button2Text: button2.text
+
+    property string button3Background: "gfx/button.png"
+    property string button3BackgroundSelected: "gfx/button_pressed.png"
+    property alias button3Text: button3.text
+
+    property string button4Background: "gfx/button.png"
+    property string button4BackgroundSelected: "gfx/button_pressed.png"
+    property alias button4Text: button4.text
 
     // Default values, change when using
     width: 360
@@ -59,7 +59,6 @@ Item {
 
 
     Grid {
-
         rows: wide ? 1 : buttonCount
         columns: wide ? buttonCount : 1
 
@@ -73,43 +72,59 @@ Item {
         spacing: container.gap
 
         ImageButton {
+            id: button1
             buttonName: "infoButton"
             target: "infoView"
             width: buttonWidth
             height: buttonHeight
             active: container.selectedButton === buttonName
-            bgImage: infoButtonSource
-            bgImagePressed: infoButtonPressedSource
+            bgImage: container.button1Background
+            bgImagePressed: container.button1BackgroundSelected
+            fontName: container.fontName
+            fontSize: container.fontSize
+            fontColor: container.fontColor
             onClicked: { container.selectedButton = buttonName; container.tabButtonClicked(target, buttonName) }
         }
         ImageButton {
+            id: button2
             buttonName: "menuButton"
             target: "menuGridView"
             width: buttonWidth
             height: buttonHeight
             active: container.selectedButton === buttonName
-            bgImage: menuButtonSource
-            bgImagePressed: menuButtonPressedSource
+            bgImage: container.button2Background
+            bgImagePressed: container.button2BackgroundSelected
+            fontName: container.fontName
+            fontSize: container.fontSize
+            fontColor: container.fontColor
             onClicked: { container.selectedButton = buttonName; container.tabButtonClicked(target, buttonName) }
         }
         ImageButton {
+            id: button3
             buttonName: "mapButton"
             target: "mapView"
             width: buttonWidth
             height: buttonHeight
             active: container.selectedButton === buttonName
-            bgImage: mapButtonSource
-            bgImagePressed: mapButtonPressedSource
+            bgImage: container.button3Background
+            bgImagePressed: container.button3BackgroundSelected
+            fontName: container.fontName
+            fontSize: container.fontSize
+            fontColor: container.fontColor
             onClicked: { container.selectedButton = buttonName; container.tabButtonClicked(target, buttonName) }
         }
         ImageButton {
+            id: button4
             buttonName: "bookingButton"
             target: "bookingView"
             width: buttonWidth
             height: buttonHeight
             active: container.selectedButton === buttonName
-            bgImage: bookingButtonSource
-            bgImagePressed: bookingButtonPressedSource
+            bgImage: container.button4Background
+            bgImagePressed: container.button4BackgroundSelected
+            fontName: container.fontName
+            fontSize: container.fontSize
+            fontColor: container.fontColor
             onClicked: { container.selectedButton = buttonName; container.tabButtonClicked(target, buttonName) }
         }
     }
