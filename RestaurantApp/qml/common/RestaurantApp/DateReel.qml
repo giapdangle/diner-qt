@@ -4,9 +4,7 @@ Item {
     id: container
     width: 240
     height:  60
-    property bool pastDates: true
-    property string minDate: "1900-01-01" //TODO: set use min and max dates (use: Qt.formatDate())
-    property string maxDate: "2199-31-12"
+    property bool pastDates: true    
     property int yearWidth: (width-2*margins)*0.4
     property int yearHeight: height
     property int monthWidth: (width-2*margins)*0.3
@@ -17,11 +15,18 @@ Item {
     property int fontSize: 22
     property color fontColor: "#666666"
     property int margins: 8    
-    /*
-    property Gradient gradient: Gradient {
-        GradientStop { position: 0.3; color: "#eeeeee" }
-        GradientStop { position: 1.0; color: "#dddddd" }
-    }*/
+    property Component itemBackground: Component {
+        BorderImage {
+            border { top: 8; bottom: 8; left: 8; right: 8 }
+            source: "gfx/button.png"
+        }
+    }
+    property Component itemBackgroundPressed: Component {
+        BorderImage {
+            border { top: 8; bottom: 8; left: 8; right: 8 }
+            source: "gfx/button_pressed.png"
+        }
+    }
 
     Component {
         id: yearDelegate
@@ -32,26 +37,10 @@ Item {
             fontColor: container.fontColor
             fontName: container.fontName
             fontSize: container.fontSize
-            bg: visual.buttonComponent
-            bgPressed: visual.buttonPressedComponent
+            bg: itemBackground
+            bgPressed: itemBackgroundPressed
+            onClicked: { year.index = index; year.clip = !year.clip }
         }
-
-        /*
-        Rectangle {
-            id:test
-            width: container.yearWidth
-            height: container.yearHeight
-            gradient: container.gradient
-            radius: container.margins
-
-            Text {
-                anchors.centerIn: parent
-                text: number
-                color: container.color
-                font.family: container.fontName
-                font.pixelSize: container.fontSize
-            }
-        }*/
     }
 
     Component {
@@ -63,29 +52,14 @@ Item {
             fontColor: container.fontColor
             fontName: container.fontName
             fontSize: container.fontSize
-            bg: visual.buttonComponent
-            bgPressed: visual.buttonPressedComponent
+            bg: itemBackground
+            bgPressed: itemBackgroundPressed
+            onClicked: { month.index = index; month.clip = !month.clip }
         }
-        /*
-        Rectangle {
-            width: container.monthWidth
-            height: container.monthHeight
-            gradient: container.gradient
-            radius: container.margins
-
-            Text {
-                anchors.centerIn: parent
-                text: number
-                color: container.color
-                font.family: container.fontName
-                font.pixelSize: container.fontSize
-            }
-        }*/
     }
 
     Component {
         id: dayDelegate
-
         Button {
             width: container.dayWidth
             height: container.dayHeight
@@ -93,30 +67,11 @@ Item {
             fontColor: container.fontColor
             fontName: container.fontName
             fontSize: container.fontSize
-            bg: visual.buttonComponent
-            bgPressed: visual.buttonPressedComponent
-            enabled: !(index+1 < days.start || index+1 > days.end)
+            bg: itemBackground
+            bgPressed: itemBackgroundPressed
+            onClicked: { day.index = index; day.clip = !day.clip }
+            opacity: (index+1 < days.start || index+1 > days.end) ? 0.5 : 1.0
         }
-
-/*
-        Rectangle {            
-            width: container.dayWidth
-            height: container.dayHeight
-            //gradient: container.gradient
-            radius: container.margins
-            enabled: index+1 < days.start || index+1 > days.end
-            opacity:  enabled ? 0.5 : 1.0
-            onEnabledChanged: console.log("enabled on "+number+ " = "+enabled)
-
-            Text {
-                anchors.centerIn: parent
-                text: number
-                color: container.color
-                font.family: container.fontName
-                font.pixelSize: container.fontSize
-            }
-        }
-*/
     }
     Row {
         id: reels
@@ -128,14 +83,7 @@ Item {
             height: container.yearHeight
             model: years
             delegate: yearDelegate
-            /*
-            Rectangle {
-                anchors.fill: parent
-                border.width: 1
-                border.color: container.color
-                color: "transparent"
-                radius: container.margins
-            }*/
+            autoClose: false
         }
 
         Reel {
@@ -145,14 +93,7 @@ Item {
             model: months
             delegate: monthDelegate
             onIndexChanged: days.update()
-            /*
-            Rectangle {
-                anchors.fill: parent
-                border.width: 1
-                border.color: container.color
-                color: "transparent"
-                radius: container.margins
-            }*/
+            autoClose: false
         }
 
         Reel {
@@ -164,29 +105,13 @@ Item {
             onIndexChanged: if (index+1 < days.start || index+1 > days.end) index = (((days.count - days.end + index + 1) >  days.start - (index + 1)) ? days.start : days.end) - 1
             model: days
             delegate:  dayDelegate
-/*
-            Rectangle {
-                anchors.fill: parent
-                border.width: 1
-                border.color: container.color
-                color: "transparent"
-                radius: container.margins
-            }*/
+            autoClose: false
         }
     }
 
 
     ListModel{
-        id: years
-        //TODO: implement populating years and selecting current year as default
-        /*
-        function populate(){
-            for (var i = start; i <= end; i++) {
-                years.append({"number": i});
-                console.log("append year: "+i)
-
-            }
-        }*/
+        id: years        
         ListElement { number: "2011" }
         ListElement { number: "2012" }
         ListElement { number: "2013" }

@@ -150,6 +150,8 @@ Item {
                     fontName: container.fontName
                     fontColor: container.fontColorButton
                     fontSize: container.fontSize
+                    //itemBackground: visual.buttonComponent
+                    //itemBackgroundPressed: visual.buttonPressedComponent
                 }
                 TimeReel {
                     id: timeReel
@@ -191,6 +193,7 @@ Item {
         onAccepted: {
             reservationsModel.addReservation(nameEntry.text, phoneEntry.text, numberReel.getNumber(), dateReel.getDate() +", "+ timeReel.getTime())
         }
+        z: 1000
     }
 
 }

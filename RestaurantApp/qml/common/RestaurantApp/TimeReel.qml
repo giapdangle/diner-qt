@@ -8,11 +8,18 @@ Item {
     property int fontSize: 22
     property color fontColor: "#444444"
     property int margin: 8
-    /*
-    property Gradient gradient: Gradient {
-        GradientStop { position: 0.3; color: "#eeeeee" }
-        GradientStop { position: 1.0; color: "#dddddd" }
-    }*/
+    property Component itemBackground: Component {
+        BorderImage {
+            border { top: 8; bottom: 8; left: 8; right: 8 }
+            source: "gfx/button.png"
+        }
+    }
+    property Component itemBackgroundPressed: Component {
+        BorderImage {
+            border { top: 8; bottom: 8; left: 8; right: 8 }
+            source: "gfx/button_pressed.png"
+        }
+    }
 
     Component {
         id: timeDelegate
@@ -23,22 +30,10 @@ Item {
             fontColor: container.fontColor
             fontName: container.fontName
             fontSize: container.fontSize
-            bg: visual.buttonComponent
-            bgPressed: visual.buttonPressedComponent
+            bg: itemBackground
+            bgPressed: itemBackgroundPressed
+            onClicked: { time.index = index; time.clip = !time.clip }
         }
-        /*
-        Rectangle {
-            width: container.width
-            height: container.height
-            gradient: container.gradient
-            Text {
-                anchors.centerIn: parent
-                text: hours + ":" + minutes + " " + daytime
-                color: container.color
-                font.pixelSize: container.fontSize
-                font.family: container.fontName
-            }
-        }*/
     }
 
     Reel {
@@ -48,13 +43,7 @@ Item {
         itemsShown: 6
         model: times
         delegate: timeDelegate
-        /*
-        Rectangle {
-            anchors.fill: parent
-            border.width: 1
-            border.color: container.color
-            color: "transparent"
-        }*/
+        autoClose: false
     }
 
 
