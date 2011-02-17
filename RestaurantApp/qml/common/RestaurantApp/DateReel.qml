@@ -4,6 +4,7 @@ Item {
     id: container
     width: 240
     height:  60
+
     property bool pastDates: true    
     property int yearWidth: (width-2*margins)*0.4
     property int yearHeight: height
@@ -26,6 +27,12 @@ Item {
             border { top: 8; bottom: 8; left: 8; right: 8 }
             source: "gfx/button_pressed.png"
         }
+    }
+
+    Component.onCompleted: {
+        var date = new Date();
+        month.index = date.getMonth();
+        day.index = date.getDate()-1;
     }
 
     Component {
@@ -55,6 +62,7 @@ Item {
             bg: itemBackground
             bgPressed: itemBackgroundPressed
             onClicked: { month.index = index; month.toggle() }
+            opacity: (index+1 < months.start) ? 0.5 : 1.0
         }
     }
 
@@ -83,6 +91,7 @@ Item {
             height: container.yearHeight
             model: years
             delegate: yearDelegate
+            onIndexChanged: months.update()
             autoClose: false            
         }
 
@@ -92,36 +101,53 @@ Item {
             height: container.monthHeight
             model: months
             delegate: monthDelegate
-            onIndexChanged: days.update()
-            autoClose: false            
+            onIndexChanged: { checkIndex(); days.update() }
+            autoClose: false
+            function checkIndex() {
+                if(index+1 < months.start) index = (index+1 < months.start-(index+1)) ? index = 11 : index = months.start-1
+            }
         }
 
         Reel {
             id: day
             width: container.dayWidth
-            height: container.dayHeight
-            // TODO: replace this by more general solution to Reel component or fix the following line
-            //(if e.g. disabled 31 is selected, it now scrolls the first enabled day , although it should choose the last enabled day)
-            onIndexChanged: if (index+1 < days.start || index+1 > days.end) index = (((days.count - days.end + index + 1) >  days.start - (index + 1)) ? days.start : days.end) - 1
+            height: container.dayHeight            
+            onIndexChanged: checkIndex()
             model: days
             delegate:  dayDelegate
-            autoClose: false            
+            autoClose: false
+            function checkIndex() {
+                if(index+1 < days.start) {
+                    index = (31-days.end+index+1 < days.start-(index+1)) ? days.end-1 : days.start-1
+                } else if(index + 1 > days.end) {
+                    index = (index+1-days.end < 31-(index+1)+days.start) ? days.end-1 : days.start-1
+                }
+            }
         }
     }
 
 
     ListModel{
-        id: years        
-        ListElement { number: "2011" }
-        ListElement { number: "2012" }
-        ListElement { number: "2013" }
-        ListElement { number: "2014" }
-        ListElement { number: "2015" }
-        ListElement { number: "2016" }
+        id: years
+        Component.onCompleted: {
+            var currentYear = new Date().getFullYear();
+            for(var i = 0; i < 6; i++) {
+                years.append({"number": currentYear+i});
+            }            
+            months.update();
+        }
     }
 
     ListModel{
         id: months
+        property int start: 1        
+        function update() {
+            var date = new Date();
+            months.start = (year.index === 0) ? date.getMonth()+1 : 1;
+            month.checkIndex();
+            days.update();
+        }
+
         ListElement { number: "1"; name: "January" }
         ListElement { number: "2"; name: "February" }
         ListElement { number: "3"; name: "March" }
@@ -140,26 +166,22 @@ Item {
         id: days
         property int start: 1
         property int end: 31
-        Component.onCompleted: days.init()
 
-        function init() {
-            update();
+        function update() {
             var date = new Date();
-            month.index = date.getMonth();
-            day.index = date.getDate()-1;
-        }
 
-        function update() {            
-            var date = new Date();
-            var year = date.getFullYear();
+            var selectedYear = date.getFullYear();
+            try { selectedYear = years.get(year.index).number;
+            } catch(err) {}
+
             days.start = 1;
-            if (month.index < date.getMonth()) year++;
-            else if (month.index === date.getMonth()) days.start = date.getDate();
+            if (selectedYear == date.getFullYear() && month.index === date.getMonth()) days.start = date.getDate();
 
-            days.end = 32 - new Date(year, month.index, 32).getDate();
+            // Determine the amount of days in month
+            days.end = 32 - new Date(selectedYear, month.index, 32).getDate();
 
-            if(day.index < days.start) day.index = days.start-1;
-            else if (day.index > end ) day.index = days.end-1;
+            if(day.index+1 < days.start) day.index = days.start-1;
+            else if (day.index+1 > days.end ) day.index = days.end-1;
         }
 
         ListElement { number: "1"}
