@@ -20,6 +20,10 @@ Item {
             source: "gfx/button_pressed.png"
         }
     }
+    signal opened()
+    function close() {
+        reel.close();
+    }
 
     Component {
         id: listDelegate
@@ -32,7 +36,7 @@ Item {
             fontSize: container.fontSize
             bg: itemBackground
             bgPressed: itemBackgroundPressed
-            onClicked: { reel.index = index; reel.clip = !reel.clip }
+            onClicked: { reel.index = index; reel.toggle() }
         }
     }
 
@@ -44,6 +48,7 @@ Item {
         model: listModel
         delegate: listDelegate
         autoClose: false
+        onOpened: container.opened()
     }
 
     ListModel {

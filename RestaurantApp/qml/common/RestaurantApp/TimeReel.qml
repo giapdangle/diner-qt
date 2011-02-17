@@ -20,6 +20,10 @@ Item {
             source: "gfx/button_pressed.png"
         }
     }
+    signal opened()
+    function close() {
+        time.close();
+    }
 
     Component {
         id: timeDelegate
@@ -32,7 +36,7 @@ Item {
             fontSize: container.fontSize
             bg: itemBackground
             bgPressed: itemBackgroundPressed
-            onClicked: { time.index = index; time.clip = !time.clip }
+            onClicked: { time.index = index; time.toggle() }
         }
     }
 
@@ -44,6 +48,7 @@ Item {
         model: times
         delegate: timeDelegate
         autoClose: false
+        onOpened: container.opened()
     }
 
 

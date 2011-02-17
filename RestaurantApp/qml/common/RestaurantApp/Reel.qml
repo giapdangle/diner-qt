@@ -11,12 +11,27 @@ Rectangle {
     property int itemsShown: 4
     property bool autoClose: true
     property alias closingDelay: clippingTimer.interval
+    signal opened()
+    signal closed()
+
+    function open() {
+        clip = false;
+        opened()
+    }
+    function close() {
+       clip = true;
+       closed()
+    }
+    function toggle() {
+        clip ? open() : close();
+    }
+
     width: 100
     height: 100
     color: "transparent"
     clip: true
     // Bring to front if not clipped
-    onClipChanged: clip ? shiftZ(reel, -500) : shiftZ(reel, 500)
+    onClipChanged:  { clip ? shiftZ(reel, -500) : shiftZ(reel, 500) }
 
     function shiftZ(obj, delta) {
         if(typeof obj.z != 'undefined') obj.z += delta
@@ -75,7 +90,7 @@ Rectangle {
             startX: path.x+path.width/2; startY: 1-reel.height/2
             PathLine {x: path.x+path.width/2; y: path.height+reel.height/2-1}
         }
-        onMovementStarted: { reel.moving = true; clippingTimer.stop(); reel.clip = false}
+        onMovementStarted: { reel.moving = true; clippingTimer.stop(); reel.open()}
         onMovementEnded: {            
             if(reel.autoClose) {
                 clippingTimer.restart();
@@ -87,7 +102,7 @@ Rectangle {
         Timer {
             id: clippingTimer
             repeat: false; interval: 2000;
-            triggeredOnStart: false; onTriggered: reel.clip = true
+            triggeredOnStart: false; onTriggered: reel.close()
         }        
     }
 }

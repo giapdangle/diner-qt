@@ -14,7 +14,7 @@ Item {
     property string fontName: 'Helvetica'
     property int fontSize: 22
     property color fontColor: "#666666"
-    property int margins: 8    
+    property int margins: 8
     property Component itemBackground: Component {
         BorderImage {
             border { top: 8; bottom: 8; left: 8; right: 8 }
@@ -28,6 +28,13 @@ Item {
         }
     }
 
+    signal opened()
+    function closeAll() {
+        year.close();
+        month.close();
+        day.close();
+    }
+
     Component {
         id: yearDelegate
         Button {
@@ -39,7 +46,7 @@ Item {
             fontSize: container.fontSize
             bg: itemBackground
             bgPressed: itemBackgroundPressed
-            onClicked: { year.index = index; year.clip = !year.clip }
+            onClicked: { year.index = index; year.toggle() }
         }
     }
 
@@ -54,7 +61,7 @@ Item {
             fontSize: container.fontSize
             bg: itemBackground
             bgPressed: itemBackgroundPressed
-            onClicked: { month.index = index; month.clip = !month.clip }
+            onClicked: { month.index = index; month.toggle() }
         }
     }
 
@@ -69,7 +76,7 @@ Item {
             fontSize: container.fontSize
             bg: itemBackground
             bgPressed: itemBackgroundPressed
-            onClicked: { day.index = index; day.clip = !day.clip }
+            onClicked: { day.index = index; day.toggle() }
             opacity: (index+1 < days.start || index+1 > days.end) ? 0.5 : 1.0
         }
     }
@@ -84,6 +91,7 @@ Item {
             model: years
             delegate: yearDelegate
             autoClose: false
+            onOpened: { month.close(); day.close(); container.opened() }
         }
 
         Reel {
@@ -94,6 +102,7 @@ Item {
             delegate: monthDelegate
             onIndexChanged: days.update()
             autoClose: false
+            onOpened: { year.close(); day.close(); container.opened() }
         }
 
         Reel {
@@ -106,6 +115,7 @@ Item {
             model: days
             delegate:  dayDelegate
             autoClose: false
+            onOpened: { year.close(); month.close(); container.opened() }
         }
     }
 

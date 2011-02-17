@@ -98,6 +98,7 @@ Item {
                 fontSize: container.fontSize
                 itemBackground: visual.buttonComponent
                 itemBackgroundPressed: visual.buttonPressedComponent
+                onOpened: { dateReel.closeAll(); timeReel.close() }
             }
             Text {
                 anchors.verticalCenter: parent.verticalCenter
@@ -148,6 +149,7 @@ Item {
                 fontSize: container.fontSize
                 itemBackground: visual.buttonComponent
                 itemBackgroundPressed: visual.buttonPressedComponent
+                onOpened: { numberReel.close(); timeReel.close() }
             }
         }
         Column {
@@ -170,6 +172,7 @@ Item {
                 fontSize: container.fontSize
                 itemBackground: visual.buttonComponent
                 itemBackgroundPressed: visual.buttonPressedComponent
+                onOpened: { numberReel.close(); dateReel.closeAll() }
             }
         }
         Button {
@@ -180,7 +183,7 @@ Item {
             fontColor: container.fontColorButton
             fontSize: container.fontSize
             text: qsTr("Make reservation")
-            onClicked: dialog.show()
+            onClicked: { dialog.show(); numberReel.close(); dateReel.closeAll(); timeReel.close() }
             bg: visual.buttonComponent
             bgPressed: visual.buttonPressedComponent
         }
