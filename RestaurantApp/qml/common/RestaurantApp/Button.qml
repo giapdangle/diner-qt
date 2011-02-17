@@ -75,7 +75,7 @@ Item {
     MouseArea {
         id: mouseArea
         anchors.fill: parent
-        onClicked: container.clicked(container.target, container.buttonName);
+        onClicked: { focus = true; container.clicked(container.target, container.buttonName) }
     }
 
     states: [

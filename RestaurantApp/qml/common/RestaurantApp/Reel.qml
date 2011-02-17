@@ -11,25 +11,16 @@ Rectangle {
     property int itemsShown: 4
     property bool autoClose: true
     property alias closingDelay: clippingTimer.interval
-    signal opened()
-    signal closed()
 
-    function open() {
-        clip = false;
-        opened()
-    }
-    function close() {
-       clip = true;
-       closed()
-    }
-    function toggle() {
-        clip ? open() : close();
-    }
+    function open() { focus = true }
+    function close() { clip = true }
+    function toggle() { clip ? open() : close() }
 
     width: 100
     height: 100
     color: "transparent"
     clip: true
+    onFocusChanged: clip = !focus
     // Bring to front if not clipped
     onClipChanged:  { clip ? shiftZ(reel, -500) : shiftZ(reel, 500) }
 
@@ -71,6 +62,7 @@ Rectangle {
         anchors.centerIn: parent
         model: parent.model
         delegate: reel.delegate
+
 /*
         delegate: Loader {
             id: item
@@ -84,14 +76,14 @@ Rectangle {
         preferredHighlightBegin: 0.5
         preferredHighlightEnd: 0.5
         highlightRangeMode: PathView.StrictlyEnforceRange
-        focus: true
+        focus: false
 
         path: Path {
             startX: path.x+path.width/2; startY: 1-reel.height/2
             PathLine {x: path.x+path.width/2; y: path.height+reel.height/2-1}
         }
         onMovementStarted: { reel.moving = true; clippingTimer.stop(); reel.open()}
-        onMovementEnded: {            
+        onMovementEnded: {
             if(reel.autoClose) {
                 clippingTimer.restart();
             }

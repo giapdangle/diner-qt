@@ -19,11 +19,7 @@ Item {
             border { top: 8; bottom: 8; left: 8; right: 8 }
             source: "gfx/button_pressed.png"
         }
-    }
-    signal opened()
-    function close() {
-        time.close();
-    }
+    }    
 
     Component {
         id: timeDelegate
@@ -47,8 +43,7 @@ Item {
         itemsShown: 6
         model: times
         delegate: timeDelegate
-        autoClose: false
-        onOpened: container.opened()
+        autoClose: false        
     }
 
 

@@ -97,8 +97,7 @@ Item {
                 fontColor: container.fontColorButton
                 fontSize: container.fontSize
                 itemBackground: visual.buttonComponent
-                itemBackgroundPressed: visual.buttonPressedComponent
-                onOpened: { dateReel.closeAll(); timeReel.close() }
+                itemBackgroundPressed: visual.buttonPressedComponent                
             }
             Text {
                 anchors.verticalCenter: parent.verticalCenter
@@ -154,8 +153,7 @@ Item {
                     fontColor: container.fontColorButton
                     fontSize: container.fontSize
                     itemBackground: visual.buttonComponent
-                    itemBackgroundPressed: visual.buttonPressedComponent
-                    onOpened: { numberReel.close(); timeReel.close() }
+                    itemBackgroundPressed: visual.buttonPressedComponent                    
                 }
                 TimeReel {
                     id: timeReel
@@ -166,8 +164,7 @@ Item {
                     fontColor: container.fontColorButton
                     fontSize: container.fontSize
                     itemBackground: visual.buttonComponent
-                    itemBackgroundPressed: visual.buttonPressedComponent
-                    onOpened: { numberReel.close(); dateReel.closeAll() }
+                    itemBackgroundPressed: visual.buttonPressedComponent                    
                 }
             }
 

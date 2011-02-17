@@ -28,13 +28,6 @@ Item {
         }
     }
 
-    signal opened()
-    function closeAll() {
-        year.close();
-        month.close();
-        day.close();
-    }
-
     Component {
         id: yearDelegate
         Button {
@@ -90,8 +83,7 @@ Item {
             height: container.yearHeight
             model: years
             delegate: yearDelegate
-            autoClose: false
-            onOpened: { month.close(); day.close(); container.opened() }
+            autoClose: false            
         }
 
         Reel {
@@ -101,8 +93,7 @@ Item {
             model: months
             delegate: monthDelegate
             onIndexChanged: days.update()
-            autoClose: false
-            onOpened: { year.close(); day.close(); container.opened() }
+            autoClose: false            
         }
 
         Reel {
@@ -114,8 +105,7 @@ Item {
             onIndexChanged: if (index+1 < days.start || index+1 > days.end) index = (((days.count - days.end + index + 1) >  days.start - (index + 1)) ? days.start : days.end) - 1
             model: days
             delegate:  dayDelegate
-            autoClose: false
-            onOpened: { year.close(); month.close(); container.opened() }
+            autoClose: false            
         }
     }
 

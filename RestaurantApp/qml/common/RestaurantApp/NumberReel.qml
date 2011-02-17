@@ -20,10 +20,6 @@ Item {
             source: "gfx/button_pressed.png"
         }
     }
-    signal opened()
-    function close() {
-        reel.close();
-    }
 
     Component {
         id: listDelegate
@@ -47,8 +43,7 @@ Item {
         itemsShown: 6
         model: listModel
         delegate: listDelegate
-        autoClose: false
-        onOpened: container.opened()
+        autoClose: false        
     }
 
     ListModel {

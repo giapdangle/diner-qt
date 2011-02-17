@@ -1,7 +1,7 @@
 import QtQuick 1.0
 import "Util.js" as Util
 
-Item {
+FocusScope {
     id:container
     // Default values, change when using
     width: 360
@@ -17,7 +17,6 @@ Item {
     Component.onCompleted: {
         Util.log("BookingViewPortrait loaded");
     }
-
 
     Column {
         anchors.fill:  parent
@@ -98,7 +97,6 @@ Item {
                 fontSize: container.fontSize
                 itemBackground: visual.buttonComponent
                 itemBackgroundPressed: visual.buttonPressedComponent
-                onOpened: { dateReel.closeAll(); timeReel.close() }
             }
             Text {
                 anchors.verticalCenter: parent.verticalCenter
@@ -149,7 +147,6 @@ Item {
                 fontSize: container.fontSize
                 itemBackground: visual.buttonComponent
                 itemBackgroundPressed: visual.buttonPressedComponent
-                onOpened: { numberReel.close(); timeReel.close() }
             }
         }
         Column {
@@ -171,8 +168,7 @@ Item {
                 fontColor: container.fontColorButton
                 fontSize: container.fontSize
                 itemBackground: visual.buttonComponent
-                itemBackgroundPressed: visual.buttonPressedComponent
-                onOpened: { numberReel.close(); dateReel.closeAll() }
+                itemBackgroundPressed: visual.buttonPressedComponent                
             }
         }
         Button {
