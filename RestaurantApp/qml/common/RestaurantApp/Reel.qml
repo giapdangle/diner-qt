@@ -1,8 +1,7 @@
 import QtQuick 1.0
 
 Rectangle {
-    id: reel
-    //property alias index: path.currentIndex
+    id: reel    
     property alias interactive: path.interactive
     property int index: 0
     property bool moving: false
@@ -12,7 +11,7 @@ Rectangle {
     property bool autoClose: true
     property alias closingDelay: clippingTimer.interval
 
-    function open() { focus = true }
+    function open() { focus = true; clip = false }
     function close() { clip = true }
     function toggle() { clip ? open() : close() }
 
@@ -20,7 +19,8 @@ Rectangle {
     height: 100
     color: "transparent"
     clip: true
-    onFocusChanged: clip = !focus
+    // Close reel when the focus is lost
+    onFocusChanged: if(!focus) close()
     // Bring to front if not clipped
     onClipChanged:  { clip ? shiftZ(reel, -500) : shiftZ(reel, 500) }
 
