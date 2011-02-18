@@ -47,5 +47,7 @@ Item {
     MouseArea {
         anchors.fill: parent
         onClicked: container.clicked(itemId, title, iconSource);
+        onPressed: container.opacity = 0.5
+        onReleased: container.opacity = 1
     }
 }
