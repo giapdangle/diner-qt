@@ -99,28 +99,28 @@ Rectangle {
         ViewLoader {
             id: infoView
             viewSource: "InfoView.qml"
-            keepLoaded: false
+            keepLoaded: true
         }
         ViewLoader {
             id: menuGridView
             viewSource: "MenuGridView.qml"
-            keepLoaded: false
+            keepLoaded: true
         }
         ViewLoader {
             id: menuListView
             viewSource: "MenuListView.qml"
-            keepLoaded: false
+            keepLoaded: true
         }
         ViewLoader {
             id: mapView
             viewSource: "MapView.qml"
-            keepLoaded: false
+            keepLoaded: true
         }
         ViewLoader {
             id: bookingView
             // In this view, switch layout according to orientation.
             viewSource: appState.inLandscape ? "BookingViewLandscape.qml" : "BookingViewPortrait.qml"
-            keepLoaded: false
+            keepLoaded: true
             onViewSourceChanged: source = viewSource
         }
     }
