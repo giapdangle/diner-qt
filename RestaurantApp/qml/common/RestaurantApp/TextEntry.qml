@@ -70,7 +70,6 @@ Item {
         }
         horizontalAlignment: Text.AlignHCenter
         color: container.fontColor
-        focus: parent.focus
         cursorVisible: parent.focus
     }
 
@@ -78,7 +77,7 @@ Item {
 
     states: [
         State {
-            name: 'active'; when: input.focus
+            name: 'active'; when: container.focus
             PropertyChanges { target: background; sourceComponent: bgActive; }
         }
     ]
