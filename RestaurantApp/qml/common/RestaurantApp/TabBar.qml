@@ -65,7 +65,8 @@ Item {
         anchors {
             left: wide ? container.left : undefined
             right: wide ? container.right : undefined
-            verticalCenter: !wide ? container.verticalCenter : undefined
+            verticalCenter: wide ? container.verticalCenter : undefined
+            horizontalCenter: !wide ? container.horizontalCenter : undefined
             leftMargin: gap
             rightMargin: gap
         }
