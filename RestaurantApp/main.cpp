@@ -15,9 +15,6 @@ int main(int argc, char *argv[])
     // Create the viewer helper
     QmlApplicationViewer viewer;
 
-    // Set the screen size to QML context
-    QDeclarativeContext* context = viewer.rootContext();
-
     // set viewer parameters
     viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
 
