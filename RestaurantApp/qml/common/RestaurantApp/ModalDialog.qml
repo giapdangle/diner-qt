@@ -13,10 +13,13 @@ Item {
 
     property string fontName: "Helvetica"
     property int fontSize: 14
+    property int buttonFontSize: fontSize
+    property int textFontSize: fontSize
     property color fontColor: "white"
     property color fontColorButton: "black"
     property Component buttonBackground
     property Component buttonBackgroundPressed
+    property bool showCancelButton: true
 
     // Signals that are emitted from Ok/Cancel -buttons.
     signal accepted
@@ -63,7 +66,7 @@ Item {
                 color: modalDialog.fontColor
                 font {
                     family: modalDialog.fontName
-                    pointSize: modalDialog.fontSize
+                    pointSize: modalDialog.textFontSize
                 }
                 wrapMode: Text.WordWrap
                 horizontalAlignment: Text.AlignHCenter
@@ -82,7 +85,7 @@ Item {
                     text: "OK"
                     fontColor: modalDialog.fontColorButton
                     fontName: modalDialog.fontName
-                    fontSize: modalDialog.fontSize
+                    fontSize: modalDialog.buttonFontSize
                     bg: modalDialog.buttonBackground
                     bgPressed: modalDialog.buttonBackgroundPressed
                     // On click emit "accepted" signal via the main level dialog Item
@@ -99,9 +102,10 @@ Item {
                     text: "Cancel"
                     fontColor: modalDialog.fontColorButton
                     fontName: modalDialog.fontName
-                    fontSize: modalDialog.fontSize
+                    fontSize: modalDialog.buttonFontSize
                     bg: modalDialog.buttonBackground
                     bgPressed: modalDialog.buttonBackgroundPressed
+                    visible: modalDialog.showCancelButton
 
                     // On click emit "cancelled" signal via the main level dialog Item
                     // and hide the dialog.

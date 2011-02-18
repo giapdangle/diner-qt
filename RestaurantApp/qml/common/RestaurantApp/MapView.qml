@@ -30,13 +30,6 @@ Item {
         Util.log("MapView loaded");
     }
 
-    Fader {
-        anchors.fill:  parent
-        // Fade background when address box is zoomed in.
-        state: addressBox.zoomedIn ? "faded" : ""
-        transitionDuration: 300 // Use the same transition time as for the main dialog
-    }
-
     InfoModel {
         id: infoModel
         onStatusChanged: {
@@ -72,18 +65,10 @@ Item {
             longitude: container.longitude
             minZoomLevel: container.minZoomLevel
             maxZoomLevel: container.maxZoomLevel
-
-            Fader {
-                anchors.fill:  parent
-                // Fade also the Map image & capture clicks from it.
-                state: addressBox.zoomedIn ? "faded" : ""
-                transitionDuration: 300 // Use the same transition time as for the main dialog
-            }
         }
 
         Rectangle {
             id: addressBox
-            property bool zoomedIn: false
             height: info.height+container.margins
             width: info.width+container.margins
             color: "transparent"
@@ -198,7 +183,7 @@ Item {
 
             Image {
                 id: zoom_icon
-                source: addressBox.zoomedIn ? visual.zoomiOutSource : visual.zoomiInSource
+                source: dialog.state == "show" ? visual.zoomiOutSource : visual.zoomiInSource
                 smooth: true
                 anchors {
                     top: addressBox.top
@@ -207,21 +192,27 @@ Item {
                 }
             }
 
-
             MouseArea {
                 x: address.x; y: address.y; width: addressBox.width; height: address.height
-                onClicked: addressBox.zoomedIn = !addressBox.zoomedIn
-            }
-
-            Behavior on color { ColorAnimation { duration: 200 } }
-            //transitions: Transition { AnchorAnimation { duration: 200 } }
-
-            states: State {
-                name: "zoomedIn"; when: addressBox.zoomedIn
-                PropertyChanges { target: addressBox; color: "white"}
-                AnchorChanges { target: addressBox; anchors.horizontalCenter: column.horizontalCenter;
-                    anchors.verticalCenter: column.verticalCenter; }
+                onClicked: dialog.show()
             }
         }
     }
+
+    ModalDialog {
+        id: dialog
+        text: container.street + "\n" + container.city
+        anchors.fill:  parent
+        fontName: container.fontName
+        fontColor: container.fontColorButton
+        fontColorButton: container.fontColorButton
+        fontSize: container.fontSize
+        textFontSize: container.fontSize * 3
+        buttonBackground: visual.buttonComponent
+        buttonBackgroundPressed: visual.buttonPressedComponent
+        showCancelButton: false
+        onAccepted: {
+        }
+    }
+
 }
