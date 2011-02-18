@@ -16,7 +16,7 @@ Item {
     property int buttonHeight: !wide ? container.width-2*margins : container.height-2*margins
 
     property bool show: true
-    property string selectedButton: ""
+    property string selectedButton: button1.buttonName  // Initially focus the 1st button
 
     property string fontName: "Helvetica"
     property int fontSize: 14

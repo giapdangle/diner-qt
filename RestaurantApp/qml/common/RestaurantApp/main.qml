@@ -164,7 +164,10 @@ Rectangle {
                 }
             }
         ]
-        //transitions: Transition { AnchorAnimation { duration: 300;  easing.type: Easing.InOutQuad } }
+
+
+        onSelectedButtonChanged: naviBarHorizontal.selectedButton = naviBarVertical.selectedButton
+
         onTabButtonClicked: {
             Util.log("Tab-bar button clicked: " + buttonName);
             appState.currentViewName = targetView
@@ -182,7 +185,6 @@ Rectangle {
             left: mainWindow.left
             right: mainWindow.right
         }
-        //height: mainWindow.height*0.12
         height: mainWindow.height*0.12
 
         fontName: visual.tabBarButtonFont
@@ -212,7 +214,8 @@ Rectangle {
             }
         ]
 
-        //transitions: Transition { AnchorAnimation { duration: 300;  easing.type: Easing.InOutQuad } }
+        onSelectedButtonChanged: naviBarVertical.selectedButton = naviBarHorizontal.selectedButton
+
         onTabButtonClicked: {
             Util.log("Tab-bar button clicked: " + buttonName);
             appState.currentViewName = targetView
