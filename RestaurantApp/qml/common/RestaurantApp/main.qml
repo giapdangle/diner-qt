@@ -121,7 +121,11 @@ Rectangle {
             // In this view, switch layout according to orientation.
             viewSource: appState.inLandscape ? "BookingViewLandscape.qml" : "BookingViewPortrait.qml"
             keepLoaded: true
-            onViewSourceChanged: source = viewSource
+            onViewSourceChanged: {
+                if(appState.currentViewName === "bookingView") {
+                    source = viewSource
+                }
+            }
         }
     }
 
