@@ -49,5 +49,9 @@ Item {
         onClicked: container.clicked(itemId, title, iconSource);
         onPressed: container.opacity = 0.5
         onReleased: container.opacity = 1
+        // onPosChanged handler is a workaround to an issue where the item stays
+        // "selected" (i.e. mousearea stays pressed for some reason, and does not
+        // change to released correctly) when flicking scrolling the grid.
+        onPositionChanged: container.opacity = 1
     }
 }
