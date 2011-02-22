@@ -1,27 +1,37 @@
 import QtQuick 1.0
 
-// Dimmer Item consists of Fader and one rectangle, two states and animations between them.
+// Dialog Item consists of Fader and one item, two states and animations between them.
 // - Fader: Dimms the background & captures mouse events.
-// - Rect #2: Shows an Ok/Cancel dialog with some text on it.
-// - States: Handles the opacity changes for rects 1 & 2.
+// - Item Shows the Dialog with some text on it and with Ok/Cancel buttons.
+// - States: Handles the opacity changes for the dialog item.
 // - Transitions: Transitions between the dialog showing/hiding states smoothly.
 Item {
     id: modalDialog
 
-    // Text to be shown within the modal dialog.
-    property string text: ""
+    // The width and height are meant to be replaced by the parent, e.g. by
+    // using anchors.fill. So remember to modify these when instantiating
+    // a ModalNote. Otherwise it'll just use S³ default resolution.
+    width: 360
+    height: 640
 
+    // Text to be shown within the modal dialog.
+    // Should always be modified by parent.
+    property string text: "NOT SET"
+
+    // Font properties, that can (and should) be changed by parent.
     property string fontName: "Helvetica"
     property int fontSize: 14
     property int buttonFontSize: fontSize
     property int textFontSize: fontSize
     property color fontColor: "white"
     property color fontColorButton: "black"
+    // These components are used to change button look and feel.
     property Component buttonBackground
     property Component buttonBackgroundPressed
     property bool showCancelButton: true
 
-    // Signals that are emitted from Ok/Cancel -buttons.
+    // Signals that are emitted from Ok/Cancel -buttons. Parent should
+    // define handlers for these to react to user selection.
     signal accepted
     signal cancelled
 
@@ -34,7 +44,7 @@ Item {
     // to items lying underneath the dialog. I.e. makes the dialog "modal".
     Fader {
         id: fadeRect
-        anchors.fill:  parent
+        anchors.fill: parent
 
         // Bind main dialog's state with fader's corresponding states.
         state: modalDialog.state == "show" ? "faded" : ""
@@ -91,7 +101,7 @@ Item {
                     // On click emit "accepted" signal via the main level dialog Item
                     // and hide the dialog.
                     onClicked: {
-                        console.log("Dialog Ok Button pressed");
+                        console.log("Dialog was being accepted.");
                         modalDialog.state = "";
                         modalDialog.accepted();
                     }
@@ -110,7 +120,7 @@ Item {
                     // On click emit "cancelled" signal via the main level dialog Item
                     // and hide the dialog.
                     onClicked: {
-                        console.log("Dialog Cancel Button pressed");
+                        console.log("Dialog was being cancelled");
                         modalDialog.state = "";
                         modalDialog.cancelled();
                     }
