@@ -5,17 +5,22 @@ Item {
     width: 240
     height:  60
 
-    property bool pastDates: true    
-    property int yearWidth: (width-2*margins)*0.4
+    // Year item dimensions
+    property int yearWidth: (width-2*spacing)*0.4
     property int yearHeight: height
-    property int monthWidth: (width-2*margins)*0.3
+    // Month item dimensions
+    property int monthWidth: (width-2*spacing)*0.3
     property int monthHeight: height
-    property int dayWidth: (width-2*margins)*0.3
+    // Day item dimensions
+    property int dayWidth: (width-2*spacing)*0.3
     property int dayHeight: height
+    // Font properties
     property string fontName: 'Helvetica'
     property int fontSize: 22
     property color fontColor: "#666666"
-    property int margins: 8
+    // Spacing between items
+    property int spacing: 8
+
     property Component itemBackground: Component {
         BorderImage {
             border { top: 8; bottom: 8; left: 8; right: 8 }
@@ -83,7 +88,7 @@ Item {
     }
     Row {
         id: reels
-        spacing: container.margins
+        spacing: container.spacing
 
         Reel {
             id: year
