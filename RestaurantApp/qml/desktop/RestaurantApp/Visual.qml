@@ -46,7 +46,7 @@ Item {
     property string wwwButtonPressedSource: "content/www_button_pressed.png"
     property string titleImageSource: "content/title.png"
     property string cancelButtonSource: "content/cancel_button.png"
-    property string cancelButtonPressedSource: "content/cancel_button.png"
+    property string cancelButtonPressedSource: "content/cancel_button_pressed.png"
     property string bookingIconSource: "content/booking_icon.png"
 
 
