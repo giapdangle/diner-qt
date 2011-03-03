@@ -29,29 +29,7 @@ Rectangle {
         if(obj.parent) shiftZ(obj.parent, delta) // Set z recursively to parent
     }
 
-    onIndexChanged: path.currentIndex = reel.index/*; selectIndex()
-
-    //TODO: figure out a way to access the enabled property on pathView instance
-    function selectIndex() {
-        var str = path.model.get(index).enabled ? "enabled" : "disabled";
-        console.log("item " + path.model.get(index).number+" "+str+" "+path.model.get(index).enabled)
-
-        if(path.model.get(index).enabled) {
-            var checks = path.model.count/2+1;
-            var last = path.model.count-1;
-            for(var i = 1; i <= checks; i++) {
-                if(path.model.get((index+i)%last).enabled) {
-                    reel.index = (index+i)%last;
-                    console.log("corrected up");
-                    break;
-                } else if (model.get((last+index-i)%last).enabled) {
-                    reel.index = (last+index-i)%last;
-                    console.log("corrected down");
-                    break;
-                }
-            }
-        }
-    }*/
+    onIndexChanged: path.currentIndex = reel.index
 
     PathView {
         id: path
@@ -63,16 +41,6 @@ Rectangle {
         model: parent.model
         delegate: reel.delegate
 
-/*
-        delegate: Loader {
-            id: item
-            sourceComponent: reel.delegate
-            MouseArea {
-                anchors.fill: parent
-                onClicked: { reel.index = index; reel.clip = !reel.clip; clippingTimer.stop() }
-            }
-        }
-*/
         preferredHighlightBegin: 0.5
         preferredHighlightEnd: 0.5
         highlightRangeMode: PathView.StrictlyEnforceRange

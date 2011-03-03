@@ -95,8 +95,7 @@ Item {
     Component {
         id: listDelegate
         MenuListItem {
-            width: listView.width
-            //height: container.listItemheight
+            width: listView.width            
             spacing: container.spacing
             margins: container.margins
             fontName: container.fontName

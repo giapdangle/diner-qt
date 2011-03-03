@@ -72,7 +72,6 @@ Rectangle {
             margins: container.margins
         }
         height: container.height / 2
-        //anchors.centerIn: titleText
     }
 
     Text {
@@ -135,7 +134,6 @@ Rectangle {
         anchors.top: container.top
         anchors.right: container.right
         anchors.margins: 0
-        //x: parent.width - width - y
         bgImage: container.exitButtonSource
         bgImagePressed: container.exitButtonPressedSource
 
@@ -153,7 +151,6 @@ Rectangle {
         width: container.height
         height: container.height
         scale: 0.8
-        //x: parent.width - width - y
         bgImage: container.backButtonSource
         bgImagePressed: container.backButtonPressedSource
 

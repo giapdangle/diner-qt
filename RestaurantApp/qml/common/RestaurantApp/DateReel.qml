@@ -135,11 +135,6 @@ Item {
     ListModel{
         id: years        
         Component.onCompleted: {
-            /*
-            var currentYear = new Date().getFullYear();
-            for(var i = 0; i < 6; i++) {
-                years.append({"number": currentYear+i});
-            } */
             months.update();
         }
         ListElement { number: "2011" }
