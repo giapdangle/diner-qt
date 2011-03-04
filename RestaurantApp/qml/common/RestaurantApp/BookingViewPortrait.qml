@@ -180,7 +180,7 @@ FocusScope {
             fontColor: container.fontColorButton
             fontSize: container.fontSize
             text: qsTr("Make reservation")
-            onClicked: { dialog.show(); numberReel.close(); dateReel.closeAll(); timeReel.close() }
+            onClicked: dialog.show()
             bg: visual.buttonComponent
             bgPressed: visual.buttonPressedComponent
         }
