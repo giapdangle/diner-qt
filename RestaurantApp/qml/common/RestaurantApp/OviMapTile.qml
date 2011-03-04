@@ -13,15 +13,6 @@ Rectangle {
     property int margins: 8
     property int zoomButtonSize: 48
 
-    width: 300
-    height: 300
-    clip: true
-    border {
-        color: "black"
-        width: 2
-    }
-
-
     // You can use this function as the mapImage source-property to get a real map tile from Ovi Maps Tile Rendering API
     function getOviMapsTileUrl(lat, lng, zoom, w, h) {
         var url = "http://m.ovi.me/?c="+lat+","+lng+"&z="+zoom+ "&w="+w+"&h="+h; //+"&u=5h";
@@ -42,6 +33,14 @@ Rectangle {
         }
 
         return "content/map/" + zoom + ".jpg";
+    }
+
+    width: 300
+    height: 300
+    clip: true
+    border {
+        color: "black"
+        width: 2
     }
 
     // Map tile fills the whole item

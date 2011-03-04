@@ -4,12 +4,8 @@ import "Components.js" as Util
 Rectangle {
     id: container
 
-    signal exitButtonClicked
-    signal backButtonClicked(string viewName)
-
     property bool showingBackButton: false
     property int margins: 8
-
     property string iconSource: "gfx/placeholder_icon.png"
     property alias icon: titleIcon
     property string title: "TITLE"
@@ -30,6 +26,8 @@ Rectangle {
     property string backButtonSource: "gfx/back_button.png"
     property string backButtonPressedSource: "gfx/back_button_pressed.png"
 
+    signal exitButtonClicked
+    signal backButtonClicked(string viewName)
 
     // Default values, change when using
     width: 360

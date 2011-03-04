@@ -3,8 +3,6 @@ import QtQuick 1.0
 Item {
     id: container
 
-    signal tabButtonClicked(string targetView, string buttonName);
-
     property bool wide: true
 
     property int gap: !wide ? (container.height-buttonCount*buttonHeight)/(buttonCount+1) : (container.width-buttonCount*buttonWidth)/(buttonCount+1)
@@ -38,6 +36,8 @@ Item {
     property string button4Background: "gfx/button.png"
     property string button4BackgroundSelected: "gfx/button_pressed.png"
     property alias button4Text: button4.text
+
+    signal tabButtonClicked(string targetView, string buttonName);
 
     // Default values, change when using
     width: 360

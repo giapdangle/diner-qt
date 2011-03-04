@@ -2,6 +2,7 @@ import QtQuick 1.0
 
 Rectangle {
     id: reel    
+
     property alias interactive: path.interactive
     property int index: 0
     property bool moving: false
@@ -14,6 +15,10 @@ Rectangle {
     function open() { focus = true; clip = false }
     function close() { clip = true }
     function toggle() { clip ? open() : close() }
+    function shiftZ(obj, delta) {
+        if (typeof obj.z != 'undefined') obj.z += delta
+        if (obj.parent) shiftZ(obj.parent, delta) // Set z recursively to parent
+    }
 
     width: 100
     height: 100
@@ -23,11 +28,6 @@ Rectangle {
     onFocusChanged: if (!focus) close()
     // Bring to front if not clipped
     onClipChanged:  { clip ? shiftZ(reel, -500) : shiftZ(reel, 500) }
-
-    function shiftZ(obj, delta) {
-        if (typeof obj.z != 'undefined') obj.z += delta
-        if (obj.parent) shiftZ(obj.parent, delta) // Set z recursively to parent
-    }
 
     onIndexChanged: path.currentIndex = reel.index
 

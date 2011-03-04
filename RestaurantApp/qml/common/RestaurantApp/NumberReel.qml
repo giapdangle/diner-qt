@@ -2,8 +2,7 @@ import QtQuick 1.0
 
 Item {
     id: container
-    width: 81
-    height: 60
+
     property string fontName: 'Helvetica'
     property int fontSize: 22
     property color fontColor: "#444444"
@@ -20,6 +19,9 @@ Item {
             source: "gfx/button_pressed.png"
         }
     }
+
+    width: 81
+    height: 60
 
     Component {
         id: listDelegate

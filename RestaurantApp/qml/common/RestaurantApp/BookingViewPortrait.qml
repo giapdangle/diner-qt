@@ -3,9 +3,6 @@ import "Util.js" as Util
 
 FocusScope {
     id:container
-    // Default values, change when using
-    width: 360
-    height: 640    
 
     property string fontName: visual.defaultFontFamily
     property int fontSize: visual.defaultFontSize
@@ -13,6 +10,10 @@ FocusScope {
     property color fontColorLink: visual.defaultFontColorLink
     property color fontColorButton: visual.defaultFontColorButton
     property int margins: 4
+
+    // Default values, change when using
+    width: 360
+    height: 640
 
     Component.onCompleted: {
         Util.log("BookingViewPortrait loaded");

@@ -2,8 +2,6 @@ import QtQuick 1.0
 
 Item {
     id: container
-    width: 240
-    height:  60
 
     // Year item dimensions
     property int yearWidth: (width-2*spacing)*0.4
@@ -33,6 +31,9 @@ Item {
             source: "gfx/button_pressed.png"
         }
     }
+
+    width: 240
+    height:  60
 
     Component.onCompleted: {
         var date = new Date();

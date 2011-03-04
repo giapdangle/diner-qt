@@ -8,12 +8,6 @@ import QtQuick 1.0
 Item {
     id: modalDialog
 
-    // The width and height are meant to be replaced by the parent, e.g. by
-    // using anchors.fill. So remember to modify these when instantiating
-    // a ModalNote. Otherwise it'll just use S³ default resolution.
-    width: 360
-    height: 640
-
     // Text to be shown within the modal dialog.
     // Should always be modified by parent.
     property string text: "NOT SET"
@@ -39,6 +33,12 @@ Item {
     function show () {
         modalDialog.state = "show";
     }
+
+    // The width and height are meant to be replaced by the parent, e.g. by
+    // using anchors.fill. So remember to modify these when instantiating
+    // a ModalNote. Otherwise it'll just use S³ default resolution.
+    width: 360
+    height: 640
 
     // Use Fader component to dim the background & prevent key/touch events
     // to items lying underneath the dialog. I.e. makes the dialog "modal".

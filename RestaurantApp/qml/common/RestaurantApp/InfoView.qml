@@ -3,6 +3,7 @@ import "Util.js" as Util
 
 Item {
     id: container
+
     property string fontName: visual.defaultFontFamily
     property int fontSize: visual.defaultFontSize
     property color fontColor: visual.defaultFontColor
@@ -11,6 +12,7 @@ Item {
     property double margins: visual.margins
     property int reservationHeight: 48
     property int scrollBarWidth: visual.scrollBarWidth    
+
     // Default values, change when using
     width: 360
     height: 640

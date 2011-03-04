@@ -19,7 +19,6 @@ Item {
 
     width: 50
     height: 50
-
     opacity: enabled ? 1.0 : 0.5
 
     Image {

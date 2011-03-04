@@ -3,7 +3,6 @@ import QtQuick 1.0
 Item {
     id: container
 
-    signal clicked(string itemId)
     property string itemId: "NOT SET"
     property int margins: 8
     property int spacing: 8
@@ -11,6 +10,8 @@ Item {
     property int fontSize: 12
     property color fontColorTitle: "black"
     property color fontColor: "darkgrey"
+
+    signal clicked(string itemId)
 
     width: 360
     height: dishTitle.height+dishDescription.height

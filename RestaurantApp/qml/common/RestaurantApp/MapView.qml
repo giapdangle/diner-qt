@@ -22,6 +22,7 @@ Item {
     property string url: ""
     property int minZoomLevel: 12
     property int maxZoomLevel: 17
+
     // Default values, change when using
     width: 360
     height: 640

@@ -3,7 +3,6 @@ import "Util.js" as Util
 
 Item {
     id: container
-    signal menuItemClicked(string itemId);
 
     property string fontName: visual.defaultFontFamily
     property int fontSize: visual.menuGridViewFontSize
@@ -14,7 +13,9 @@ Item {
     property int scrollBarWidth: visual.scrollBarWidth
     property int spacing: visual.margins
 
-        // Default values, change when using
+    signal menuItemClicked(string itemId);
+
+    // Default values, change when using
     width: 360
     height: 640
 
