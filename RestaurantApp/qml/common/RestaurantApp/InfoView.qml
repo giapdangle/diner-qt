@@ -22,7 +22,7 @@ Item {
     InfoModel {
         id: infoModel
         onStatusChanged: {
-            if(status == XmlListModel.Ready) {
+            if (status == XmlListModel.Ready) {
                 logo.source = infoModel.get(0).logo
                 street.text = infoModel.get(0).street
                 city.text = infoModel.get(0).city
@@ -203,7 +203,7 @@ Item {
             Timer {
                  id: presenter
                  interval: 5000; running: true; repeat: true
-                 onTriggered: if(!reservations.moving && reservations.count > 2) reservations.incrementCurrentIndex()
+                 onTriggered: if (!reservations.moving && reservations.count > 2) reservations.incrementCurrentIndex()
              }
 
             Rectangle {

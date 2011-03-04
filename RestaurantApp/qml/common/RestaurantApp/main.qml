@@ -11,7 +11,7 @@ Rectangle {
 
     // Orientation check
     onHeightChanged: {
-        if(width > height) {
+        if (width > height) {
             Util.log("Landscape")
             appState.inLandscape = true
         } else {
@@ -122,7 +122,7 @@ Rectangle {
             viewSource: appState.inLandscape ? "BookingViewLandscape.qml" : "BookingViewPortrait.qml"
             keepLoaded: true
             onViewSourceChanged: {
-                if(appState.currentViewName === "bookingView") {
+                if (appState.currentViewName === "bookingView") {
                     source = viewSource
                 }
             }

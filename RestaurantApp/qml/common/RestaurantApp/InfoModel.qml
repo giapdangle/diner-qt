@@ -19,11 +19,11 @@ XmlListModel {
     XmlRole { name: "maxZoomLevel"; query: "map/maxZoomLevel/string()" }
 
     onStatusChanged: {
-        if(status == XmlListModel.Ready) {
+        if (status == XmlListModel.Ready) {
             Util.log("InfoViewModel Status: ready")
-        } else if(status == XmlListModel.Error) {
+        } else if (status == XmlListModel.Error) {
             Util.log("InfoViewModel Status: error")
-        } else if(status == XmlListModel.Loading) {
+        } else if (status == XmlListModel.Loading) {
             Util.log("InfoViewModel Status: loading")
         }
     }

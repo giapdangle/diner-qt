@@ -109,7 +109,7 @@ Item {
             onIndexChanged: { checkIndex(); days.update() }
             autoClose: false
             function checkIndex() {
-                if(index+1 < months.start) index = (index+1 < months.start-(index+1)) ? index = 11 : index = months.start-1
+                if (index+1 < months.start) index = (index+1 < months.start-(index+1)) ? index = 11 : index = months.start-1
             }
         }
 
@@ -122,9 +122,9 @@ Item {
             delegate:  dayDelegate
             autoClose: false
             function checkIndex() {
-                if(index+1 < days.start) {
+                if (index+1 < days.start) {
                     index = (31-days.end+index+1 < days.start-(index+1)) ? days.end-1 : days.start-1
-                } else if(index + 1 > days.end) {
+                } else if (index + 1 > days.end) {
                     index = (index+1-days.end < 31-(index+1)+days.start) ? days.end-1 : days.start-1
                 }
             }
@@ -187,7 +187,7 @@ Item {
             // Determine the amount of days in month
             days.end = 32 - new Date(selectedYear, month.index, 32).getDate();
 
-            if(day.index+1 < days.start) day.index = days.start-1;
+            if (day.index+1 < days.start) day.index = days.start-1;
             else if (day.index+1 > days.end ) day.index = days.end-1;
         }
 

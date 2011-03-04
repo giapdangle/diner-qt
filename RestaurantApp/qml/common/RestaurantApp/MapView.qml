@@ -33,7 +33,7 @@ Item {
     InfoModel {
         id: infoModel
         onStatusChanged: {
-            if(status == XmlListModel.Ready) {
+            if (status == XmlListModel.Ready) {
                 Util.log("Model ready");
                 container.latitude = infoModel.get(0).latitude;
                 container.longitude = infoModel.get(0).longitude;

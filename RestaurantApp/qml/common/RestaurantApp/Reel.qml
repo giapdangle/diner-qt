@@ -20,13 +20,13 @@ Rectangle {
     color: "transparent"
     clip: true
     // Close reel when the focus is lost
-    onFocusChanged: if(!focus) close()
+    onFocusChanged: if (!focus) close()
     // Bring to front if not clipped
     onClipChanged:  { clip ? shiftZ(reel, -500) : shiftZ(reel, 500) }
 
     function shiftZ(obj, delta) {
-        if(typeof obj.z != 'undefined') obj.z += delta
-        if(obj.parent) shiftZ(obj.parent, delta) // Set z recursively to parent
+        if (typeof obj.z != 'undefined') obj.z += delta
+        if (obj.parent) shiftZ(obj.parent, delta) // Set z recursively to parent
     }
 
     onIndexChanged: path.currentIndex = reel.index
@@ -52,7 +52,7 @@ Rectangle {
         }
         onMovementStarted: { reel.moving = true; clippingTimer.stop(); reel.open()}
         onMovementEnded: {
-            if(reel.autoClose) {
+            if (reel.autoClose) {
                 clippingTimer.restart();
             }
             reel.index = path.currentIndex;
