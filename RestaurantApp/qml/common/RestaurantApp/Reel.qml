@@ -11,6 +11,7 @@ Rectangle {
     property int itemsShown: 4
     property bool autoClose: true
     property alias closingDelay: clippingTimer.interval
+    property int closingTimeout: 1000
 
     function open() { focus = true; clip = false }
     function close() { clip = true }
@@ -61,7 +62,7 @@ Rectangle {
 
         Timer {
             id: clippingTimer
-            repeat: false; interval: 2000;
+            repeat: false; interval: reel.closingTimeout;
             triggeredOnStart: false; onTriggered: reel.close()
         }        
     }

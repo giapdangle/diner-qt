@@ -51,6 +51,13 @@ DEFINES += NETWORKACCESS
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp
 
+# Put generated temp-files under tmp
+MOC_DIR = tmp
+OBJECTS_DIR = tmp
+RCC_DIR = tmp
+UI_DIR = tmp
+
+
 # Please do not modify the following two lines. Required for deployment.
 include(qmlapplicationviewer/qmlapplicationviewer.pri)
 qtcAddDeployment()
