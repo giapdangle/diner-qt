@@ -1,7 +1,7 @@
 import QtQuick 1.0
 import "Util.js" as Util
 
-Item {
+FocusScope {
     id:container
 
     property string fontName: visual.defaultFontFamily
@@ -51,7 +51,7 @@ Item {
                     bgActive: visual.textFieldActiveComponent
                     text: qsTr("")
                     focus: true
-                    KeyNavigation.down: phoneEntry
+                    KeyNavigation.right: phoneEntry
                 }
             }
             Column {
@@ -74,7 +74,8 @@ Item {
                     bg: visual.textFieldComponent
                     bgActive: visual.textFieldActiveComponent
                     text: qsTr("");
-                    KeyNavigation.up: nameEntry
+                    focus: false
+                    KeyNavigation.left: nameEntry
                 }
             }
         }

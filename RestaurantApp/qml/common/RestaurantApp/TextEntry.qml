@@ -25,6 +25,7 @@ Item {
     width: 140
     height: 60
     opacity: enabled ? 1.0 : 0.5    
+    focus: input.focus
 
     Loader {
         id: background
@@ -70,14 +71,14 @@ Item {
         }
         horizontalAlignment: Text.AlignHCenter
         color: container.fontColor
-        cursorVisible: parent.focus
+        cursorVisible: input.focus
     }
 
 
 
     states: [
         State {
-            name: 'active'; when: container.focus
+            name: 'active'; when: input.focus
             PropertyChanges { target: background; sourceComponent: bgActive; }
         }
     ]
