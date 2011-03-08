@@ -56,7 +56,7 @@ Item {
     property color titleBackgroundColor: "#7c0505"
 
     property string captionFontFamily: defaultFontFamily
-    property int captionFontSize: 8
+    property int captionFontSize: 10
     property color captionFontColor: "#5a57c5"
     property color captionBackgroundColor: "#ffffff"
 
@@ -81,21 +81,25 @@ Item {
     property string bookingButtonPressedSource: "content/booking_button_pressed.png"
 
     // Info view
-
+    property int infoViewReservationFontSize: 6
+    property int infoViewAddressFontSize: 8
+    property int infoViewFontSize: 8
+    
     // Menu grid view
-    property int menuGridViewFontSize: defaultFontSize
+    property int menuGridViewFontSize: 10
 
     // Menu list view
     property color menuListViewBackgroundColor: "#f9f6f6"
     property color menuListViewDishTitleFontColor: "#7c0505"
     property color menuListViewDishFontColor: "#938282"
-    property int menutListViewTitleSize: 14
+    property int menuListViewTitleSize: 12
+    property int menuListItemFontSize: 8
 
 
     // Map view
     property string zoomiInSource: "content/zoom_in.png"
     property string zoomiOutSource: "content/zoom_out.png"
-    property int infoFontSize: 6
+    property int infoFontSize: 8
 
 
 

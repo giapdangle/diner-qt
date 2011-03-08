@@ -7,7 +7,7 @@ Item {
     property string target: "NOT SET"
     property string text: ""
     property string fontName: "Helvetica"
-    property int fontSize: 14
+    property int fontSize: 16
     property color fontColor: "black"
 
     property bool active: false

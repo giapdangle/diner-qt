@@ -41,7 +41,7 @@ Item {
             margins: container.margins
         }
         cellWidth: appState.inLandscape ? width*0.3 : width*0.5
-        cellHeight: cellWidth*0.9
+        cellHeight: appState.inLandscape ? cellWidth*0.8 : cellWidth*0.9
         model: menuModel
         delegate: menuDelegate
         focus: true

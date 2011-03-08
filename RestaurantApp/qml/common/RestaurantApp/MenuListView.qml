@@ -6,7 +6,7 @@ Item {
 
     property string fontName: visual.defaultFontFamily
     property int fontSize: visual.defaultFontSize
-    property int fontSizeTitle: visual.menutListViewTitleSize
+    property int fontSizeTitle: visual.menuListViewTitleSize
     property color fontColor: visual.menuListViewDishFontColor
     property color fontColorTitle: visual.menuListViewDishTitleFontColor
     property color fontColorLink: visual.defaultFontColorLink
@@ -99,12 +99,9 @@ Item {
             spacing: container.spacing
             margins: container.margins
             fontName: container.fontName
-            fontSize: container.fontSize
+            fontSize: visual.menuListItemFontSize
             fontColor: container.fontColor
             fontColorTitle: container.fontColorTitle
-            onClicked: {
-                Util.log("CLICK");
-            }
         }
     }
 }

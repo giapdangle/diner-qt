@@ -24,7 +24,7 @@ Item {
             source: iconSource
             fillMode: Image.PreserveAspectFit
             smooth: true
-            width: container.width*0.7
+            width: container.width*0.65
             height: width
             anchors.horizontalCenter: parent.horizontalCenter
         }
@@ -47,7 +47,7 @@ Item {
     MouseArea {
         anchors.fill: parent
         onClicked: container.clicked(itemId, title, iconSource);
-        onPressed: container.opacity = 0.5
+        onPressed: container.opacity = 0.4
         onReleased: container.opacity = 1
         // onPosChanged handler is a workaround to an issue where the item stays
         // "selected" (i.e. mousearea stays pressed for some reason, and does not

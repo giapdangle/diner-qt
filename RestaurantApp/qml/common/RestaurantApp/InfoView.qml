@@ -27,8 +27,8 @@ Item {
             if (status == XmlListModel.Ready) {
                 logo.source = infoModel.get(0).logo
                 street.text = infoModel.get(0).street
-                city.text = infoModel.get(0).city
-                country.text = infoModel.get(0).country;
+                city.text = infoModel.get(0).city + ", " + infoModel.get(0).country
+                //country.text = infoModel.get(0).country;
                 telephone.text = infoModel.get(0).telephone
                 description.text = infoModel.get(0).description
             }
@@ -39,8 +39,8 @@ Item {
         id: reservationDelegate
 
         Item {
-            height: 60
-            width: container.width-container.margins
+            height: 40
+            width: container.width-container.margins- 4
 
             Image {
                 id: reservation_icon
@@ -69,7 +69,7 @@ Item {
                 color: container.fontColor
                 font {
                     family: container.fontName
-                    pointSize: container.fontSize-2
+                    pointSize: visual.infoViewReservationFontSize
                 }
             }
             ImageButton {
@@ -90,13 +90,10 @@ Item {
     Flickable {
         id: flicker
         anchors {
-            top: container.top
-            left: container.left
-            right: container.right
+            fill: container
             margins: container.margins
         }
 
-        height: container.height
         contentWidth: width
         contentHeight: column.height
         Column {
@@ -128,7 +125,7 @@ Item {
                         color: container.fontColor
                         font {
                             family: container.fontName
-                            pointSize: container.fontSize
+                            pointSize: visual.infoViewAddressFontSize
                         }
                     }
                     Text {
@@ -136,15 +133,7 @@ Item {
                         color: container.fontColor
                         font {
                             family: container.fontName
-                            pointSize: container.fontSize
-                        }
-                    }
-                    Text {
-                        id: country
-                        color: container.fontColor
-                        font {
-                            family: container.fontName
-                            pointSize: container.fontSize
+                            pointSize: visual.infoViewAddressFontSize
                         }
                     }
                 }
@@ -176,7 +165,7 @@ Item {
                         color: container.fontColorLink
                         font {
                             family: container.fontName
-                            pointSize: container.fontSize
+                            pointSize: visual.infoViewFontSize
                         }
                         MouseArea {
                             anchors.fill: parent
@@ -192,7 +181,6 @@ Item {
                 height: (count < 2 ? count : 2)*(reservationHeight+spacing)
                 model: reservationsModel
                 delegate: reservationDelegate
-                //interactive: false
                 clip: true
                 spacing: container.margins
                 keyNavigationWraps: true
@@ -221,7 +209,7 @@ Item {
                 color: container.fontColor
                 font {
                     family: container.fontName
-                    pointSize: container.fontSize
+                    pointSize: visual.infoViewFontSize
                 }
             }
         }        

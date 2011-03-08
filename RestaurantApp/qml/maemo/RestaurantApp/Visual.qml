@@ -1,10 +1,10 @@
-// Visual style for desktop
+// Visual style for Maemo
 import QtQuick 1.0
 
 Item {
     // General
-    property string defaultFontFamily: "Tahoma"  // Defaults to correct ones in device
-    property int defaultFontSize: 14
+    property string defaultFontFamily: "Helvetica"  // Defaults to correct ones in device
+    property int defaultFontSize: 16
     //property color defaultFontColor: "#6f6a5c"
     property color defaultFontColor: "#767164"
     property color defaultFontColorLink: "#7c0505"
@@ -56,7 +56,7 @@ Item {
     property color titleBackgroundColor: "#7c0505"
 
     property string captionFontFamily: defaultFontFamily
-    property int captionFontSize: 14
+    property int captionFontSize: 24
     property color captionFontColor: "#5a57c5"
     property color captionBackgroundColor: "#ffffff"
 
@@ -67,7 +67,7 @@ Item {
 
     // Tab bar    
     property string tabBarButtonFont: defaultFontFamily
-    property int tabBarButtonFontSize: 16
+    property int tabBarButtonFontSize: 18
     property color tabBarButtonFontColor: "#ffffff"
 
     property string infoButtonSource: "content/info_button.png"
@@ -81,20 +81,24 @@ Item {
     property string bookingButtonPressedSource: "content/booking_button_pressed.png"
 
     // Info view
-
+    property int infoViewReservationFontSize: 16
+    property int infoViewAddressFontSize: 16
+    property int infoViewFontSize: 18
+    
     // Menu grid view
-    property int menuGridViewFontSize: defaultFontSize+4
+    property int menuGridViewFontSize: 20
 
     // Menu list view
     property color menuListViewBackgroundColor: "#f9f6f6"
     property color menuListViewDishTitleFontColor: "#7c0505"
     property color menuListViewDishFontColor: "#938282"
-    property int menutListViewTitleSize: 18
+    property int menuListViewTitleSize: 24
+    property int menuListItemFontSize: 20
 
     // Map view
     property string zoomiInSource: "content/zoom_in.png"
     property string zoomiOutSource: "content/zoom_out.png"
-    property int infoFontSize: defaultFontSize
+    property int infoFontSize: 20
 
 
     // Booking view

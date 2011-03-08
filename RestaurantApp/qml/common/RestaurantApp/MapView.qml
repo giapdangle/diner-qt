@@ -60,8 +60,10 @@ Item {
         }
         OviMapTile {
             id: tile
-            width: appState.inLandscape ? parent.width*0.6 : parent.width
-            height: width-100
+            //width: appState.inLandscape ? prent.width*0.6 : parent.width
+            //height: width-100
+            width: 320
+            height: 240
             latitude: container.latitude
             longitude: container.longitude
             minZoomLevel: container.minZoomLevel
