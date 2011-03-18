@@ -6,5 +6,68 @@ straightforward to convert the application to use internet resources instead of
 local XML-resources. The application is designed in such a way that it is easy 
 to replace the content and visual style for different restaurants.
 
+The application features tab based navigation using a tab bar UI component. The 
+UI is implemented using custom graphics and UI elements, which are designed to 
+be reusable. Special attention has been given for supporting the screen 
+orientations. For example, there are two booking view implementations from which 
+the correct one is chosen depending on the current orientation. The booking view 
+also introduces the Reel UI component, which can be used to select items from a 
+predefined list.
+
 \image restaurant2.png
 
+\section1 UI navigation 
+UI is tab-based. Bottom of the screen is populated with 
+a tab-bar and upon clicking a tab-button the content pane changes content. The 
+main menu grid view provides a drill-down detail view for each of the menu 
+categories. The detailed menu view provides back-button navigation back to the 
+main tab-bar level. In landscape the tab-bar is moved to the right side of the 
+screen
+
+\section1 Theming
+
+Even though QML is cross platform, some visual adjustments are needed for 
+different target platforms. These are defined in a special visual.qml file. The 
+project file RestaurantApp.pro exports the qml source files along with the 
+correct visual.qml so that the resulting qml file set is suitable for the 
+current platform. Please note that there's a bug in QtCreator preventing to show 
+the correct visual.qml for Symbian target, so it has to be opened manually.
+
+\section1 Data storage 
+The application data is stored in an XML file, which 
+could be easily modified to correspond some another restaurant's menu. The file 
+is currently local, but it could be fetched over the network just by simply 
+changing the "source" property of the InfoModel (and of course taking loading 
+times etc. into consideration). The QMLRSSReader is demonstrating network 
+transparency with XmlListModel, so one could take example from that project.
+
+The QMLRestaurantApp also demonstrates appending and using reservations data in 
+a ListModel (ReservationsModel.qml). It also shows how to store/restore that 
+data into/from an SQL database by using JSON format when saving/loading the List 
+model entries.
+
+\section Network usage
+
+Restaurant app uses network currently only for launching the device browser to 
+the restaurant's web site from the MapView, but like described above, one could 
+use the network e.g. for downloading the latest restaurant menu xml from the 
+web. Also, it is be possible to modify the OviMapTile.qml to fetch the real map 
+tile over the network. There are functions implemented already for that purpose, 
+so changing the map tiles to be fetched over the network should be doable merely 
+just by taking those functions into use.
+
+Should the application be modified so that it uses networking extensively 
+instead of the local data, one should also remember to modify the application so 
+that it provides decent indication to the user that something time consuming is 
+happening. One possibility would be to use the wait indicator 
+(WaitIndicator.qml) from the QMLTemplates project.
+
+\section1 Map view
+
+Because Qt Mobility 1.2 is not out yet, the map view is implemented with the Ovi 
+Maps Tile Rendering API. This demo uses only local data, so the network based 
+Ovi Maps tiles are commented out. Instead the tiles are downloaded and bundled 
+in the content-directory according to zoom level. The model-XML describes which 
+zoom levels are available to the map tile component which then knows to use 
+those from the content-dir. The address box can be also zoomed in, so it could 
+be easily shown to cab driver for instance.
