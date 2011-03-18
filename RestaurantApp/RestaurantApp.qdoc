@@ -1,0 +1,10 @@
+\title QML Restaurant App example 
+
+The Restaurant example application demonstrates how QML can be used to build a 
+simple, impressive catalog-type application based on local XML data. It is 
+straightforward to convert the application to use internet resources instead of 
+local XML-resources. The application is designed in such a way that it is easy 
+to replace the content and visual style for different restaurants.
+
+\image restaurant2.png
+
