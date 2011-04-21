@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 #endif
 
 
-#if defined(Q_WS_MAEMO_5) || defined(Q_OS_SYMBIAN)
+#if defined(Q_WS_MAEMO_5) || defined(Q_OS_SYMBIAN) || defined(QT_SIMULATOR)
     viewer.showFullScreen();
 #else
     viewer.show();
