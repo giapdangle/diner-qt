@@ -2,6 +2,8 @@
 common_qml.source = qml/common/RestaurantApp
 common_qml.target = qml
 
+VERSION = 1.0.1
+
 # Platform specific files and configuration
 symbian {
     TARGET.UID3 = 0xE5A4B76F
@@ -15,6 +17,10 @@ symbian {
     QML_IMPORT_PATH = qml/maemo/RestaurantApp
     # Add library search path to find experimental Qt builds too
     QMAKE_LFLAGS += -Wl,-rpath,/opt/qt4-maemo5/lib
+} else:simulator {
+    platform_qml.source = qml/symbian/RestaurantApp
+    platform_qml.target = qml
+    QML_IMPORT_PATH = qml/symbian/RestaurantApp
 } else:win32{
     # Windows
     platform_qml.source = qml/desktop/RestaurantApp
