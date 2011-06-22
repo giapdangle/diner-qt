@@ -3,14 +3,22 @@ import QtQuick 1.0
 Flickable {
     id: container
 
-    property int panoramaWidth:  1600
+    property int panoramaWidth:  1440
     property int panoramaHeight: 640
     property alias titleBarColor: titleBar.color
+    property alias titleBarOpacity: titleBar.opacity
     property alias titleBarTextColor: titleText.color
     property alias titleBarText: titleText.text
-    property alias titleBarOpacity: titleBar.opacity
+    property int titleBarTextSize: 48
 
+
+    property alias headerBarColor: headerBar.color
+    property color headerBarTextColor: "black"
     property alias headerBarOpacity: headerBar.opacity
+    property int headerBarTextSize: 32
+
+    property ListModel headerModel
+
     width: 360
     height: 640
 
@@ -29,7 +37,7 @@ Flickable {
         x: 0; y: 0
         width: parent.width
         height: 80
-        color: container.titleBarColor
+        color: "darkGray"
         opacity: 0.85
         Text {
             id: titleText
@@ -42,7 +50,7 @@ Flickable {
             anchors.top: parent.top
             anchors.right: parent.right
             anchors.left: parent.left
-            font.pixelSize: 42
+            font.pixelSize: container.titleBarTextSize
             color: container.titleBarColor
         }
     }
@@ -53,8 +61,24 @@ Flickable {
         y: titleBar.y + titleBar.height
         width:  parent.width
         height: 80
-        opacity: 0.85
-        color: "white"
+        opacity: 1.0
+        color: "lightGray"
+        Row {
+            Repeater {
+                model: headerModel
+
+                Item {
+                    width: headerBar.width / headerModel.count
+                    height: headerBar.height
+                    Text {
+                        anchors.centerIn: parent
+                        text: title
+                        color :container.headerBarTextColor
+                        font.pixelSize: container.headerBarTextSize
+                    }
+                }
+            }
+        }
     }
 
 }
