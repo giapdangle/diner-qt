@@ -6,7 +6,19 @@ DEPLOYMENTFOLDERS = folder_01
 # Additional import path used to resolve QML modules in Creator's code model
 QML_IMPORT_PATH =
 
-symbian:TARGET.UID3 = 0xE3DA8883
+# Put generated temp-files under tmp
+MOC_DIR = tmp
+OBJECTS_DIR = tmp
+RCC_DIR = tmp
+UI_DIR = tmp
+
+VERSION = 1.0.2
+
+symbian {
+    TARGET.UID3 = 0xE3DA8883
+} else:maemo5 {
+    QT += opengl
+}
 
 # Smart Installer package's UID
 # This UID is from the protected range and therefore the package will

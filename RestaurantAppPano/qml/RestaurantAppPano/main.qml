@@ -1,16 +1,24 @@
 import QtQuick 1.0
 
-Rectangle {
+Item {
+    id: root
+
     width: 360
-    height: 360
-    Text {
-        text: "Hello World"
-        anchors.centerIn: parent
+    height: 640
+
+    Panorama {
+        id: panorama
+        anchors.fill:  parent
+
+        // Title bar
+        titleBarColor: "lightblue"
+        titleBarTextColor: "black"
+        titleBarText: qsTr("Diner")
+        titleBarOpacity: 0.85
+
+        headerBarOpacity: 0.90
+
+        // Content headings
     }
-    MouseArea {
-        anchors.fill: parent
-        onClicked: {
-            Qt.quit();
-        }
-    }
+
 }
