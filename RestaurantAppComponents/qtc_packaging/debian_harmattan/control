@@ -1,14 +1,15 @@
 Source: restaurantapp
-Section: user/hidden
+Section: user/other
 Priority: optional
-Maintainer: Juha Ristolainen <juha.ristolainen@futurice.com>
+Maintainer: unknown <>
 Build-Depends: debhelper (>= 5), libqt4-dev
 Standards-Version: 3.7.3
-Homepage: http://bit.ly/qmlrestaurantapp
+Homepage: <insert the upstream URL, if relevant>
 
 Package: restaurantapp
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, mcsp, qtquickcompat
+Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: <insert up to 60 chars description>
- Demo application: rich local data browser
+ <insert long description, indented with spaces>
+XSBC-Maemo-Display-Name: RestaurantApp
 XB-Maemo-Icon-26: iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEwAACxMBAJqcGAAAA65JREFUaIHtmm1IE3Ecx78nww492A0NbyS4sUENX2yDEESh6YsSKZASId9okq985at8EwkS1IuQXuRLXW8jst6E9CInPUiBbHsRUZibILgo8CTLZeKvF9uNPd1jt+0CPzC8h9/d/b5+/4/3P+A/h9EaSEQBADyAUPZQJPs3xjCMaG5aJkBEPBEt/jg4oldbhySxsROljZ0oaSBBRNNENEpEoUrlKesAEUUBBC4u7mOqox5nW/Zx+82lghjWxsHJeeHmAxAaPWBtHNx8QO6WyexvBRn3THGurAAimgZwK/zhD1I/CVMd9ZhbG8f23rrqDXlWgIMV4OYDcNn9cHJesDZOLlwEEAawiYygiFkC6PqLNNbFI0SGGnDv3VWI6ZTee8siOSdwXviauuBgBfCsIBcuAniKjMhIsUhZAaFHvwAAC+c/Yz4+aVrySgSFPjhYAS67X7YoMgxTkLOtKplpJJpaKth38wHwrIBgywXZolhXreSMkBBjiKaWMB+flK1/hh3obB1Ev2cC6cO9ktapmhh2wHGiBQBKbJ05t4zh9pncvq+5G2P+WaOPUaWsA7FvR6oXCpxX9pyvuTu3LfUTcgy3z+Tin395gNWtx6rPzsewA04FAfm47H7F8/kO9nsm0Nk6qCsPwwIUOicAKGnX1eIlettGNMcCJrdC+UXFkRUgHdPqGGvjcPn0Dc3PrFgzWuyAQk9bQs0cyH+woyjh4n2zMKUn7nWNAiissC67v6BC8tlm12xMEdDTNlJyzM0HCuqEniKU3I1rjrXkUELLsF3CsAM3V3pKjo35Zwv+6+Vi1IimlvDx+2vN8ZZyIH24h5ebD3VdYykBTz7d1T1xqlhHZgQ9RUfCUg4Y4VhArTkWUGssJcBIK2YpAXqG0RKWEqB10pOPqgAzXymqoTZ/Loe6gN9fDSVTLSxVhIxgKQEphXmAXAtV85e7y9nhc3I3jrc6X2oBFhCQEGNIiDHD15sqYG5tHALnhZhO/VNSxeS9JypZkjJVwPbeuq75rFaCQp+0eb/4nKUqcTnyKm+MYZjp4vM1rwPSKoyDFdB56orccCLIMEzZMll1AU7OC19zN4RGD3hWUBo+hAHEkVnYk61QFRXg5Ly5JM80dSklKwKIAXgGncutZQUETtYhMtSAO+8PzEgOyCxsSwvcSYZhkloTVEPOgWsAFqY66rG61ZhLWKP1EWRW5DcBhM1MVhdENEBEOxq+iVjOfhMRIiJXtfNU/VqFiAaym0mlylQr/gK4Pl2zUZF5RAAAAABJRU5ErkJggg==
