@@ -2,11 +2,11 @@
 common_qml.source = qml/common/RestaurantApp
 common_qml.target = qml
 
-VERSION = 1.0.1
+VERSION = 1.0.2
 
 # Platform specific files and configuration
 symbian {
-    TARGET.UID3 = 0xE5A4B76F
+    TARGET.UID3 = 0xE5A4B771
     platform_qml.source = qml/symbian/RestaurantApp
     platform_qml.target = qml
     QML_IMPORT_PATH = qml/symbian/RestaurantApp
