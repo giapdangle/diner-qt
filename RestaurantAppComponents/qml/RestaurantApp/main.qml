@@ -9,6 +9,10 @@ Window {
         id: statusBar
     }
 
+    ReservationsModel {
+        id: reservationsModel
+    }
+
     Visual {
         id: visual
     }

@@ -1,5 +1,6 @@
 import QtQuick 1.0
 import com.nokia.symbian 1.0
+import "Util.js" as Util
 
 Page {
     id: container
@@ -26,8 +27,8 @@ Page {
             if (status == XmlListModel.Ready) {
                 logo.source = infoModel.get(0).logo
                 street.text = infoModel.get(0).street
-                city.text = infoModel.get(0).city + ", " + infoModel.get(0).country
-                //country.text = infoModel.get(0).country;
+                city.text = infoModel.get(0).city //+ ", " + infoModel.get(0).country
+                country.text = infoModel.get(0).country
                 telephone.text = infoModel.get(0).telephone
                 description.text = infoModel.get(0).description
             }
@@ -68,7 +69,7 @@ Page {
                 color: container.fontColor
                 font {
                     family: container.fontName
-                    pointSize: visual.infoViewReservationFontSize
+                    pixelSize: visual.infoViewReservationFontSize
                 }
             }
 //            ImageButton {
@@ -130,7 +131,7 @@ Page {
                         color: container.fontColor
                         font {
                             family: container.fontName
-                            pointSize: visual.infoViewAddressFontSize
+                            pixelSize: visual.infoViewAddressFontSize
                         }
                     }
                     Text {
@@ -138,7 +139,15 @@ Page {
                         color: container.fontColor
                         font {
                             family: container.fontName
-                            pointSize: visual.infoViewAddressFontSize
+                            pixelSize: visual.infoViewAddressFontSize
+                        }
+                    }
+                    Text {
+                        id: country
+                        color: container.fontColor
+                        font {
+                            family: container.fontName
+                            pixelSize: visual.infoViewAddressFontSize
                         }
                     }
                 }
@@ -152,25 +161,24 @@ Page {
 
                     height: call_icon.height
                     width: call_icon.width+telephone.width
-//                    ImageButton {
-//                        id: call_icon
-//                        bgImage: visual.callButtonSource
-//                        bgImagePressed: visual.callButtonPressedSource
-//                        height: container.height*0.1
-//                        width: height
-//                        onClicked: { Util.log("Invoking a call "+telephone.text); Qt.openUrlExternally("tel:"+telephone.text) }
-//                    }
+                    ToolButton {
+                        id: call_icon
+                        iconSource: pressed ? visual.callButtonPressedSource : visual.callButtonSource
+                        flat: true
+                        onClicked: { Util.log("Invoking a call "+telephone.text); Qt.openUrlExternally("tel:"+telephone.text) }
+                    }
                     Text {
                         id: telephone
                         anchors {
                             bottom: call.bottom
                             left: call_icon.right
-                            margins: container.margins
+                            bottomMargin: container.margins + 15
                         }
+                        verticalAlignment: Text.AlignVCenter
                         color: container.fontColorLink
                         font {
                             family: container.fontName
-                            pointSize: visual.infoViewFontSize
+                            pixelSize: visual.infoViewFontSize
                         }
                         MouseArea {
                             anchors.fill: parent
@@ -214,7 +222,7 @@ Page {
                 color: container.fontColor
                 font {
                     family: container.fontName
-                    pointSize: visual.infoViewFontSize
+                    pixelSize: visual.infoViewFontSize
                 }
             }
         }

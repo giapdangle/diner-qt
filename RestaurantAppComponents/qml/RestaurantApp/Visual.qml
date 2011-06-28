@@ -81,9 +81,9 @@ Item {
     property string bookingButtonPressedSource: "content/booking_button_pressed.png"
 
     // Info view
-    property int infoViewReservationFontSize: 6
-    property int infoViewAddressFontSize: 8
-    property int infoViewFontSize: 8
+    property int infoViewReservationFontSize: 12
+    property int infoViewAddressFontSize: 18
+    property int infoViewFontSize: 18
     
     // Menu grid view
     property int menuGridViewFontSize: 10
