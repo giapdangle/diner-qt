@@ -72,21 +72,19 @@ Page {
                     pixelSize: visual.infoViewReservationFontSize
                 }
             }
-//            ImageButton {
-//                id: cancelButton
-//                anchors {
-//                    top: parent.top
-//                    right: parent.right
-//                    rightMargin: container.margins
-//                }
-//                height: 40
-//                width: 76
-//                bgImage: visual.cancelButtonSource
-//                bgImagePressed: visual.cancelButtonPressedSource
-//                onClicked: { dialog.index = index; dialog.dateTime = dateTime; dialog.show() }
-//            }
+            ToolButton {
+                id: cancelButton
+                anchors {
+                    top: parent.top
+                    right: parent.right
+                    rightMargin: container.margins
+                }
+                iconSource: pressed ? visual.cancelButtonPressedSource : visual.cancelButtonSource
+                onClicked: { dialog.index = index; dialog.dateTime = dateTime; dialog.show() }
+            }
         }
     }
+
     Rectangle {
         anchors.fill:  parent
         color: visual.defaultBackgroundColor
@@ -204,10 +202,10 @@ Page {
             }
 
             Timer {
-                 id: presenter
-                 interval: 5000; running: true; repeat: true
-                 onTriggered: if (!reservations.moving && reservations.count > 2) reservations.incrementCurrentIndex()
-             }
+                id: presenter
+                interval: 5000; running: true; repeat: true
+                onTriggered: if (!reservations.moving && reservations.count > 2) reservations.incrementCurrentIndex()
+            }
 
             Rectangle {
                 height: 1
@@ -228,31 +226,32 @@ Page {
         }
     }
 
-//    // ScrollBar indicator. Take the bottommost search field height into account.
-//    ScrollBar {
-//        id: scrollBar
-//        scrollArea: flicker
-//        height: flicker.height
-//        width: container.scrollBarWidth
-//        anchors.right: container.right
-//    }
+    ScrollBar {
+        id: scrollBar
+        flickableItem: flicker
+        interactive: false
+        anchors {
+            right: parent.right
+            top: parent.top
+        }
+    }
 
-//    ModalDialog {
-//        id: dialog
-//        text: "Are you sure you want to cancel your reservation on "+dateTime+"?"
-//        property string dateTime: ""
-//        property int index: 0
-//        anchors.fill:  parent
-//        fontName: container.fontName
-//        fontColor: container.fontColorButton
-//        fontColorButton: container.fontColorButton
-//        fontSize: container.fontSize
-//        buttonBackground: visual.buttonComponent
-//        buttonBackgroundPressed: visual.buttonPressedComponent
-//        onAccepted: {
-//            reservationsModel.remove(index)
-//        }
-//    }
+    //    ModalDialog {
+    //        id: dialog
+    //        text: "Are you sure you want to cancel your reservation on "+dateTime+"?"
+    //        property string dateTime: ""
+    //        property int index: 0
+    //        anchors.fill:  parent
+    //        fontName: container.fontName
+    //        fontColor: container.fontColorButton
+    //        fontColorButton: container.fontColorButton
+    //        fontSize: container.fontSize
+    //        buttonBackground: visual.buttonComponent
+    //        buttonBackgroundPressed: visual.buttonPressedComponent
+    //        onAccepted: {
+    //            reservationsModel.remove(index)
+    //        }
+    //    }
 
 
 }

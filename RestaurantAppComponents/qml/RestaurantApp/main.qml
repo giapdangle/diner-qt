@@ -17,6 +17,13 @@ Window {
         id: visual
     }
 
+    // Properties.
+    AppStateVars {
+        id: appState
+        currentCaption: "Information"
+        //fontSize: visual.defaultFontSize
+    }
+
     TabBar {
         id: tabBar
         anchors {
@@ -44,7 +51,7 @@ Window {
 
     TabGroup {
         id: tabGroup
-        anchors { left: parent.left; right: parent.right; top: parent.top; bottom: tabBar.top }
+        anchors { left: parent.left; right: parent.right; top: statusBar.bottom; bottom: tabBar.top }
     }
 
     InfoView {
@@ -70,4 +77,5 @@ Window {
         tabGroup.addTab(tab3)
         tabGroup.addTab(tab4)
     }
+
 }
