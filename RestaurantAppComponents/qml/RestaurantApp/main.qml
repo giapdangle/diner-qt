@@ -9,6 +9,7 @@ Window {
         id: statusBar
     }
 
+
     TabBar {
         id: tabBar
         anchors {
@@ -17,7 +18,7 @@ Window {
             bottom: parent.bottom
         }
         TabButton {
-            tab: tab1;
+            tab: tab1
             text: qsTr("Tab 1")
         }
         TabButton {
@@ -34,16 +35,32 @@ Window {
         }
     }
 
-    Page {
+    TabGroup {
+        id: tabGroup
+        anchors { left: parent.left; right: parent.right; top: parent.top; bottom: tabBar.top }
+    }
+
+    InfoView {
         id: tab1
     }
-    Page {
+
+    MenuGridView {
         id: tab2
     }
-    Page {
+
+    MapView {
         id: tab3
     }
-    Page {
+
+    BookingView {
         id: tab4
+    }
+
+    // add the tab content items to the tab group
+    Component.onCompleted: {
+        tabGroup.addTab(tab1)
+        tabGroup.addTab(tab2)
+        tabGroup.addTab(tab3)
+        tabGroup.addTab(tab4)
     }
 }
