@@ -9,6 +9,9 @@ Window {
         id: statusBar
     }
 
+    Visual {
+        id: visual
+    }
 
     TabBar {
         id: tabBar
@@ -19,19 +22,19 @@ Window {
         }
         TabButton {
             tab: tab1
-            text: qsTr("Tab 1")
+            text: qsTr("Info")
         }
         TabButton {
             tab: tab2;
-            text: qsTr("Tab 2")
+            text: qsTr("Menu")
         }
         TabButton {
             tab: tab3;
-            text: qsTr("Tab 3")
+            text: qsTr("Map")
         }
         TabButton {
             tab: tab4;
-            text: qsTr("Tab 4")
+            text: qsTr("Booking")
         }
     }
 
