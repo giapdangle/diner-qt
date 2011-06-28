@@ -67,6 +67,7 @@ Page {
             id: tile
             //width: appState.inLandscape ? prent.width*0.6 : parent.width
             //height: width-100
+            x: 20
             width: 320
             height: 240
             latitude: container.latitude
@@ -126,6 +127,7 @@ Page {
                     width: call_button.width+telephone.width
                     ToolButton {
                         id: call_button
+                        flat: true
                         iconSource: pressed ? visual.callButtonPressedSource : visual.callButtonSource
                         onClicked: { Util.log("Invoking a call "+telephone.text); Qt.openUrlExternally("tel:"+telephone.text) }
                     }
@@ -138,6 +140,8 @@ Page {
                             bottom: call.bottom
                             left: call_button.right
                             leftMargin: container.margins
+                            bottomMargin: container.margins + 10
+                            verticalCenter: parent.verticalCenter
                         }
                         font {
                             family: container.fontName
@@ -158,6 +162,7 @@ Page {
 
                     ToolButton {
                         id: www_button
+                        flat: true
                         iconSource: pressed ? visual.wwwButtonPressedSource : visual.wwwButtonSource
                         onClicked: { Util.log("Launched url "+url.text); Qt.openUrlExternally(url.text) }
                     }
@@ -170,6 +175,8 @@ Page {
                             bottom: www.bottom
                             left: www_button.right
                             leftMargin: container.margins
+                            bottomMargin: container.margins + 10
+                            verticalCenter: parent.verticalCenter
                         }
                         font {
                             family: container.fontName
