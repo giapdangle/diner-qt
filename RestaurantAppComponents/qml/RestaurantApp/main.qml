@@ -1,9 +1,12 @@
 import QtQuick 1.0
 import com.nokia.symbian 1.0
+//import com.meego 1.0 // for Meego components
+//import Qt.labs.components.native 1.0 // RnD: use currently installed components (Meego or Symbian)
 
 Window {
+    id: root
     width: 360
-    height: 360
+    height: 640
 
     StatusBar {
         id: statusBar
