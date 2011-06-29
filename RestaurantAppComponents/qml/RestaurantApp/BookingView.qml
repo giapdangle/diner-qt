@@ -6,7 +6,7 @@ Page {
     id:container
 
     property string fontName: visual.defaultFontFamily
-    property int fontSize: visual.defaultFontSize
+    property int fontSize: visual.bookingViewFontSize
     property color fontColor: visual.defaultFontColor
     property color fontColorLink: visual.defaultFontColorLink
     property color fontColorButton: visual.defaultFontColorButton
@@ -90,7 +90,7 @@ Page {
                 Text {
                     anchors.verticalCenter: parent.verticalCenter
                     font.family: container.fontName
-                    font.pixelSize: container.fontSize
+                    font.pixelSize: container.fontSize + 4
                     color: container.fontColor
                     text: qsTr("Table for <b>" + personCountSlider.value + "</b> people")
                 }
@@ -168,16 +168,6 @@ Page {
                         text: qsTr("Day")
                     }
                 }
-                //                DateReel {
-                //                    id: dateReel
-                //                    width: parent.width
-                //                    height: visual.defaultItemHeight
-                //                    fontName: container.fontName
-                //                    fontColor: container.fontColorButton
-                //                    fontSize: container.fontSize
-                //                    itemBackground: visual.buttonComponent
-                //                    itemBackgroundPressed: visual.buttonPressedComponent
-                //                }
             }
             Row {
                 width: parent.width
@@ -192,17 +182,6 @@ Page {
                 ToolButton {
                     height: visual.defaultItemHeight
                 }
-                //                TimeReel {
-                //                    id: timeReel
-                //                    width: parent.width*0.4
-                //                    height: visual.defaultItemHeight
-                //                    anchors.horizontalCenter: parent.horizontalCenter
-                //                    fontName: container.fontName
-                //                    fontColor: container.fontColorButton
-                //                    fontSize: container.fontSize
-                //                    itemBackground: visual.buttonComponent
-                //                    itemBackgroundPressed: visual.buttonPressedComponent
-                //                }
             }
             Button {
                 width: parent.width
