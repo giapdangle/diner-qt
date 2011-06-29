@@ -1,5 +1,5 @@
 import QtQuick 1.0
-import com.nokia.symbian 1.0
+import com.nokia.symbian 1.1
 import "Util.js" as Util
 
 Page {
@@ -80,7 +80,7 @@ Page {
                     rightMargin: container.margins
                 }
                 iconSource: pressed ? visual.cancelButtonPressedSource : visual.cancelButtonSource
-                onClicked: { dialog.index = index; dialog.dateTime = dateTime; dialog.show() }
+                onClicked: { cancelDialog.index = index; cancelDialog.dateTime = dateTime; cancelDialog.open() }
             }
         }
     }
@@ -163,7 +163,7 @@ Page {
                         id: call_icon
                         iconSource: pressed ? visual.callButtonPressedSource : visual.callButtonSource
                         flat: true
-                        onClicked: { Util.log("Invoking a call "+telephone.text); Qt.openUrlExternally("tel:"+telephone.text) }
+                        onClicked: { callDialog.phoneNumber = telephone.text; callDialog.open() }
                     }
                     Text {
                         id: telephone
@@ -180,7 +180,7 @@ Page {
                         }
                         MouseArea {
                             anchors.fill: parent
-                            onClicked: { Util.log("Invoking a call "+telephone.text); Qt.openUrlExternally("tel:"+telephone.text) }
+                            onClicked: { callDialog.phoneNumber = telephone.text; callDialog.open() }
                         }
                     }
                 }
@@ -236,22 +236,29 @@ Page {
         }
     }
 
-    //    ModalDialog {
-    //        id: dialog
-    //        text: "Are you sure you want to cancel your reservation on "+dateTime+"?"
-    //        property string dateTime: ""
-    //        property int index: 0
-    //        anchors.fill:  parent
-    //        fontName: container.fontName
-    //        fontColor: container.fontColorButton
-    //        fontColorButton: container.fontColorButton
-    //        fontSize: container.fontSize
-    //        buttonBackground: visual.buttonComponent
-    //        buttonBackgroundPressed: visual.buttonPressedComponent
-    //        onAccepted: {
-    //            reservationsModel.remove(index)
-    //        }
-    //    }
+    QueryDialog {
+        id: cancelDialog
+        titleText: qsTr("Remove reservation?")
+        message: qsTr("Are you sure you want to cancel your reservation on "+dateTime+"?")
+        acceptButtonText: qsTr("Remove")
+        rejectButtonText: qsTr("Cancel")
+        property string dateTime: ""
+        property int index: 0
+        onAccepted: {
+            reservationsModel.remove(index)
+        }
+    }
 
+    QueryDialog {
+        id: callDialog
+        titleText: qsTr("Call restaurant")
+        message: qsTr("Call the restaurant at "+phoneNumber+"?")
+        acceptButtonText: qsTr("Call")
+        rejectButtonText: qsTr("Cancel")
+        property string phoneNumber: ""
+        onAccepted: {
+            Util.log("Invoking a call "+telephone.text); Qt.openUrlExternally("tel:"+telephone.text)
+        }
+    }
 
 }

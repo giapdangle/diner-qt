@@ -1,5 +1,5 @@
 import QtQuick 1.0
-import com.nokia.symbian 1.0
+import com.nokia.symbian 1.1
 import "Util.js" as Util
 
 Page {
@@ -43,7 +43,7 @@ Page {
                     Text {
                         width: parent.width
                         font.family: container.fontName
-                        font.pointSize: container.fontSize
+                        font.pixelSize: container.fontSize
                         color: container.fontColor
                         text: qsTr("Name")
                     }
@@ -64,7 +64,7 @@ Page {
                     Text {
                         width: parent.width
                         font.family: container.fontName
-                        font.pointSize: container.fontSize
+                        font.pixelSize: container.fontSize
                         color: container.fontColor
                         text: qsTr("Phone number")
                     }
@@ -88,7 +88,7 @@ Page {
                 Text {
                     anchors.verticalCenter: parent.verticalCenter
                     font.family: container.fontName
-                    font.pointSize: container.fontSize
+                    font.pixelSize: container.fontSize
                     color: container.fontColor
                     text: qsTr("Table for")
                 }
@@ -108,7 +108,7 @@ Page {
                 Text {
                     anchors.verticalCenter: parent.verticalCenter
                     font.family: container.fontName
-                    font.pointSize: container.fontSize
+                    font.pixelSize: container.fontSize
                     color: container.fontColor
                     text: qsTr("people")
                 }
@@ -124,7 +124,7 @@ Page {
                         id: yearText
                         width: (parent.width-2*parent.spacing)*0.4
                         font.family: container.fontName
-                        font.pointSize: container.fontSize
+                        font.pixelSize: container.fontSize
                         color: container.fontColor
                         text: qsTr("Year")
                     }
@@ -135,7 +135,7 @@ Page {
                         id: monthText
                         width: (parent.width-2*parent.spacing)*0.3
                         font.family: container.fontName
-                        font.pointSize: container.fontSize
+                        font.pixelSize: container.fontSize
                         color: container.fontColor
                         text: qsTr("Month")
                     }
@@ -143,7 +143,7 @@ Page {
                         id: dayText
                         width: (parent.width-2*parent.spacing)*0.3
                         font.family: container.fontName
-                        font.pointSize: container.fontSize
+                        font.pixelSize: container.fontSize
                         color: container.fontColor
                         text: qsTr("Day")
                     }
@@ -163,9 +163,9 @@ Page {
                 width: parent.width
                 spacing: container.margins
                 Text {
-                    anchors.left:  timeReel.left
+                    //anchors.left:  timeReel.left
                     font.family: container.fontName
-                    font.pointSize: container.fontSize
+                    font.pixelSize: container.fontSize
                     color: container.fontColor
                     text: qsTr("Available times")
                 }
@@ -189,25 +189,33 @@ Page {
                 anchors.horizontalCenter: parent.horizontalCenter
                 height: visual.defaultItemHeight
                 text: qsTr("Make reservation")
-                onClicked: dialog.show()
+                onClicked: {
+                    // TODO get these
+                    reserveDialog.personCount = 1
+                    reserveDialog.date = "2011-06-24"
+                    reserveDialog.time = "16:00"
+                    reserveDialog.name = "Riussi"
+                    reserveDialog.open();
+                }
             }
         } //Column
 
 
-        //        ModalDialog {
-        //            id: dialog
-        //            text: "Table for " + numberReel.getNumber() + " people, " + dateReel.getDate() + ", " + timeReel.getTime()
-        //            anchors.fill:  parent
-        //            fontName: container.fontName
-        //            fontColor: container.fontColorButton
-        //            fontColorButton: container.fontColorButton
-        //            fontSize: container.fontSize
-        //            buttonBackground: visual.buttonComponent
-        //            buttonBackgroundPressed: visual.buttonPressedComponent
-        //            onAccepted: {
-        //                reservationsModel.addReservation(nameEntry.text, phoneEntry.text, numberReel.getNumber(), dateReel.getDate() +", "+ timeReel.getTime())
-        //            }
-        //            z: 1000
-        //        }
+        QueryDialog {
+            id: reserveDialog
+            titleText: qsTr("Make reservation")
+            message: qsTr("Reserve a table under '" + name + "' for " + personCount + " people on " + date + ", " + time)
+            acceptButtonText: qsTr("Reserve")
+            rejectButtonText: qsTr("Cancel")
+            property string name: ""
+            property string phoneNumber: ""
+            property int personCount: 0
+            property string date: ""
+            property string time: ""
+            onAccepted: {
+                reservationsModel.addReservation(name, phoneEntry.text, personCount, date +", "+ time)
+            }
+        }
+
     }
 }

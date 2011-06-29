@@ -4,7 +4,7 @@ import QtQuick 1.0
 Item {
     // General
     property string defaultFontFamily: "Helvetica"  // Defaults to correct ones in device
-    property int defaultFontSize: 6
+    property int defaultFontSize: 14
     //property color defaultFontColor: "#6f6a5c"
     property color defaultFontColor: "#767164"
     property color defaultFontColorLink: "#7c0505"
@@ -15,30 +15,30 @@ Item {
     property int defaultItemHeight: 48
 
     property int scrollBarWidth: 8
-    property Component buttonComponent: Component {
-        BorderImage {
-            border { top: 8; bottom: 8; left: 8; right: 8 }
-            source: "content/button.png"
-        }
-    }
-    property Component buttonPressedComponent: Component {
-        BorderImage {
-            border { top: 8; bottom: 8; left: 8; right: 8 }
-            source: "content/button_pressed.png"
-        }
-    }
-    property Component textFieldComponent: Component {
-        BorderImage {
-            border { top: 8; bottom: 8; left: 8; right: 8 }
-            source: "content/text_field.png"
-        }
-    }
-    property Component textFieldActiveComponent: Component {
-        BorderImage {
-            border { top: 8; bottom: 8; left: 8; right: 8 }
-            source: "content/text_field_active.png"
-        }
-    }
+//    property Component buttonComponent: Component {
+//        BorderImage {
+//            border { top: 8; bottom: 8; left: 8; right: 8 }
+//            source: "content/button.png"
+//        }
+//    }
+//    property Component buttonPressedComponent: Component {
+//        BorderImage {
+//            border { top: 8; bottom: 8; left: 8; right: 8 }
+//            source: "content/button_pressed.png"
+//        }
+//    }
+//    property Component textFieldComponent: Component {
+//        BorderImage {
+//            border { top: 8; bottom: 8; left: 8; right: 8 }
+//            source: "content/text_field.png"
+//        }
+//    }
+//    property Component textFieldActiveComponent: Component {
+//        BorderImage {
+//            border { top: 8; bottom: 8; left: 8; right: 8 }
+//            source: "content/text_field_active.png"
+//        }
+//    }
 
     property string callButtonSource: "content/call_button.png"
     property string callButtonPressedSource: "content/call_button_pressed.png"
@@ -56,7 +56,7 @@ Item {
     property color titleBackgroundColor: "#7c0505"
 
     property string captionFontFamily: defaultFontFamily
-    property int captionFontSize: 10
+    property int captionFontSize: 16
     property color captionFontColor: "#5a57c5"
     property color captionBackgroundColor: "#ffffff"
 
@@ -86,20 +86,20 @@ Item {
     property int infoViewFontSize: 18
     
     // Menu grid view
-    property int menuGridViewFontSize: 10
+    property int menuGridViewFontSize: 14
 
     // Menu list view
     property color menuListViewBackgroundColor: "#f9f6f6"
     property color menuListViewDishTitleFontColor: "#7c0505"
     property color menuListViewDishFontColor: "#938282"
-    property int menuListViewTitleSize: 12
-    property int menuListItemFontSize: 8
+    property int menuListViewTitleSize: 14
+    property int menuListItemFontSize: 12
 
 
     // Map view
     property string zoomiInSource: "content/zoom_in.png"
     property string zoomiOutSource: "content/zoom_out.png"
-    property int infoFontSize: 8
+    property int infoFontSize: 12
 
 
 

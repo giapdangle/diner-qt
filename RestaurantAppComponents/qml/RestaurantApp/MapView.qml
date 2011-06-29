@@ -1,5 +1,6 @@
 import QtQuick 1.0
-import com.nokia.symbian 1.0
+import com.nokia.symbian 1.1
+//import com.meego 1.0
 import "Util.js" as Util
 
 Page {
@@ -129,7 +130,7 @@ Page {
                         id: call_button
                         flat: true
                         iconSource: pressed ? visual.callButtonPressedSource : visual.callButtonSource
-                        onClicked: { Util.log("Invoking a call "+telephone.text); Qt.openUrlExternally("tel:"+telephone.text) }
+                        onClicked: { callDialog.phoneNumber = telephone.text; callDialog.open(); }
                     }
                     Text {
                         id: telephone
@@ -149,7 +150,7 @@ Page {
                         }
                         MouseArea {
                             anchors.fill: parent
-                            onClicked: { Util.log("Invoking a call "+telephone.text); Qt.openUrlExternally("tel:"+telephone.text) }
+                            onClicked: { callDialog.phoneNumber = telephone.text; callDialog.open(); }
                         }
                     }
                 }
@@ -184,7 +185,7 @@ Page {
                         }
                         MouseArea {
                             anchors.fill: parent
-                            onClicked: { Util.log("Launched url "+url.text); Qt.openUrlExternally(url.text) }
+                            onClicked: { wwwDialog.wwwAddress = url.text; wwwDialog.open(); }
                         }
                     }
                 }
@@ -192,7 +193,7 @@ Page {
 
             Image {
                 id: zoom_icon
-                source: dialog.state == "show" ? visual.zoomiOutSource : visual.zoomiInSource
+                source: "" //dialog.state == "show" ? visual.zoomiOutSource : visual.zoomiInSource
                 smooth: true
                 anchors {
                     top: addressBox.top
@@ -208,7 +209,31 @@ Page {
         }
     }
 
-//    ModalDialog {
+    QueryDialog {
+        id: wwwDialog
+        titleText: qsTr("Open in browser")
+        message: qsTr("Open " + wwwAddress + " in browser?")
+        acceptButtonText: qsTr("Open")
+        rejectButtonText: qsTr("Cancel")
+        property string wwwAddress: ""
+        onAccepted: {
+             Qt.openUrlExternally(wwwAddress)
+        }
+    }
+
+    QueryDialog {
+        id: callDialog
+        titleText: qsTr("Call restaurant")
+        message: qsTr("Call the restaurant at "+phoneNumber+"?")
+        acceptButtonText: qsTr("Call")
+        rejectButtonText: qsTr("Cancel")
+        property string phoneNumber: ""
+        onAccepted: {
+            Util.log("Invoking a call "+telephone.text); Qt.openUrlExternally("tel:"+telephone.text)
+        }
+    }
+
+    //    ModalDialog {
 //        id: dialog
 //        text: container.street + "\n" + container.city
 //        anchors.fill:  parent
