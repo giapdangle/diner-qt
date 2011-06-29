@@ -83,36 +83,56 @@ Page {
 
             Row {
                 spacing: 10
-                anchors.margins: container.margins
+                anchors.topMargin: container.margins
+                anchors.leftMargin: container.margins
+                anchors.rightMargin: container.margins
                 anchors.horizontalCenter: parent.horizontalCenter
                 Text {
                     anchors.verticalCenter: parent.verticalCenter
                     font.family: container.fontName
                     font.pixelSize: container.fontSize
                     color: container.fontColor
-                    text: qsTr("Table for")
-                }
-                ToolButton {
-                    height: visual.defaultItemHeight
+                    text: qsTr("Table for how many people?")
                 }
 
-                //                NumberReel {
-                //                    id: numberReel
-                //                    height: visual.defaultItemHeight
-                //                    fontName: container.fontName
-                //                    fontColor: container.fontColorButton
-                //                    fontSize: container.fontSize
-                //                    itemBackground: visual.buttonComponent
-                //                    itemBackgroundPressed: visual.buttonPressedComponent
-                //                }
+            }
+            Row {
+                spacing: 10
+                width: parent.width
+                anchors.margins: container.margins
+                anchors.horizontalCenter: parent.horizontalCenter
                 Text {
-                    anchors.verticalCenter: parent.verticalCenter
+                    width: 20
+                    id: minimumText
+                    anchors.left: parent.left
+                    text: personCountSlider.minimumValue
                     font.family: container.fontName
                     font.pixelSize: container.fontSize
                     color: container.fontColor
-                    text: qsTr("people")
+                    anchors.verticalCenter: personCountSlider.verticalCenter
+                }
+
+                Slider {
+                    id: personCountSlider
+                    minimumValue: 1
+                    maximumValue: 12
+                    stepSize: 1
+                    anchors.left: minimumText.right
+                    anchors.right: maximumText.left
+                }
+
+                Text {
+                    id: maximumText
+                    width: 20
+                    anchors.right:  parent.right
+                    anchors.verticalCenter: personCountSlider.verticalCenter
+                    font.family: container.fontName
+                    font.pixelSize: container.fontSize
+                    color: container.fontColor
+                    text: personCountSlider.maximumValue
                 }
             }
+
             Row {
                 width: parent.width
                 spacing: container.margins
