@@ -76,18 +76,22 @@ Window {
         TabButton {
             tab: tab1
             text: qsTr("Info")
+            iconSource: pressed ? visual.infoButtonPressedSource : visual.infoButtonSource
         }
         TabButton {
             tab: tab2;
             text: qsTr("Menu")
+            iconSource: pressed ? visual.menuButtonPressedSource : visual.menuButtonSource
         }
         TabButton {
             tab: tab3;
             text: qsTr("Map")
+            iconSource: pressed ? visual.mapButtonPressedSource : visual.mapButtonSource
         }
         TabButton {
             tab: tab4;
             text: qsTr("Booking")
+            iconSource: pressed ? visual.bookingButtonPressedSource : visual.bookingButtonSource
         }
     }
 
