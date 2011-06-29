@@ -92,7 +92,7 @@ Page {
                     font.family: container.fontName
                     font.pixelSize: container.fontSize
                     color: container.fontColor
-                    text: qsTr("Table for how many people?")
+                    text: qsTr("Table for <b>" + personCountSlider.value + "</b> people")
                 }
 
             }
