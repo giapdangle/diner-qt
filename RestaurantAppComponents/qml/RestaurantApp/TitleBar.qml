@@ -124,29 +124,24 @@ Rectangle {
         horizontalAlignment: Text.AlignHCenter
     }    
 
-    ToolButton {
+    Button {
         id: exitButton
         visible: !showingBackButton        
-        width: container.height
-        height: container.height
-//        scale: 0.8
         anchors.top: container.top
         anchors.right: container.right
-        anchors.margins: 0
+        anchors.margins: 10
         iconSource: pressed ? container.exitButtonPressedSource : container.exitButtonSource
         onClicked: {
             container.exitButtonClicked()
         }
     }
 
-    ToolButton {
+    Button {
         visible: showingBackButton
         y: 10
         anchors.top: container.top
         anchors.right: container.right
-        anchors.margins: 0
-        width: container.height
-        height: container.height
+        anchors.margins: 10
 //        scale: 0.8
         iconSource: pressed ? container.backButtonPressedSource : container.backButtonSource
 

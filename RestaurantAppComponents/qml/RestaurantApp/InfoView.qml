@@ -72,14 +72,18 @@ Page {
                     pixelSize: visual.infoViewReservationFontSize
                 }
             }
-            ToolButton {
+            // Use toolbutton if you want to be able to make it flat
+            //ToolButton {
+            Button {
                 id: cancelButton
+                //flat: false
                 anchors {
                     top: parent.top
                     right: parent.right
                     rightMargin: container.margins
                 }
-                iconSource: pressed ? visual.cancelButtonPressedSource : visual.cancelButtonSource
+                //iconSource: pressed ? visual.cancelButtonPressedSource : visual.cancelButtonSource
+                text: qsTr("Cancel")
                 onClicked: { cancelDialog.index = index; cancelDialog.dateTime = dateTime; cancelDialog.open() }
             }
         }
@@ -159,10 +163,9 @@ Page {
 
                     height: call_icon.height
                     width: call_icon.width+telephone.width
-                    ToolButton {
+                    Button {
                         id: call_icon
                         iconSource: pressed ? visual.callButtonPressedSource : visual.callButtonSource
-                        flat: true
                         onClicked: { callDialog.phoneNumber = telephone.text; callDialog.open() }
                     }
                     Text {
@@ -170,7 +173,8 @@ Page {
                         anchors {
                             bottom: call.bottom
                             left: call_icon.right
-                            bottomMargin: container.margins + 15
+                            leftMargin: container.margins
+                            verticalCenter: call_icon.verticalCenter
                         }
                         verticalAlignment: Text.AlignVCenter
                         color: container.fontColorLink

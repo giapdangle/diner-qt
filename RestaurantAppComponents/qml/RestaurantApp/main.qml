@@ -19,7 +19,7 @@ Window {
         // Anchors titlebar to left,top and right. Then set height
         // Use grouping if possible.
         anchors {
-            top: statusBar.bottom
+            top: tabBar.bottom
             left: parent.left
             right: parent.right
         }
@@ -70,8 +70,8 @@ Window {
         anchors {
             left: parent.left
             right: parent.right
-            bottom: parent.bottom
-            //top: statusBar.bottom
+            //bottom: parent.bottom
+            top: statusBar.bottom
         }
         TabButton {
             tab: tab1
@@ -97,7 +97,7 @@ Window {
 
     TabGroup {
         id: tabGroup
-        anchors { left: parent.left; right: parent.right; top: titleBar.bottom; bottom: tabBar.top }
+        anchors { left: parent.left; right: parent.right; top: titleBar.bottom; bottom: parent.bottom }
         InfoView {
             id: tab1
         }

@@ -126,9 +126,8 @@ Page {
                     id: call
                     height: call_button.height
                     width: call_button.width+telephone.width
-                    ToolButton {
+                    Button {
                         id: call_button
-                        flat: true
                         iconSource: pressed ? visual.callButtonPressedSource : visual.callButtonSource
                         onClicked: { callDialog.phoneNumber = telephone.text; callDialog.open(); }
                     }
@@ -161,9 +160,8 @@ Page {
                     height: www_button.height
                     width: www_button.width+url.width
 
-                    ToolButton {
+                    Button {
                         id: www_button
-                        flat: true
                         iconSource: pressed ? visual.wwwButtonPressedSource : visual.wwwButtonSource
                         onClicked: { Util.log("Launched url "+url.text); Qt.openUrlExternally(url.text) }
                     }
@@ -232,20 +230,4 @@ Page {
             Util.log("Invoking a call "+telephone.text); Qt.openUrlExternally("tel:"+telephone.text)
         }
     }
-
-    //    ModalDialog {
-//        id: dialog
-//        text: container.street + "\n" + container.city
-//        anchors.fill:  parent
-//        fontName: container.fontName
-//        fontColor: container.fontColorButton
-//        fontColorButton: container.fontColorButton
-//        fontSize: container.fontSize
-//        textFontSize: container.fontSize * 3
-//        buttonBackground: visual.buttonComponent
-//        buttonBackgroundPressed: visual.buttonPressedComponent
-//        showCancelButton: false
-//        onAccepted: {
-//        }
-//    }
 }
