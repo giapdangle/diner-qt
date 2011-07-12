@@ -23,7 +23,7 @@ Window {
             left: parent.left
             right: parent.right
         }
-        height: appState.inLandscape ? mainWindow.width * 0.12 : mainWindow.height*0.12
+        height: appState.inLandscape ? root.width * 0.12 : root.height*0.12
 //        icon.visible: false
         title: ""
         titleImageSource: visual.titleImageSource
@@ -45,6 +45,8 @@ Window {
         onBackButtonClicked: {
             Util.log("Back-button clicked. Came from view: " + viewName);
             appState.currentViewName = viewName;
+            showingBackButton = false;
+            pageStack.pop();
         }
         onExitButtonClicked: {
             Util.exitApp("Exit-button clicked");
@@ -101,8 +103,44 @@ Window {
             id: tab1
         }
 
-        MenuGridView {
+        // The main level Page item acts as a tab placeholder for the TabGroup.
+        Page {
             id: tab2
+
+            // MenuListView is a sub-page for the MenuGridView, thus they
+            // are defined within the pageStack.
+            PageStack {
+                id: pageStack
+                anchors.fill: parent
+
+                MenuGridView {
+                    id: menu
+                    anchors.fill: parent
+                    onMenuItemClicked: {
+                        // If some menu item was selected, show its contents.
+                        pageStack.push(menuList);
+                    }
+                }
+
+                MenuListView {
+                    id: menuList
+                    anchors.fill: parent
+
+                    onStatusChanged: {
+                        // Control showing the back -button in the title bar.
+                        if (status == PageStatus.Active) {
+                            titleBar.showingBackButton = true;
+                        } else {
+                            titleBar.showingBackButton = false;
+                        }
+                    }
+                }
+            }
+
+            // Start with the MenuGridView first.
+            Component.onCompleted: {
+                pageStack.push(menu)
+            }
         }
 
         MapView {

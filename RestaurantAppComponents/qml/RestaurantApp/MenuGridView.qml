@@ -71,11 +71,11 @@ Page {
             fontSize: container.fontSize
             fontColor: container.fontColor
             onClicked: {
-                container.menuItemClicked(itemId);
                 appState.selectedMenuCategoryId = itemId;
                 appState.selectedMenuCategoryTitle = title;
                 appState.selectedMenuCategoryIconSource = iconSource;
                 appState.currentViewName = "menuListView";
+                container.menuItemClicked(itemId);
             }
         }
     }
