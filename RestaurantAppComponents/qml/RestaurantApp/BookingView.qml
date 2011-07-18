@@ -1,9 +1,10 @@
 import QtQuick 1.0
 import com.nokia.symbian 1.0
+import com.nokia.extras 1.0
 import "Util.js" as Util
 
 Page {
-    id:container
+    id: container
 
     property string fontName: visual.defaultFontFamily
     property int fontSize: visual.bookingViewFontSize
@@ -11,6 +12,14 @@ Page {
     property color fontColorLink: visual.defaultFontColorLink
     property color fontColorButton: visual.defaultFontColorButton
     property int margins: 4
+
+    // Internal attributes, do not change from outside!
+    // Used in adding the reservation.
+    property variant _currentDate: new Date()
+    property int _year: _currentDate.getFullYear()
+    property int _month: _currentDate.getMonth()
+    property int _day: _currentDate.getDate()
+    property string _hour: "18:00"
 
     width: 360
     height: 640
@@ -47,6 +56,7 @@ Page {
                         color: container.fontColor
                         text: qsTr("Name")
                     }
+
                     TextField {
                         id: nameEntry
                         width: parent.width
@@ -57,10 +67,12 @@ Page {
                         onFocusChanged: console.log("nameEntry  focusChanged: " + focus)
                     }
                 }
+
                 Column {
                     id: phoneEntryColumn
                     width: parent.width
                     spacing: container.margins
+
                     Text {
                         width: parent.width
                         font.family: container.fontName
@@ -68,6 +80,7 @@ Page {
                         color: container.fontColor
                         text: qsTr("Phone number")
                     }
+
                     TextField {
                         id: phoneEntry
                         width: parent.width
@@ -80,13 +93,13 @@ Page {
                 }
             }
 
-
             Row {
                 spacing: 10
                 anchors.topMargin: container.margins
                 anchors.leftMargin: container.margins
                 anchors.rightMargin: container.margins
                 anchors.horizontalCenter: parent.horizontalCenter
+
                 Text {
                     anchors.verticalCenter: parent.verticalCenter
                     font.family: container.fontName
@@ -94,13 +107,15 @@ Page {
                     color: container.fontColor
                     text: qsTr("Table for <b>" + personCountSlider.value + "</b> people")
                 }
-
             }
+
+            // Picker slider for the person count
             Row {
                 spacing: 10
                 width: parent.width
                 anchors.margins: container.margins
                 anchors.horizontalCenter: parent.horizontalCenter
+
                 Text {
                     width: 20
                     id: minimumText
@@ -131,90 +146,118 @@ Page {
                     color: container.fontColor
                     text: personCountSlider.maximumValue
                 }
-            }
+            } // Slider picker row
 
+            // Date picker row
             Row {
-                width: parent.width
                 spacing: container.margins
-                Row {
-                    spacing: container.margins
-                    width: parent.width
+                width: parent.width
 
-                    Text {
-                        id: yearText
-                        width: (parent.width-2*parent.spacing)*0.4
-                        font.family: container.fontName
-                        font.pixelSize: container.fontSize
-                        color: container.fontColor
-                        text: qsTr("Year")
-                    }
-                    ToolButton {
-                        height: visual.defaultItemHeight
-                    }
-                    Text {
-                        id: monthText
-                        width: (parent.width-2*parent.spacing)*0.3
-                        font.family: container.fontName
-                        font.pixelSize: container.fontSize
-                        color: container.fontColor
-                        text: qsTr("Month")
-                    }
-                    Text {
-                        id: dayText
-                        width: (parent.width-2*parent.spacing)*0.3
-                        font.family: container.fontName
-                        font.pixelSize: container.fontSize
-                        color: container.fontColor
-                        text: qsTr("Day")
-                    }
-                }
-            }
-            Row {
-                width: parent.width
-                spacing: container.margins
                 Text {
-                    //anchors.left:  timeReel.left
+                    id: dateText
+                    //width: (parent.width-2*parent.spacing)*0.4
                     font.family: container.fontName
                     font.pixelSize: container.fontSize
                     color: container.fontColor
-                    text: qsTr("Available times")
+                    text: qsTr("Date: ")
                 }
-                ToolButton {
+
+                Button {
                     height: visual.defaultItemHeight
+                    text: container._year + "-" + container._month + "-" + container._day
+                    onClicked: datePicker.open();
                 }
+
+                DatePickerDialog {
+                     id: datePicker
+
+                     titleText: qsTr("Date of birth")
+                     acceptButtonText: qsTr("Accept")
+                     rejectButtonText: qsTr("Reject")
+
+                     year: container._year
+                     month: container._month
+                     day: container._day
+
+                     onAccepted: {
+                         container._year = datePicker.year;
+                         container._month = datePicker.month;
+                         container._day = datePicker.day
+                     }
+                 }
+            } // Date picker row
+
+            // Time picker row
+            Row {
+                width: parent.width
+                spacing: container.margins
+
+                Text {
+                    font.family: container.fontName
+                    font.pixelSize: container.fontSize
+                    color: container.fontColor
+                    text: qsTr("Time: ")
+                }
+
+                Button {
+                    height: visual.defaultItemHeight
+                    text: container._hour
+
+                    onClicked: timePicker.open()
+                }
+
+                TimePickerDialog {
+                    id: timePicker
+
+                    titleText: qsTr("Available times")
+                    acceptButtonText: qsTr("Accept")
+                    rejectButtonText: qsTr("Reject")
+                    fields: DateTime.Hours
+
+                    onAccepted: {
+                        container._hour = timePicker.hour + ":00"
+                    }
+                }
+            } // Time picker row
+
+            Item {
+                id: empty
+                //spacing: container.margins
+                height: visual.defaultItemHeight
+                width: parent.width
             }
+
             Button {
                 width: parent.width
                 anchors.horizontalCenter: parent.horizontalCenter
                 height: visual.defaultItemHeight
                 text: qsTr("Make reservation")
-                onClicked: {
-                    // TODO get these
-                    reserveDialog.personCount = 1
-                    reserveDialog.date = "2011-06-24"
-                    reserveDialog.time = "16:00"
-                    reserveDialog.name = "Riussi"
-                    reserveDialog.open();
-                }
+                onClicked: reserveDialog.open()
             }
         } //Column
 
 
         QueryDialog {
             id: reserveDialog
+
+            // A private date member, just to make the code look a bit cleaner.
+            property string _date: container._year +
+                                   "-" + container._month +
+                                   "-" + container._day
+
             titleText: qsTr("Make reservation")
-            message: qsTr("Reserve a table under '" + name + "' for " + personCount + " people on " + date + ", " + time)
+            message: qsTr("Reserve a table under '" + nameEntry.text + "' for " +
+                          personCountSlider.value + " people on " + _date + ", " +
+                          container._hour)
             acceptButtonText: qsTr("Reserve")
             rejectButtonText: qsTr("Cancel")
-            property string name: ""
-            property string phoneNumber: ""
-            property int personCount: 0
-            property string date: ""
-            property string time: ""
+
             onAccepted: {
-                reservationsModel.addReservation(name, phoneEntry.text, personCount, date +", "+ time)
+                reservationsModel.addReservation(
+                            nameEntry.text, phoneEntry.text,
+                            personCountSlider.value,
+                            _date + ", " + container._hour)
             }
         }
-
     }
 }
