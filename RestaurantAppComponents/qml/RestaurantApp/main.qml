@@ -79,7 +79,21 @@ Window {
             bottom: parent.bottom
         }
         TabButton {
-            tab: tab1
+//            tab: tab1
+            text: qsTr("Back")
+            iconSource: pressed ? visual.backButtonPressedSource : visual.backButtonSource
+            onClicked: {
+                if (appState.showBackButton == true) {
+                    Util.log("Back-button clicked");
+                    appState.showBackButton = false;
+                    pageStack.pop();
+                } else {
+                    Util.exitApp("Back-button clicked");
+                }
+            }
+        }
+        TabButton {
+            tab: tab1;
             text: qsTr("Info")
             iconSource: pressed ? visual.infoButtonPressedSource : visual.infoButtonSource
         }
@@ -92,11 +106,7 @@ Window {
             tab: tab3;
             text: qsTr("Map")
             iconSource: pressed ? visual.mapButtonPressedSource : visual.mapButtonSource
-        }
-        TabButton {
-            tab: tab4;
-            text: qsTr("Booking")
-            iconSource: pressed ? visual.bookingButtonPressedSource : visual.bookingButtonSource
+//            iconSource: pressed ? visual.bookingButtonPressedSource : visual.bookingButtonSource
         }
     }
 
@@ -146,10 +156,12 @@ Window {
 
                     onStatusChanged: {
                         // Control showing the back -button in the title bar.
-                        if (status == PageStatus.Activating) {
-                            titleBar.showingBackButton = true;
+                        if (status == PageStatus.Active) {
+                            console.log("MenuListView activating / active");
+                            appState.showBackButton = true;
                         } else {
-                            titleBar.showingBackButton = false;
+                            console.log("MenuListView DEActive!!");
+                            appState.showBackButton = false;
                         }
                     }
                 }
