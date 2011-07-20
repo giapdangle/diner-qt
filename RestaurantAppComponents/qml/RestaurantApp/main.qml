@@ -16,6 +16,7 @@ Window {
     // All views have a title bar
     TitleBar {
         id: titleBar
+
         // Anchors titlebar to left,top and right. Then set height
         // Use grouping if possible.
         anchors {
@@ -23,34 +24,37 @@ Window {
             left: parent.left
             right: parent.right
         }
-        height: appState.inLandscape ? root.width * 0.12 : root.height*0.12
-//        icon.visible: false
-        title: ""
-        titleImageSource: visual.titleImageSource
-        titleFontSize: visual.titleFontSize
-        titleFontColor: visual.titleFontColor
-        titleFontBold: true
-        titleBackgroundColor: visual.titleBackgroundColor
+
+        height: appState.inLandscape ? root.width * 0.04 : root.height*0.04
         captionFontName: visual.captionFontFamily
         captionFontSize: visual.captionFontSize
         captionFontColor: visual.captionFontColor
         captionBackgoundColor: visual.captionBackgroundColor
         caption: appState.currentCaption
-        exitButtonSource: visual.exitButtonSource
-        exitButtonPressedSource: visual.exitButtonPressedSource
-        backButtonSource: visual.backButtonSource
-        backButtonPressedSource: visual.backButtonPressedSource
-        showingBackButton: false
 
-        onBackButtonClicked: {
-            Util.log("Back-button clicked. Came from view: " + viewName);
-            appState.currentViewName = viewName;
-            showingBackButton = false;
-            pageStack.pop();
-        }
-        onExitButtonClicked: {
-            Util.exitApp("Exit-button clicked");
-        }
+//        icon.visible: false
+//        title: ""
+//        titleImageSource: visual.titleImageSource
+//        titleFontSize: visual.titleFontSize
+//        titleFontColor: visual.titleFontColor
+//        titleFontBold: true
+//        titleBackgroundColor: visual.titleBackgroundColor
+
+//        exitButtonSource: visual.exitButtonSource
+//        exitButtonPressedSource: visual.exitButtonPressedSource
+//        backButtonSource: visual.backButtonSource
+//        backButtonPressedSource: visual.backButtonPressedSource
+//        showingBackButton: false
+
+//        onBackButtonClicked: {
+//            Util.log("Back-button clicked. Came from view: " + viewName);
+//            appState.currentViewName = viewName;
+//            showingBackButton = false;
+//            pageStack.pop();
+//        }
+//        onExitButtonClicked: {
+//            Util.exitApp("Exit-button clicked");
+//        }
     }
 
     ReservationsModel {
@@ -64,7 +68,7 @@ Window {
     // Properties.
     AppStateVars {
         id: appState
-        currentCaption: "Information"
+        currentCaption: qsTr("Information")
     }
 
     TabBar {
@@ -98,9 +102,23 @@ Window {
 
     TabGroup {
         id: tabGroup
-        anchors { left: parent.left; right: parent.right; top: titleBar.bottom; bottom: tabBar.top }
+
+        anchors {
+            left: parent.left;
+            right: parent.right;
+            top: titleBar.bottom;
+            bottom: tabBar.top
+        }
+
         InfoView {
             id: tab1
+
+            // Change the current view caption
+            onStatusChanged: {
+                if (status == PageStatus.Activating) {
+                    appState.currentCaption = qsTr("Diner reservation information");
+                }
+            }
         }
 
         // The main level Page item acts as a tab placeholder for the TabGroup.
@@ -128,7 +146,7 @@ Window {
 
                     onStatusChanged: {
                         // Control showing the back -button in the title bar.
-                        if (status == PageStatus.Active) {
+                        if (status == PageStatus.Activating) {
                             titleBar.showingBackButton = true;
                         } else {
                             titleBar.showingBackButton = false;
@@ -141,14 +159,33 @@ Window {
             Component.onCompleted: {
                 pageStack.push(menu)
             }
+
+            onStatusChanged: {
+                if (status == PageStatus.Activating) {
+                    appState.currentCaption = qsTr("Diner A la Carte");
+                }
+            }
         }
 
         MapView {
             id: tab3
+
+            // Change the current view caption
+            onStatusChanged: {
+                if (status == PageStatus.Activating) {
+                    appState.currentCaption = qsTr("Location on map");
+                }
+            }
         }
 
         BookingView {
             id: tab4
+
+            onStatusChanged: {
+                if (status == PageStatus.Activating) {
+                    appState.currentCaption = qsTr("Diner table reservation step 1/2");
+                }
+            }
         }
     }
 }
