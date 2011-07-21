@@ -9,6 +9,9 @@ Window {
     width: 360
     height: 640
 
+    // Internal properties. Used for storing/restoring the height.
+    property int _tabBarHeight: 0
+
     StatusBar {
         id: statusBar
     }
@@ -71,15 +74,23 @@ Window {
         currentCaption: qsTr("Information")
     }
 
+    // Defines the "Main TabBar", shown on each Page view, but hidden when
+    // in BookingView & MenuListView.
     TabBar {
         id: tabBar
+
+        Component.onCompleted: {
+            // Store the height so that it can be restored later.
+            root._tabBarHeight = tabBar.height;
+            console.log("TabBar height: " + root._tabBarHeight);
+        }
+
         anchors {
             left: parent.left
             right: parent.right
             bottom: parent.bottom
         }
         TabButton {
-//            tab: tab1
             text: qsTr("Back")
             iconSource: pressed ? visual.backButtonPressedSource : visual.backButtonSource
             onClicked: {
@@ -93,16 +104,22 @@ Window {
             }
         }
         TabButton {
+            id: tabButton1;
+
             tab: tab1;
             text: qsTr("Info")
             iconSource: pressed ? visual.infoButtonPressedSource : visual.infoButtonSource
         }
         TabButton {
+            id: tabButton2;
+
             tab: tab2;
             text: qsTr("Menu")
             iconSource: pressed ? visual.menuButtonPressedSource : visual.menuButtonSource
         }
         TabButton {
+            id: tabButton3;
+
             tab: tab3;
             text: qsTr("Map")
             iconSource: pressed ? visual.mapButtonPressedSource : visual.mapButtonSource
@@ -122,6 +139,11 @@ Window {
 
         InfoView {
             id: tab1
+
+            // Change the Tab to BookingView
+            onReservationClicked: {
+                tabGroup.currentTab = tab4;
+            }
 
             // Change the current view caption
             onStatusChanged: {
@@ -155,12 +177,11 @@ Window {
                     anchors.fill: parent
 
                     onStatusChanged: {
-                        // Control showing the back -button in the title bar.
+                        // Navigating deeper the PageStack causes the back
+                        // button to behave differently.
                         if (status == PageStatus.Active) {
-                            console.log("MenuListView activating / active");
                             appState.showBackButton = true;
                         } else {
-                            console.log("MenuListView DEActive!!");
                             appState.showBackButton = false;
                         }
                     }
@@ -196,7 +217,22 @@ Window {
             onStatusChanged: {
                 if (status == PageStatus.Activating) {
                     appState.currentCaption = qsTr("Diner table reservation step 1/2");
+
+                    // Store the height so that it can be restored later.
+                    root._tabBarHeight = tabBar.height;
+                    console.log("TabBar height2: " + root._tabBarHeight);
+
+                    tabBar.visible = false;
+                    tabBar.height = 0;
                 }
+            }
+
+            onActionCompleted: {
+                console.log("Restoring TabBar height: " + root._tabBarHeight);
+                tabGroup.currentTab = tab1;
+
+                tabBar.height = root._tabBarHeight;
+                tabBar.visible = true;
             }
         }
     }

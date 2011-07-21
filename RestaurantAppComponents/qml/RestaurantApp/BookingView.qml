@@ -13,6 +13,8 @@ Page {
     property color fontColorButton: visual.defaultFontColorButton
     property int margins: 4
 
+    signal actionCompleted()
+
     // Internal attributes, do not change from outside!
     // Used in adding the reservation.
     property variant _currentDate: new Date()
@@ -257,6 +259,32 @@ Page {
                             nameEntry.text, phoneEntry.text,
                             personCountSlider.value,
                             _date + ", " + container._hour)
+            }
+        }
+    }
+
+    TabBar {
+        id: tabBar2
+
+        anchors {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
+        TabButton {
+            text: qsTr("Done")
+//            iconSource: pressed ? visual.backButtonPressedSource : visual.backButtonSource
+            onClicked: {
+                console.log("DONE clicked");
+                actionCompleted();
+            }
+        }
+        TabButton {
+            text: qsTr("Cancel")
+//            iconSource: pressed ? visual.infoButtonPressedSource : visual.infoButtonSource
+            onClicked: {
+                console.log("CANCEL clicked");
+                actionCompleted();
             }
         }
     }

@@ -14,6 +14,8 @@ Page {
     property int reservationHeight: 48
     property int scrollBarWidth: visual.scrollBarWidth
 
+    signal reservationClicked()
+
     width: 360
     height: 640
 
@@ -40,7 +42,7 @@ Page {
 
         Item {
             height: 40
-            width: container.width-container.margins- 4
+            width: container.width-container.margins - 4
 
             Image {
                 id: reservation_icon
@@ -108,14 +110,16 @@ Page {
             id: column
             width: parent.contentWidth
             spacing: container.margins
+
             Item {
                 height: logo.height
                 width: parent.width
+
                 Image {
                     id: logo
                     fillMode: "PreserveAspectFit"
                     smooth: true
-                    height: container.height*0.3
+                    height: container.height*0.25
                     width: height
                 }
 
@@ -153,6 +157,25 @@ Page {
                         }
                     }
                 }
+
+                Button {
+                    id: reserve_button
+
+                    anchors {
+                        right: parent.right
+                        rightMargin: container.margins
+                        verticalCenter: address.verticalCenter
+                    }
+                    iconSource: pressed ? visual.bookingButtonPressedSource : visual.bookingButtonSource
+                    onClicked: {
+                        // Trigger Tab -change to BookingView
+                        appState.cameFromView = "InfoView"
+                        reservationClicked();
+//                        callDialog.phoneNumber = telephone.text;
+//                        callDialog.open()
+                    }
+                }
+
                 Item {
                     id: call
                     anchors {
@@ -163,17 +186,11 @@ Page {
 
                     height: call_icon.height
                     width: call_icon.width+telephone.width
-                    Button {
-                        id: call_icon
-                        iconSource: pressed ? visual.callButtonPressedSource : visual.callButtonSource
-                        onClicked: { callDialog.phoneNumber = telephone.text; callDialog.open() }
-                    }
+
                     Text {
                         id: telephone
                         anchors {
                             bottom: call.bottom
-                            left: call_icon.right
-                            leftMargin: container.margins
                             verticalCenter: call_icon.verticalCenter
                         }
                         verticalAlignment: Text.AlignVCenter
@@ -187,6 +204,18 @@ Page {
                             onClicked: { callDialog.phoneNumber = telephone.text; callDialog.open() }
                         }
                     }
+                }
+
+                Button {
+                    id: call_icon
+
+                    anchors {
+                        right: parent.right
+                        rightMargin: container.margins
+                        verticalCenter: call.verticalCenter
+                    }
+                    iconSource: pressed ? visual.callButtonPressedSource : visual.callButtonSource
+                    onClicked: { callDialog.phoneNumber = telephone.text; callDialog.open() }
                 }
             }
 
