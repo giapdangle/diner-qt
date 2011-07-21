@@ -97,15 +97,11 @@ Page {
 
             Row {
                 spacing: 10
-                anchors.topMargin: container.margins
-                anchors.leftMargin: container.margins
-                anchors.rightMargin: container.margins
-                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.topMargin: container.margins * 2
 
                 Text {
-                    anchors.verticalCenter: parent.verticalCenter
                     font.family: container.fontName
-                    font.pixelSize: container.fontSize + 4
+                    font.pixelSize: container.fontSize
                     color: container.fontColor
                     text: qsTr("Table for <b>" + personCountSlider.value + "</b> people")
                 }
@@ -113,9 +109,7 @@ Page {
 
             // Picker slider for the person count
             Row {
-                spacing: 10
                 width: parent.width
-                anchors.margins: container.margins
                 anchors.horizontalCenter: parent.horizontalCenter
 
                 Text {
@@ -150,14 +144,15 @@ Page {
                 }
             } // Slider picker row
 
-            // Date picker row
-            Row {
-                spacing: container.margins
+            // Date picker column
+            Column {
                 width: parent.width
+                spacing: container.margins
 
                 Text {
                     id: dateText
-                    //width: (parent.width-2*parent.spacing)*0.4
+
+
                     font.family: container.fontName
                     font.pixelSize: container.fontSize
                     color: container.fontColor
@@ -166,6 +161,7 @@ Page {
 
                 Button {
                     height: visual.defaultItemHeight
+                    width: parent.width
                     text: container._year + "-" + container._month + "-" + container._day
                     onClicked: datePicker.open();
                 }
@@ -187,10 +183,10 @@ Page {
                          container._day = datePicker.day
                      }
                  }
-            } // Date picker row
+            } // Date picker column
 
-            // Time picker row
-            Row {
+            // Time picker column
+            Column {
                 width: parent.width
                 spacing: container.margins
 
@@ -203,6 +199,7 @@ Page {
 
                 Button {
                     height: visual.defaultItemHeight
+                    width: parent.width
                     text: container._hour
 
                     onClicked: timePicker.open()
@@ -220,7 +217,7 @@ Page {
                         container._hour = timePicker.hour + ":00"
                     }
                 }
-            } // Time picker row
+            } // Time picker column
 
             Item {
                 id: empty
@@ -228,18 +225,11 @@ Page {
                 height: visual.defaultItemHeight
                 width: parent.width
             }
-/*
-            Button {
-                width: parent.width
-                anchors.horizontalCenter: parent.horizontalCenter
-                height: visual.defaultItemHeight
-                text: qsTr("Make reservation")
-                onClicked: reserveDialog.open()
-            }
-*/
+
         } //Column
     }
 
+    // Confirmation dialog for actually making the table reservation.
     QueryDialog {
         id: reserveDialog
 
@@ -248,7 +238,7 @@ Page {
                                "-" + container._month +
                                "-" + container._day
 
-        titleText: qsTr("Make reservation")
+        titleText: qsTr("Table reservation step 2/2")
         message: qsTr("Reserve a table under '" + nameEntry.text + "' for " +
                       personCountSlider.value + " people on " + _date + ", " +
                       container._hour)
@@ -260,10 +250,12 @@ Page {
                         nameEntry.text, phoneEntry.text,
                         personCountSlider.value,
                         _date + ", " + container._hour);
+            // Accepted, emit signal in order to continue.
             actionCompleted();
         }
     }
 
+    // BookingView has it's own tabs.
     TabBar {
         id: tabBar2
 
@@ -276,7 +268,6 @@ Page {
             text: qsTr("Done")
 //            iconSource: pressed ? visual.backButtonPressedSource : visual.backButtonSource
             onClicked: {
-                console.log("DONE clicked");
                 reserveDialog.open();
             }
         }
@@ -284,7 +275,6 @@ Page {
             text: qsTr("Cancel")
 //            iconSource: pressed ? visual.infoButtonPressedSource : visual.infoButtonSource
             onClicked: {
-                console.log("CANCEL clicked");
                 actionCompleted();
             }
         }
