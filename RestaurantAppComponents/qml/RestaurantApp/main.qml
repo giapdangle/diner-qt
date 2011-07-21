@@ -220,17 +220,19 @@ Window {
 
                     // Store the height so that it can be restored later.
                     root._tabBarHeight = tabBar.height;
-                    console.log("TabBar height2: " + root._tabBarHeight);
-
+                    // Hide the original TabBar, as BookinView will replace it
+                    // with its own one.
                     tabBar.visible = false;
                     tabBar.height = 0;
                 }
             }
 
             onActionCompleted: {
-                console.log("Restoring TabBar height: " + root._tabBarHeight);
+                // TODO: Change this back to the correct view according to
+                // appState.cameFromView!!
                 tabGroup.currentTab = tab1;
 
+                // Restore the original TabBar
                 tabBar.height = root._tabBarHeight;
                 tabBar.visible = true;
             }

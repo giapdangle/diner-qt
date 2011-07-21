@@ -228,7 +228,7 @@ Page {
                 height: visual.defaultItemHeight
                 width: parent.width
             }
-
+/*
             Button {
                 width: parent.width
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -236,30 +236,31 @@ Page {
                 text: qsTr("Make reservation")
                 onClicked: reserveDialog.open()
             }
+*/
         } //Column
+    }
 
+    QueryDialog {
+        id: reserveDialog
 
-        QueryDialog {
-            id: reserveDialog
+        // A private date member, just to make the code look a bit cleaner.
+        property string _date: container._year +
+                               "-" + container._month +
+                               "-" + container._day
 
-            // A private date member, just to make the code look a bit cleaner.
-            property string _date: container._year +
-                                   "-" + container._month +
-                                   "-" + container._day
+        titleText: qsTr("Make reservation")
+        message: qsTr("Reserve a table under '" + nameEntry.text + "' for " +
+                      personCountSlider.value + " people on " + _date + ", " +
+                      container._hour)
+        acceptButtonText: qsTr("Reserve")
+        rejectButtonText: qsTr("Cancel")
 
-            titleText: qsTr("Make reservation")
-            message: qsTr("Reserve a table under '" + nameEntry.text + "' for " +
-                          personCountSlider.value + " people on " + _date + ", " +
-                          container._hour)
-            acceptButtonText: qsTr("Reserve")
-            rejectButtonText: qsTr("Cancel")
-
-            onAccepted: {
-                reservationsModel.addReservation(
-                            nameEntry.text, phoneEntry.text,
-                            personCountSlider.value,
-                            _date + ", " + container._hour)
-            }
+        onAccepted: {
+            reservationsModel.addReservation(
+                        nameEntry.text, phoneEntry.text,
+                        personCountSlider.value,
+                        _date + ", " + container._hour);
+            actionCompleted();
         }
     }
 
@@ -276,7 +277,7 @@ Page {
 //            iconSource: pressed ? visual.backButtonPressedSource : visual.backButtonSource
             onClicked: {
                 console.log("DONE clicked");
-                actionCompleted();
+                reserveDialog.open();
             }
         }
         TabButton {
