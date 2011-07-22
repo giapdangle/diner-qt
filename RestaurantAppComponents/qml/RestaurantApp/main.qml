@@ -67,7 +67,7 @@ Window {
 
         TabButton {
             text: qsTr("Back")
-            iconSource: pressed ? visual.backButtonPressedSource : visual.backButtonSource
+            iconSource: visual.backButtonSource
             onClicked: {
                 if (appState.showBackButton == true) {
                     Util.log("Back-button clicked");
@@ -84,7 +84,7 @@ Window {
 
             tab: infoTab
             text: qsTr("Info")
-            iconSource: pressed ? visual.infoButtonPressedSource : visual.infoButtonSource
+            iconSource: visual.infoButtonSource
         }
 
         TabButton {
@@ -92,7 +92,7 @@ Window {
 
             tab: menuTab
             text: qsTr("Menu")
-            iconSource: pressed ? visual.menuButtonPressedSource : visual.menuButtonSource
+            iconSource: visual.menuButtonSource
         }
 
         TabButton {
@@ -100,7 +100,7 @@ Window {
 
             tab: mapTab
             text: qsTr("Map")
-            iconSource: pressed ? visual.mapButtonPressedSource : visual.mapButtonSource
+            iconSource: visual.mapButtonSource
         }
     }
 
@@ -116,14 +116,14 @@ Window {
         }
         TabButton {
             text: qsTr("Done")
-//            iconSource: pressed ? visual.backButtonPressedSource : visual.backButtonSource
+//            iconSource: visual.backButtonSource
             onClicked: {
                 bookingTab.done();
             }
         }
         TabButton {
             text: qsTr("Cancel")
-//            iconSource: pressed ? visual.infoButtonPressedSource : visual.infoButtonSource
+//            iconSource: visual.infoButtonSource
             onClicked: {
                 bookingTab.cancel();
             }
@@ -143,7 +143,7 @@ Window {
 
         TabButton {
             text: qsTr("Back")
-            iconSource: pressed ? visual.backButtonPressedSource : visual.backButtonSource
+            iconSource: visual.backButtonSource
             onClicked: {
                 if (appState.showBackButton == true) {
                     appState.showBackButton = false;
@@ -169,7 +169,7 @@ Window {
 
             tab: bookingTab
             text: qsTr("Booking")
-            iconSource: pressed ? visual.bookingButtonPressedSource : visual.bookingButtonSource
+            iconSource: visual.bookingButtonSource
             onClicked: {
                 // Show the BookingView's own TabBar, and hide this one.
                 menuTabBar.visible = false;

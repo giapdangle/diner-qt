@@ -75,16 +75,13 @@ Page {
                 }
             }
             // Use toolbutton if you want to be able to make it flat
-            //ToolButton {
             Button {
                 id: cancelButton
-                //flat: false
                 anchors {
                     top: parent.top
                     right: parent.right
                     rightMargin: container.margins
                 }
-                //iconSource: pressed ? visual.cancelButtonPressedSource : visual.cancelButtonSource
                 text: qsTr("Cancel")
                 onClicked: { cancelDialog.index = index; cancelDialog.dateTime = dateTime; cancelDialog.open() }
             }
@@ -166,13 +163,11 @@ Page {
                         rightMargin: container.margins
                         verticalCenter: address.verticalCenter
                     }
-                    iconSource: pressed ? visual.bookingButtonPressedSource : visual.bookingButtonSource
+                    iconSource: visual.bookingButtonSource
                     onClicked: {
                         // Trigger Tab -change to BookingView
                         appState.cameFromView = "InfoView"
                         reservationClicked();
-//                        callDialog.phoneNumber = telephone.text;
-//                        callDialog.open()
                     }
                 }
 
@@ -214,7 +209,7 @@ Page {
                         rightMargin: container.margins
                         verticalCenter: call.verticalCenter
                     }
-                    iconSource: pressed ? visual.callButtonPressedSource : visual.callButtonSource
+                    iconSource: visual.callButtonSource
                     onClicked: { callDialog.phoneNumber = telephone.text; callDialog.open() }
                 }
             }

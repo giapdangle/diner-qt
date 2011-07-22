@@ -60,7 +60,7 @@ Rectangle {
         id: zoomPlus
         enabled: container.zoomFactor < container.maxZoomLevel
         visible: enabled
-        iconSource: pressed ? "content/plus_button_pressed.png" : "content/plus_button.png"
+        iconSource: "content/plus_button.png"
         anchors {
             top: mapImage.top
             left: mapImage.left
@@ -77,7 +77,7 @@ Rectangle {
     Button {
         enabled: container.zoomFactor > container.minZoomLevel
         visible: enabled
-        iconSource: pressed ? "content/minus_button_pressed.png" : "content/minus_button.png"
+        iconSource: "content/minus_button.png"
         anchors {
             top: zoomPlus.bottom
             left: mapImage.left

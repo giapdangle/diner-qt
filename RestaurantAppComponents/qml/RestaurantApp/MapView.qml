@@ -191,7 +191,7 @@ Page {
                         verticalCenter: parent.verticalCenter
                     }
 
-                    iconSource: pressed ? visual.callButtonPressedSource : visual.callButtonSource
+                    iconSource: visual.callButtonSource
                     onClicked: { callDialog.phoneNumber = telephone.text; callDialog.open(); }
                 }
             }
@@ -221,7 +221,10 @@ Page {
 
                     MouseArea {
                         anchors.fill: parent
-                        onClicked: { wwwDialog.wwwAddress = url.text; wwwDialog.open(); }
+                        onClicked: {
+                            wwwDialog.wwwAddress = url.text;
+                            wwwDialog.open();
+                        }
                     }
                 }
 
@@ -233,8 +236,13 @@ Page {
                         rightMargin: container.margins * 3
                         verticalCenter: parent.verticalCenter
                     }
-                    iconSource: pressed ? visual.wwwButtonPressedSource : visual.wwwButtonSource
-                    onClicked: { Util.log("Launched url "+url.text); Qt.openUrlExternally(url.text) }
+                    iconSource: visual.wwwButtonSource
+                    onClicked: {
+                        Util.log("Launched url "+url.text);
+                        wwwDialog.wwwAddress = url.text;
+                        wwwDialog.open();
+                        //Qt.openUrlExternally(url.text)
+                    }
                 }
             }
         }
