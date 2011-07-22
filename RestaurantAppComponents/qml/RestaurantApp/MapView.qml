@@ -39,6 +39,7 @@ Page {
 
     InfoModel {
         id: infoModel
+
         onStatusChanged: {
             if (status == XmlListModel.Ready) {
                 Util.log("Model ready");
@@ -58,8 +59,8 @@ Page {
     Grid {
         columns: appState.inLandscape ? 2 : 1
         rows: appState.inLandscape ? 1 : 2
-
         spacing: container.margins
+
         anchors {
             fill: parent
             margins: container.margins
@@ -68,11 +69,12 @@ Page {
         // First grid item will be the Map tile.
         OviMapTile {
             id: tile
+
             //width: appState.inLandscape ? prent.width*0.6 : parent.width
             //height: width-100
             x: 20
-            width: 320
-            height: 240
+            width: 350
+            height: 262
             latitude: container.latitude
             longitude: container.longitude
             minZoomLevel: container.minZoomLevel
@@ -82,45 +84,59 @@ Page {
         // Second grid item is the "column of three" (address, phone number & www)
         Column {
             id: info
-            spacing: container.margins
 
+            spacing: container.margins
             // 1st row containes the address info & button for popup
             // dialog showing the info in detail.
             Row {
                 width: container.width
+                height: (container.height - 20) / 6
 
-                Column {
-                    id: address
-                    spacing: 4
-                    Text {
-                        id: street
-                        text: container.street
-                        color: container.fontColor
-                        font {
-                            family: container.fontName
-                            pointSize: container.infoFontSize
+                MouseArea {
+                    onClicked: addressDialog.open()
+                    anchors.fill: parent
+
+                    Column {
+                        id: address
+
+                        anchors.verticalCenter: parent.verticalCenter
+                        spacing: 4
+
+                        Text {
+                            id: street
+
+                            text: container.street
+                            color: container.fontColor
+                            font {
+                                family: container.fontName
+                                pointSize: container.infoFontSize
+                            }
+                            smooth: true
                         }
-                        smooth: true
-                    }
-                    Text {
-                        id: city
-                        text: container.city
-                        color: container.fontColor
-                        font {
-                            family: container.fontName
-                            pointSize: container.infoFontSize
+
+                        Text {
+                            id: city
+
+                            text: container.city
+                            color: container.fontColor
+                            font {
+                                family: container.fontName
+                                pointSize: container.infoFontSize
+                            }
+                            smooth: true
                         }
-                        smooth: true
-                    }
-                    Text {
-                        id: country
-                        text: container.country
-                        color: container.fontColor
-                        font {
-                            family: container.fontName
-                            pointSize: container.infoFontSize
+
+                        Text {
+                            id: country
+
+                            text: container.country
+                            color: container.fontColor
+                            font {
+                                family: container.fontName
+                                pointSize: container.infoFontSize
+                            }
+                            smooth: true
                         }
-                        smooth: true
                     }
                 }
 
@@ -140,9 +156,11 @@ Page {
             // 2nd row has the phone number and a button to make the call.
             Row {
                 width: container.width
+                height: (container.height - 20) / 6
 
                 Text {
                     id: telephone
+
                     text: container.telephone
                     color: container.fontColorLink
                     smooth: true
@@ -152,10 +170,12 @@ Page {
                         bottomMargin: container.margins + 10
                         verticalCenter: parent.verticalCenter
                     }
+
                     font {
                         family: container.fontName
                         pointSize: container.infoFontSize
                     }
+
                     MouseArea {
                         anchors.fill: parent
                         onClicked: { callDialog.phoneNumber = telephone.text; callDialog.open(); }
@@ -170,6 +190,7 @@ Page {
                         rightMargin: container.margins * 3
                         verticalCenter: parent.verticalCenter
                     }
+
                     iconSource: pressed ? visual.callButtonPressedSource : visual.callButtonSource
                     onClicked: { callDialog.phoneNumber = telephone.text; callDialog.open(); }
                 }
@@ -178,9 +199,11 @@ Page {
             // 3rd row has the web address & button to launch the browser.
             Row {
                 width: container.width
+                height: (container.height - 20) / 6
 
                 Text {
                     id: url
+
                     text: container.url
                     color: container.fontColorLink
                     smooth: true
@@ -190,10 +213,12 @@ Page {
                         bottomMargin: container.margins + 10
                         verticalCenter: parent.verticalCenter
                     }
+
                     font {
                         family: container.fontName
                         pointSize: container.infoFontSize
                     }
+
                     MouseArea {
                         anchors.fill: parent
                         onClicked: { wwwDialog.wwwAddress = url.text; wwwDialog.open(); }
@@ -224,6 +249,7 @@ Page {
             // Nuthin'.
         }
     }
+
     QueryDialog {
         id: wwwDialog
         titleText: qsTr("Open in browser")
