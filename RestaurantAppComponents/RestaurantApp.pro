@@ -1,12 +1,9 @@
 # Add more folders to ship with the application, here
-folder_01.source = qml/RestaurantApp
-folder_01.target = qml
-DEPLOYMENTFOLDERS = folder_01
+common_qml.source = qml/common/RestaurantAppComponents
+common_qml.target = qml
 
 # Additional import path used to resolve QML modules in Creator's code model
 QML_IMPORT_PATH =
-
-symbian:TARGET.UID3 = 0xE4E7F3E9
 
 # Smart Installer package's UID
 # This UID is from the protected range and therefore the package will
@@ -18,10 +15,57 @@ symbian:TARGET.UID3 = 0xE4E7F3E9
 # Allow network access on Symbian
 symbian:TARGET.CAPABILITY += NetworkServices
 
+# Platform specific files and configuration
+symbian {
+    # TODO!: MAYBE USE ANOTHER UID3 FOR THE COMPONENTIZED RestaurantApp?
+    TARGET.UID3 = 0xE4E7F3E9
+    # Allow network access on Symbian
+    TARGET.CAPABILITY += NetworkServices
+    platform_qml.source = qml/symbian/RestaurantAppComponents
+    platform_qml.target = qml
+    QML_IMPORT_PATH = qml/symbian/RestaurantAppComponents
+} else:maemo5 {
+    QT += opengl
+    platform_qml.source = qml/maemo/RestaurantAppComponents
+    platform_qml.target = qml
+    QML_IMPORT_PATH = qml/maemo/RestaurantAppComponents
+} else:simulator {
+    platform_qml.source = qml/symbian/RestaurantAppComponents
+    platform_qml.target = qml
+    QML_IMPORT_PATH = qml/symbian/RestaurantAppComponents
+} else:win32{
+    # Windows
+    platform_qml.source = qml/desktop/RestaurantAppComponents
+    platform_qml.target = qml
+    QML_IMPORT_PATH = qml/desktop/RestaurantAppComponents
+} else:unix {
+    # Harmattan, at the moment we can't differentiate unix sand Harmattan.
+    QT += opengl
+    DEFINES += Q_WS_HARMATTAN
+    platform_qml.source = qml/harmattan/RestaurantAppComponents
+    platform_qml.target = qml
+    QML_IMPORT_PATH = qml/harmattan/RestaurantAppComponents
+
+    # TODO: Enable these, when Unix/OsX can be separated from Harmattan!
+    # e.g. else:desktop {...
+#    platform_qml.source = qml/desktop/RssReader
+#    platform_qml.target = qml
+#    QML_IMPORT_PATH = qml/desktop/RssReader
+}
+
+# Take both, the common folder and the platform specific folder QML files.
+DEPLOYMENTFOLDERS = common_qml platform_qml
+
 # If your application uses the Qt Mobility libraries, uncomment the following
 # lines and add the respective components to the MOBILITY variable.
 CONFIG += mobility
 # MOBILITY +=
+
+# Put generated temp-files under tmp
+MOC_DIR = tmp
+OBJECTS_DIR = tmp
+RCC_DIR = tmp
+UI_DIR = tmp
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp

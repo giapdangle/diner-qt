@@ -1,6 +1,7 @@
 import QtQuick 1.0
 import com.nokia.symbian 1.0
 //import com.meego 1.0
+
 import "Util.js" as Util
 
 Page {

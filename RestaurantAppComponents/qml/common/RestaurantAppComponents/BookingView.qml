@@ -1,6 +1,7 @@
 import QtQuick 1.0
-import com.nokia.symbian 1.0
+// We are using TimePickerDialog & DatePickerDialog from the com.nokia.extras.
 import com.nokia.extras 1.0
+import com.nokia.symbian 1.0
 import "Util.js" as Util
 
 Page {
