@@ -57,13 +57,15 @@ Page {
 
     Grid {
         columns: appState.inLandscape ? 2 : 1
-        rows:  appState.inLandscape ? 1 : 2
+        rows: appState.inLandscape ? 1 : 2
 
         spacing: container.margins
         anchors {
             fill: parent
             margins: container.margins
         }
+
+        // First grid item will be the Map tile.
         OviMapTile {
             id: tile
             //width: appState.inLandscape ? prent.width*0.6 : parent.width
@@ -77,17 +79,16 @@ Page {
             maxZoomLevel: container.maxZoomLevel
         }
 
-        Rectangle {
-            id: addressBox
-            height: info.height+container.margins
-            width: info.width+container.margins
-            color: "transparent"
-            radius: 20
+        // Second grid item is the "column of three" (address, phone number & www)
+        Column {
+            id: info
+            spacing: container.margins
 
-            Column {
-                id: info
-                anchors.centerIn: parent
-                spacing: container.margins
+            // 1st row containes the address info & button for popup
+            // dialog showing the info in detail.
+            Row {
+                width: container.width
+
                 Column {
                     id: address
                     spacing: 4
@@ -122,91 +123,107 @@ Page {
                         smooth: true
                     }
                 }
-                Item {
-                    id: call
-                    height: call_button.height
-                    width: call_button.width+telephone.width
-                    Button {
-                        id: call_button
-                        iconSource: pressed ? visual.callButtonPressedSource : visual.callButtonSource
+
+                Button {
+                    id: zoom_button
+
+                    anchors {
+                        right: parent.right
+                        rightMargin: container.margins * 3
+                        verticalCenter: parent.verticalCenter
+                    }
+                    iconSource: visual.zoomiInSource
+                    onClicked: { addressDialog.open(); }
+                }
+            }
+
+            // 2nd row has the phone number and a button to make the call.
+            Row {
+                width: container.width
+
+                Text {
+                    id: telephone
+                    text: container.telephone
+                    color: container.fontColorLink
+                    smooth: true
+                    anchors {
+                        left: parent.left
+                        leftMargin: container.margins
+                        bottomMargin: container.margins + 10
+                        verticalCenter: parent.verticalCenter
+                    }
+                    font {
+                        family: container.fontName
+                        pointSize: container.infoFontSize
+                    }
+                    MouseArea {
+                        anchors.fill: parent
                         onClicked: { callDialog.phoneNumber = telephone.text; callDialog.open(); }
                     }
-                    Text {
-                        id: telephone
-                        text: container.telephone
-                        color: container.fontColorLink
-                        smooth: true
-                        anchors {
-                            bottom: call.bottom
-                            left: call_button.right
-                            leftMargin: container.margins
-                            bottomMargin: container.margins + 10
-                            verticalCenter: parent.verticalCenter
-                        }
-                        font {
-                            family: container.fontName
-                            pointSize: container.infoFontSize
-                        }
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: { callDialog.phoneNumber = telephone.text; callDialog.open(); }
-                        }
-                    }
                 }
 
-                Item {
-                    id: www
+                Button {
+                    id: call_button
 
-                    height: www_button.height
-                    width: www_button.width+url.width
-
-                    Button {
-                        id: www_button
-                        iconSource: pressed ? visual.wwwButtonPressedSource : visual.wwwButtonSource
-                        onClicked: { Util.log("Launched url "+url.text); Qt.openUrlExternally(url.text) }
+                    anchors {
+                        right: parent.right
+                        rightMargin: container.margins * 3
+                        verticalCenter: parent.verticalCenter
                     }
-                    Text {
-                        id: url
-                        text: container.url
-                        color: container.fontColorLink
-                        smooth: true
-                        anchors {
-                            bottom: www.bottom
-                            left: www_button.right
-                            leftMargin: container.margins
-                            bottomMargin: container.margins + 10
-                            verticalCenter: parent.verticalCenter
-                        }
-                        font {
-                            family: container.fontName
-                            pointSize: container.infoFontSize
-                        }
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: { wwwDialog.wwwAddress = url.text; wwwDialog.open(); }
-                        }
-                    }
+                    iconSource: pressed ? visual.callButtonPressedSource : visual.callButtonSource
+                    onClicked: { callDialog.phoneNumber = telephone.text; callDialog.open(); }
                 }
             }
 
-            Image {
-                id: zoom_icon
-                source: "" //dialog.state == "show" ? visual.zoomiOutSource : visual.zoomiInSource
-                smooth: true
-                anchors {
-                    top: addressBox.top
-                    right: addressBox.right
-                    margins: container.margins
-                }
-            }
+            // 3rd row has the web address & button to launch the browser.
+            Row {
+                width: container.width
 
-            MouseArea {
-                x: address.x; y: address.y; width: addressBox.width; height: address.height
-                onClicked: dialog.show()
+                Text {
+                    id: url
+                    text: container.url
+                    color: container.fontColorLink
+                    smooth: true
+                    anchors {
+                        left: parent.left
+                        leftMargin: container.margins
+                        bottomMargin: container.margins + 10
+                        verticalCenter: parent.verticalCenter
+                    }
+                    font {
+                        family: container.fontName
+                        pointSize: container.infoFontSize
+                    }
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: { wwwDialog.wwwAddress = url.text; wwwDialog.open(); }
+                    }
+                }
+
+                Button {
+                    id: www_button
+
+                    anchors {
+                        right: parent.right
+                        rightMargin: container.margins * 3
+                        verticalCenter: parent.verticalCenter
+                    }
+                    iconSource: pressed ? visual.wwwButtonPressedSource : visual.wwwButtonSource
+                    onClicked: { Util.log("Launched url "+url.text); Qt.openUrlExternally(url.text) }
+                }
             }
         }
     }
 
+    QueryDialog {
+        id: addressDialog
+        titleText: qsTr("Address")
+        message: qsTr(container.street + "\n" + container.city + "\n" + container.country)
+        acceptButtonText: qsTr("Ok")
+        onAccepted: {
+            // Nuthin'.
+        }
+    }
     QueryDialog {
         id: wwwDialog
         titleText: qsTr("Open in browser")
