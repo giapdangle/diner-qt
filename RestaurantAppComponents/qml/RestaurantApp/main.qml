@@ -9,9 +9,6 @@ Window {
     width: 360
     height: 640
 
-    // Internal properties. Used for storing/restoring the height.
-    property int _tabBarHeight: 0
-
     StatusBar {
         id: statusBar
     }
@@ -20,7 +17,7 @@ Window {
     TitleBar {
         id: titleBar
 
-        // Anchors titlebar to left,top and right. Then set height
+        // Anchors titlebar to left, top and right. Then set height
         // Use grouping if possible.
         anchors {
             top: statusBar.bottom
@@ -34,30 +31,6 @@ Window {
         captionFontColor: visual.captionFontColor
         captionBackgoundColor: visual.captionBackgroundColor
         caption: appState.currentCaption
-
-//        icon.visible: false
-//        title: ""
-//        titleImageSource: visual.titleImageSource
-//        titleFontSize: visual.titleFontSize
-//        titleFontColor: visual.titleFontColor
-//        titleFontBold: true
-//        titleBackgroundColor: visual.titleBackgroundColor
-
-//        exitButtonSource: visual.exitButtonSource
-//        exitButtonPressedSource: visual.exitButtonPressedSource
-//        backButtonSource: visual.backButtonSource
-//        backButtonPressedSource: visual.backButtonPressedSource
-//        showingBackButton: false
-
-//        onBackButtonClicked: {
-//            Util.log("Back-button clicked. Came from view: " + viewName);
-//            appState.currentViewName = viewName;
-//            showingBackButton = false;
-//            pageStack.pop();
-//        }
-//        onExitButtonClicked: {
-//            Util.exitApp("Exit-button clicked");
-//        }
     }
 
     ReservationsModel {
@@ -74,22 +47,24 @@ Window {
         currentCaption: qsTr("Information")
     }
 
+    // -----------------------------------------------------------------------
+    // Define three different kinds of TabBars. The Default tab bar is being
+    // used in Info-, MenuGrid- and MapViews. Booking tab bar is used only
+    // in the BookingView and the menuTabBar is used when in the MenuListView.
+    // -----------------------------------------------------------------------
+    //
     // Defines the "Main TabBar", shown on each Page view, but hidden when
     // in BookingView & MenuListView.
     TabBar {
-        id: tabBar
+        id: defaultTabBar
 
-        Component.onCompleted: {
-            // Store the height so that it can be restored later.
-            root._tabBarHeight = tabBar.height;
-            console.log("TabBar height: " + root._tabBarHeight);
-        }
-
+        visible: true   // This TabBar is visible by default.
         anchors {
             left: parent.left
             right: parent.right
             bottom: parent.bottom
         }
+
         TabButton {
             text: qsTr("Back")
             iconSource: pressed ? visual.backButtonPressedSource : visual.backButtonSource
@@ -103,30 +78,109 @@ Window {
                 }
             }
         }
-        TabButton {
-            id: tabButton1;
 
-            tab: tab1;
+        TabButton {
+            id: tabButton1
+
+            tab: infoTab
             text: qsTr("Info")
             iconSource: pressed ? visual.infoButtonPressedSource : visual.infoButtonSource
         }
-        TabButton {
-            id: tabButton2;
 
-            tab: tab2;
+        TabButton {
+            id: tabButton2
+
+            tab: menuTab
             text: qsTr("Menu")
             iconSource: pressed ? visual.menuButtonPressedSource : visual.menuButtonSource
         }
-        TabButton {
-            id: tabButton3;
 
-            tab: tab3;
+        TabButton {
+            id: tabButton3
+
+            tab: mapTab
             text: qsTr("Map")
             iconSource: pressed ? visual.mapButtonPressedSource : visual.mapButtonSource
-//            iconSource: pressed ? visual.bookingButtonPressedSource : visual.bookingButtonSource
         }
     }
 
+    // BookingView has it's own tabs.
+    TabBar {
+        id: bookingTabBar
+
+        visible: false
+        anchors {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
+        TabButton {
+            text: qsTr("Done")
+//            iconSource: pressed ? visual.backButtonPressedSource : visual.backButtonSource
+            onClicked: {
+                bookingTab.done();
+            }
+        }
+        TabButton {
+            text: qsTr("Cancel")
+//            iconSource: pressed ? visual.infoButtonPressedSource : visual.infoButtonSource
+            onClicked: {
+                bookingTab.cancel();
+            }
+        }
+    }
+
+    // And yet another kind of TabBar for MenuListView.
+    TabBar {
+        id: menuTabBar
+
+        visible: false
+        anchors {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
+
+        TabButton {
+            text: qsTr("Back")
+            iconSource: pressed ? visual.backButtonPressedSource : visual.backButtonSource
+            onClicked: {
+                if (appState.showBackButton == true) {
+                    appState.showBackButton = false;
+                    // When returning to Menu Grid view, hide the special tab bar
+                    // and show the default one.
+                    menuTabBar.visible = false;
+                    defaultTabBar.visible = true;
+                    pageStack.pop();
+                }
+            }
+        }
+
+        // Placeholder buttons
+        TabButton {
+            visible: false
+        }
+        TabButton {
+            visible: false
+        }
+
+        TabButton {
+            id: reserveButton
+
+            tab: bookingTab
+            text: qsTr("Booking")
+            iconSource: pressed ? visual.bookingButtonPressedSource : visual.bookingButtonSource
+            onClicked: {
+                // Show the BookingView's own TabBar, and hide this one.
+                menuTabBar.visible = false;
+                bookingTabBar.visible = true;
+                appState.cameFromView = "MenuView";
+            }
+        }
+    }
+
+    // The group of pages that are being used as the base for the different Tabs.
+    // Each Tab/Page takes care of updating the titleBar caption.
     TabGroup {
         id: tabGroup
 
@@ -134,15 +188,18 @@ Window {
             left: parent.left;
             right: parent.right;
             top: titleBar.bottom;
-            bottom: tabBar.top
+            bottom: defaultTabBar.top
         }
 
         InfoView {
-            id: tab1
+            id: infoTab
 
-            // Change the Tab to BookingView
+            // Change the Tab to BookingView & change the correct TabBar in place.
             onReservationClicked: {
-                tabGroup.currentTab = tab4;
+                tabGroup.currentTab = bookingTab;
+                defaultTabBar.visible = false;
+                menuTabBar.visible = false;
+                bookingTabBar.visible = true;
             }
 
             // Change the current view caption
@@ -155,27 +212,30 @@ Window {
 
         // The main level Page item acts as a tab placeholder for the TabGroup.
         Page {
-            id: tab2
+            id: menuTab
 
             // MenuListView is a sub-page for the MenuGridView, thus they
             // are defined within the pageStack.
             PageStack {
                 id: pageStack
-                anchors.fill: parent
 
+                anchors.fill: parent
                 MenuGridView {
                     id: menu
                     anchors.fill: parent
                     onMenuItemClicked: {
                         // If some menu item was selected, show its contents.
                         pageStack.push(menuList);
+                        // Change the tab bar too
+                        defaultTabBar.visible = false;
+                        menuTabBar.visible = true;
                     }
                 }
 
                 MenuListView {
                     id: menuList
-                    anchors.fill: parent
 
+                    anchors.fill: parent
                     onStatusChanged: {
                         // Navigating deeper the PageStack causes the back
                         // button to behave differently.
@@ -201,7 +261,7 @@ Window {
         }
 
         MapView {
-            id: tab3
+            id: mapTab
 
             // Change the current view caption
             onStatusChanged: {
@@ -212,29 +272,30 @@ Window {
         }
 
         BookingView {
-            id: tab4
+            id: bookingTab
 
             onStatusChanged: {
                 if (status == PageStatus.Activating) {
                     appState.currentCaption = qsTr("Diner table reservation step 1/2");
-
-                    // Store the height so that it can be restored later.
-                    root._tabBarHeight = tabBar.height;
-                    // Hide the original TabBar, as BookinView will replace it
-                    // with its own one.
-                    tabBar.visible = false;
-                    tabBar.height = 0;
                 }
             }
 
             onActionCompleted: {
-                // TODO: Change this back to the correct view according to
-                // appState.cameFromView!!
-                tabGroup.currentTab = tab1;
-
-                // Restore the original TabBar
-                tabBar.height = root._tabBarHeight;
-                tabBar.visible = true;
+                // Reservation made successfully! Determine, in which view
+                // we should return.
+                bookingTabBar.visible = false;
+                if (appState.cameFromView == "InfoView") {
+                    // Return to InfoView tab.
+                    tabGroup.currentTab = infoTab;
+                    // Restore the original TabBar
+                    defaultTabBar.visible = true;
+                } else {
+                    // Came from "MenuView".
+                    // Return to MenuListView tab.
+                    tabGroup.currentTab = menuTab;
+                    // Restore the menu view's own TabBar
+                    menuTabBar.visible = true;
+                }
             }
         }
     }

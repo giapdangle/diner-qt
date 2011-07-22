@@ -14,6 +14,12 @@ Page {
     property int margins: 4
 
     signal actionCompleted()
+    function done() {
+        reserveDialog.open();
+    }
+    function cancel() {
+        container.actionCompleted();
+    }
 
     // Internal attributes, do not change from outside!
     // Used in adding the reservation.
@@ -108,8 +114,9 @@ Page {
             }
 
             // Picker slider for the person count
-            Row {
+            Item {
                 width: parent.width
+                height: personCountSlider.height
                 anchors.horizontalCenter: parent.horizontalCenter
 
                 Text {
@@ -135,7 +142,7 @@ Page {
                 Text {
                     id: maximumText
                     width: 20
-                    anchors.right:  parent.right
+                    anchors.right: parent.right
                     anchors.verticalCenter: personCountSlider.verticalCenter
                     font.family: container.fontName
                     font.pixelSize: container.fontSize
@@ -252,31 +259,6 @@ Page {
                         _date + ", " + container._hour);
             // Accepted, emit signal in order to continue.
             actionCompleted();
-        }
-    }
-
-    // BookingView has it's own tabs.
-    TabBar {
-        id: tabBar2
-
-        anchors {
-            left: parent.left
-            right: parent.right
-            bottom: parent.bottom
-        }
-        TabButton {
-            text: qsTr("Done")
-//            iconSource: pressed ? visual.backButtonPressedSource : visual.backButtonSource
-            onClicked: {
-                reserveDialog.open();
-            }
-        }
-        TabButton {
-            text: qsTr("Cancel")
-//            iconSource: pressed ? visual.infoButtonPressedSource : visual.infoButtonSource
-            onClicked: {
-                actionCompleted();
-            }
         }
     }
 }

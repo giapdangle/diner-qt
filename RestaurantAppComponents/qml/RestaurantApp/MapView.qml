@@ -88,7 +88,7 @@ Page {
             spacing: container.margins
             // 1st row containes the address info & button for popup
             // dialog showing the info in detail.
-            Row {
+            Item {
                 width: container.width
                 height: (container.height - 20) / 6
 
@@ -154,7 +154,7 @@ Page {
             }
 
             // 2nd row has the phone number and a button to make the call.
-            Row {
+            Item {
                 width: container.width
                 height: (container.height - 20) / 6
 
@@ -197,7 +197,7 @@ Page {
             }
 
             // 3rd row has the web address & button to launch the browser.
-            Row {
+            Item {
                 width: container.width
                 height: (container.height - 20) / 6
 

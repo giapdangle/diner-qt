@@ -191,7 +191,7 @@ Page {
                         id: telephone
                         anchors {
                             bottom: call.bottom
-                            verticalCenter: call_icon.verticalCenter
+                            verticalCenter: parent.verticalCenter
                         }
                         verticalAlignment: Text.AlignVCenter
                         color: container.fontColorLink
