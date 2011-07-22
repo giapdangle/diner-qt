@@ -16,14 +16,10 @@ Item {
 
     property int scrollBarWidth: 8
     property string callButtonSource: "content/call_button.png"
-    property string callButtonPressedSource: "content/call_button_pressed.png"
     property string wwwButtonSource: "content/www_button.png"
-    property string wwwButtonPressedSource: "content/www_button_pressed.png"
     property string titleImageSource: "content/title.png"
     property string cancelButtonSource: "content/cancel_button.png"
-    property string cancelButtonPressedSource: "content/cancel_button.png"
     property string bookingIconSource: "content/booking_icon.png"
-
 
     // Title bar
     property int titleFontSize: 36
@@ -36,9 +32,7 @@ Item {
     property color captionBackgroundColor: "#ffffff"
 
     property string exitButtonSource: "content/exit_button.png"
-    property string exitButtonPressedSource: "content/exit_button_pressed.png"
     property string backButtonSource: "content/back_button.png"
-    property string backButtonPressedSource: "content/back_button_pressed.png"
 
     // Tab bar
     property string tabBarButtonFont: defaultFontFamily
@@ -50,13 +44,8 @@ Item {
     property string mapButtonSource: "content/map_button.png"
     property string bookingButtonSource: "content/booking_button.png"
 
-    property string infoButtonPressedSource: "content/info_button_pressed.png"
-    property string menuButtonPressedSource: "content/menu_button_pressed.png"
-    property string mapButtonPressedSource: "content/map_button_pressed.png"
-    property string bookingButtonPressedSource: "content/booking_button_pressed.png"
-
     // Info view
-    property int infoViewReservationFontSize: 12
+    property int infoViewReservationFontSize: 14
     property int infoViewAddressFontSize: 18
     property int infoViewFontSize: 18
     
@@ -70,15 +59,11 @@ Item {
     property int menuListViewTitleSize: 12
     property int menuListItemFontSize: 8
 
-
     // Map view
     property string zoomiInSource: "content/zoom_in.png"
     property string zoomiOutSource: "content/zoom_out.png"
     property int infoFontSize: 10
 
-
-
     // Booking view
     property int bookingViewFontSize: 16
-
 }

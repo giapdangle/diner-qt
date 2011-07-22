@@ -6,7 +6,7 @@ Rectangle {
     id: container
 
     property int margins: 8
-    property string iconSource: "gfx/placeholder_icon.png"
+    property string iconSource: "content/placeholder_icon.png"
     property string caption: "CAPTION"
     property string captionFontName: "Helvetica"
     property int captionFontSize: 24
