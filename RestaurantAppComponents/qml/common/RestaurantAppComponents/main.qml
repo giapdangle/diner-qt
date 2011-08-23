@@ -48,27 +48,16 @@ Window {
     }
 
     // -----------------------------------------------------------------------
-    // Define three different kinds of TabBars. The Default tab bar is being
-    // used in Info-, MenuGrid- and MapViews. Booking tab bar is used only
+    // Define three different kinds of ToolBars/TabBars. The Default toolbar
+    // is used in Info-, MenuGrid- and MapViews. Booking tab bar is used only
     // in the BookingView and the menuTabBar is used when in the MenuListView.
     // -----------------------------------------------------------------------
     //
-    // Defines the "Main TabBar", shown on each Page view, but hidden when
-    // in BookingView & MenuListView.
-    ToolBar {
-        id: defaultTabBar
-
-        visible: true   // This TabBar is visible by default.
-        anchors {
-            left: parent.left
-            right: parent.right
-            bottom: parent.bottom
-        }
-        tools: toolLayout
-    }
-
+    // Defines the "Main ToolBar" layout, shown on each Page view, but replaced
+    // by menuListTools when in MenuListView and hidden when in BookingView.
     ToolBarLayout {
-        id: toolLayout
+        id: defaultTools
+
         ToolButton {
             iconSource: visual.backButtonSource
             onClicked: {
@@ -82,6 +71,8 @@ Window {
             }
         }
         ButtonRow {
+            id: buttonRow
+
             TabButton {
                 id: tabButton1
                 tab: infoTab
@@ -102,7 +93,56 @@ Window {
         }
     }
 
-    // BookingView has it's own tabs.
+    // A bit differend kind of ToolBar for MenuListView.
+    ToolBarLayout {
+        id: menuListTools
+
+        ToolButton {
+            iconSource: visual.backButtonSource
+            onClicked: {
+                if (appState.showBackButton == true) {
+                    appState.showBackButton = false;
+                    // When returning to Menu Grid view, hide the special tab bar
+                    // and show the default one.
+                    sharedToolBar.tools = defaultTools;
+                    buttonRow.checkedButton = tabButton2;
+                    pageStack.pop();
+                }
+            }
+        }
+
+        ButtonRow {
+            TabButton {
+                id: reserveButton
+
+                tab: bookingTab
+                iconSource: visual.bookingButtonSource
+                onClicked: {
+                    // Show the BookingView's own TabBar.
+                    appState.cameFromView = "MenuView";
+                    bookingTabBar.visible = true;
+                }
+            }
+        }
+
+        ToolButton {
+            visible: false
+        }
+    }
+
+    // The ToolBar instance itself. Default tools layout defined above.
+    ToolBar {
+        id: sharedToolBar
+
+        anchors {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
+        tools: defaultTools
+    }
+
+    // BookingView has it's completely own TabBar.
     TabBar {
         id: bookingTabBar
 
@@ -112,67 +152,19 @@ Window {
             right: parent.right
             bottom: parent.bottom
         }
-        TabButton {
-            text: qsTr("Done")
-//            iconSource: visual.backButtonSource
-            onClicked: {
-                bookingTab.done();
-            }
-        }
-        TabButton {
-            text: qsTr("Cancel")
-//            iconSource: visual.infoButtonSource
-            onClicked: {
-                bookingTab.cancel();
-            }
-        }
-    }
 
-    // And yet another kind of TabBar for MenuListView.
-    TabBar {
-        id: menuTabBar
-
-        visible: false
-        anchors {
-            left: parent.left
-            right: parent.right
-            bottom: parent.bottom
-        }
-
-        TabButton {
-            text: qsTr("Back")
-            iconSource: visual.backButtonSource
-            onClicked: {
-                if (appState.showBackButton == true) {
-                    appState.showBackButton = false;
-                    // When returning to Menu Grid view, hide the special tab bar
-                    // and show the default one.
-                    menuTabBar.visible = false;
-                    defaultTabBar.visible = true;
-                    pageStack.pop();
+        ButtonRow {
+            TabButton {
+                text: qsTr("Done")
+                onClicked: {
+                    bookingTab.done();
                 }
             }
-        }
-
-        // Placeholder buttons
-        TabButton {
-            visible: false
-        }
-        TabButton {
-            visible: false
-        }
-
-        TabButton {
-            id: reserveButton
-
-            tab: bookingTab
-            text: qsTr("Booking")
-            iconSource: visual.bookingButtonSource
-            onClicked: {
-                // Show the BookingView's own TabBar, and hide this one.
-                menuTabBar.visible = false;
-                bookingTabBar.visible = true;
-                appState.cameFromView = "MenuView";
+            TabButton {
+                text: qsTr("Cancel")
+                onClicked: {
+                    bookingTab.cancel();
+                }
             }
         }
     }
@@ -186,7 +178,7 @@ Window {
             left: parent.left;
             right: parent.right;
             top: titleBar.bottom;
-            bottom: defaultTabBar.top
+            bottom: sharedToolBar.top
         }
 
         InfoView {
@@ -195,8 +187,6 @@ Window {
             // Change the Tab to BookingView & change the correct TabBar in place.
             onReservationClicked: {
                 tabGroup.currentTab = bookingTab;
-                defaultTabBar.visible = false;
-                menuTabBar.visible = false;
                 bookingTabBar.visible = true;
             }
 
@@ -216,17 +206,18 @@ Window {
             // are defined within the pageStack.
             PageStack {
                 id: pageStack
-
                 anchors.fill: parent
+
                 MenuGridView {
                     id: menu
                     anchors.fill: parent
+                    tools: defaultTools
+
                     onMenuItemClicked: {
                         // If some menu item was selected, show its contents.
                         pageStack.push(menuList);
-                        // Change the tab bar too
-                        defaultTabBar.visible = false;
-                        menuTabBar.visible = true;
+                        // Change the correct tools in place.
+                        sharedToolBar.tools = menuListTools;
                     }
                 }
 
@@ -234,6 +225,7 @@ Window {
                     id: menuList
 
                     anchors.fill: parent
+                    tools: menuListTools
                     onStatusChanged: {
                         // Navigating deeper the PageStack causes the back
                         // button to behave differently.
@@ -260,6 +252,7 @@ Window {
 
         MapView {
             id: mapTab
+            tools: defaultTools
 
             // Change the current view caption
             onStatusChanged: {
@@ -285,14 +278,10 @@ Window {
                 if (appState.cameFromView == "InfoView") {
                     // Return to InfoView tab.
                     tabGroup.currentTab = infoTab;
-                    // Restore the original TabBar
-                    defaultTabBar.visible = true;
                 } else {
                     // Came from "MenuView".
                     // Return to MenuListView tab.
                     tabGroup.currentTab = menuTab;
-                    // Restore the menu view's own TabBar
-                    menuTabBar.visible = true;
                 }
             }
         }
