@@ -33,6 +33,9 @@ Page {
                 country.text = infoModel.get(0).country
                 telephone.text = infoModel.get(0).telephone
                 description.text = infoModel.get(0).description
+                // VKN TODO! GET THE OPENING DAYS & HOURS FROM THE MODEL!
+                openDays.text = "Open\nMon to Thu:\nFriday:\nSaturday:\nSunday:"
+                openHours.text = "\n11-22\n11-23\n13-23\n14-21"
             }
         }
     }
@@ -249,6 +252,42 @@ Page {
                 font {
                     family: container.fontName
                     pixelSize: visual.infoViewFontSize
+                }
+            }
+
+            // Restaurant opening days & hours and a delicious image.
+            Item {
+                width: flicker.width
+                height: 140
+                anchors.top: description.bottom
+                anchors.topMargin: container.margins
+
+                Text {
+                    id: openDays
+                    width: 120
+                    anchors.left: parent.left
+                    color: container.fontColor
+                    font {
+                        family: container.fontName
+                        pixelSize: visual.infoViewFontSize
+                    }
+                }
+                Text {
+                    id: openHours
+                    width: 80
+                    anchors.left: openDays.right
+                    color: container.fontColor
+                    font {
+                        family: container.fontName
+                        pixelSize: visual.infoViewFontSize
+                    }
+                }
+                Image {
+                    id: infoImg
+                    fillMode: Image.PreserveAspectFit
+                    anchors.left: openHours.right
+                    // VKN TODO! CHANGE THIS!
+                    source: "content/food.png"
                 }
             }
         }

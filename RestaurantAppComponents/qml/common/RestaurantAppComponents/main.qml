@@ -55,7 +55,7 @@ Window {
     //
     // Defines the "Main TabBar", shown on each Page view, but hidden when
     // in BookingView & MenuListView.
-    TabBar {
+    ToolBar {
         id: defaultTabBar
 
         visible: true   // This TabBar is visible by default.
@@ -64,9 +64,12 @@ Window {
             right: parent.right
             bottom: parent.bottom
         }
+        tools: toolLayout
+    }
 
-        TabButton {
-            text: qsTr("Back")
+    ToolBarLayout {
+        id: toolLayout
+        ToolButton {
             iconSource: visual.backButtonSource
             onClicked: {
                 if (appState.showBackButton == true) {
@@ -78,29 +81,24 @@ Window {
                 }
             }
         }
+        ButtonRow {
+            TabButton {
+                id: tabButton1
+                tab: infoTab
+                iconSource: visual.infoButtonSource
+            }
 
-        TabButton {
-            id: tabButton1
+            TabButton {
+                id: tabButton2
+                tab: menuTab
+                iconSource: visual.menuButtonSource
+            }
 
-            tab: infoTab
-            text: qsTr("Info")
-            iconSource: visual.infoButtonSource
-        }
-
-        TabButton {
-            id: tabButton2
-
-            tab: menuTab
-            text: qsTr("Menu")
-            iconSource: visual.menuButtonSource
-        }
-
-        TabButton {
-            id: tabButton3
-
-            tab: mapTab
-            text: qsTr("Map")
-            iconSource: visual.mapButtonSource
+            TabButton {
+                id: tabButton3
+                tab: mapTab
+                iconSource: visual.mapButtonSource
+            }
         }
     }
 
@@ -205,7 +203,7 @@ Window {
             // Change the current view caption
             onStatusChanged: {
                 if (status == PageStatus.Activating) {
-                    appState.currentCaption = qsTr("Diner reservation information");
+                    appState.currentCaption = qsTr("Reservation information");
                 }
             }
         }
