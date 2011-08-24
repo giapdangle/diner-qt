@@ -37,11 +37,9 @@ Page {
 
     ScrollBar {
         flickableItem: listView
-//        width: container.scrollBarWidth
         anchors {
             top: listView.top;
             right: listView.right;
-//            bottom: listView.bottom;
             }
         }
 

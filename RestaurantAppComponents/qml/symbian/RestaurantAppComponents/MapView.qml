@@ -237,6 +237,7 @@ Page {
                         verticalCenter: parent.verticalCenter
                     }
                     iconSource: visual.wwwButtonSource
+
                     onClicked: {
                         Util.log("Launched url "+url.text);
                         wwwDialog.wwwAddress = url.text;
