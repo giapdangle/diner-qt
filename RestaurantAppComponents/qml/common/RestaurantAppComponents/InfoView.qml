@@ -287,7 +287,7 @@ Page {
                     fillMode: Image.PreserveAspectFit
                     anchors.left: openHours.right
                     // VKN TODO! CHANGE THIS!
-                    source: "content/food.png"
+                    source: "content/placeholder_food.png"
                 }
             }
         }

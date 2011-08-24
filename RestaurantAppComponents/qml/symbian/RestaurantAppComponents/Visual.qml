@@ -27,9 +27,9 @@ Item {
     property color titleBackgroundColor: "#7c0505"
 
     property string captionFontFamily: defaultFontFamily
-    property int captionFontSize: 10
-    property color captionFontColor: "#5a57c5"
-    property color captionBackgroundColor: "#ffffff"
+    property int captionFontSize: 8
+    property color captionFontColor: "#ffffff"
+    property color captionBackgroundColor: "#770d0f"
 
     property string exitButtonSource: "content/exit_button.png"
     property string backButtonSource: "content/back_button.png"
