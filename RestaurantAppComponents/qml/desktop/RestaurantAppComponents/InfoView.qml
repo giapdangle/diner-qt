@@ -327,5 +327,4 @@ Page {
             Util.log("Invoking a call "+telephone.text); Qt.openUrlExternally("tel:"+telephone.text)
         }
     }
-
 }

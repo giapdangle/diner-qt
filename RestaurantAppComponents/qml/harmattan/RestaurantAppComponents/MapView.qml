@@ -1,14 +1,13 @@
 import QtQuick 1.0
-import com.nokia.symbian 1.0
-//import com.meego 1.0
+import com.nokia.meego 1.0
 
 import "Util.js" as Util
 
 Page {
     id: container
 
-    width: 360
-    height: 640
+    width: 480
+    height: 854
 
     property int scrollBarWidth: visual.scrollBarWidth
     property string fontName: visual.defaultFontFamily
@@ -144,6 +143,8 @@ Page {
                 Button {
                     id: zoom_button
 
+                    width: 64
+                    height: 64
                     anchors {
                         right: parent.right
                         rightMargin: container.margins * 3
@@ -186,6 +187,8 @@ Page {
                 Button {
                     id: call_button
 
+                    width: 64
+                    height: 64
                     anchors {
                         right: parent.right
                         rightMargin: container.margins * 3
@@ -232,12 +235,15 @@ Page {
                 Button {
                     id: www_button
 
+                    width: 64
+                    height: 64
                     anchors {
                         right: parent.right
                         rightMargin: container.margins * 3
                         verticalCenter: parent.verticalCenter
                     }
                     iconSource: visual.wwwButtonSource
+
                     onClicked: {
                         Util.log("Launched url "+url.text);
                         wwwDialog.wwwAddress = url.text;

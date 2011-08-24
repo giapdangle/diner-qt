@@ -1,13 +1,14 @@
 import QtQuick 1.0
-import com.nokia.symbian 1.0
-//import com.meego 1.0 // for Meego components
+import com.nokia.meego 1.0
 
 import "Components.js" as Util
 
 Window {
     id: root
-    width: 360
-    height: 640
+
+//    width: 480
+//    height: 854
+    anchors.fill: parent
 
     StatusBar {
         id: statusBar
@@ -25,7 +26,8 @@ Window {
             right: parent.right
         }
 
-        height: appState.inLandscape ? root.width * 0.04 : root.height*0.04
+        height: appState.inLandscape ? root.width * 0.05 : root.height*0.05
+        width: root.width
         captionFontName: visual.captionFontFamily
         captionFontSize: visual.captionFontSize
         captionFontColor: visual.captionFontColor
@@ -120,7 +122,6 @@ Window {
                 onClicked: {
                     // Show the BookingView's own TabBar.
                     appState.cameFromView = "MenuView";
-                    bookingTabBar.visible = true;
                 }
             }
         }
@@ -143,15 +144,8 @@ Window {
     }
 
     // BookingView has it's completely own TabBar.
-    TabBar {
-        id: bookingTabBar
-
-        visible: false
-        anchors {
-            left: parent.left
-            right: parent.right
-            bottom: parent.bottom
-        }
+    ToolBarLayout {
+        id: bookingTools
 
         ButtonRow {
             TabButton {
@@ -183,11 +177,12 @@ Window {
 
         InfoView {
             id: infoTab
+            tools: defaultTools
+            anchors.fill: parent
 
             // Change the Tab to BookingView & change the correct TabBar in place.
             onReservationClicked: {
                 tabGroup.currentTab = bookingTab;
-                bookingTabBar.visible = true;
             }
 
             // Change the current view caption
@@ -253,6 +248,7 @@ Window {
         MapView {
             id: mapTab
             tools: defaultTools
+            anchors.fill: parent
 
             // Change the current view caption
             onStatusChanged: {
@@ -264,17 +260,26 @@ Window {
 
         BookingView {
             id: bookingTab
+            anchors.fill: parent
+            tools: bookingTools
 
             onStatusChanged: {
                 if (status == PageStatus.Activating) {
                     appState.currentCaption = qsTr("Diner table reservation step 1/2");
+                    sharedToolBar.tools = bookingTools;
+                } else if (status == PageStatus.Deactivating) {
+                    if (appState.cameFromView == "MenuView") {
+                        sharedToolBar.tools = menuListTools;
+                    } else {
+                        // Set the default tools
+                        sharedToolBar.tools = defaultTools;
+                    }
                 }
             }
 
             onActionCompleted: {
                 // Reservation made successfully! Determine, in which view
                 // we should return.
-                bookingTabBar.visible = false;
                 if (appState.cameFromView == "InfoView") {
                     // Return to InfoView tab.
                     tabGroup.currentTab = infoTab;
@@ -282,6 +287,7 @@ Window {
                     // Came from "MenuView".
                     // Return to MenuListView tab.
                     tabGroup.currentTab = menuTab;
+                    buttonRow.checkedButton = tabButton2;
                 }
             }
         }
