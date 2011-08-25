@@ -288,6 +288,7 @@ Page {
                     height: 120
                     fillMode: Image.PreserveAspectFit
                     anchors.left: openHours.right
+                    smooth: true
                     source: visual.foodTeaserSource
                 }
             }

@@ -28,14 +28,20 @@ Item {
         height: parent.height
         spacing: container.margins*2
 
-        Image {
+        Item {
             id: dishImg
-
             width: parent.width * 0.2
             height: width
-            fillMode: Image.PreserveAspectFit
-            // VKN TODO!
-            source: "content/food_teaser.png"
+
+            Image {
+                width: parent.width * 0.90
+                height: width
+                fillMode: Image.PreserveAspectFit
+                smooth: true
+                // Get the dish image from the XML. If not defined, default
+                // back to the placeholder icon.
+                source: dishIcon ? dishIcon : visual.foodTeaserSource
+            }
         }
 
         Column {

@@ -36,6 +36,7 @@ Page {
         id: model
         // Get dishes only from under the selected category
         query: "/restaurant/menu/category[@id='"+container.selectedCategoryId+"']/dish"
+        XmlRole { name: "dishIcon"; query: "@icon/string()" }
         XmlRole { name: "description"; query: "string()" }
     }
 
