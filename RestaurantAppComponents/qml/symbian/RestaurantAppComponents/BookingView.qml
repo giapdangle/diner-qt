@@ -37,9 +37,9 @@ Page {
         Util.log("BookingViewPortrait loaded");
     }
 
-    Rectangle {
-        anchors.fill:  parent
-        color: visual.defaultBackgroundColor
+    Image {
+        anchors.fill: parent
+        source: visual.backgroundImageSource
     }
 
     FocusScope {
