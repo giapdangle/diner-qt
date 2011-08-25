@@ -55,7 +55,7 @@ Page {
         model: model
         delegate: listDelegate
         focus: true
-        spacing: 4*container.spacing
+        spacing: 2*container.spacing
     }
 
     Component {
@@ -66,6 +66,7 @@ Page {
             margins: container.margins
             fontName: container.fontName
             fontSize: visual.menuListItemFontSize
+            titleFontSize: visual.menuListTitleFontSize
             fontColor: container.fontColor
             fontColorTitle: container.fontColorTitle
         }

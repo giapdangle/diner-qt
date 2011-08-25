@@ -59,7 +59,8 @@ Item {
     property color menuListViewDishTitleFontColor: "#7c0505"
     property color menuListViewDishFontColor: "#524F46"
     property int menuListViewTitleSize: 14
-    property int menuListItemFontSize: 12
+    property int menuListTitleFontSize: 12
+    property int menuListItemFontSize: 10
 
     // Map view
     property string zoomiInSource: "content/zoom_in.png"

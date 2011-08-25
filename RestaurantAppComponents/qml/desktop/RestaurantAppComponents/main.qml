@@ -213,6 +213,12 @@ Window {
                         // Change the correct tools in place.
                         sharedToolBar.tools = menuListTools;
                     }
+
+                    onStatusChanged: {
+                        if (status == PageStatus.Activating) {
+                            appState.currentCaption = qsTr("À la Carte");
+                        }
+                    }
                 }
 
                 MenuListView {
@@ -225,6 +231,7 @@ Window {
                         // button to behave differently.
                         if (status == PageStatus.Active) {
                             appState.showBackButton = true;
+                            appState.currentCaption = appState.selectedMenuCategoryTitle;
                         } else {
                             appState.showBackButton = false;
                         }
@@ -235,12 +242,6 @@ Window {
             // Start with the MenuGridView first.
             Component.onCompleted: {
                 pageStack.push(menu)
-            }
-
-            onStatusChanged: {
-                if (status == PageStatus.Activating) {
-                    appState.currentCaption = qsTr("À la Carte");
-                }
             }
         }
 
