@@ -91,9 +91,9 @@ Page {
         }
     }
 
-    Rectangle {
-        anchors.fill:  parent
-        color: visual.defaultBackgroundColor
+    Image {
+        anchors.fill: parent
+        source: visual.backgroundImageSource
     }
 
     Flickable {
@@ -284,10 +284,11 @@ Page {
                 }
                 Image {
                     id: infoImg
+
+                    height: 120
                     fillMode: Image.PreserveAspectFit
                     anchors.left: openHours.right
-                    // VKN TODO! CHANGE THIS!
-                    source: "content/placeholder_food.png"
+                    source: visual.foodTeaserSource
                 }
             }
         }

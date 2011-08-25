@@ -25,10 +25,9 @@ Page {
         Util.log("Count: " + menuModel.count);
     }
 
-
-    Rectangle {
-        anchors.fill:  parent
-        color: visual.defaultBackgroundColor
+    Image {
+        anchors.fill: parent
+        source: visual.backgroundImageSource
     }
 
     MenuModel {

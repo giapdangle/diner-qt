@@ -187,7 +187,7 @@ Window {
             // Change the current view caption
             onStatusChanged: {
                 if (status == PageStatus.Activating) {
-                    appState.currentCaption = qsTr("Reservation information");
+                    appState.currentCaption = qsTr("Diner Reservation information");
                 }
             }
         }
@@ -239,7 +239,7 @@ Window {
 
             onStatusChanged: {
                 if (status == PageStatus.Activating) {
-                    appState.currentCaption = qsTr("Diner A la Carte");
+                    appState.currentCaption = qsTr("À la Carte");
                 }
             }
         }

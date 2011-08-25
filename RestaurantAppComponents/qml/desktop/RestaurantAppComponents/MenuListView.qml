@@ -27,6 +27,10 @@ Page {
         Util.log("MenuListView loaded");
     }
 
+    Image {
+        anchors.fill: parent
+        source: visual.backgroundImageSource
+    }
 
     MenuModel {
         id: model
@@ -37,64 +41,17 @@ Page {
 
     ScrollBar {
         flickableItem: listView
-//        width: container.scrollBarWidth
         anchors {
             top: listView.top;
             right: listView.right;
-//            bottom: listView.bottom;
             }
         }
-
-    Rectangle {
-        id: categoryTitle
-        anchors {
-            left: parent.left
-            right: parent.right
-            leftMargin: -1
-            rightMargin: -1
-        }
-        height: 80
-        color: visual.menuListViewBackgroundColor
-        border.width: 1
-        border.color: "#7c0505"
-        anchors.top: parent.top
-        Image {
-            id: icon
-            source: container.selectedCategoryIconSource
-            fillMode: Image.PreserveAspectFit
-            smooth: true
-            anchors {
-                top: parent.top
-                bottom: parent.bottom
-                left: parent.left
-                leftMargin: container.width*0.1
-            }
-
-        }
-        Text {
-            height: parent.height
-            anchors.left: icon.right
-            anchors.margins: container.margins
-            text: container.selectedCategoryTitle
-            color: container.fontColor
-            font {
-                family: container.fontName
-                pointSize: container.fontSizeTitle
-            }
-            verticalAlignment: Text.AlignVCenter
-        }
-    }
 
     ListView {
         id: listView
         clip: true
-        anchors {
-            top: categoryTitle.bottom
-            left: parent.left
-            right: parent.right
-            bottom: parent.bottom
-            topMargin: container.margins
-        }
+        anchors.fill: parent
+        anchors.topMargin: container.margins*2
         model: model
         delegate: listDelegate
         focus: true
