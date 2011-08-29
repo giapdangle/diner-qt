@@ -6,7 +6,7 @@ Item {
     property string defaultFontFamily: "Helvetica"  // Defaults to correct ones in device
     property int defaultFontSize: 20
     //property color defaultFontColor: "#6f6a5c"
-    property color defaultFontColor: "#767164"
+    property color defaultFontColor: "#524F46"
     property color defaultFontColorLink: "#7c0505"
     property color defaultFontColorButton: "#ffffff"
     property color defaultBackgroundColor: "#d9d3b5"
@@ -20,6 +20,8 @@ Item {
     property string titleImageSource: "content/title.png"
     property string cancelButtonSource: "content/cancel_button.png"
     property string bookingIconSource: "content/booking_icon.png"
+    property string backgroundImageSource: "content/background.jpg"
+    property string foodTeaserSource: "content/food_teaser.png"
 
     // Title bar
     property int titleFontSize: 40
@@ -46,8 +48,8 @@ Item {
 
     // Info view
     property int infoViewReservationFontSize: 24
-    property int infoViewAddressFontSize: 30
-    property int infoViewFontSize: 28
+    property int infoViewAddressFontSize: 28
+    property int infoViewFontSize: 26
     
     // Menu grid view
     property int menuGridViewFontSize: 24
@@ -55,9 +57,10 @@ Item {
     // Menu list view
     property color menuListViewBackgroundColor: "#f9f6f6"
     property color menuListViewDishTitleFontColor: "#7c0505"
-    property color menuListViewDishFontColor: "#938282"
-    property int menuListViewTitleSize: 12
-    property int menuListItemFontSize: 16
+    property color menuListViewDishFontColor: "#524F46"
+    property int menuListViewTitleSize: 18
+    property int menuListTitleFontSize: 16
+    property int menuListItemFontSize: 14
 
     // Map view
     property string zoomiInSource: "content/zoom_in.png"

@@ -103,6 +103,8 @@ Page {
             margins: container.margins
         }
 
+        width: container.width
+        height: container.height
         contentWidth: width
         contentHeight: column.height
         clip: true
@@ -264,7 +266,6 @@ Page {
 
                 Text {
                     id: openDays
-                    width: 120
                     anchors.left: parent.left
                     color: container.fontColor
                     font {
@@ -274,8 +275,8 @@ Page {
                 }
                 Text {
                     id: openHours
-                    width: 80
                     anchors.left: openDays.right
+                    anchors.leftMargin: container.margins * 6
                     color: container.fontColor
                     font {
                         family: container.fontName
@@ -285,9 +286,11 @@ Page {
                 Image {
                     id: infoImg
 
-                    height: 120
+                    height: parent.height * 0.85
+                    width: height
                     fillMode: Image.PreserveAspectFit
                     anchors.left: openHours.right
+                    anchors.right: parent.right
                     smooth: true
                     source: visual.foodTeaserSource
                 }

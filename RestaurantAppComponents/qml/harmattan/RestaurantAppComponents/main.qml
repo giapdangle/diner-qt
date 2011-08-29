@@ -10,6 +10,11 @@ Window {
 //    height: 854
     anchors.fill: parent
 
+    Component.onCompleted: {
+        // "theme" comes magically from somewhere. No clue where.
+        theme.inverted = true;
+    }
+
     StatusBar {
         id: statusBar
     }
@@ -61,17 +66,15 @@ Window {
         id: defaultTools
 
         ToolButton {
+            visible: appState.showBackButton
             iconSource: visual.backButtonSource
             onClicked: {
-                if (appState.showBackButton == true) {
-                    Util.log("Back-button clicked");
-                    appState.showBackButton = false;
-                    pageStack.pop();
-                } else {
-                    Util.exitApp("Back-button clicked");
-                }
+                Util.log("Back-button clicked");
+                appState.showBackButton = false;
+                pageStack.pop();
             }
         }
+
         ButtonRow {
             id: buttonRow
 
@@ -188,7 +191,7 @@ Window {
             // Change the current view caption
             onStatusChanged: {
                 if (status == PageStatus.Activating) {
-                    appState.currentCaption = qsTr("Reservation information");
+                    appState.currentCaption = qsTr("Diner Reservation information");
                 }
             }
         }
@@ -214,6 +217,12 @@ Window {
                         // Change the correct tools in place.
                         sharedToolBar.tools = menuListTools;
                     }
+
+                    onStatusChanged: {
+                        if (status == PageStatus.Activating) {
+                            appState.currentCaption = qsTr("À la Carte");
+                        }
+                    }
                 }
 
                 MenuListView {
@@ -226,6 +235,7 @@ Window {
                         // button to behave differently.
                         if (status == PageStatus.Active) {
                             appState.showBackButton = true;
+                            appState.currentCaption = appState.selectedMenuCategoryTitle;
                         } else {
                             appState.showBackButton = false;
                         }
@@ -236,12 +246,6 @@ Window {
             // Start with the MenuGridView first.
             Component.onCompleted: {
                 pageStack.push(menu)
-            }
-
-            onStatusChanged: {
-                if (status == PageStatus.Activating) {
-                    appState.currentCaption = qsTr("Diner A la Carte");
-                }
             }
         }
 

@@ -27,11 +27,16 @@ Page {
         Util.log("MenuListView loaded");
     }
 
+    Image {
+        anchors.fill: parent
+        source: visual.backgroundImageSource
+    }
 
     MenuModel {
         id: model
         // Get dishes only from under the selected category
         query: "/restaurant/menu/category[@id='"+container.selectedCategoryId+"']/dish"
+        XmlRole { name: "dishIcon"; query: "@icon/string()" }
         XmlRole { name: "description"; query: "string()" }
     }
 
@@ -43,60 +48,15 @@ Page {
             }
         }
 
-    Rectangle {
-        id: categoryTitle
-        anchors {
-            left: parent.left
-            right: parent.right
-            leftMargin: -1
-            rightMargin: -1
-        }
-        height: 80
-        color: visual.menuListViewBackgroundColor
-        border.width: 1
-        border.color: "#7c0505"
-        anchors.top: parent.top
-        Image {
-            id: icon
-            source: container.selectedCategoryIconSource
-            fillMode: Image.PreserveAspectFit
-            smooth: true
-            anchors {
-                top: parent.top
-                bottom: parent.bottom
-                left: parent.left
-                leftMargin: container.width*0.1
-            }
-
-        }
-        Text {
-            height: parent.height
-            anchors.left: icon.right
-            anchors.margins: container.margins
-            text: container.selectedCategoryTitle
-            color: container.fontColor
-            font {
-                family: container.fontName
-                pointSize: container.fontSizeTitle
-            }
-            verticalAlignment: Text.AlignVCenter
-        }
-    }
-
     ListView {
         id: listView
         clip: true
-        anchors {
-            top: categoryTitle.bottom
-            left: parent.left
-            right: parent.right
-            bottom: parent.bottom
-            topMargin: container.margins
-        }
+        anchors.fill: parent
+        anchors.topMargin: container.margins*2
         model: model
         delegate: listDelegate
         focus: true
-        spacing: 4*container.spacing
+        spacing: 2*container.spacing
     }
 
     Component {
@@ -107,6 +67,7 @@ Page {
             margins: container.margins
             fontName: container.fontName
             fontSize: visual.menuListItemFontSize
+            titleFontSize: visual.menuListTitleFontSize
             fontColor: container.fontColor
             fontColorTitle: container.fontColorTitle
         }

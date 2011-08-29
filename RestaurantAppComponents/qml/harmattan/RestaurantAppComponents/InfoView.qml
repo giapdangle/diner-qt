@@ -81,9 +81,8 @@ Page {
             Button {
                 id: cancelButton
 
-                // VKN TODO: FIX!
-                width: 128
-                height: 64
+                width: 120
+                height: 60
                 anchors {
                     top: parent.top
                     right: parent.right
@@ -95,9 +94,9 @@ Page {
         }
     }
 
-    Rectangle {
-        anchors.fill:  parent
-        color: visual.defaultBackgroundColor
+    Image {
+        anchors.fill: parent
+        source: visual.backgroundImageSource
     }
 
     Flickable {
@@ -266,13 +265,12 @@ Page {
             // Restaurant opening days & hours and a delicious image.
             Item {
                 width: flicker.width
-                height: 140
+                height: openHours.height
                 anchors.top: description.bottom
                 anchors.topMargin: container.margins
 
                 Text {
                     id: openDays
-                    width: 120
                     anchors.left: parent.left
                     color: container.fontColor
                     font {
@@ -282,8 +280,8 @@ Page {
                 }
                 Text {
                     id: openHours
-                    width: 80
                     anchors.left: openDays.right
+                    anchors.leftMargin: container.margins * 6
                     color: container.fontColor
                     font {
                         family: container.fontName
@@ -292,10 +290,17 @@ Page {
                 }
                 Image {
                     id: infoImg
+
+                    height: parent.height
+                    width: height
                     fillMode: Image.PreserveAspectFit
-                    anchors.left: openHours.right
-                    // VKN TODO! CHANGE THIS!
-                    source: "content/placeholder_food.png"
+                    anchors {
+                        left: openHours.right
+                        right: parent.right
+                        verticalCenter: parent.verticalCenter
+                    }
+                    smooth: true
+                    source: visual.foodTeaserSource
                 }
             }
         }
