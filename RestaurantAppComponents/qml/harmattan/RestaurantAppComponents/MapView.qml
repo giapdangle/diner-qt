@@ -73,8 +73,8 @@ Page {
             //width: appState.inLandscape ? prent.width*0.6 : parent.width
             //height: width-100
             x: 20
-            width: 350
-            height: 262
+            width: 470
+            height: 330
             latitude: container.latitude
             longitude: container.longitude
             minZoomLevel: container.minZoomLevel
@@ -93,7 +93,7 @@ Page {
                 height: (container.height - 20) / 6
 
                 MouseArea {
-                    onClicked: addressDialog.open()
+//                    onClicked: addressDialog.open()
                     anchors.fill: parent
 
                     Column {
@@ -140,19 +140,19 @@ Page {
                     }
                 }
 
-                Button {
-                    id: zoom_button
+//                Button {
+//                    id: zoom_button
 
-                    width: 64
-                    height: 64
-                    anchors {
-                        right: parent.right
-                        rightMargin: container.margins * 3
-                        verticalCenter: parent.verticalCenter
-                    }
-                    iconSource: visual.zoomiInSource
-                    onClicked: { addressDialog.open(); }
-                }
+//                    width: 64
+//                    height: 64
+//                    anchors {
+//                        right: parent.right
+//                        rightMargin: container.margins * 3
+//                        verticalCenter: parent.verticalCenter
+//                    }
+//                    iconSource: visual.zoomiInSource
+//                    onClicked: { addressDialog.open(); }
+//                }
             }
 
             // 2nd row has the phone number and a button to make the call.
@@ -255,15 +255,15 @@ Page {
         }
     }
 
-    QueryDialog {
-        id: addressDialog
-        titleText: qsTr("Address")
-        message: qsTr(container.street + "\n" + container.city + "\n" + container.country)
-        acceptButtonText: qsTr("Ok")
-        onAccepted: {
-            // Nuthin'.
-        }
-    }
+//    QueryDialog {
+//        id: addressDialog
+//        titleText: qsTr("Address")
+//        message: qsTr(container.street + "\n" + container.city + "\n" + container.country)
+//        acceptButtonText: qsTr("Ok")
+//        onAccepted: {
+//            // Nuthin'.
+//        }
+//    }
 
     QueryDialog {
         id: wwwDialog

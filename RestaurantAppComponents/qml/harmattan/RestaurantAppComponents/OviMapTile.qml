@@ -53,6 +53,7 @@ Rectangle {
         }
         // Uncomment this line to get real map tile over the network
         //source: getOviMapsTileUrl(container.latitude, container.longitude, container.zoomFactor, container.width, container.height);
+        smooth: true
         source: getLocalMapTile(container.zoomFactor);
     }
 

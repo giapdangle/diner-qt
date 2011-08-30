@@ -220,7 +220,7 @@ Window {
 
                     onStatusChanged: {
                         if (status == PageStatus.Activating) {
-                            appState.currentCaption = qsTr("À la Carte");
+                            appState.currentCaption = qsTr("A la Carte");
                         }
                     }
                 }

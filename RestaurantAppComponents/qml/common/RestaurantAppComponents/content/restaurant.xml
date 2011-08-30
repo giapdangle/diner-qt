@@ -36,6 +36,10 @@
         </category>
         <category id="category3" name="Sea Food" icon="content/sea_food_icon.png">
             <dish name="Fish of the day" icon="content/fish1.jpg">Whatever fish comes up, served with seasonal vegetables and Tartar sauce.</dish>
+            <dish name="Garlic Prawns with Rice Cakes" icon="content/fish2.jpg">King Prawn skewers go perfectly with spicy broccoli, creamcheese sauce and rice cakes.</dish>
+            <dish name="Grilled Lobster 'Surf and Turf'" icon="content/fish3.jpg">Delicious and juicy lobster tail rests on a perfect 200g entrecote steak.</dish>
+            <dish name="Crispy Salmon in Lemon sauce" icon="content/fish4.jpg">A perfectly grilled fillet of salmon with a crispy crust, served with a zesty lemon rice.</dish>
+            <dish name="Grilled Octopus with Local Herbs" icon="content/fish5.jpg">Spicy grilled octopus fresh from the sea comes with vegetables from our own garden.</dish>
             <dish name="Tons of Tuna" icon="content/fish6.jpg">A huge steak of fresh tuna, baked sweet potato and lime mayo.</dish>
         </category>
         <category id="category4" name="Steaks" icon="content/steaks_icon.png">

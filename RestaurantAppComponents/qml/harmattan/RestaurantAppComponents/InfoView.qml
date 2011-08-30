@@ -44,7 +44,7 @@ Page {
         id: reservationDelegate
 
         Item {
-            height: 40
+            height: 50
             width: container.width-container.margins - 4
 
             Image {
@@ -82,7 +82,7 @@ Page {
                 id: cancelButton
 
                 width: 120
-                height: 60
+                height: 50
                 anchors {
                     top: parent.top
                     right: parent.right
