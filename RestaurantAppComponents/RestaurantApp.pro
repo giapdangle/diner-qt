@@ -40,7 +40,7 @@ symbian {
     QML_IMPORT_PATH = qml/desktop/RestaurantAppComponents
 } else:unix {
     # Harmattan, at the moment we can't differentiate unix sand Harmattan.
-    QT += opengl
+#    QT += opengl
     DEFINES += Q_WS_HARMATTAN
     platform_qml.source = qml/harmattan/RestaurantAppComponents
     platform_qml.target = qml
@@ -48,9 +48,9 @@ symbian {
 
     # TODO: Enable these, when Unix/OsX can be separated from Harmattan!
     # e.g. else:desktop {...
-#    platform_qml.source = qml/desktop/RssReader
+#    platform_qml.source = qml/desktop/RestaurantAppComponents
 #    platform_qml.target = qml
-#    QML_IMPORT_PATH = qml/desktop/RssReader
+#    QML_IMPORT_PATH = qml/desktop/RestaurantAppComponents
 }
 
 # Take both, the common folder and the platform specific folder QML files.
