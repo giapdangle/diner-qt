@@ -32,7 +32,7 @@
             <dish name="All Vegs" icon="content/dishes/vege2.jpg" price="12&#8364;">A mixed green salad with cherry tomato, cucumber, fresh pineapple, orange, marinated red onion, watermelon, arugula &amp;  deep-fried spring rolls. Served with ranch dressing, toasted bread and Sweet Chili sauce.</dish>
             <dish name="Fruity Fish Salad" icon="content/dishes/vege3.jpg" price="15&#8364;">A mixed green salad with salmon fillet, cherry tomato, cucumber, fresh pineapple, orange, marinated red onion, watermelon, lime &amp; arugula.  Oil &amp; herb dressing and toasted bread.</dish>
         </category>
-        <category id="category3" name="Sea Food" icon="content/sea_food_icon.png">
+        <category id="category3" name="Seafood" icon="content/sea_food_icon.png">
             <dish name="Fish of the day" icon="content/dishes/fish1.jpg" price="24&#8364;">Whatever fish comes up, served with seasonal vegetables and Tartar sauce.</dish>
             <dish name="Garlic Prawns with Rice Cakes" icon="content/dishes/fish2.jpg" price="25&#8364;">King Prawn skewers go perfectly with spicy broccoli, creamcheese sauce and rice cakes.</dish>
             <dish name="Grilled Lobster 'Surf and Turf'" icon="content/dishes/fish3.jpg" price="33&#8364;">Delicious and juicy lobster tail rests on a perfect 200g entrecote steak.</dish>
