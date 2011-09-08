@@ -51,22 +51,48 @@ Item {
             width: parent.width * 0.8
             height: parent.height-2
 
-            Text {
+            Item {
                 id: dishTitle
 
                 width: parent.width
+                height: dishTitleText.height
+
                 anchors {
                     leftMargin: container.margins
                     rightMargin: container.margins
                 }
 
-                text: title
-                wrapMode: Text.WordWrap
-                font {
-                    family: container.fontName
-                    pointSize: container.titleFontSize
+                Text {
+                    id: dishTitleText
+
+                    anchors {
+                        left: parent.left
+                        right: dishPrice.left
+                    }
+
+                    text: title
+                    wrapMode: Text.WordWrap
+                    font {
+                        family: container.fontName
+                        pointSize: container.titleFontSize
+                    }
+                    color: fontColor
                 }
-                color: fontColor
+                Text {
+                    id: dishPrice
+
+                    anchors {
+                        right: parent.right
+                        rightMargin: container.margins*3
+                    }
+
+                    text: price
+                    font {
+                        family: container.fontName
+                        pointSize: container.titleFontSize
+                    }
+                    color: fontColor
+                }
             }
 
             Text {

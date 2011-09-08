@@ -22,45 +22,45 @@
     </info>    
     <menu>
         <category id="category1" name="Soups" icon="content/soups_icon.png">
-            <dish name="Carrot Soup" icon="content/dishes/soup1.jpg">Carrot soup with blue cheese, served with freshly baked bread.</dish>
-            <dish name="Spicy Pumpkin Soup" icon="content/dishes/soup2.jpg">Warmly spiced, creamy pumpkin soup.</dish>
-            <dish name="Chinese Egg and Veggies Soup" icon="content/dishes/soup3.jpg">Chines soup of eggs and veggies in clear broth.</dish>
-            <dish name="Hot Tomato Soup" icon="content/dishes/soup4.jpg">Tomato soup flavoured with chili.</dish>
+            <dish name="Carrot Soup" icon="content/dishes/soup1.jpg" price="8&#8364;">Carrot soup with blue cheese, served with freshly baked bread.</dish>
+            <dish name="Spicy Pumpkin Soup" icon="content/dishes/soup2.jpg" price="8&#8364;">Warmly spiced, creamy pumpkin soup.</dish>
+            <dish name="Chinese Egg and Veggies Soup" icon="content/dishes/soup3.jpg" price="9&#8364;">Chines soup of eggs and veggies in clear broth.</dish>
+            <dish name="Hot Tomato Soup" icon="content/dishes/soup4.jpg" price="6&#8364;">Tomato soup flavoured with chili.</dish>
         </category>
         <category id="category2" name="Vegetarian" icon="content/vegetarian_icon.png">
-            <dish name="THE Ceasar Salad" icon="content/dishes/vege1.jpg">A mixed green salad with Caesar dressing, Parmesan cheese, croutons and arugula with a choice of chicken breast, marinated shrimps, bacon or chevre.</dish>
-            <dish name="All Vegs" icon="content/dishes/vege2.jpg">A mixed green salad with cherry tomato, cucumber, fresh pineapple, orange, marinated red onion, watermelon, arugula &amp;  deep-fried spring rolls. Served with ranch dressing, toasted bread and Sweet Chili sauce.</dish>
-            <dish name="Fruity Fish Salad" icon="content/dishes/vege3.jpg">A mixed green salad with salmon fillet, cherry tomato, cucumber, fresh pineapple, orange, marinated red onion, watermelon, lime &amp; arugula.  Oil &amp; herb dressing and toasted bread.</dish>
+            <dish name="THE Ceasar Salad" icon="content/dishes/vege1.jpg" price="10&#8364;">A mixed green salad with Caesar dressing, Parmesan cheese, croutons and arugula with a choice of chicken breast, marinated shrimps, bacon or chevre.</dish>
+            <dish name="All Vegs" icon="content/dishes/vege2.jpg" price="12&#8364;">A mixed green salad with cherry tomato, cucumber, fresh pineapple, orange, marinated red onion, watermelon, arugula &amp;  deep-fried spring rolls. Served with ranch dressing, toasted bread and Sweet Chili sauce.</dish>
+            <dish name="Fruity Fish Salad" icon="content/dishes/vege3.jpg" price="15&#8364;">A mixed green salad with salmon fillet, cherry tomato, cucumber, fresh pineapple, orange, marinated red onion, watermelon, lime &amp; arugula.  Oil &amp; herb dressing and toasted bread.</dish>
         </category>
         <category id="category3" name="Sea Food" icon="content/sea_food_icon.png">
-            <dish name="Fish of the day" icon="content/dishes/fish1.jpg">Whatever fish comes up, served with seasonal vegetables and Tartar sauce.</dish>
-            <dish name="Garlic Prawns with Rice Cakes" icon="content/dishes/fish2.jpg">King Prawn skewers go perfectly with spicy broccoli, creamcheese sauce and rice cakes.</dish>
-            <dish name="Grilled Lobster 'Surf and Turf'" icon="content/dishes/fish3.jpg">Delicious and juicy lobster tail rests on a perfect 200g entrecote steak.</dish>
-            <dish name="Crispy Salmon in Lemon sauce" icon="content/dishes/fish4.jpg">A perfectly grilled fillet of salmon with a crispy crust, served with a zesty lemon rice.</dish>
-            <dish name="Grilled Octopus with Local Herbs" icon="content/dishes/fish5.jpg">Spicy grilled octopus fresh from the sea comes with vegetables from our own garden.</dish>
-            <dish name="Tons of Tuna" icon="content/dishes/fish6.jpg">A huge steak of fresh tuna, baked sweet potato and lime mayo.</dish>
+            <dish name="Fish of the day" icon="content/dishes/fish1.jpg" price="24&#8364;">Whatever fish comes up, served with seasonal vegetables and Tartar sauce.</dish>
+            <dish name="Garlic Prawns with Rice Cakes" icon="content/dishes/fish2.jpg" price="25&#8364;">King Prawn skewers go perfectly with spicy broccoli, creamcheese sauce and rice cakes.</dish>
+            <dish name="Grilled Lobster 'Surf and Turf'" icon="content/dishes/fish3.jpg" price="33&#8364;">Delicious and juicy lobster tail rests on a perfect 200g entrecote steak.</dish>
+            <dish name="Crispy Salmon in Lemon sauce" icon="content/dishes/fish4.jpg" price="30&#8364;">A perfectly grilled fillet of salmon with a crispy crust, served with a zesty lemon rice.</dish>
+            <dish name="Grilled Octopus with Local Herbs" icon="content/dishes/fish5.jpg" price="29&#8364;">Spicy grilled octopus fresh from the sea comes with vegetables from our own garden.</dish>
+            <dish name="Tons of Tuna" icon="content/dishes/fish6.jpg" price="35&#8364;">A huge steak of fresh tuna, baked sweet potato and lime mayo.</dish>
         </category>
-        <category id="category4" name="Steaks" icon="content/steaks_icon.png">
-            <dish name="Giant BBQ Steak" icon="content/dishes/steak1.jpg">A 250g sirloin steak, fries, seasonal veggies and BBQ mayo.</dish>
-            <dish name="Surf 'n Turf" icon="content/dishes/steak2.jpg">A 180g sirloin steak, deep-fried king prawns, bell pepper, asparagus, red onion, whiskey- and Bearnaise sauce, Criss Cuts and garnished with arugula.</dish>
-            <dish name="Silence of the Lambs" icon="content/dishes/steak3.jpg">Lamb Loin Chops with minty mushed peas, country fries and creamy mustard sauce.</dish>
-            <dish name="Latino Chick" icon="content/dishes/steak4.jpg">Chicken breast with Latino sauce and salad of cherry tomatos, cucumber, marinated red onion &amp; arugula. Fresh pineapple, garlic mayonnaise and Criss Cuts.</dish>
+        <category id="category4" name="Steaks" icon="content/steaks_icon.png" price="">
+            <dish name="Giant BBQ Steak" icon="content/dishes/steak1.jpg" price="39&#8364;">A 250g sirloin steak, fries, seasonal veggies and BBQ mayo.</dish>
+            <dish name="Surf 'n Turf" icon="content/dishes/steak2.jpg" price="28&#8364;">A 180g sirloin steak, deep-fried king prawns, bell pepper, asparagus, red onion, whiskey- and Bearnaise sauce, Criss Cuts and garnished with arugula.</dish>
+            <dish name="Silence of the Lambs" icon="content/dishes/steak3.jpg" price="30&#8364;">Lamb Loin Chops with minty mushed peas, country fries and creamy mustard sauce.</dish>
+            <dish name="Latino Chick" icon="content/dishes/steak4.jpg" price="24&#8364;">Chicken breast with Latino sauce and salad of cherry tomatos, cucumber, marinated red onion &amp; arugula. Fresh pineapple, garlic mayonnaise and Criss Cuts.</dish>
         </category>
         <category id="category5" name="Desserts" icon="content/desserts_icon.png">
-            <dish name="Master Muffin" icon="content/dishes/dessert1.jpg">Chocolate muffin with white-chock chips, served with vanilla whipped cream.</dish>
-            <dish name="The Big Apple" icon="content/dishes/dessert2.jpg">Apple pie with pecan nuts and raisins, served with vanilla ice cream and chocolate sauce.</dish>
-            <dish name="Shake it, shake it" icon="content/dishes/dessert3.jpg">A giant milk shake with a choice of banana-chocolate, chocolate, strawberry-vanilla or mint-chocolate. Made with real fruits and choc.</dish>
-            <dish name="Super Cheesecake" icon="content/dishes/dessert4.jpg">A home made cheesecake served with heaps of whipped cream and Goji-berry &amp; strawberry sauces.</dish>
-            <dish name="Master Muffin" icon="content/dishes/dessert5.jpg">Chocolate muffin with white-chock chips, served with vanilla whipped cream.</dish>
-            <dish name="The Big Apple" icon="content/dishes/dessert6.jpg">Apple pie with pecan nuts and raisins, served with vanilla ice cream and chocolate sauce.</dish>
-            <dish name="Shake it, shake it" icon="content/dishes/dessert7.jpg">A giant milk shake with a choice of banana-chocolate, chocolate, strawberry-vanilla or mint-chocolate. Made with real fruits and choc.</dish>
-            <dish name="Super Cheesecake" icon="content/dishes/dessert8.jpg">A home made cheesecake served with heaps of whipped cream and Goji-berry &amp; strawberry sauces.</dish>
+            <dish name="Master Muffin" icon="content/dishes/dessert1.jpg" price="8&#8364;">Chocolate muffin with white-chock chips, served with vanilla whipped cream.</dish>
+            <dish name="The Big Apple" icon="content/dishes/dessert2.jpg" price="8&#8364;">Apple pie with pecan nuts and raisins, served with vanilla ice cream and chocolate sauce.</dish>
+            <dish name="Shake it, shake it" icon="content/dishes/dessert3.jpg" price="7&#8364;">A giant milk shake with a choice of banana-chocolate, chocolate, strawberry-vanilla or mint-chocolate. Made with real fruits and choc.</dish>
+            <dish name="Super Cheesecake" icon="content/dishes/dessert4.jpg" price="10&#8364;">A home made cheesecake served with heaps of whipped cream and Goji-berry &amp; strawberry sauces.</dish>
+            <dish name="Master Muffin" icon="content/dishes/dessert5.jpg" price="8&#8364;">Chocolate muffin with white-chock chips, served with vanilla whipped cream.</dish>
+            <dish name="The Big Apple" icon="content/dishes/dessert6.jpg" price="8&#8364;">Apple pie with pecan nuts and raisins, served with vanilla ice cream and chocolate sauce.</dish>
+            <dish name="Shake it, shake it" icon="content/dishes/dessert7.jpg" price="7&#8364;">A giant milk shake with a choice of banana-chocolate, chocolate, strawberry-vanilla or mint-chocolate. Made with real fruits and choc.</dish>
+            <dish name="Super Cheesecake" icon="content/dishes/dessert8.jpg" price="10&#8364;">A home made cheesecake served with heaps of whipped cream and Goji-berry &amp; strawberry sauces.</dish>
         </category>
         <category id="category6" name="Drinks" icon="content/drinks_icon.png">
-            <dish name="Bloody Hell" icon="content/dishes/drink1.jpg">2dl of red Tabasco with a hint of Vodka. Added some tomato juice (just for decoration).</dish>
-            <dish name="Grim Reaper" icon="content/dishes/drink2.jpg">98% Denat. ethanol. Also known as Sinol.</dish>
-            <dish name="Shake it, shake it" icon="content/dishes/drink3.jpg">A giant milk shake with a choice of banana-chocolate, chocolate, strawberry-vanilla or mint-chocolate liquers.</dish>
-            <dish name="Super Booster" icon="content/dishes/drink4.jpg">One giant vodka bottle with energy drink and caffeine pills. Decorated with coffee beans and small umberella.</dish>
+            <dish name="Bloody Hell" icon="content/dishes/drink1.jpg" price="8&#8364;">2dl of red Tabasco with a hint of Vodka. Added some tomato juice (just for decoration).</dish>
+            <dish name="Grim Reaper" icon="content/dishes/drink2.jpg" price="10&#8364;">98% Denat. ethanol. Also known as Sinol.</dish>
+            <dish name="Shake it, shake it" icon="content/dishes/drink3.jpg" price="9&#8364;">A giant milk shake with a choice of banana-chocolate, chocolate, strawberry-vanilla or mint-chocolate liquers.</dish>
+            <dish name="Super Booster" icon="content/dishes/drink4.jpg" price="9&#8364;">One giant vodka bottle with energy drink and caffeine pills. Decorated with coffee beans and small umberella.</dish>
         </category>
     </menu>
 </restaurant>
