@@ -67,7 +67,7 @@ Page {
                     left: reservation_icon.right
                     right: cancelButton.left
                     rightMargin: container.margins
-                    leftMargin: container.margins
+                    leftMargin: container.margins*2
                 }
                 text: "You have reservation for "+people+((people == 1) ? " person" : " people")+" on "+dateTime
                 wrapMode: Text.WordWrap
@@ -103,8 +103,6 @@ Page {
             margins: container.margins
         }
 
-        width: container.width
-        height: container.height
         contentWidth: width
         contentHeight: column.height
         clip: true
@@ -166,7 +164,7 @@ Page {
                     anchors {
                         right: parent.right
                         rightMargin: container.margins
-                        verticalCenter: address.verticalCenter
+                        top: address.top
                     }
                     iconSource: visual.bookingButtonSource
                     onClicked: {
@@ -201,7 +199,11 @@ Page {
                         }
                         MouseArea {
                             anchors.fill: parent
-                            onClicked: { callDialog.phoneNumber = telephone.text; callDialog.open() }
+
+                            onClicked: {
+                                Util.log("Invoking a call "+telephone.text); Qt.openUrlExternally("tel:"+telephone.text)
+                            }
+                            //onClicked: { callDialog.phoneNumber = telephone.text; callDialog.open() }
                         }
                     }
                 }
@@ -215,8 +217,19 @@ Page {
                         verticalCenter: call.verticalCenter
                     }
                     iconSource: visual.callButtonSource
-                    onClicked: { callDialog.phoneNumber = telephone.text; callDialog.open() }
+
+                    onClicked: {
+                        Util.log("Invoking a call "+telephone.text); Qt.openUrlExternally("tel:"+telephone.text)
+                    }
+                    //onClicked: { callDialog.phoneNumber = telephone.text; callDialog.open() }
                 }
+            }
+
+            Rectangle {
+                visible: reservations.height > 0
+                height: 1
+                width: flicker.width
+                color: fontColor
             }
 
             ListView {
@@ -249,11 +262,16 @@ Page {
             Text {
                 id: description
                 wrapMode: Text.WordWrap
+                textFormat: Text.RichText
                 width: flicker.width
                 color: container.fontColor
                 font {
                     family: container.fontName
                     pixelSize: visual.infoViewFontSize
+                }
+                onLinkActivated: {
+                    Util.log("Launched url "+link);
+                    Qt.openUrlExternally(link)
                 }
             }
 
@@ -321,15 +339,16 @@ Page {
         }
     }
 
-    QueryDialog {
-        id: callDialog
-        titleText: qsTr("Call restaurant")
-        message: qsTr("Call the restaurant at "+phoneNumber+"?")
-        acceptButtonText: qsTr("Call")
-        rejectButtonText: qsTr("Cancel")
-        property string phoneNumber: ""
-        onAccepted: {
-            Util.log("Invoking a call "+telephone.text); Qt.openUrlExternally("tel:"+telephone.text)
-        }
-    }
+    // Disabled for the time being.
+//    QueryDialog {
+//        id: callDialog
+//        titleText: qsTr("Call restaurant")
+//        message: qsTr("Call the restaurant at "+phoneNumber+"?")
+//        acceptButtonText: qsTr("Call")
+//        rejectButtonText: qsTr("Cancel")
+//        property string phoneNumber: ""
+//        onAccepted: {
+//            Util.log("Invoking a call "+telephone.text); Qt.openUrlExternally("tel:"+telephone.text)
+//        }
+//    }
 }
