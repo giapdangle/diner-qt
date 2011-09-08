@@ -169,7 +169,7 @@ Page {
                     anchors {
                         right: parent.right
                         rightMargin: container.margins
-                        verticalCenter: address.verticalCenter
+                        top: address.top
                     }
                     iconSource: visual.bookingButtonSource
                     onClicked: {
@@ -204,7 +204,11 @@ Page {
                         }
                         MouseArea {
                             anchors.fill: parent
-                            onClicked: { callDialog.phoneNumber = telephone.text; callDialog.open() }
+
+                            onClicked: {
+                                Util.log("Invoking a call "+telephone.text); Qt.openUrlExternally("tel:"+telephone.text)
+                            }
+                            //onClicked: { callDialog.phoneNumber = telephone.text; callDialog.open() }
                         }
                     }
                 }
@@ -220,8 +224,19 @@ Page {
                         verticalCenter: call.verticalCenter
                     }
                     iconSource: visual.callButtonSource
-                    onClicked: { callDialog.phoneNumber = telephone.text; callDialog.open() }
+
+                    onClicked: {
+                        Util.log("Invoking a call "+telephone.text); Qt.openUrlExternally("tel:"+telephone.text)
+                    }
+                    //onClicked: { callDialog.phoneNumber = telephone.text; callDialog.open() }
                 }
+            }
+
+            Rectangle {
+                visible: reservations.height > 0
+                height: 1
+                width: flicker.width
+                color: fontColor
             }
 
             ListView {
@@ -254,18 +269,23 @@ Page {
             Text {
                 id: description
                 wrapMode: Text.WordWrap
+                textFormat: Text.RichText
                 width: flicker.width
                 color: container.fontColor
                 font {
                     family: container.fontName
                     pixelSize: visual.infoViewFontSize
                 }
+                onLinkActivated: {
+                    Util.log("Launched url "+link);
+                    Qt.openUrlExternally(link)
+                }
             }
 
             // Restaurant opening days & hours and a delicious image.
             Item {
                 width: flicker.width
-                height: openHours.height
+                height: openDays.height
                 anchors.top: description.bottom
                 anchors.topMargin: container.margins
 
@@ -281,12 +301,14 @@ Page {
                 Text {
                     id: openHours
                     anchors.left: openDays.right
-                    anchors.leftMargin: container.margins * 6
+                    anchors.right: infoImg.left
                     color: container.fontColor
                     font {
                         family: container.fontName
                         pixelSize: visual.infoViewFontSize
                     }
+
+                    horizontalAlignment: Text.AlignHCenter
                 }
                 Image {
                     id: infoImg
@@ -294,11 +316,8 @@ Page {
                     height: parent.height
                     width: height
                     fillMode: Image.PreserveAspectFit
-                    anchors {
-                        left: openHours.right
-                        right: parent.right
-                        verticalCenter: parent.verticalCenter
-                    }
+                    anchors.right: parent.right
+                    anchors.rightMargin: container.margins*3
                     smooth: true
                     source: visual.foodTeaserSource
                 }
@@ -328,15 +347,16 @@ Page {
         }
     }
 
-    QueryDialog {
-        id: callDialog
-        titleText: qsTr("Call restaurant")
-        message: qsTr("Call the restaurant at "+phoneNumber+"?")
-        acceptButtonText: qsTr("Call")
-        rejectButtonText: qsTr("Cancel")
-        property string phoneNumber: ""
-        onAccepted: {
-            Util.log("Invoking a call "+telephone.text); Qt.openUrlExternally("tel:"+telephone.text)
-        }
-    }
+    // Disabled for the time being.
+//    QueryDialog {
+//        id: callDialog
+//        titleText: qsTr("Call restaurant")
+//        message: qsTr("Call the restaurant at "+phoneNumber+"?")
+//        acceptButtonText: qsTr("Call")
+//        rejectButtonText: qsTr("Cancel")
+//        property string phoneNumber: ""
+//        onAccepted: {
+//            Util.log("Invoking a call "+telephone.text); Qt.openUrlExternally("tel:"+telephone.text)
+//        }
+//    }
 }

@@ -38,10 +38,12 @@ Page {
         query: "/restaurant/menu/category[@id='"+container.selectedCategoryId+"']/dish"
         XmlRole { name: "dishIcon"; query: "@icon/string()" }
         XmlRole { name: "description"; query: "string()" }
+        XmlRole { name: "price"; query: "@price/string()" }
     }
 
     ScrollBar {
         scrollArea: listView
+	width: container.spacing
         anchors {
             top: listView.top;
             right: listView.right;

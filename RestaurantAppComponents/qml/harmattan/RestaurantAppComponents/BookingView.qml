@@ -144,6 +144,7 @@ Page {
                     id: maximumText
                     width: 20
                     anchors.right: parent.right
+                    anchors.rightMargin: 3*container.margins
                     anchors.verticalCenter: personCountSlider.verticalCenter
                     font.family: container.fontName
                     font.pixelSize: container.fontSize
@@ -246,7 +247,7 @@ Page {
                                "-" + container._month +
                                "-" + container._day
 
-        titleText: qsTr("Table reservation step 2/2")
+        titleText: qsTr("Table reservation confirmation")
         message: qsTr("Reserve a table under '" + nameEntry.text + "' for " +
                       personCountSlider.value + " people on " + _date + ", " +
                       container._hour)

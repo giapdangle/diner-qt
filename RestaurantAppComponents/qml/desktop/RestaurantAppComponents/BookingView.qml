@@ -173,24 +173,6 @@ Page {
                     text: container._year + "-" + container._month + "-" + container._day
                     onClicked: datePicker.open();
                 }
-
-                DatePickerDialog {
-                     id: datePicker
-
-                     titleText: qsTr("Date of birth")
-                     acceptButtonText: qsTr("Accept")
-                     rejectButtonText: qsTr("Reject")
-
-                     year: container._year
-                     month: container._month
-                     day: container._day
-
-                     onAccepted: {
-                         container._year = datePicker.year;
-                         container._month = datePicker.month;
-                         container._day = datePicker.day
-                     }
-                 }
             } // Date picker column
 
             // Time picker column
@@ -212,19 +194,6 @@ Page {
 
                     onClicked: timePicker.open()
                 }
-
-                TimePickerDialog {
-                    id: timePicker
-
-                    titleText: qsTr("Available times")
-                    acceptButtonText: qsTr("Accept")
-                    rejectButtonText: qsTr("Reject")
-                    fields: DateTime.Hours
-
-                    onAccepted: {
-                        container._hour = timePicker.hour + ":00"
-                    }
-                }
             } // Time picker column
 
             Item {
@@ -235,6 +204,37 @@ Page {
             }
 
         } //Column
+    }
+
+    DatePickerDialog {
+         id: datePicker
+
+         titleText: qsTr("Date of birth")
+         acceptButtonText: qsTr("Accept")
+         rejectButtonText: qsTr("Reject")
+
+         year: container._year
+         month: container._month
+         day: container._day
+
+         onAccepted: {
+             container._year = datePicker.year;
+             container._month = datePicker.month;
+             container._day = datePicker.day
+         }
+     }
+
+    TimePickerDialog {
+        id: timePicker
+
+        titleText: qsTr("Available times")
+        acceptButtonText: qsTr("Accept")
+        rejectButtonText: qsTr("Reject")
+        fields: DateTime.Hours
+
+        onAccepted: {
+            container._hour = timePicker.hour + ":00"
+        }
     }
 
     // Confirmation dialog for actually making the table reservation.

@@ -6,13 +6,14 @@ import "Components.js" as Util
 Window {
     id: root
 
-//    width: 480
-//    height: 854
+    width: 480
+    height: 854
     anchors.fill: parent
 
     Component.onCompleted: {
         // "theme" comes magically from somewhere. No clue where.
         theme.inverted = true;
+        tabGroup.currentTab = infoTab;
     }
 
     StatusBar {
@@ -23,6 +24,8 @@ Window {
     TitleBar {
         id: titleBar
 
+        height: appState.inLandscape ? root.width * 0.06 : root.height*0.06
+        width: 480
         // Anchors titlebar to left, top and right. Then set height
         // Use grouping if possible.
         anchors {
@@ -30,9 +33,6 @@ Window {
             left: parent.left
             right: parent.right
         }
-
-        height: appState.inLandscape ? root.width * 0.05 : root.height*0.05
-        width: root.width
         captionFontName: visual.captionFontFamily
         captionFontSize: visual.captionFontSize
         captionFontColor: visual.captionFontColor
@@ -78,6 +78,7 @@ Window {
         ButtonRow {
             id: buttonRow
 
+            checkedButton: tabButton1
             TabButton {
                 id: tabButton1
                 tab: infoTab
@@ -104,6 +105,8 @@ Window {
 
         ToolButton {
             iconSource: visual.backButtonSource
+            flat: true
+
             onClicked: {
                 if (appState.showBackButton == true) {
                     appState.showBackButton = false;
@@ -134,18 +137,6 @@ Window {
         }
     }
 
-    // The ToolBar instance itself. Default tools layout defined above.
-    ToolBar {
-        id: sharedToolBar
-
-        anchors {
-            left: parent.left
-            right: parent.right
-            bottom: parent.bottom
-        }
-        tools: defaultTools
-    }
-
     // BookingView has it's completely own TabBar.
     ToolBarLayout {
         id: bookingTools
@@ -164,6 +155,18 @@ Window {
                 }
             }
         }
+    }
+
+    // The ToolBar instance itself. Default tools layout defined above.
+    ToolBar {
+        id: sharedToolBar
+
+        anchors {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
+        tools: defaultTools
     }
 
     // The group of pages that are being used as the base for the different Tabs.
@@ -191,7 +194,7 @@ Window {
             // Change the current view caption
             onStatusChanged: {
                 if (status == PageStatus.Activating) {
-                    appState.currentCaption = qsTr("Diner Reservation information");
+                    appState.currentCaption = qsTr("Diner information");
                 }
             }
         }
@@ -199,6 +202,7 @@ Window {
         // The main level Page item acts as a tab placeholder for the TabGroup.
         Page {
             id: menuTab
+            anchors.fill: parent
 
             // MenuListView is a sub-page for the MenuGridView, thus they
             // are defined within the pageStack.
@@ -269,7 +273,7 @@ Window {
 
             onStatusChanged: {
                 if (status == PageStatus.Activating) {
-                    appState.currentCaption = qsTr("Diner table reservation step 1/2");
+                    appState.currentCaption = qsTr("Diner table reservation");
                     sharedToolBar.tools = bookingTools;
                 } else if (status == PageStatus.Deactivating) {
                     if (appState.cameFromView == "MenuView") {

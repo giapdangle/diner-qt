@@ -48,8 +48,8 @@ Item {
 
     // Info view
     property int infoViewReservationFontSize: 22
-    property int infoViewAddressFontSize: 28
-    property int infoViewFontSize: 26
+    property int infoViewAddressFontSize: 24
+    property int infoViewFontSize: 24
     
     // Menu grid view
     property int menuGridViewFontSize: 24
