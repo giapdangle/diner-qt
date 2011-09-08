@@ -284,7 +284,6 @@ Page {
 
                 Text {
                     id: openDays
-                    width: 120
                     anchors.left: parent.left
                     color: container.fontColor
                     font {
@@ -294,20 +293,24 @@ Page {
                 }
                 Text {
                     id: openHours
-                    width: 80
                     anchors.left: openDays.right
+                    anchors.right: infoImg.left
                     color: container.fontColor
                     font {
                         family: container.fontName
                         pixelSize: visual.infoViewFontSize
                     }
+
+                    horizontalAlignment: Text.AlignHCenter
                 }
                 Image {
                     id: infoImg
 
-                    height: 120
+                    height: parent.height * 0.88
+                    width: height
                     fillMode: Image.PreserveAspectFit
-                    anchors.left: openHours.right
+                    anchors.right: parent.right
+                    anchors.rightMargin: container.margins*3
                     smooth: true
                     source: visual.foodTeaserSource
                 }
