@@ -27,13 +27,13 @@ Rectangle {
 
     function getLocalMapTile(zoom) {
         if (zoom < minZoomLevel) {
-            return "content/map/" + minZoomLevel + ".jpg";
+            return "content/map/" + minZoomLevel + ".png";
         }
         if (zoom > maxZoomLevel) {
-            return "content/map/" + maxZoomLevel + ".jpg";
+            return "content/map/" + maxZoomLevel + ".png";
         }
 
-        return "content/map/" + zoom + ".jpg";
+        return "content/map/" + zoom + ".png";
     }
 
     width: 300
@@ -51,6 +51,7 @@ Rectangle {
             fill: parent
             margins: 2
         }
+
         // Uncomment this line to get real map tile over the network
         //source: getOviMapsTileUrl(container.latitude, container.longitude, container.zoomFactor, container.width, container.height);
         source: getLocalMapTile(container.zoomFactor);

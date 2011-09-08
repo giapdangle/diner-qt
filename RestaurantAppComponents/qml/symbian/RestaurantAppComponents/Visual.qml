@@ -52,7 +52,7 @@ Item {
     property int infoViewFontSize: 18
     
     // Menu grid view
-    property int menuGridViewFontSize: 12
+    property int menuGridViewFontSize: 10
 
     // Menu list view
     property color menuListViewBackgroundColor: "#f9f6f6"

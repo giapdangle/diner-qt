@@ -187,7 +187,7 @@ Window {
             // Change the current view caption
             onStatusChanged: {
                 if (status == PageStatus.Activating) {
-                    appState.currentCaption = qsTr("Diner Reservation information");
+                    appState.currentCaption = qsTr("Diner information");
                 }
             }
         }
@@ -216,7 +216,7 @@ Window {
 
                     onStatusChanged: {
                         if (status == PageStatus.Activating) {
-                            appState.currentCaption = qsTr("À la Carte");
+                            appState.currentCaption = qsTr("A la Carte");
                         }
                     }
                 }
@@ -265,7 +265,7 @@ Window {
 
             onStatusChanged: {
                 if (status == PageStatus.Activating) {
-                    appState.currentCaption = qsTr("Diner table reservation step 1/2");
+                    appState.currentCaption = qsTr("Diner table reservation");
                     sharedToolBar.tools = bookingTools;
                 } else if (status == PageStatus.Deactivating) {
                     if (appState.cameFromView == "MenuView") {
