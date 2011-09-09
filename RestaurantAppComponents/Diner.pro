@@ -12,18 +12,16 @@ QML_IMPORT_PATH =
 # 0x2002CCCF value if protected UID is given to the application
 #symbian:DEPLOYMENT.installer_header = 0x2002CCCF
 
-# Allow network access on Symbian
-symbian:TARGET.CAPABILITY += NetworkServices
-
 # Platform specific files and configuration
 symbian {
-    # TODO!: MAYBE USE ANOTHER UID3 FOR THE COMPONENTIZED RestaurantApp?
+    # TODO!: MAYBE USE ANOTHER UID3 FOR THE COMPONENTIZED Diner?
     TARGET.UID3 = 0xE4E7F3E9
     # Allow network access on Symbian
     TARGET.CAPABILITY += NetworkServices
     platform_qml.source = qml/symbian/RestaurantAppComponents
     platform_qml.target = qml
     QML_IMPORT_PATH = qml/symbian/RestaurantAppComponents
+    VERSION = 1.2.0
 } else:maemo5 {
     QT += opengl
     platform_qml.source = qml/maemo/RestaurantAppComponents
@@ -95,7 +93,7 @@ contains(MEEGO_EDITION,harmattan) {
 }
 
 contains(MEEGO_EDITION,harmattan) {
-    icon.files = RestaurantApp.png
+    icon.files = Diner.png
     icon.path = /usr/share/icons/hicolor/80x80/apps
     INSTALLS += icon
 }
