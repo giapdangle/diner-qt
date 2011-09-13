@@ -21,7 +21,7 @@ symbian {
     platform_qml.source = qml/symbian/RestaurantAppComponents
     platform_qml.target = qml
     QML_IMPORT_PATH = qml/symbian/RestaurantAppComponents
-    VERSION = 1.2.0
+    VERSION = 1.2.1
 } else:maemo5 {
     QT += opengl
     platform_qml.source = qml/maemo/RestaurantAppComponents
@@ -43,6 +43,11 @@ symbian {
     platform_qml.source = qml/harmattan/RestaurantAppComponents
     platform_qml.target = qml
     QML_IMPORT_PATH = qml/harmattan/RestaurantAppComponents
+
+    # Desktop file
+    desktop.files = diner.desktop
+    desktop.path = /usr/share/applications
+    INSTALLS += desktop
 
     # TODO: Enable these, when Unix/OsX can be separated from Harmattan!
     # e.g. else:desktop {...
@@ -87,13 +92,7 @@ OTHER_FILES += \
     qtc_packaging/debian_fremantle/changelog
 
 contains(MEEGO_EDITION,harmattan) {
-    desktopfile.files = $${TARGET}.desktop
-    desktopfile.path = /usr/share/applications
-    INSTALLS += desktopfile
-}
-
-contains(MEEGO_EDITION,harmattan) {
-    icon.files = Diner.png
-    icon.path = /usr/share/icons/hicolor/80x80/apps
+    icon.files = Diner.svg
+    icon.path = /usr/share/icons/hicolor/scalable/apps
     INSTALLS += icon
 }
