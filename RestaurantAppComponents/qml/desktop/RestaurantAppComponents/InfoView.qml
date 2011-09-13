@@ -108,7 +108,7 @@ Page {
         clip: true
         Column {
             id: column
-            width: parent.contentWidth
+            width: parent.width
             spacing: container.margins
 
             Item {
@@ -119,7 +119,7 @@ Page {
                     id: logo
                     fillMode: "PreserveAspectFit"
                     smooth: true
-                    height: container.height*0.25
+                    height: appState.inLandscape ? container.height*0.4 : container.height*0.25
                     width: height
                 }
 
@@ -127,10 +127,11 @@ Page {
                     id: address
                     anchors {
                         left: logo.right
-                        bottom: call.top
+                        top: logo.top
+                        //bottom: call.top
                         margins: container.margins
                     }
-                    width:  container.width*0.3
+                    width: container.width*0.3
                     spacing: 4
                     Text {
                         id: street
@@ -178,7 +179,8 @@ Page {
                     id: call
                     anchors {
                         left: logo.right
-                        bottom: logo.bottom
+                        top: address.bottom
+                        //bottom: logo.bottom
                         margins: container.margins
                     }
 

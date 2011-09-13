@@ -30,7 +30,7 @@ Item {
 
         Item {
             id: dishImg
-            width: parent.width * 0.2
+            width: appState.inLandscape ? parent.width * 0.1 : parent.width * 0.2
             height: width
 
             Image {

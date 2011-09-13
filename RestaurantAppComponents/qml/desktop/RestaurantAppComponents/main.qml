@@ -25,7 +25,7 @@ Window {
             right: parent.right
         }
 
-        height: appState.inLandscape ? root.width * 0.04 : root.height*0.04
+        height: appState.inLandscape ? root.width*0.04 : root.height*0.04
         width: root.width
         captionFontName: visual.captionFontFamily
         captionFontSize: visual.captionFontSize
@@ -46,6 +46,7 @@ Window {
     AppStateVars {
         id: appState
         currentCaption: qsTr("Information")
+        inLandscape: width > height ? true : false;
     }
 
     // -----------------------------------------------------------------------
