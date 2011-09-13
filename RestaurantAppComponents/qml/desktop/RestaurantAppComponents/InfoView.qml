@@ -128,7 +128,6 @@ Page {
                     anchors {
                         left: logo.right
                         top: logo.top
-                        //bottom: call.top
                         margins: container.margins
                     }
                     width: container.width*0.3
@@ -180,7 +179,6 @@ Page {
                     anchors {
                         left: logo.right
                         top: address.bottom
-                        //bottom: logo.bottom
                         margins: container.margins
                     }
 

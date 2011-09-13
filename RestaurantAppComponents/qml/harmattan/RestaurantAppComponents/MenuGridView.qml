@@ -52,8 +52,8 @@ Page {
             fill: parent
             margins: container.margins
         }
-        cellWidth: appState.inLandscape ? width*0.3 : width*0.5
-        cellHeight: appState.inLandscape ? cellWidth*0.8 : cellWidth*0.9
+        cellWidth: appState.inLandscape ? width*0.32 : width*0.5
+        cellHeight: appState.inLandscape ? cellWidth*0.60 : cellWidth*0.9
         model: menuModel
         delegate: menuDelegate
         focus: true

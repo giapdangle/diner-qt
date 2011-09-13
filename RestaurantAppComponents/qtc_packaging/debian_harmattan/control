@@ -12,4 +12,3 @@ Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Diner v1.2.1 with QtQuick Components
  <insert long description, indented with spaces>
 XSBC-Maemo-Display-Name: Diner
-

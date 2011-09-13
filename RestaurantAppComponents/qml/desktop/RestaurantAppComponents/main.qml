@@ -46,7 +46,7 @@ Window {
     AppStateVars {
         id: appState
         currentCaption: qsTr("Information")
-        inLandscape: width > height ? true : false;
+        inLandscape: !root.inPortrait
     }
 
     // -----------------------------------------------------------------------
@@ -242,7 +242,7 @@ Window {
 
             // Start with the MenuGridView first.
             Component.onCompleted: {
-                pageStack.push(menu)
+                pageStack.push(menu);
             }
         }
 

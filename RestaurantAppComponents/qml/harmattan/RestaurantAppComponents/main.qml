@@ -16,6 +16,7 @@ Window {
         tabGroup.currentTab = infoTab;
     }
 
+    Component.onStatusChanged:
     StatusBar {
         id: statusBar
     }
@@ -24,8 +25,6 @@ Window {
     TitleBar {
         id: titleBar
 
-        height: appState.inLandscape ? root.width * 0.06 : root.height*0.06
-        width: 480
         // Anchors titlebar to left, top and right. Then set height
         // Use grouping if possible.
         anchors {
@@ -33,6 +32,9 @@ Window {
             left: parent.left
             right: parent.right
         }
+
+        height: appState.inLandscape ? root.width*0.04 : root.height*0.06
+        width: root.width
         captionFontName: visual.captionFontFamily
         captionFontSize: visual.captionFontSize
         captionFontColor: visual.captionFontColor
@@ -52,6 +54,7 @@ Window {
     AppStateVars {
         id: appState
         currentCaption: qsTr("Information")
+        inLandscape: !root.inPortrait
     }
 
     // -----------------------------------------------------------------------
@@ -137,6 +140,18 @@ Window {
         }
     }
 
+    // The ToolBar instance itself. Default tools layout defined above.
+    ToolBar {
+        id: sharedToolBar
+
+        anchors {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
+        tools: defaultTools
+    }
+
     // BookingView has it's completely own TabBar.
     ToolBarLayout {
         id: bookingTools
@@ -155,18 +170,6 @@ Window {
                 }
             }
         }
-    }
-
-    // The ToolBar instance itself. Default tools layout defined above.
-    ToolBar {
-        id: sharedToolBar
-
-        anchors {
-            left: parent.left
-            right: parent.right
-            bottom: parent.bottom
-        }
-        tools: defaultTools
     }
 
     // The group of pages that are being used as the base for the different Tabs.
@@ -249,7 +252,7 @@ Window {
 
             // Start with the MenuGridView first.
             Component.onCompleted: {
-                pageStack.push(menu)
+                pageStack.push(menu);
             }
         }
 

@@ -42,199 +42,208 @@ Page {
         source: visual.backgroundImageSource
     }
 
-    FocusScope {
-        anchors.fill:  parent
-        Column {
-            anchors.fill:  parent
-            anchors.margins: container.margins
-            spacing: 1.3*container.margins
+    Flickable {
+        anchors.fill: parent
+        contentHeight: column.height
+        width: parent.width
+        clip: true
+        interactive: appState.inLandscape
 
+        FocusScope {
+            anchors.fill: parent
             Column {
+                id: column
                 width: parent.width
+                anchors.margins: container.margins
                 spacing: 1.3*container.margins
 
                 Column {
-                    id: nameEntryColumn
                     width: parent.width
-                    spacing: container.margins
+                    spacing: 1.3*container.margins
 
-                    Text {
+                    Column {
+                        id: nameEntryColumn
                         width: parent.width
-                        font.family: container.fontName
-                        font.pixelSize: container.fontSize
-                        color: container.fontColor
-                        text: qsTr("Name")
+                        spacing: container.margins
+
+                        Text {
+                            width: parent.width
+                            font.family: container.fontName
+                            font.pixelSize: container.fontSize
+                            color: container.fontColor
+                            text: qsTr("Name")
+                        }
+
+                        TextField {
+                            id: nameEntry
+                            width: parent.width
+                            height: visual.defaultItemHeight
+                            text: qsTr("")
+                            focus: true
+                            KeyNavigation.down: phoneEntry
+                            onFocusChanged: console.log("nameEntry  focusChanged: " + focus)
+                        }
                     }
 
-                    TextField {
-                        id: nameEntry
+                    Column {
+                        id: phoneEntryColumn
                         width: parent.width
-                        height: visual.defaultItemHeight
-                        text: qsTr("")
-                        focus: true
-                        KeyNavigation.down: phoneEntry
-                        onFocusChanged: console.log("nameEntry  focusChanged: " + focus)
+                        spacing: container.margins
+
+                        Text {
+                            width: parent.width
+                            font.family: container.fontName
+                            font.pixelSize: container.fontSize
+                            color: container.fontColor
+                            text: qsTr("Phone number")
+                        }
+
+                        TextField {
+                            id: phoneEntry
+                            width: parent.width
+                            height: visual.defaultItemHeight
+                            text: qsTr("");
+                            focus: false
+                            KeyNavigation.up: nameEntry
+                            onFocusChanged: console.log("phoneEntry focusChanged: " + focus)
+                        }
                     }
                 }
 
+                Row {
+                    spacing: 10
+                    anchors.topMargin: container.margins * 2
+
+                    Text {
+                        font.family: container.fontName
+                        font.pixelSize: container.fontSize
+                        color: container.fontColor
+                        text: qsTr("Table for <b>" + personCountSlider.value + "</b> people")
+                    }
+                }
+
+                // Picker slider for the person count
+                Item {
+                    width: parent.width
+                    height: personCountSlider.height
+                    anchors.horizontalCenter: parent.horizontalCenter
+
+                    Text {
+                        width: 20
+                        id: minimumText
+                        anchors.left: parent.left
+                        text: personCountSlider.minimumValue
+                        font.family: container.fontName
+                        font.pixelSize: container.fontSize
+                        color: container.fontColor
+                        anchors.verticalCenter: personCountSlider.verticalCenter
+                    }
+
+                    Slider {
+                        id: personCountSlider
+                        minimumValue: 1
+                        maximumValue: 12
+                        stepSize: 1
+                        anchors.left: minimumText.right
+                        anchors.right: maximumText.left
+                    }
+
+                    Text {
+                        id: maximumText
+                        width: 20
+                        anchors.right: parent.right
+                        anchors.verticalCenter: personCountSlider.verticalCenter
+                        font.family: container.fontName
+                        font.pixelSize: container.fontSize
+                        color: container.fontColor
+                        text: personCountSlider.maximumValue
+                    }
+                } // Slider picker row
+
+                // Date picker column
                 Column {
-                    id: phoneEntryColumn
                     width: parent.width
                     spacing: container.margins
 
                     Text {
-                        width: parent.width
+                        id: dateText
+
+
                         font.family: container.fontName
                         font.pixelSize: container.fontSize
                         color: container.fontColor
-                        text: qsTr("Phone number")
+                        text: qsTr("Date: ")
                     }
 
-                    TextField {
-                        id: phoneEntry
-                        width: parent.width
+                    Button {
                         height: visual.defaultItemHeight
-                        text: qsTr("");
-                        focus: false
-                        KeyNavigation.up: nameEntry
-                        onFocusChanged: console.log("phoneEntry focusChanged: " + focus)
+                        width: parent.width
+                        text: container._year + "-" + container._month + "-" + container._day
+                        onClicked: datePicker.open();
                     }
-                }
-            }
+                } // Date picker column
 
-            Row {
-                spacing: 10
-                anchors.topMargin: container.margins * 2
+                // Time picker column
+                Column {
+                    width: parent.width
+                    spacing: container.margins
 
-                Text {
-                    font.family: container.fontName
-                    font.pixelSize: container.fontSize
-                    color: container.fontColor
-                    text: qsTr("Table for <b>" + personCountSlider.value + "</b> people")
-                }
-            }
+                    Text {
+                        font.family: container.fontName
+                        font.pixelSize: container.fontSize
+                        color: container.fontColor
+                        text: qsTr("Time: ")
+                    }
 
-            // Picker slider for the person count
-            Item {
-                width: parent.width
-                height: personCountSlider.height
-                anchors.horizontalCenter: parent.horizontalCenter
+                    Button {
+                        height: visual.defaultItemHeight
+                        width: parent.width
+                        text: container._hour
 
-                Text {
-                    width: 20
-                    id: minimumText
-                    anchors.left: parent.left
-                    text: personCountSlider.minimumValue
-                    font.family: container.fontName
-                    font.pixelSize: container.fontSize
-                    color: container.fontColor
-                    anchors.verticalCenter: personCountSlider.verticalCenter
-                }
+                        onClicked: timePicker.open()
+                    }
+                } // Time picker column
 
-                Slider {
-                    id: personCountSlider
-                    minimumValue: 1
-                    maximumValue: 12
-                    stepSize: 1
-                    anchors.left: minimumText.right
-                    anchors.right: maximumText.left
-                }
-
-                Text {
-                    id: maximumText
-                    width: 20
-                    anchors.right: parent.right
-                    anchors.verticalCenter: personCountSlider.verticalCenter
-                    font.family: container.fontName
-                    font.pixelSize: container.fontSize
-                    color: container.fontColor
-                    text: personCountSlider.maximumValue
-                }
-            } // Slider picker row
-
-            // Date picker column
-            Column {
-                width: parent.width
-                spacing: container.margins
-
-                Text {
-                    id: dateText
-
-
-                    font.family: container.fontName
-                    font.pixelSize: container.fontSize
-                    color: container.fontColor
-                    text: qsTr("Date: ")
-                }
-
-                Button {
+                Item {
+                    id: empty
+                    //spacing: container.margins
                     height: visual.defaultItemHeight
                     width: parent.width
-                    text: container._year + "-" + container._month + "-" + container._day
-                    onClicked: datePicker.open();
                 }
 
-                DatePickerDialog {
-                     id: datePicker
+            } //Column
+        }
+    }
 
-                     titleText: qsTr("Date of birth")
-                     acceptButtonText: qsTr("Accept")
-                     rejectButtonText: qsTr("Reject")
+    DatePickerDialog {
+         id: datePicker
 
-                     year: container._year
-                     month: container._month
-                     day: container._day
+         titleText: qsTr("Date of birth")
+         acceptButtonText: qsTr("Accept")
+         rejectButtonText: qsTr("Reject")
 
-                     onAccepted: {
-                         container._year = datePicker.year;
-                         container._month = datePicker.month;
-                         container._day = datePicker.day
-                     }
-                 }
-            } // Date picker column
+         year: container._year
+         month: container._month
+         day: container._day
 
-            // Time picker column
-            Column {
-                width: parent.width
-                spacing: container.margins
+         onAccepted: {
+             container._year = datePicker.year;
+             container._month = datePicker.month;
+             container._day = datePicker.day
+         }
+     }
 
-                Text {
-                    font.family: container.fontName
-                    font.pixelSize: container.fontSize
-                    color: container.fontColor
-                    text: qsTr("Time: ")
-                }
+    TimePickerDialog {
+        id: timePicker
 
-                Button {
-                    height: visual.defaultItemHeight
-                    width: parent.width
-                    text: container._hour
+        titleText: qsTr("Available times")
+        acceptButtonText: qsTr("Accept")
+        rejectButtonText: qsTr("Reject")
+        fields: DateTime.Hours
 
-                    onClicked: timePicker.open()
-                }
-
-                TimePickerDialog {
-                    id: timePicker
-
-                    titleText: qsTr("Available times")
-                    acceptButtonText: qsTr("Accept")
-                    rejectButtonText: qsTr("Reject")
-                    fields: DateTime.Hours
-
-                    onAccepted: {
-                        container._hour = timePicker.hour + ":00"
-                    }
-                }
-            } // Time picker column
-
-            Item {
-                id: empty
-                //spacing: container.margins
-                height: visual.defaultItemHeight
-                width: parent.width
-            }
-
-        } //Column
+        onAccepted: {
+            container._hour = timePicker.hour + ":00"
+        }
     }
 
     // Confirmation dialog for actually making the table reservation.

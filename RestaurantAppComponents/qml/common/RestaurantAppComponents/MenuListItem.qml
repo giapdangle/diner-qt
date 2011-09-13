@@ -48,7 +48,7 @@ Item {
             // Leave some room on top.
             y: 2
             x: 0
-            width: parent.width * 0.8
+            width: appState.inLandscape ? parent.width * 0.9 : parent.width * 0.8
             height: parent.height-2
 
             Item {
