@@ -16,7 +16,6 @@ Window {
         tabGroup.currentTab = infoTab;
     }
 
-    Component.onStatusChanged:
     StatusBar {
         id: statusBar
     }
@@ -68,18 +67,11 @@ Window {
     ToolBarLayout {
         id: defaultTools
 
-        ToolButton {
-            visible: appState.showBackButton
-            iconSource: visual.backButtonSource
-            onClicked: {
-                Util.log("Back-button clicked");
-                appState.showBackButton = false;
-                pageStack.pop();
-            }
-        }
-
         ButtonRow {
             id: buttonRow
+
+            // There's no "Back" -button on Harmattan, because the Swipe
+            // is being used to exit the application.
 
             checkedButton: tabButton1
             TabButton {
@@ -103,12 +95,13 @@ Window {
     }
 
     // A bit differend kind of ToolBar for MenuListView.
+    // Introduces the "Back" -button for returning
     ToolBarLayout {
         id: menuListTools
 
-        ToolButton {
-            iconSource: visual.backButtonSource
-            flat: true
+        ToolIcon {
+            opacity: appState.showBackButton ? 1 : 0
+            iconId: "toolbar-back"
 
             onClicked: {
                 if (appState.showBackButton == true) {
@@ -140,19 +133,7 @@ Window {
         }
     }
 
-    // The ToolBar instance itself. Default tools layout defined above.
-    ToolBar {
-        id: sharedToolBar
-
-        anchors {
-            left: parent.left
-            right: parent.right
-            bottom: parent.bottom
-        }
-        tools: defaultTools
-    }
-
-    // BookingView has it's completely own TabBar.
+    // BookingView has it's completely own ToolBar(Layout).
     ToolBarLayout {
         id: bookingTools
 
@@ -170,6 +151,18 @@ Window {
                 }
             }
         }
+    }
+
+    // The ToolBar instance itself. Default tools layout defined above.
+    ToolBar {
+        id: sharedToolBar
+
+        anchors {
+            left: parent.left
+            right: parent.right
+            bottom: parent.bottom
+        }
+        tools: defaultTools
     }
 
     // The group of pages that are being used as the base for the different Tabs.

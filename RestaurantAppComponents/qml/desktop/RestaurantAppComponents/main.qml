@@ -61,7 +61,10 @@ Window {
         id: defaultTools
 
         ToolButton {
-            iconSource: visual.backButtonSource
+            // Use the platform Back -button instead of our own.
+            //iconSource: visual.backButtonSource
+            iconSource: "toolbar-back"
+
             onClicked: {
                 if (appState.showBackButton == true) {
                     Util.log("Back-button clicked");
@@ -100,7 +103,9 @@ Window {
         id: menuListTools
 
         ToolButton {
-            iconSource: visual.backButtonSource
+            iconSource: "toolbar-back"
+            //iconSource: visual.backButtonSource
+
             onClicked: {
                 if (appState.showBackButton == true) {
                     appState.showBackButton = false;

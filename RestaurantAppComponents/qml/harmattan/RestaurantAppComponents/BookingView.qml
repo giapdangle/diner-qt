@@ -219,7 +219,7 @@ Page {
     DatePickerDialog {
          id: datePicker
 
-         titleText: qsTr("Date of birth")
+         titleText: qsTr("Date")
          acceptButtonText: qsTr("Accept")
          rejectButtonText: qsTr("Reject")
 

@@ -73,8 +73,8 @@ Page {
             //width: appState.inLandscape ? prent.width*0.6 : parent.width
             //height: width-100
             x: 20
-            width: 350
-            height: 520
+            width: appState.inLandscape ? 630 : 350
+            height: appState.inLandscape ? 250 : 520
             latitude: container.latitude
             longitude: container.longitude
             minZoomLevel: container.minZoomLevel

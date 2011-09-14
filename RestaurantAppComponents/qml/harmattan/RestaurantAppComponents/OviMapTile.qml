@@ -25,15 +25,15 @@ Rectangle {
         return url;
     }
 
-    function getLocalMapTile(zoom) {
+    function getLocalMapTile(zoom, landscape) {
         if (zoom < minZoomLevel) {
-            return "content/map/" + minZoomLevel + ".png";
+            return "content/map/" + minZoomLevel + (landscape ? "_landscape.png" : ".png");
         }
         if (zoom > maxZoomLevel) {
-            return "content/map/" + maxZoomLevel + ".png";
+            return "content/map/" + maxZoomLevel + (landscape ? "_landscape.png" : ".png");
         }
 
-        return "content/map/" + zoom + ".png";
+        return "content/map/" + zoom + (landscape ? "_landscape.png" : ".png");
     }
 
     width: 300
@@ -55,7 +55,7 @@ Rectangle {
         // Uncomment this line to get real map tile over the network
         //source: getOviMapsTileUrl(container.latitude, container.longitude, container.zoomFactor, container.width, container.height);
         smooth: true
-        source: getLocalMapTile(container.zoomFactor);
+        source: getLocalMapTile(container.zoomFactor, appState.inLandscape);
     }
 
     Button {
