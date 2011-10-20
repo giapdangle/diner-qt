@@ -12,6 +12,7 @@ QML_IMPORT_PATH =
 # 0x2002CCCF value if protected UID is given to the application
 #symbian:DEPLOYMENT.installer_header = 0x2002CCCF
 
+VERSION = 1.3
 # Platform specific files and configuration
 symbian {
     # TODO!: MAYBE USE ANOTHER UID3 FOR THE COMPONENTIZED Diner?
@@ -21,7 +22,6 @@ symbian {
     platform_qml.source = qml/symbian/RestaurantAppComponents
     platform_qml.target = qml
     QML_IMPORT_PATH = qml/symbian/RestaurantAppComponents
-    VERSION = 1.2.1
 } else:maemo5 {
     QT += opengl
     platform_qml.source = qml/maemo/RestaurantAppComponents
