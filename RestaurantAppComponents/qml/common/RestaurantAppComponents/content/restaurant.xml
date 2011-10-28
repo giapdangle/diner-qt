@@ -28,8 +28,8 @@
             <dish name="Hot Tomato Soup" icon="content/dishes/soup4.jpg" price="6&#8364;">Tomato soup flavoured with chili.</dish>
         </category>
         <category id="category2" name="Vegetarian" icon="content/vegetarian_icon.png">
-            <dish name="THE Ceasar Salad" icon="content/dishes/vege1.jpg" price="10&#8364;">A mixed green salad with Caesar dressing, Parmesan cheese, croutons and arugula with a choice of chicken breast, marinated shrimps, bacon or chevre.</dish>
-            <dish name="All Vegs" icon="content/dishes/vege2.jpg" price="12&#8364;">A mixed green salad with cherry tomato, cucumber, fresh pineapple, orange, marinated red onion, watermelon, arugula &amp;  deep-fried spring rolls. Served with ranch dressing, toasted bread and Sweet Chili sauce.</dish>
+            <dish name="The Caesar Salad" icon="content/dishes/vege1.jpg" price="10&#8364;">A mixed green salad with Caesar dressing, Parmesan cheese, croutons and arugula with a choice of chicken breast, marinated shrimps, bacon or chevre.</dish>
+            <dish name="All Veggies" icon="content/dishes/vege2.jpg" price="12&#8364;">A mixed green salad with cherry tomato, cucumber, fresh pineapple, orange, marinated red onion, watermelon, arugula &amp;  deep-fried spring rolls. Served with ranch dressing, toasted bread and Sweet Chili sauce.</dish>
             <dish name="Fruity Fish Salad" icon="content/dishes/vege3.jpg" price="15&#8364;">A mixed green salad with salmon fillet, cherry tomato, cucumber, fresh pineapple, orange, marinated red onion, watermelon, lime &amp; arugula.  Oil &amp; herb dressing and toasted bread.</dish>
         </category>
         <category id="category3" name="Seafood" icon="content/sea_food_icon.png">

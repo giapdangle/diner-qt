@@ -118,16 +118,14 @@ Window {
             }
         }
 
-        ButtonRow {
-            TabButton {
-                id: reserveButton
+        ToolButton {
+            id: reserveButton
 
-                tab: bookingTab
-                iconSource: visual.bookingButtonSource
-                onClicked: {
-                    // Show the BookingView's own TabBar.
-                    appState.cameFromView = "MenuView";
-                }
+            iconSource: visual.bookingButtonSource
+            onClicked: {
+                // Show the BookingView's own TabBar.
+                appState.cameFromView = "MenuView";
+                tabGroup.currentTab = bookingTab;
             }
         }
 
@@ -152,18 +150,16 @@ Window {
     ToolBarLayout {
         id: bookingTools
 
-        ButtonRow {
-            TabButton {
-                text: qsTr("Done")
-                onClicked: {
-                    bookingTab.done();
-                }
+        ToolButton {
+            text: qsTr("Done")
+            onClicked: {
+                bookingTab.done();
             }
-            TabButton {
-                text: qsTr("Cancel")
-                onClicked: {
-                    bookingTab.cancel();
-                }
+        }
+        ToolButton {
+            text: qsTr("Cancel")
+            onClicked: {
+                bookingTab.cancel();
             }
         }
     }
