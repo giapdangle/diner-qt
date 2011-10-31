@@ -68,5 +68,5 @@ Item {
     property int infoFontSize: 10
 
     // Booking view
-    property int bookingViewFontSize: 16
+    property int bookingViewFontSize: 20
 }
