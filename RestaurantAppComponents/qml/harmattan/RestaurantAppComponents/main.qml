@@ -67,13 +67,9 @@ Window {
     ToolBarLayout {
         id: defaultTools
 
+        // There's no "Back" -button on Harmattan, because the Swipe
+        // is being used to exit the application.
         ButtonRow {
-            id: buttonRow
-
-            // There's no "Back" -button on Harmattan, because the Swipe
-            // is being used to exit the application.
-
-            checkedButton: tabButton1
             TabButton {
                 id: tabButton1
                 tab: infoTab
@@ -100,22 +96,20 @@ Window {
         id: menuListTools
 
         ToolIcon {
-            opacity: appState.showBackButton ? 1 : 0
             iconId: "toolbar-back"
 
             onClicked: {
-                if (appState.showBackButton == true) {
+                if (appState.showBackButton === true) {
                     appState.showBackButton = false;
                     // When returning to Menu Grid view, hide the special tab bar
                     // and show the default one.
                     sharedToolBar.tools = defaultTools;
-                    buttonRow.checkedButton = tabButton2;
                     pageStack.pop();
                 }
             }
         }
 
-        ToolButton {
+        ToolIcon {
             id: reserveButton
 
             iconSource: visual.bookingButtonSource
@@ -126,8 +120,9 @@ Window {
             }
         }
 
-        ToolButton {
-            visible: false
+        ToolIcon {
+            iconSource: ""
+            enabled: false
         }
     }
 
@@ -135,18 +130,18 @@ Window {
     ToolBarLayout {
         id: bookingTools
 
-            ToolButton {
-                text: qsTr("Done")
-                onClicked: {
-                    bookingTab.done();
-                }
+        ToolButton {
+            text: qsTr("Done")
+            onClicked: {
+                bookingTab.done();
             }
-            ToolButton {
-                text: qsTr("Cancel")
-                onClicked: {
-                    bookingTab.cancel();
-                }
+        }
+        ToolButton {
+            text: qsTr("Cancel")
+            onClicked: {
+                bookingTab.cancel();
             }
+        }
     }
 
     // The ToolBar instance itself. Default tools layout defined above.
@@ -287,7 +282,6 @@ Window {
                     // Came from "MenuView".
                     // Return to MenuListView tab.
                     tabGroup.currentTab = menuTab;
-                    buttonRow.checkedButton = tabButton2;
                 }
             }
         }
