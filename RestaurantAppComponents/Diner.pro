@@ -12,7 +12,7 @@ QML_IMPORT_PATH =
 # 0x2002CCCF value if protected UID is given to the application
 #symbian:DEPLOYMENT.installer_header = 0x2002CCCF
 
-VERSION = 1.3
+VERSION = 1.4
 # Platform specific files and configuration
 symbian {
     # TODO!: MAYBE USE ANOTHER UID3 FOR THE COMPONENTIZED Diner?

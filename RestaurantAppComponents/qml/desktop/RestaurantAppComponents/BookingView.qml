@@ -44,8 +44,9 @@ Page {
 
     Flickable {
         anchors.fill: parent
+        anchors.margins: container.margins*3
+
         contentHeight: column.height
-        width: parent.width
         clip: true
         interactive: appState.inLandscape
 
@@ -129,7 +130,6 @@ Page {
                     anchors.horizontalCenter: parent.horizontalCenter
 
                     Text {
-                        width: 20
                         id: minimumText
                         anchors.left: parent.left
                         text: personCountSlider.minimumValue
@@ -137,6 +137,7 @@ Page {
                         font.pixelSize: container.fontSize
                         color: container.fontColor
                         anchors.verticalCenter: personCountSlider.verticalCenter
+                        horizontalAlignment: Text.AlignLeft
                     }
 
                     Slider {
@@ -150,13 +151,13 @@ Page {
 
                     Text {
                         id: maximumText
-                        width: 20
                         anchors.right: parent.right
                         anchors.verticalCenter: personCountSlider.verticalCenter
                         font.family: container.fontName
                         font.pixelSize: container.fontSize
                         color: container.fontColor
                         text: personCountSlider.maximumValue
+                        horizontalAlignment: Text.AlignRight
                     }
                 } // Slider picker row
 

@@ -6,7 +6,7 @@ Item {
     property string defaultFontFamily: "Helvetica"  // Defaults to correct ones in device
     property int defaultFontSize: 14
     //property color defaultFontColor: "#6f6a5c"
-    property color defaultFontColor: "#524F46"
+    property color defaultFontColor: "#45291a"
     property color defaultFontColorLink: "#7c0505"
     property color defaultFontColorButton: "#ffffff"
     property color defaultBackgroundColor: "#d9d3b5"
