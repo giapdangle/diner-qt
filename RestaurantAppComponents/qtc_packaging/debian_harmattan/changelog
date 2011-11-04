@@ -1,3 +1,8 @@
+diner (1.4.0) unstable; urgency=low
+  * Changed correct ToolBar buttons, layout and font color tweaking etc.
+
+ -- unknown <>  pe, 04 marras 2011 11:08:39 +0200
+
 diner (1.3.0) unstable; urgency=low
 
   * Version published on the Nokia Developer website.
