@@ -1,4 +1,4 @@
-import QtQuick 1.0
+import QtQuick 1.1
 
 XmlListModel {
     source: "content/restaurant.xml"
