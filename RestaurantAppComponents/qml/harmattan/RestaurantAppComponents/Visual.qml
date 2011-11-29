@@ -5,7 +5,6 @@ Item {
     // General
     property string defaultFontFamily: "Helvetica"  // Defaults to correct ones in device
     property int defaultFontSize: 20
-    //property color defaultFontColor: "#6f6a5c"
     property color defaultFontColor: "#45291a"
     property color defaultFontColorLink: "#7c0505"
     property color defaultFontColorButton: "#ffffff"
@@ -57,7 +56,7 @@ Item {
     // Menu list view
     property color menuListViewBackgroundColor: "#f9f6f6"
     property color menuListViewDishTitleFontColor: "#7c0505"
-    property color menuListViewDishFontColor: "#524F46"
+    property color menuListViewDishFontColor: defaultFontColor
     property int menuListViewTitleSize: 18
     property int menuListTitleFontSize: 16
     property int menuListItemFontSize: 14
