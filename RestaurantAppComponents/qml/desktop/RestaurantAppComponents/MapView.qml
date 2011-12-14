@@ -6,9 +6,6 @@ import "Util.js" as Util
 Page {
     id: container
 
-    width: 360
-    height: 640
-
     property int scrollBarWidth: visual.scrollBarWidth
     property string fontName: visual.defaultFontFamily
     property int fontSize: visual.defaultFontSize

@@ -3,9 +3,6 @@ import com.nokia.symbian 1.1
 import "Util.js" as Util
 
 Page {
-    width: 360
-    height: 640
-
     id: container
 
     property string fontName: visual.defaultFontFamily

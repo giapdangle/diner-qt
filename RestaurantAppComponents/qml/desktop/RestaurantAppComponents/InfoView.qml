@@ -191,7 +191,7 @@ Page {
                             bottom: call.bottom
                             verticalCenter: parent.verticalCenter
                         }
-                        verticalAlignment: Text.AlignVCenter
+                        verticalAlignment: visual.isE6 ? Text.AlignTop : Text.AlignVCenter
                         color: container.fontColorLink
                         font {
                             family: container.fontName
@@ -214,7 +214,8 @@ Page {
                     anchors {
                         right: parent.right
                         rightMargin: container.margins
-                        verticalCenter: call.verticalCenter
+                        verticalCenter: visual.isE6 ? undefined : call.verticalCenter
+                        bottom: visual.isE6 ? call.verticalCenter : undefined
                     }
                     iconSource: visual.callButtonSource
 

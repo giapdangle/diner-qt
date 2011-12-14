@@ -2,9 +2,13 @@
 import QtQuick 1.1
 
 Item {
+    // E6 has different screen resolution & aspect ratio (640x480), thus
+    // there's some differentation for it separately.
+    property bool isE6: false
+
     // General
     property string defaultFontFamily: "Helvetica"  // Defaults to correct ones in device
-    property int defaultFontSize: 14
+    property int defaultFontSize: platformStyle.fontSizeMedium
     property color defaultFontColor: "#45291a"
     property color defaultFontColorLink: "#7c0505"
     property color defaultFontColorButton: "#ffffff"
@@ -23,12 +27,12 @@ Item {
     property string foodTeaserSource: "content/food_teaser.png"
 
     // Title bar
-    property int titleFontSize: 36
+    property int titleFontSize: platformStyle.fontSizeLarge
     property color titleFontColor: "#ffffff"
     property color titleBackgroundColor: "#7c0505"
 
     property string captionFontFamily: defaultFontFamily
-    property int captionFontSize: 8
+    property int captionFontSize: platformStyle.fontSizeLarge
     property color captionFontColor: "#ffffff"
     property color captionBackgroundColor: "#770d0f"
 
@@ -47,8 +51,8 @@ Item {
 
     // Info view
     property int infoViewReservationFontSize: 14
-    property int infoViewAddressFontSize: 18
-    property int infoViewFontSize: 18
+    property int infoViewAddressFontSize: platformStyle.fontSizeSmall
+    property int infoViewFontSize: platformStyle.fontSizeSmall
     
     // Menu grid view
     property int menuGridViewFontSize: 10

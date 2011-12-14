@@ -32,7 +32,7 @@ Rectangle {
         font {
             bold: container.captionFontBold
             family: container.captionFontName
-            pointSize: container.captionFontSize
+            pixelSize: container.captionFontSize
         }
 
         clip: true

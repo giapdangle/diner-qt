@@ -20,9 +20,6 @@ Page {
     property string selectedCategoryTitle: appState.selectedMenuCategoryTitle
     property string selectedCategoryIconSource: appState.selectedMenuCategoryIconSource
 
-    width: 360
-    height: 640
-
     Component.onCompleted: {
         Util.log("MenuListView loaded");
     }

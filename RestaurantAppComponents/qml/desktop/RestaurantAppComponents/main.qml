@@ -5,8 +5,6 @@ import "Components.js" as Util
 
 Window {
     id: root
-    width: 360
-    height: 640
     anchors.fill: parent
 
     StatusBar {
@@ -25,7 +23,9 @@ Window {
             right: parent.right
         }
 
-        height: appState.inLandscape ? root.width*0.04 : root.height*0.04
+        height: appState.inLandscape
+                ? (visual.isE6 ? root.width*0.06 : root.width*0.04)
+                : root.height*0.04
         width: root.width
         captionFontName: visual.captionFontFamily
         captionFontSize: visual.captionFontSize
@@ -40,6 +40,8 @@ Window {
 
     Visual {
         id: visual
+
+        isE6: root.height == 480
     }
 
     // Properties.
