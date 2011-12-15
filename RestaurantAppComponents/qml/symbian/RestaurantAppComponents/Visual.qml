@@ -50,12 +50,15 @@ Item {
     property string bookingButtonSource: "content/booking_button.png"
 
     // Info view
-    property int infoViewReservationFontSize: 14
-    property int infoViewAddressFontSize: platformStyle.fontSizeSmall
-    property int infoViewFontSize: platformStyle.fontSizeSmall
+    property int infoViewReservationItemHeight: isE6 ? 60 : 40
+    property int infoViewReservationFontSize: platformStyle.fontSizeSmall
+    property int infoViewAddressFontSize: isE6 ? platformStyle.fontSizeSmall
+                                               : platformStyle.fontSizeMedium
+    property int infoViewFontSize: isE6 ? platformStyle.fontSizeSmall
+                                        : platformStyle.fontSizeMedium
     
     // Menu grid view
-    property int menuGridViewFontSize: 10
+    property int menuGridViewFontSize: isE6 ? 9 : 10
 
     // Menu list view
     property color menuListViewBackgroundColor: "#f9f6f6"
@@ -71,5 +74,6 @@ Item {
     property int infoFontSize: 10
 
     // Booking view
-    property int bookingViewFontSize: 20
+    property int bookingViewFontSize: isE6 ? platformStyle.fontSizeSmall
+                                           : platformStyle.fontSizeMedium
 }

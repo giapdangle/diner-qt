@@ -11,7 +11,7 @@ Page {
     property color fontColorLink: visual.defaultFontColorLink
     property color fontColorButton: visual.defaultFontColorButton
     property double margins: visual.margins
-    property int reservationHeight: 48
+    property int reservationHeight: visual.infoViewReservationItemHeight
     property int scrollBarWidth: visual.scrollBarWidth
 
     signal reservationClicked()
@@ -44,7 +44,7 @@ Page {
         id: reservationDelegate
 
         Item {
-            height: 40
+            height: container.reservationHeight
             width: container.width-container.margins - 4
 
             Image {
