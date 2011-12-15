@@ -51,29 +51,15 @@ Page {
         }
     }
 
-    Grid {
-        columns: appState.inLandscape ? 2 : 1
-        rows: appState.inLandscape ? 1 : 2
-        spacing: container.margins
+    OviMapTile {
+        id: tile
 
-        anchors {
-            fill: parent
-            margins: container.margins
-        }
-
-        // First grid item will be the Map tile.
-        OviMapTile {
-            id: tile
-
-            //width: appState.inLandscape ? prent.width*0.6 : parent.width
-            //height: width-100
-            x: 20
-            width: appState.inLandscape ? 630 : 350
-            height: appState.inLandscape ? 250 : 520
-            latitude: container.latitude
-            longitude: container.longitude
-            minZoomLevel: container.minZoomLevel
-            maxZoomLevel: container.maxZoomLevel
-        }
+        anchors.centerIn: parent
+        width: appState.inLandscape ? 630 : 350
+        height: appState.inLandscape ? (visual.isE6 ? 320 : 250) : 520
+        latitude: container.latitude
+        longitude: container.longitude
+        minZoomLevel: container.minZoomLevel
+        maxZoomLevel: container.maxZoomLevel
     }
 }
