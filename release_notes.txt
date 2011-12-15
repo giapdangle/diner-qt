@@ -1,19 +1,26 @@
-QML Restaurant App
-===================
+Diner v1.5
+==========
 
-The Restaurant example application demonstrates how QML can be used to build a 
-simple, impressive catalog-type application based on local XML data. It is 
-straightforward to convert the application to use internet resources instead of 
-local XML-resources. The application is designed in such a way that it is easy 
-to replace the content and visual style for different restaurants. 
+The Diner example application demonstrates how QML can be used to build a
+simple, impressive catalog-type application based on local XML data. It is
+straightforward to convert the application to use internet resources instead of
+local XML resources. The application is designed in such a way that it is easy
+to replace the content and visual style for different restaurants. The
+application utilises the Qt Quick Components throughout, for example in the
+navigation (PageStack, ToolBar), Dialogs, Buttons, and so on.
 
-The application features tab based navigation using a tab bar UI component. The 
-UI is implemented using custom graphics and UI elements, which are designed to 
-be reusable. Special attention has been given for supporting the screen 
-orientations. For example, there are two booking view implementations from which 
-the correct one is chosen depending on the current orientation. The booking view 
-also introduces the Reel UI component, which can be used to select items from a 
-predefined list. 
+This application features tab-based navigation, using TabGroup and ToolBar 
+components. The UI of the updated version is implemented using mostly Qt Quick 
+Components, but it also has some custom graphics and UI elements, designed to be 
+reusable in other applications as well. The booking view also introduces the 
+experimental com.nokia.extras components, namely DatePicker and TimePicker.
+
+This example application is hosted in Nokia Developer Projects:
+- http://projects.developer.nokia.com/QMLRestaurantApp
+
+For more information on implementation visit the wiki page:
+- http://projects.developer.nokia.com/QMLRestaurantApp/wiki
+
 
 FILES
 -------------------------------------------------------------------------------
@@ -22,9 +29,10 @@ design/*
 
 - UI design files
 
-RestaurantApp/*
+RestaurantAppComponents/*
 
-- The application itself. Contains a .pro-file that can be opened in Qt SDK 1.1beta.
+- The Diner application itself. Contains a PRO file that can be opened in 
+  Qt SDK 1.1.4
 
 screenhots/*
 
@@ -39,32 +47,30 @@ Mobile device (Symbian^3)
 
 There are two ways to install the application on the device.
 
-0. The Qt libraries (4.7.2 or higher) must be installed. See the section 
+0. The Qt libraries (4.7.4 or higher) must be installed. See the section 
    COMPATIBILITY for more information about the installation.
 
-1. a) Drag the restaurantapp_1.0.0.sis file to the Nokia Ovi Suite when the device is 
-      connected with the USB cable.
+1. a) Drag the Diner_1.5.0.sis file into the Nokia Ovi Suite while the 
+      device is connected with the USB cable.
    
    OR
    
    b) Send the application directly to the Messaging Inbox (for example,
       through Bluetooth).
 
-2. After the installation is complete, return to the Application menu and
+2. After the installation is complete, return to the application menu and
    select the Applications folder.
    
-3. Locate the RestaurantApp icon and select it to launch the application.
+3. Locate the Diner icon and select it to launch the application.
 
 
-Maemo device
-~~~~~~~~~~~~
-
-Mobile device (Maemo)
+Mobile device (Harmattan)
 ~~~~~~~~~~~~~~~~~~~~~
-0. The Qt libraries (4.7.0 or higher) must be installed. See the section 
+
+0. The Qt libraries (4.7.4 or higher) must be installed. See the section 
    COMPATIBILITY for more information about the installation.
 
-1. Copy the restaurantapp_1.0.0_armel.deb file into a specific folder on the 
+1. Copy the diner_1.5.0_armel.deb file into a specific folder on the 
    device (for example, 'MyDocs').
 
 2. Start XTerm. Type 'sudo gainroot' to get root access.
@@ -73,42 +79,44 @@ Mobile device (Maemo)
    (for example, 'cd MyDocs').
 
 4. As root, install the package:
-   dpkg -i restaurantapp_1.0.0_armel.deb
+   dpkg -i diner_1.5.0_armel.deb
 
 5. Launch the Applications menu.
 
-6. Locate the RestaurantApp icon and select it to launch the application.
+6. Locate the Diner icon and select it to launch the application.
 
 
 COMPATIBILITY
 -------------------------------------------------------------------------------
 
-- Symbian^3 with Qt version 4.7.2 or higher.
+- Symbian^3 with Qt version 4.7.4 or higher
 
-  1. Download Qt for Symbian (4.7.2 or higher) from qt.nokia.com.
+  1. Download Qt for Symbian (4.7.4 or higher) from qt.nokia.com.
   
   2. Drag qt_installer.sis on top of the device in Nokia Ovi Suite while the 
      device is connected. The SIS package is found in the installation folder 
-     of Qt for Symbian (4.7.2 or higher).
+     of Qt for Symbian (4.7.4 or higher).
      
-     
-- Maemo with PR1.3 which includes Qt 4.7.0.
+- MeeGo 1.2 Harmattan
 
-  1. Use Nokia Ovi Suite to update the device's firmware to PR1.3.
 
-  
-   
 Tested on:
 
-- Nokia N8-00
+- Nokia E6
 - Nokia E7-00
-- Nokia N900
+- Nokia N9
 
 Developed with:
 
--QtSDK 1.1beta
+- Qt SDK 1.1.4
 
 
 VERSION HISTORY
 -------------------------------------------------------------------------------
-v0.1.7 Initial version published in Forum Nokia Projects.
+v1.5	Added E6 support & splash screens, UI fine tuning, some refactoring.
+v1.4	Changed correct ToolBar buttons, layout and font color tweaking etc.
+v1.3	Version published on the Nokia Developer website.
+v1.2.1	Replaced the custom 'Back' button with the platform one. Landscape 
+        fixes.
+v1.2	Utilised QtQuick components and updated the application look and feel.
+v0.1.7	Initial version published in Forum Nokia Projects.
