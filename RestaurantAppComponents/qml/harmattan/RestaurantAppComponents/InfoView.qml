@@ -1,4 +1,4 @@
-import QtQuick 1.0
+import QtQuick 1.1
 import com.nokia.meego 1.0
 import "Util.js" as Util
 
@@ -6,12 +6,11 @@ Page {
     id: container
 
     property string fontName: visual.defaultFontFamily
-    property int fontSize: visual.defaultFontSize
     property color fontColor: visual.defaultFontColor
     property color fontColorLink: visual.defaultFontColorLink
     property color fontColorButton: visual.defaultFontColorButton
     property double margins: visual.margins
-    property int reservationHeight: 48
+    property int reservationHeight: visual.infoViewReservationItemHeight
     property int scrollBarWidth: visual.scrollBarWidth
 
     signal reservationClicked()
@@ -33,7 +32,6 @@ Page {
                 country.text = infoModel.get(0).country
                 telephone.text = infoModel.get(0).telephone
                 description.text = infoModel.get(0).description
-                // VKN TODO! GET THE OPENING DAYS & HOURS FROM THE MODEL!
                 openDays.text = "Open\nMon to Thu:\nFriday:\nSaturday:\nSunday:"
                 openHours.text = "\n11-22\n11-23\n13-23\n14-21"
             }
@@ -44,7 +42,7 @@ Page {
         id: reservationDelegate
 
         Item {
-            height: 50
+            height: container.reservationHeight
             width: container.width-container.margins - 4
 
             Image {
@@ -346,17 +344,4 @@ Page {
             reservationsModel.remove(index)
         }
     }
-
-    // Disabled for the time being.
-//    QueryDialog {
-//        id: callDialog
-//        titleText: qsTr("Call restaurant")
-//        message: qsTr("Call the restaurant at "+phoneNumber+"?")
-//        acceptButtonText: qsTr("Call")
-//        rejectButtonText: qsTr("Cancel")
-//        property string phoneNumber: ""
-//        onAccepted: {
-//            Util.log("Invoking a call "+telephone.text); Qt.openUrlExternally("tel:"+telephone.text)
-//        }
-//    }
 }

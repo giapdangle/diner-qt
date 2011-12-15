@@ -1,10 +1,9 @@
 // Visual style for Harmattan
-import QtQuick 1.0
+import QtQuick 1.1
 
 Item {
     // General
     property string defaultFontFamily: "Helvetica"  // Defaults to correct ones in device
-    property int defaultFontSize: 20
     property color defaultFontColor: "#45291a"
     property color defaultFontColorLink: "#7c0505"
     property color defaultFontColorButton: "#ffffff"
@@ -28,7 +27,7 @@ Item {
     property color titleBackgroundColor: "#7c0505"
 
     property string captionFontFamily: defaultFontFamily
-    property int captionFontSize: 16
+    property int captionFontSize: 24
     property color captionFontColor: "#ffffff"
     property color captionBackgroundColor: "#770d0f"
 
@@ -36,16 +35,13 @@ Item {
     property string backButtonSource: "content/back_button.png"
 
     // Tab bar
-    property string tabBarButtonFont: defaultFontFamily
-    property int tabBarButtonFontSize: 20
-    property color tabBarButtonFontColor: "#ffffff"
-
     property string infoButtonSource: "content/info_button.png"
     property string menuButtonSource: "content/menu_button.png"
     property string mapButtonSource: "content/map_button.png"
     property string bookingButtonSource: "content/booking_button.png"
 
     // Info view
+    property int infoViewReservationItemHeight: 50
     property int infoViewReservationFontSize: 22
     property int infoViewAddressFontSize: 24
     property int infoViewFontSize: 24
@@ -57,14 +53,12 @@ Item {
     property color menuListViewBackgroundColor: "#f9f6f6"
     property color menuListViewDishTitleFontColor: "#7c0505"
     property color menuListViewDishFontColor: defaultFontColor
-    property int menuListViewTitleSize: 18
     property int menuListTitleFontSize: 16
     property int menuListItemFontSize: 14
 
     // Map view
     property string zoomiInSource: "content/zoom_in.png"
     property string zoomiOutSource: "content/zoom_out.png"
-    property int infoFontSize: 20
 
     // Booking view
     property int bookingViewFontSize: 32

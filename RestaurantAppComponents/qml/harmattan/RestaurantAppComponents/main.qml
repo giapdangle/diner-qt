@@ -1,13 +1,10 @@
-import QtQuick 1.0
+import QtQuick 1.1
 import com.nokia.meego 1.0
 
 import "Components.js" as Util
 
 Window {
     id: root
-
-    width: 480
-    height: 854
     anchors.fill: parent
 
     Component.onCompleted: {

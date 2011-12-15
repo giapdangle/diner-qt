@@ -1,4 +1,4 @@
-import QtQuick 1.0
+import QtQuick 1.1
 import com.nokia.meego 1.0
 
 import "Util.js" as Util
@@ -6,13 +6,8 @@ import "Util.js" as Util
 Page {
     id: container
 
-    width: 480
-    height: 854
-
     property int scrollBarWidth: visual.scrollBarWidth
     property string fontName: visual.defaultFontFamily
-    property int fontSize: visual.defaultFontSize
-    property int infoFontSize: visual.infoFontSize
     property color fontColor: visual.defaultFontColor
     property color fontColorLink: visual.defaultFontColorLink
     property double margins: visual.margins
@@ -56,29 +51,15 @@ Page {
         }
     }
 
-    Grid {
-        columns: appState.inLandscape ? 2 : 1
-        rows: appState.inLandscape ? 1 : 2
-        spacing: container.margins
+    OviMapTile {
+        id: tile
 
-        anchors {
-            fill: parent
-            margins: container.margins
-        }
-
-        // First grid item will be the Map tile.
-        OviMapTile {
-            id: tile
-
-            //width: appState.inLandscape ? prent.width*0.6 : parent.width
-            //height: width-100
-            x: 20
-            width: appState.inLandscape ? 873 : 465
-            height: appState.inLandscape ? 332 : 690
-            latitude: container.latitude
-            longitude: container.longitude
-            minZoomLevel: container.minZoomLevel
-            maxZoomLevel: container.maxZoomLevel
-        }
+        anchors.centerIn: parent
+        width: appState.inLandscape ? 873 : 465
+        height: appState.inLandscape ? 332 : 690
+        latitude: container.latitude
+        longitude: container.longitude
+        minZoomLevel: container.minZoomLevel
+        maxZoomLevel: container.maxZoomLevel
     }
 }

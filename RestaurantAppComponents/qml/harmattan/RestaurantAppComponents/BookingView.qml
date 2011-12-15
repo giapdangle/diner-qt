@@ -1,4 +1,4 @@
-import QtQuick 1.0
+import QtQuick 1.1
 // We are using TimePickerDialog & DatePickerDialog from the com.nokia.extras.
 import com.nokia.extras 1.0
 import com.nokia.meego 1.0

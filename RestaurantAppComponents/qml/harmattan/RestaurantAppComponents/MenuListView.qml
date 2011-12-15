@@ -1,4 +1,4 @@
-import QtQuick 1.0
+import QtQuick 1.1
 import com.nokia.meego 1.0
 import "Util.js" as Util
 
@@ -6,8 +6,6 @@ Page {
     id: container
 
     property string fontName: visual.defaultFontFamily
-    property int fontSize: visual.defaultFontSize
-    property int fontSizeTitle: visual.menuListViewTitleSize
     property color fontColor: visual.menuListViewDishFontColor
     property color fontColorTitle: visual.menuListViewDishTitleFontColor
     property color fontColorLink: visual.defaultFontColorLink
@@ -19,9 +17,6 @@ Page {
     property string selectedCategoryId: appState.selectedMenuCategoryId
     property string selectedCategoryTitle: appState.selectedMenuCategoryTitle
     property string selectedCategoryIconSource: appState.selectedMenuCategoryIconSource
-
-    width: 480
-    height: 854
 
     Component.onCompleted: {
         Util.log("MenuListView loaded");

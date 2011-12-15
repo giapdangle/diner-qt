@@ -1,11 +1,8 @@
-import QtQuick 1.0
+import QtQuick 1.1
 import com.nokia.meego 1.0
 import "Util.js" as Util
 
 Page {
-    width: 480
-    height: 854
-
     id: container
 
     property string fontName: visual.defaultFontFamily
