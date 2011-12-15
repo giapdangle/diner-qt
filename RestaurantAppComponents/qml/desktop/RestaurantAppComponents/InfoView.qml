@@ -339,17 +339,4 @@ Page {
             reservationsModel.remove(index)
         }
     }
-
-    // Disabled for the time being.
-//    QueryDialog {
-//        id: callDialog
-//        titleText: qsTr("Call restaurant")
-//        message: qsTr("Call the restaurant at "+phoneNumber+"?")
-//        acceptButtonText: qsTr("Call")
-//        rejectButtonText: qsTr("Cancel")
-//        property string phoneNumber: ""
-//        onAccepted: {
-//            Util.log("Invoking a call "+telephone.text); Qt.openUrlExternally("tel:"+telephone.text)
-//        }
-//    }
 }
