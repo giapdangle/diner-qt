@@ -8,7 +8,6 @@ Item {
 
     // General
     property string defaultFontFamily: "Helvetica"  // Defaults to correct ones in device
-    property int defaultFontSize: platformStyle.fontSizeMedium
     property color defaultFontColor: "#45291a"
     property color defaultFontColorLink: "#7c0505"
     property color defaultFontColorButton: "#ffffff"
@@ -40,10 +39,6 @@ Item {
     property string backButtonSource: "content/back_button.png"
 
     // Tab bar
-    property string tabBarButtonFont: defaultFontFamily
-    property int tabBarButtonFontSize: 10
-    property color tabBarButtonFontColor: "#ffffff"
-
     property string infoButtonSource: "content/info_button.png"
     property string menuButtonSource: "content/menu_button.png"
     property string mapButtonSource: "content/map_button.png"
@@ -64,14 +59,12 @@ Item {
     property color menuListViewBackgroundColor: "#f9f6f6"
     property color menuListViewDishTitleFontColor: "#7c0505"
     property color menuListViewDishFontColor: defaultFontColor
-    property int menuListViewTitleSize: 12
     property int menuListTitleFontSize: 8
     property int menuListItemFontSize: 6
 
     // Map view
     property string zoomiInSource: "content/zoom_in.png"
     property string zoomiOutSource: "content/zoom_out.png"
-    property int infoFontSize: 10
 
     // Booking view
     property int bookingViewFontSize: isE6 ? platformStyle.fontSizeSmall

@@ -6,8 +6,6 @@ Page {
     id: container
 
     property string fontName: visual.defaultFontFamily
-    property int fontSize: visual.defaultFontSize
-    property int fontSizeTitle: visual.menuListViewTitleSize
     property color fontColor: visual.menuListViewDishFontColor
     property color fontColorTitle: visual.menuListViewDishTitleFontColor
     property color fontColorLink: visual.defaultFontColorLink

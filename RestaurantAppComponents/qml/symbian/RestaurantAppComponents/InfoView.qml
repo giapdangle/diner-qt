@@ -6,7 +6,6 @@ Page {
     id: container
 
     property string fontName: visual.defaultFontFamily
-    property int fontSize: visual.defaultFontSize
     property color fontColor: visual.defaultFontColor
     property color fontColorLink: visual.defaultFontColorLink
     property color fontColorButton: visual.defaultFontColorButton
@@ -33,7 +32,6 @@ Page {
                 country.text = infoModel.get(0).country
                 telephone.text = infoModel.get(0).telephone
                 description.text = infoModel.get(0).description
-                // VKN TODO! GET THE OPENING DAYS & HOURS FROM THE MODEL!
                 openDays.text = "Open\nMon to Thu:\nFriday:\nSaturday:\nSunday:"
                 openHours.text = "\n11-22\n11-23\n13-23\n14-21"
             }

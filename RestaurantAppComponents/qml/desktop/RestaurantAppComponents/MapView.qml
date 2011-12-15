@@ -8,8 +8,6 @@ Page {
 
     property int scrollBarWidth: visual.scrollBarWidth
     property string fontName: visual.defaultFontFamily
-    property int fontSize: visual.defaultFontSize
-    property int infoFontSize: visual.infoFontSize
     property color fontColor: visual.defaultFontColor
     property color fontColorLink: visual.defaultFontColorLink
     property double margins: visual.margins
