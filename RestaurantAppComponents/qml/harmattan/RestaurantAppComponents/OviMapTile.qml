@@ -14,9 +14,10 @@ Rectangle {
     property int margins: 8
     property int zoomButtonSize: 48
 
-    // You can use this function as the mapImage source-property to get a real map tile from Ovi Maps Tile Rendering API
+    // You can use this function as the mapImage source-property to get
+    // a real map tile from Ovi Maps Tile Rendering API
     function getOviMapsTileUrl(lat, lng, zoom, w, h) {
-        var url = "http://m.ovi.me/?c="+lat+","+lng+"&z="+zoom+ "&w="+w+"&h="+h; //+"&u=5h";
+        var url = "http://m.ovi.me/?c="+lat+","+lng+"&z="+zoom+ "&w="+w+"&h="+h;
         if (container.mapMode === "hybrid") {
             url = url + "&t=1";
         }
@@ -27,13 +28,16 @@ Rectangle {
 
     function getLocalMapTile(zoom, landscape) {
         if (zoom < minZoomLevel) {
-            return "content/map/" + minZoomLevel + (landscape ? "_landscape.png" : ".png");
+            return "content/map/" + minZoomLevel
+                    + (landscape ? "_landscape.png" : ".png");
         }
         if (zoom > maxZoomLevel) {
-            return "content/map/" + maxZoomLevel + (landscape ? "_landscape.png" : ".png");
+            return "content/map/" + maxZoomLevel
+                    + (landscape ? "_landscape.png" : ".png");
         }
 
-        return "content/map/" + zoom + (landscape ? "_landscape.png" : ".png");
+        return "content/map/" + zoom
+                + (landscape ? "_landscape.png" : ".png");
     }
 
     width: 300
@@ -52,8 +56,10 @@ Rectangle {
             margins: 2
         }
 
-        // Uncomment this line to get real map tile over the network
-        //source: getOviMapsTileUrl(container.latitude, container.longitude, container.zoomFactor, container.width, container.height);
+        // Uncomment these lines to get real map tile over the network
+//        source: getOviMapsTileUrl(container.latitude, container.longitude,
+//                                  container.zoomFactor,
+//                                  container.width, container.height);
         smooth: true
         source: getLocalMapTile(container.zoomFactor, appState.inLandscape);
     }

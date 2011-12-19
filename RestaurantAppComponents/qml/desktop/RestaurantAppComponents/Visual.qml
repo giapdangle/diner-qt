@@ -1,4 +1,4 @@
-// Visual style for Symbian
+// Visual style for Desktop
 import QtQuick 1.1
 
 Item {
@@ -7,7 +7,7 @@ Item {
     property bool isE6: false
 
     // General
-    property string defaultFontFamily: "Helvetica"  // Defaults to correct ones in device
+    property string defaultFontFamily: "Helvetica"
     property color defaultFontColor: "#45291a"
     property color defaultFontColorLink: "#7c0505"
     property color defaultFontColorButton: "#ffffff"

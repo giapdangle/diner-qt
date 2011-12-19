@@ -82,7 +82,8 @@ Page {
                             text: qsTr("")
                             focus: true
                             KeyNavigation.down: phoneEntry
-                            onFocusChanged: console.log("nameEntry  focusChanged: " + focus)
+                            onFocusChanged: console.log("nameEntry focusChanged: "
+                                                        + focus)
                         }
                     }
 
@@ -106,7 +107,8 @@ Page {
                             text: qsTr("");
                             focus: false
                             KeyNavigation.up: nameEntry
-                            onFocusChanged: console.log("phoneEntry focusChanged: " + focus)
+                            onFocusChanged: console.log("phoneEntry focusChanged: "
+                                                        + focus)
                         }
                     }
                 }
@@ -119,7 +121,8 @@ Page {
                         font.family: container.fontName
                         font.pixelSize: container.fontSize
                         color: container.fontColor
-                        text: qsTr("Table for <b>" + personCountSlider.value + "</b> people")
+                        text: qsTr("Table for <b>" + personCountSlider.value
+                                   + "</b> people")
                     }
                 }
 
@@ -179,7 +182,8 @@ Page {
                     Button {
                         height: visual.defaultItemHeight
                         width: parent.width
-                        text: container._year + "-" + container._month + "-" + container._day
+                        text: container._year + "-" + container._month
+                              + "-" + container._day
                         onClicked: datePicker.open();
                     }
                 } // Date picker column

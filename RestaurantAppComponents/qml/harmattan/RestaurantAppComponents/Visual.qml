@@ -3,7 +3,7 @@ import QtQuick 1.1
 
 Item {
     // General
-    property string defaultFontFamily: "Helvetica"  // Defaults to correct ones in device
+    property string defaultFontFamily: "Helvetica"
     property color defaultFontColor: "#45291a"
     property color defaultFontColorLink: "#7c0505"
     property color defaultFontColorButton: "#ffffff"

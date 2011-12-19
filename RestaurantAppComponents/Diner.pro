@@ -3,7 +3,6 @@
 #
 QT += declarative
 CONFIG += qt qt-components
-MOBILITY += multimedia
 
 # Version number & version string definition (for using it inside the app)
 VERSION = 1.5.0
@@ -20,7 +19,6 @@ DEPLOYMENTFOLDERS = common_qml
 
 # Additional import path used to resolve QML modules in Creator's code model
 QML_IMPORT_PATH =
-
 
 # The .cpp, .h  & packaging files
 HEADERS += loadhelper.h
@@ -65,13 +63,13 @@ symbian {
     QML_IMPORT_PATH = qml/desktop/RestaurantAppComponents
 }
 contains(MEEGO_EDITION,harmattan) {
-#    QT += opengl
+    #QT += opengl
     DEFINES += Q_WS_HARMATTAN
     platform_qml.source = qml/harmattan/RestaurantAppComponents
     platform_qml.target = qml
     QML_IMPORT_PATH = qml/harmattan/RestaurantAppComponents
 
-    # Desktop file
+    # Desktop & icon -files
     desktop.files = diner.desktop
     desktop.path = /usr/share/applications
     icon_file.files = Diner.svg

@@ -15,7 +15,8 @@ ListModel {
     }
 
     Component.onCompleted: {
-        // Comment the following line and run once to restore the initial state with predefined content.
+        // Comment the following line and run once to restore
+        // the initial state with predefined content.
         Store.restore(model);
     }
 

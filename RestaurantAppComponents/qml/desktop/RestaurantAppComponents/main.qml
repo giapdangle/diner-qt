@@ -106,13 +106,12 @@ Window {
 
         ToolButton {
             iconSource: "toolbar-back"
-            //iconSource: visual.backButtonSource
 
             onClicked: {
                 if (appState.showBackButton == true) {
                     appState.showBackButton = false;
-                    // When returning to Menu Grid view, hide the special tab bar
-                    // and show the default one.
+                    // When returning to Menu Grid view, hide the special
+                    // tab bar and show the default one.
                     sharedToolBar.tools = defaultTools;
                     buttonRow.checkedButton = tabButton2;
                     pageStack.pop();
@@ -235,7 +234,8 @@ Window {
                         // button to behave differently.
                         if (status == PageStatus.Active) {
                             appState.showBackButton = true;
-                            appState.currentCaption = appState.selectedMenuCategoryTitle;
+                            appState.currentCaption =
+                                    appState.selectedMenuCategoryTitle;
                         } else {
                             appState.showBackButton = false;
                         }

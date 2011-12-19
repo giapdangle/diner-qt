@@ -14,9 +14,10 @@ Rectangle {
     property int margins: 8
     property int zoomButtonSize: 48
 
-    // You can use this function as the mapImage source-property to get a real map tile from Ovi Maps Tile Rendering API
+    // You can use this function as the mapImage source-property to get
+    // a real map tile from Ovi Maps Tile Rendering API
     function getOviMapsTileUrl(lat, lng, zoom, w, h) {
-        var url = "http://m.ovi.me/?c="+lat+","+lng+"&z="+zoom+ "&w="+w+"&h="+h; //+"&u=5h";
+        var url = "http://m.ovi.me/?c="+lat+","+lng+"&z="+zoom+ "&w="+w+"&h="+h;
         if (container.mapMode === "hybrid") {
             url = url + "&t=1";
         }
@@ -58,9 +59,12 @@ Rectangle {
             margins: 2
         }
 
-        // Uncomment this line to get real map tile over the network
-        //source: getOviMapsTileUrl(container.latitude, container.longitude, container.zoomFactor, container.width, container.height);
-        source: getLocalMapTile(container.zoomFactor, appState.inLandscape, visual.isE6);
+        // Uncomment these lines to get real map tile over the network
+//        source: getOviMapsTileUrl(container.latitude, container.longitude,
+//                                  container.zoomFactor,
+//                                  container.width, container.height);
+        source: getLocalMapTile(container.zoomFactor, appState.inLandscape,
+                                visual.isE6);
     }
 
     Button {

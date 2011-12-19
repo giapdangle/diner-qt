@@ -28,7 +28,7 @@ Page {
             if (status == XmlListModel.Ready) {
                 logo.source = infoModel.get(0).logo
                 street.text = infoModel.get(0).street
-                city.text = infoModel.get(0).city //+ ", " + infoModel.get(0).country
+                city.text = infoModel.get(0).city
                 country.text = infoModel.get(0).country
                 telephone.text = infoModel.get(0).telephone
                 description.text = infoModel.get(0).description
@@ -67,7 +67,9 @@ Page {
                     rightMargin: container.margins
                     leftMargin: container.margins*2
                 }
-                text: "You have reservation for "+people+((people == 1) ? " person" : " people")+" on "+dateTime
+                text: "You have reservation for "
+                      + people + ((people == 1) ? " person" : " people")
+                      + " on " + dateTime
                 wrapMode: Text.WordWrap
                 color: container.fontColor
                 font {
@@ -84,7 +86,11 @@ Page {
                     rightMargin: container.margins
                 }
                 text: qsTr("Cancel")
-                onClicked: { cancelDialog.index = index; cancelDialog.dateTime = dateTime; cancelDialog.open() }
+                onClicked: {
+                    cancelDialog.index = index;
+                    cancelDialog.dateTime = dateTime;
+                    cancelDialog.open()
+                }
             }
         }
     }
@@ -117,7 +123,8 @@ Page {
                     id: logo
                     fillMode: "PreserveAspectFit"
                     smooth: true
-                    height: appState.inLandscape ? container.height*0.4 : container.height*0.25
+                    height: appState.inLandscape ? container.height*0.4
+                                                 : container.height*0.25
                     width: height
                 }
 
@@ -189,7 +196,8 @@ Page {
                             bottom: call.bottom
                             verticalCenter: parent.verticalCenter
                         }
-                        verticalAlignment: visual.isE6 ? Text.AlignTop : Text.AlignVCenter
+                        verticalAlignment: visual.isE6 ? Text.AlignTop
+                                                       : Text.AlignVCenter
                         color: container.fontColorLink
                         font {
                             family: container.fontName
@@ -199,9 +207,9 @@ Page {
                             anchors.fill: parent
 
                             onClicked: {
-                                Util.log("Invoking a call "+telephone.text); Qt.openUrlExternally("tel:"+telephone.text)
+                                Util.log("Invoking a call "+telephone.text);
+                                Qt.openUrlExternally("tel:"+telephone.text);
                             }
-                            //onClicked: { callDialog.phoneNumber = telephone.text; callDialog.open() }
                         }
                     }
                 }
@@ -212,15 +220,16 @@ Page {
                     anchors {
                         right: parent.right
                         rightMargin: container.margins
-                        verticalCenter: visual.isE6 ? undefined : call.verticalCenter
+                        verticalCenter: visual.isE6 ? undefined
+                                                    : call.verticalCenter
                         bottom: visual.isE6 ? call.verticalCenter : undefined
                     }
                     iconSource: visual.callButtonSource
 
                     onClicked: {
-                        Util.log("Invoking a call "+telephone.text); Qt.openUrlExternally("tel:"+telephone.text)
+                        Util.log("Invoking a call "+telephone.text);
+                        Qt.openUrlExternally("tel:"+telephone.text);
                     }
-                    //onClicked: { callDialog.phoneNumber = telephone.text; callDialog.open() }
                 }
             }
 
@@ -248,8 +257,14 @@ Page {
 
             Timer {
                 id: presenter
-                interval: 5000; running: true; repeat: true
-                onTriggered: if (!reservations.moving && reservations.count > 2) reservations.incrementCurrentIndex()
+                interval: 5000
+                running: true
+                repeat: true
+                onTriggered: {
+                    if (!reservations.moving && reservations.count > 2) {
+                        reservations.incrementCurrentIndex();
+                    }
+                }
             }
 
             Rectangle {
@@ -270,7 +285,7 @@ Page {
                 }
                 onLinkActivated: {
                     Util.log("Launched url "+link);
-                    Qt.openUrlExternally(link)
+                    Qt.openUrlExternally(link);
                 }
             }
 
@@ -330,7 +345,8 @@ Page {
     QueryDialog {
         id: cancelDialog
         titleText: qsTr("Remove reservation?")
-        message: qsTr("Are you sure you want to cancel your reservation on "+dateTime+"?")
+        message: qsTr("Are you sure you want to cancel your reservation on "
+                      + dateTime + "?")
         acceptButtonText: qsTr("Remove")
         rejectButtonText: qsTr("Cancel")
         property string dateTime: ""
