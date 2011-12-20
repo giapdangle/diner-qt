@@ -10,8 +10,6 @@ Page {
     property color fontColor: visual.defaultFontColor
     property color fontColorLink: visual.defaultFontColorLink
     property double margins: visual.margins
-
-    property int scrollBarWidth: visual.scrollBarWidth
     property int spacing: visual.margins
 
     signal menuItemClicked(string itemId);
@@ -29,15 +27,6 @@ Page {
 
     MenuModel {
         id: menuModel
-    }
-
-    ScrollBar {
-        id: scrollBar
-        scrollArea: grid
-        anchors {
-            right: parent.right
-            top: parent.top
-        }
     }
 
     GridView {
@@ -72,6 +61,15 @@ Page {
                 appState.currentViewName = "menuListView";
                 container.menuItemClicked(itemId);
             }
+        }
+    }
+
+    ScrollDecorator {
+        id: scrollBar
+        flickableItem: grid
+        anchors {
+            right: parent.right
+            top: parent.top
         }
     }
 }

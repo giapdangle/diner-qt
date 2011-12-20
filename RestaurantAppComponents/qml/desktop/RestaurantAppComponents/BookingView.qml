@@ -43,8 +43,8 @@ Page {
     }
 
     Flickable {
+        id: flicker
         anchors.fill: parent
-        anchors.margins: container.margins*3
 
         contentHeight: column.height
         clip: true
@@ -52,6 +52,7 @@ Page {
 
         FocusScope {
             anchors.fill: parent
+            anchors.margins: container.margins*3
             Column {
                 id: column
                 width: parent.width
@@ -217,6 +218,25 @@ Page {
                 }
 
             } //Column
+        }
+    }
+
+    Loader {
+        sourceComponent: appState.inLandscape ? scrollBar : undefined
+        anchors {
+            right: parent.right
+            top: parent.top
+        }
+
+        Component {
+            id: scrollBar
+            ScrollDecorator {
+                anchors {
+                    right: parent.right
+                    top: parent.top
+                }
+                flickableItem: flicker
+            }
         }
     }
 

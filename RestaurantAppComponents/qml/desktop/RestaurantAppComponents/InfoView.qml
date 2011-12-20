@@ -11,7 +11,6 @@ Page {
     property color fontColorButton: visual.defaultFontColorButton
     property double margins: visual.margins
     property int reservationHeight: visual.infoViewReservationItemHeight
-    property int scrollBarWidth: visual.scrollBarWidth
 
     signal reservationClicked()
 
@@ -104,7 +103,6 @@ Page {
         id: flicker
         anchors {
             fill: container
-            margins: container.margins
         }
 
         contentWidth: width
@@ -114,6 +112,12 @@ Page {
             id: column
             width: parent.width
             spacing: container.margins
+            anchors {
+                top: parent.top
+                left: parent.left
+                right: parent.right
+                margins: container.margins
+            }
 
             Item {
                 height: logo.height
@@ -236,7 +240,7 @@ Page {
             Rectangle {
                 visible: reservations.height > 0
                 height: 1
-                width: flicker.width
+                width: column.width
                 color: fontColor
             }
 
@@ -269,7 +273,7 @@ Page {
 
             Rectangle {
                 height: 1
-                width: flicker.width
+                width: column.width
                 color: fontColor
             }
 
@@ -277,7 +281,7 @@ Page {
                 id: description
                 wrapMode: Text.WordWrap
                 textFormat: Text.RichText
-                width: flicker.width
+                width: column.width
                 color: container.fontColor
                 font {
                     family: container.fontName
@@ -291,8 +295,8 @@ Page {
 
             // Restaurant opening days & hours and a delicious image.
             Item {
-                width: flicker.width
-                height: 140
+                width: column.width
+                height: openDays.height*1.2
                 anchors.top: description.bottom
                 anchors.topMargin: container.margins
 
@@ -332,10 +336,9 @@ Page {
         }
     }
 
-    ScrollBar {
+    ScrollDecorator {
         id: scrollBar
         flickableItem: flicker
-        interactive: false
         anchors {
             right: parent.right
             top: parent.top

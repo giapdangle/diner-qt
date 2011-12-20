@@ -12,7 +12,6 @@ Item {
     property int spacing: 8
     property int defaultItemHeight: 48
 
-    property int scrollBarWidth: 8
     property string callButtonSource: "content/call_button.png"
     property string wwwButtonSource: "content/www_button.png"
     property string titleImageSource: "content/title.png"

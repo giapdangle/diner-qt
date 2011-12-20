@@ -12,7 +12,6 @@ Page {
     property double margins: visual.margins
     property int spacing: visual.spacing
 
-    property int scrollBarWidth: visual.scrollBarWidth
     property int listItemheight: 80
     property string selectedCategoryId: appState.selectedMenuCategoryId
     property string selectedCategoryTitle: appState.selectedMenuCategoryTitle
@@ -37,7 +36,7 @@ Page {
         XmlRole { name: "price"; query: "@price/string()" }
     }
 
-    ScrollBar {
+    ScrollDecorator {
         flickableItem: listView
         anchors {
             top: listView.top;
