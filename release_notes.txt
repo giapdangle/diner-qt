@@ -22,6 +22,45 @@ For more information on implementation visit the wiki page:
 - http://projects.developer.nokia.com/QMLRestaurantApp/wiki
 
 
+IMPORTANT CLASSES AND QML ELEMENTS
+-------------------------------------------------------------------------------
+
+Qt:
+- QmlApplicationViewer, QDeclarativeView, QTimer
+
+Standard QML elements used:
+- Component
+- Item
+- Rectangle
+- Text
+- TextField
+- Image
+- XmlListModel
+- ListModel
+- ListView
+- Flickable
+- FocusScope
+- GridView
+- Column
+- Row
+- Flow
+- FocusScope
+- MouseArea
+
+QML elements from Qt Quick Components used:
+- Window
+- Page
+- PageStack
+- ScrollDecorator
+- StatusBar
+- ToolBar
+- ToolBarLayout
+- ToolButton / ToolIcon
+- TabGroup
+- ButtonRow
+- Button
+
+
 FILES
 -------------------------------------------------------------------------------
 
