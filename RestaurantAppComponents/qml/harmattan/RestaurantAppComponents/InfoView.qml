@@ -14,9 +14,6 @@ Page {
 
     signal reservationClicked()
 
-    width: 480
-    height: 854
-
     Component.onCompleted: {
         Util.log("InfoView loaded");
     }

@@ -15,28 +15,10 @@ Window {
 
     StatusBar {
         id: statusBar
+        anchors.top: parent.top
     }
 
-    // All views have a title bar
-    TitleBar {
-        id: titleBar
 
-        // Anchors titlebar to left, top and right. Then set height
-        // Use grouping if possible.
-        anchors {
-            top: statusBar.bottom
-            left: parent.left
-            right: parent.right
-        }
-
-        height: appState.inLandscape ? root.width*0.04 : root.height*0.06
-        width: root.width
-        captionFontName: visual.captionFontFamily
-        captionFontSize: visual.captionFontSize
-        captionFontColor: visual.captionFontColor
-        captionBackgoundColor: visual.captionBackgroundColor
-        caption: appState.currentCaption
-    }
 
     ReservationsModel {
         id: reservationsModel
@@ -283,5 +265,26 @@ Window {
                 }
             }
         }
+    }
+
+    // All views have a title bar
+    TitleBar {
+        id: titleBar
+
+        // Anchors titlebar to left, top and right. Then set height
+        // Use grouping if possible.
+        anchors {
+            top: statusBar.bottom
+            left: parent.left
+            right: parent.right
+        }
+
+        height: appState.inLandscape ? root.width*0.04 : root.height*0.06
+        width: root.width
+        captionFontName: visual.captionFontFamily
+        captionFontSize: visual.captionFontSize
+        captionFontColor: visual.captionFontColor
+        captionBackgoundColor: visual.captionBackgroundColor
+        caption: appState.currentCaption
     }
 }

@@ -30,9 +30,6 @@ Page {
     property int _day: _currentDate.getDate()
     property string _hour: "18:00"
 
-    width: 480
-    height: 854
-
     Component.onCompleted: {
         Util.log("BookingViewPortrait loaded");
     }
