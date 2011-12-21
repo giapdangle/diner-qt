@@ -18,7 +18,7 @@ experimental com.nokia.extras components, namely DatePicker and TimePicker.
 This example application is hosted in Nokia Developer Projects:
 - http://projects.developer.nokia.com/QMLRestaurantApp
 
-For more information on implementation visit the wiki page:
+For more information on the implementation, visit the wiki page:
 - http://projects.developer.nokia.com/QMLRestaurantApp/wiki
 
 
@@ -139,7 +139,7 @@ Developed with:
 
 VERSION HISTORY
 -------------------------------------------------------------------------------
-v1.5	Added E6 support & splash screens, UI fine tuning, some refactoring.
+v1.5	Added support for Nokia E6 and splash screens. UI fine tuning and some refactoring.
 v1.4	Changed correct ToolBar buttons, layout and font color tweaking etc.
 v1.3	Version published on the Nokia Developer website.
 v1.2.1	Replaced the custom 'Back' button with the platform one. Landscape 
