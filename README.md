@@ -15,11 +15,11 @@ Components, but it also has some custom graphics and UI elements, designed to
 be reusable in other applications as well. The booking view also introduces the
 experimental com.nokia.extras components, namely DatePicker and TimePicker.
 
-This example application is hosted in Nokia Developer Projects:
-- http://projects.developer.nokia.com/QMLRestaurantApp
+This example application is hosted in GitHub:
+https://github.com/nokia-developer/diner-qt
 
 For more information on the implementation, visit the wiki page:
-- http://projects.developer.nokia.com/QMLRestaurantApp/wiki
+https://github.com/nokia-developer/diner-qt/wiki
 
 
 IMPORTANT CLASSES AND QML ELEMENTS
